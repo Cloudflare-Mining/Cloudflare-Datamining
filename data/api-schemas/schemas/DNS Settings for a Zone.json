@@ -952,7 +952,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.zone",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/dns_settings": {
 		"description": "Update DNS settings for a zone",
@@ -2077,6 +2080,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.zone",
+		"x-fern-sdk-method-name": "edit"
 	}
 }

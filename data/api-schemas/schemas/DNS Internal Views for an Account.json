@@ -220,7 +220,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.account.views",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/dns_settings/views": {
 		"description": "List DNS Internal Views for an Account",
@@ -927,7 +930,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.account.views",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dns_settings/views/{view_id}": {
 		"description": "Get DNS Internal View",
@@ -1444,7 +1450,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.account.views",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/dns_settings/views/{view_id}": {
 		"description": "Update an existing Internal DNS View",
@@ -2014,7 +2023,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.account.views",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/dns_settings/views": {
 		"description": "Create Internal DNS View for an account",
@@ -2576,6 +2588,9 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.account.views",
+		"x-fern-sdk-method-name": "create"
 	}
 }

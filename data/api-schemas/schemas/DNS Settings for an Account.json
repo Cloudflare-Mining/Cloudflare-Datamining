@@ -962,7 +962,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.account",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/dns_settings": {
 		"description": "Update DNS settings for an account",
@@ -2101,6 +2104,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.settings.account",
+		"x-fern-sdk-method-name": "edit"
 	}
 }

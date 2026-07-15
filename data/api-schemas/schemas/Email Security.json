@@ -255,7 +255,7 @@
 		"operationId": "email_security_investigate",
 		"parameters": [
 			{
-				"description": "The beginning of the search date range. Defaults to `now - 30 days`.",
+				"description": "The beginning of the search date range. Defaults to `now - 30 days`. Must not be in the future.",
 				"example": "2022-06-25T14:30:00Z",
 				"in": "query",
 				"name": "start",
