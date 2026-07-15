@@ -1,284 +1,213 @@
 ---
-description: Get the latest news on how products at Cloudflare are built, technologies used, and join the teams helping to build a better Internet.
+description: Technical deep dives, product updates, and insights from the teams that are helping to build a better Internet.
 title: The Cloudflare Blog
-image: https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5x04dbbOIp3eiugWSYPeUo/839720d141b384ea4478dd29706ed289/meta_image.png
+image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY31N4V.png
 ---
 
-[A broken DNSSEC rollover took down .AL. Now 1.1.1.1 tells you when validation is bypassed](https://blog.cloudflare.com/dnssec-nta-ede-33/)
+[Skip to content](#main-content)
 
-2026-07-14
+July 14, 2026[A broken DNSSEC rollover took down .al. Now 1.1.1.1 tells you when validation is bypassed](https://blog.cloudflare.com/dnssec-nta-ede-33/)
 
-When a failed DNSSEC key rollover took down the .AL TLD, we deployed a Negative Trust Anchor to restore resolution. This time, though, clients didn't have to take our word for it: 1.1.1.1 returned EDE 33, a new DNS error code that signals directly in the response that DNSSEC validation was bypassed....
+When a failed DNSSEC key rollover took down the .al TLD, we deployed a Negative Trust Anchor to restore resolution. This time, though, clients didn't have to take our word for it: 1.1.1.1 returned EDE 33, a new DNS error code that signals directly in the response that DNSSEC validation was bypassed.
 
-[Continue reading »](https://blog.cloudflare.com/dnssec-nta-ede-33/)
-* [![Sebastiaan Neuteboom](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xX4aGpJvTsyOVcHZL0RoE/6615c05595e153a701715086557863f3/Screenshot_2026-01-13_at_1.48.53%C3%A2__PM.png)](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)  
+![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)
 
-![A broken DNSSEC rollover took down .AL. Now 1.1.1.1 tells you when validation is bypassed](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4i9cpeIrqdw6VLDSUKgQXo/a5b9df138392686b5206e64f01e2ae0a/BLOG-3376_image1.png)
+[![BLOG-3309 1](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M774M6X72TNJFMVW93WZ.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/dnssec-nta-ede-33/)
 
-[Introducing Precursor: detecting agentic behavior with continuous client-side signals](https://blog.cloudflare.com/introducing-precursor/)
+July 13, 2026[Introducing Precursor: detecting agentic behavior with continuous client-side signals](https://blog.cloudflare.com/introducing-precursor/)
 
-2026-07-13
+Precursor, our new continuous behavioral validation engine for bot management, offers visibility into how humans and bots actually interact across the full user journey. By turning session-level behavior into bot detection signals, it identifies advanced automation with higher precision — while reducing friction for legitimate users.
 
-[Bot Management](https://blog.cloudflare.com/tag/bot-management/)[Security](https://blog.cloudflare.com/tag/security/)[Turnstile](https://blog.cloudflare.com/tag/turnstile/)[JavaScript](https://blog.cloudflare.com/tag/javascript/)[AI](https://blog.cloudflare.com/tag/ai/)[Precursor](https://blog.cloudflare.com/tag/precursor/)[Product News](https://blog.cloudflare.com/tag/product-news/)
+![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Benedikt Wolters](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T3SF8G510C5WQF4XNFC1.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-Precursor, our new continuous behavioral validation engine for bot management, offers visibility into how humans and bots actually interact across the full user journey. By turning session-level behavior into bot detection signals, it identifies advanced automation with higher precision — while reducing friction for legitimate users....
+[Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/) and [Benedikt Wolters](https://blog.cloudflare.com/author/benedikt/)
 
-* [![Marina Elmore](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57oe3QXMmouuqim694mCRt/a826ea8c7c8d794a1b1b679e9eafdc98/Marina_Elmore.png)](https://blog.cloudflare.com/author/marina-elmore/)  
-[Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/)
-* [![Benedikt Wolters](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YEnfGK1q6irUDXgMXL6Kh/6ec78c81de34a419e7f062742413fadf/benedikt.png)](https://blog.cloudflare.com/author/benedikt/)  
-[Benedikt Wolters](https://blog.cloudflare.com/author/benedikt/)
+July 10, 2026[Improving Smart Tiered Cache for Public Cloud Regions](https://blog.cloudflare.com/smart-tiered-cache-for-public-clouds/)
 
-[Improving Smart Tiered Cache for Public Cloud Regions](https://blog.cloudflare.com/smart-tiered-cache-for-public-clouds/)
+Smart Tiered Cache allows for precise upper tier selection for origins hosted on AWS, GCP, Azure, and Oracle Cloud with customer-provided cloud region hints.
 
-2026-07-10
+![Chenxi Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJM6F0PHPE4PQMNC0W1H579.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Tiered Cache](https://blog.cloudflare.com/tag/tiered-cache/)[Cache](https://blog.cloudflare.com/tag/cache/)[Performance](https://blog.cloudflare.com/tag/performance/)[Product News](https://blog.cloudflare.com/tag/product-news/)[CDN](https://blog.cloudflare.com/tag/cdn/)[Smart Shield](https://blog.cloudflare.com/tag/smart-shield/)
-
-Smart Tiered Cache allows for precise upper tier selection for origins hosted on AWS, GCP, Azure, and Oracle Cloud with customer-provided cloud region hints....
-
-* [![Chenxi Zhang](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EQfzUeOrDgcspt4RpViNs/344af95b877d5c465e4ee2cbd9ffecbe/Chenxi_Zhang_.webp)](https://blog.cloudflare.com/author/chenxi-zhang/)  
 [Chenxi Zhang](https://blog.cloudflare.com/author/chenxi-zhang/)
 
-[Why we cannot wait for better post-quantum signature algorithms](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
+July 9, 2026[Why we cannot wait for better post-quantum signature algorithms](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
 
-2026-07-09
+NIST is advancing nine new post-quantum signature algorithms as potential candidates for future standardization. We take a closer look at all of them, and argue that while they are in the works and show great potential, we should use ML-DSA for now — the best one currently available.
 
-[Post-Quantum](https://blog.cloudflare.com/tag/post-quantum/)[Security](https://blog.cloudflare.com/tag/security/)[Research](https://blog.cloudflare.com/tag/research/)[Cryptography](https://blog.cloudflare.com/tag/cryptography/)
+![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-NIST is advancing nine new post-quantum signature algorithms as potential candidates for future standardization. We take a closer look at all of them, and argue that while they are in the works and show great potential, we should use ML-DSA for now — the best one currently available. ...
+[Bas Westerbaan](https://blog.cloudflare.com/author/bas/) and [Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/)
 
-* [![Bas Westerbaan](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KeBG8XO1ADZHuEV9v5Hwz/6c90a96cfb1373b208bffc35f3fd71f4/bas.png)](https://blog.cloudflare.com/author/bas/)  
-[Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
-* [![Christopher Patton](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sRmXhNpfDUovdIUpP9Keq/8dfd4dfc04f8f6d45b0a69121edfa0e2/christopher-patton.jpg)](https://blog.cloudflare.com/author/christopher-patton/)  
-[Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/)
+July 8, 2026[Introducing Meerkat: an experiment in global consensus](https://blog.cloudflare.com/meerkat-introduction/)
 
-[Introducing Meerkat: an experiment in global consensus](https://blog.cloudflare.com/meerkat-introduction/)
+Cloudflare Research is building a global consensus service called Meerkat that uses a new consensus algorithm called QuePaxa. We plan to use Meerkat to build a strongly consistent, fault-tolerant key-value store, and other applications.
 
-2026-07-08
+![James Larisch](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9J5HQA4MAD7AN1K285E.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![ Bob Halley](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJFYHRZYTBR06JDENDTQ12N.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![João Pedro Leite](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q3HR5NWBDTW5N6DCXWKT.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Research](https://blog.cloudflare.com/tag/research/)[Network](https://blog.cloudflare.com/tag/network/)[Database](https://blog.cloudflare.com/tag/database/)[Distributed Systems](https://blog.cloudflare.com/tag/distributed-systems/)[Meerkat](https://blog.cloudflare.com/tag/meerkat/)
+[James Larisch](https://blog.cloudflare.com/author/james-larisch/), [ Bob Halley](https://blog.cloudflare.com/author/bob-halley/), and [João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/)
 
-Cloudflare Research is building a global consensus service called Meerkat that uses a new consensus algorithm called QuePaxa. We plan to use Meerkat to build a strongly consistent, fault-tolerant key-value store, and other applications....
+July 7, 2026[Cloudflare proudly joins the UK government's Cyber Resilience Pledge](https://blog.cloudflare.com/cloudflare-joins-uk-cyber-resilience-pledge/)
 
-* [![James Larisch](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CYzjboSN2jX2JkZpzkAN0/837e9a57e77efd26c440e2b216323f0f/unnamed.jpg)](https://blog.cloudflare.com/author/james-larisch/)  
-[James Larisch](https://blog.cloudflare.com/author/james-larisch/)
-* [![Bob Halley](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2n4gYm8aVnBqHwTSP3BGq3/74bbc91727393b0e50a7aee003916e9b/Bob_Halley_.jpg)](https://blog.cloudflare.com/author/bob-halley/)  
-[Bob Halley](https://blog.cloudflare.com/author/bob-halley/)
-* [![João Pedro Leite](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nwbH50VfB6OUFgvJVD7yh/2f2381275ac2ff032dc6f1da1c52961b/cf8c8c1a-42dc-4dd6-8225-21723b1966bd.webp)](https://blog.cloudflare.com/author/joao-pedro-leite/)  
-[João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/)
+The pledge is a voluntary framework inviting organizations to commit to foundational cyber security governance, board-level accountability, and supply chain rigor. For over a decade, Cloudflare has pioneered the core pillars of this framework: democratizing security, leadership accountability, and radical transparency.
 
-[Cloudflare proudly joins the UK government's Cyber Resilience Pledge](https://blog.cloudflare.com/cloudflare-joins-uk-cyber-resilience-pledge/)
+![Ling Wu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467KF763JFZEBQ3XWDEM6N.JPG&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Katie Visser](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJNTKKMP1NE3Z3NQENZHHMY.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-2026-07-07
+[Ling Wu](https://blog.cloudflare.com/author/ling/) and [Katie Visser](https://blog.cloudflare.com/author/katie-visser/)
 
-[United Kingdom](https://blog.cloudflare.com/tag/united-kingdom/)[Cybersecurity](https://blog.cloudflare.com/tag/cybersecurity/)[Policy & Legal](https://blog.cloudflare.com/tag/policy/)[Security](https://blog.cloudflare.com/tag/security/)
+July 6, 2026[Your Worker can now have its own cache in front of it](https://blog.cloudflare.com/workers-cache/)
 
-The pledge is a voluntary framework inviting organizations to commit to foundational cyber security governance, board-level accountability, and supply chain rigor. For over a decade, Cloudflare has pioneered the core pillars of this framework: democratizing security, leadership accountability, and radical transparency....
+We are launching Workers Cache, a regionally tiered cache that sits directly in front of your Worker entrypoints. Infinitely composable, configured via standard HTTP headers
 
-* [![Katie Visser](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GFYrcIWgfOW0yzpRKiKhf/3592684ed0f6d2c0c10191c257b5326d/Katie_Visser_.webp)](https://blog.cloudflare.com/author/katie-visser/)  
-[Katie Visser](https://blog.cloudflare.com/author/katie-visser/)
-* [![Ling Wu](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ijcIrgLeBVkHA6phQrF5a/38c6af44cc9098f8c5519df5422533ca/Ling_Wu_.webp)](https://blog.cloudflare.com/author/ling/)  
-[Ling Wu](https://blog.cloudflare.com/author/ling/)
+![Dan Lapid](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J56Y8QNB56HN77FKK7EM.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Connor Harwood](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PA3429BFXAR99YP0Z2ZX.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Your Worker can now have its own cache in front of it](https://blog.cloudflare.com/workers-cache/)
+[Dan Lapid](https://blog.cloudflare.com/author/dan-lapid/) and [Connor Harwood](https://blog.cloudflare.com/author/connor-harwood/)
 
-2026-07-06
+July 1, 2026[Unmasking the crawls with Attribution Business Insights](https://blog.cloudflare.com/attribution-business-insights/)
 
-[Cloudflare Workers](https://blog.cloudflare.com/tag/workers/)[Cache](https://blog.cloudflare.com/tag/cache/)[Tiered Cache](https://blog.cloudflare.com/tag/tiered-cache/)[Performance](https://blog.cloudflare.com/tag/performance/)[Developers](https://blog.cloudflare.com/tag/developers/)[Serverless](https://blog.cloudflare.com/tag/serverless/)
+Cloudflare's new Attribution Business Insights dashboard helps website owners understand crawler behavior, appetite, and potential value, fueling business-level conversations around crawl compensation.
 
-We are launching Workers Cache, a regionally tiered cache that sits directly in front of your Worker entrypoints. Infinitely composable, configured via standard HTTP headers...
+![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Oliver Payne](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AC0A90AS7JQ9KWA8Q85Z.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-* [![Dan Lapid](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oBNxdamAbzN4vUeiCSLWu/e3f3bc3ce02ed15a4e5b793f62eaa7f2/Dan_Lapid.jpg)](https://blog.cloudflare.com/author/dan-lapid/)  
-[Dan Lapid](https://blog.cloudflare.com/author/dan-lapid/)
-* [![ Connor Harwood](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ChQBYRPNIiEuQnGQdajbt/3b67f09fd6dae792eb8a1ffafaa1254a/_tmp_mini_magick20221017-43-y5gfah.jpg)](https://blog.cloudflare.com/author/connor-harwood/)  
-[ Connor Harwood](https://blog.cloudflare.com/author/connor-harwood/)
+[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Oliver Payne](https://blog.cloudflare.com/author/oliver-payne/)
 
-[Announcing the Monetization Gateway: charge for any resource behind Cloudflare via x402](https://blog.cloudflare.com/monetization-gateway/)
+July 1, 2026[Making AI search smarter](https://blog.cloudflare.com/making-ai-search-smarter/)
 
-2026-07-01
+Search is how we find nearly everything on the web — creators, merchants, answers. AI is rewriting the rules, leaving creators caught between staying discoverable in an agentic era and getting paid for their work. Today we're launching two initiatives to help.
 
-[Content Independence Day](https://blog.cloudflare.com/tag/content-independence-day/)[AI Bots](https://blog.cloudflare.com/tag/ai-bots/)[Bots](https://blog.cloudflare.com/tag/bots/)[AI](https://blog.cloudflare.com/tag/ai/)[x402](https://blog.cloudflare.com/tag/x402/)[Payments](https://blog.cloudflare.com/tag/payments/)
+![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-We're opening the waitlist for our Monetization Gateway, which will allow you to charge for any web page, dataset, API, or MCP tool behind Cloudflare. The charges will settle in stablecoins over the x402 open protocol, with no payments stack of your own to build....
-
-* [![Rohin Lohe](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vCBepc4EU7EHnLJW3oIUq/c5fff23d4de1d78b58f16c4679c0f333/rohin.jpg)](https://blog.cloudflare.com/author/rohin/)  
-[Rohin Lohe](https://blog.cloudflare.com/author/rohin/)
-* [![Justin Ridgely](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vX9jmxrdTfsd7bEdORT28/8969e03d458af26a7d853a12c92927d6/Justin_Ridgely_.webp)](https://blog.cloudflare.com/author/justin-ridgely/)  
-[Justin Ridgely](https://blog.cloudflare.com/author/justin-ridgely/)
-* [![Will Papper](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5VthfgOAwwxxpLUVTj5Qbi/68bedbef8e68729e792a8921396cec98/Will_Papper_.webp)](https://blog.cloudflare.com/author/will-papper/)  
-[Will Papper](https://blog.cloudflare.com/author/will-papper/)
-
-[Content Independence Day, one year on: building the business model for the agentic Internet](https://blog.cloudflare.com/agentic-internet-bot-report/)
-
-2026-07-01
-
-[Content Independence Day](https://blog.cloudflare.com/tag/content-independence-day/)[Bots](https://blog.cloudflare.com/tag/bots/)[Bot Management](https://blog.cloudflare.com/tag/bot-management/)[Radar](https://blog.cloudflare.com/tag/cloudflare-radar/)[Internet Traffic](https://blog.cloudflare.com/tag/internet-traffic/)[AI](https://blog.cloudflare.com/tag/ai/)
-
-One year after declaring Content Independence Day, a dynamic market for monetized content has officially emerged. In this report, we examine how the rise of autonomous AI agents is upending traditional search referrals and detail the new infrastructure required to support a sustainable web economy. ...
-
-* [![Arielle Weiss](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ASMgJG4SMEdgDU3VuhScq/3afbd0fcebc6e3941d1a661d350c2c26/ArielleWeiss.jpg)](https://blog.cloudflare.com/author/arielle-weiss/)  
-[Arielle Weiss](https://blog.cloudflare.com/author/arielle-weiss/)
-* [![Zach Albertson](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Aqya7idvUK5tJmhoUyMJk/e9d8fd04e6f6c7d6c4f2d27db8c52821/Zach_Albertson_.png)](https://blog.cloudflare.com/author/zach-albertson/)  
-[Zach Albertson](https://blog.cloudflare.com/author/zach-albertson/)
-* [![Emily Lanfear](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1F0G4bCqsbLVz2FkmrrW7k/831c38123eb54ec4661179ea35440224/Emily_Lanfear.png)](https://blog.cloudflare.com/author/emily-lanfear/)  
-[Emily Lanfear](https://blog.cloudflare.com/author/emily-lanfear/)
-
-[Making AI search smarter](https://blog.cloudflare.com/making-ai-search-smarter/)
-
-2026-07-01
-
-[Content Independence Day](https://blog.cloudflare.com/tag/content-independence-day/)[Pay Per Crawl](https://blog.cloudflare.com/tag/pay-per-crawl/)[AI](https://blog.cloudflare.com/tag/ai/)[AI Search](https://blog.cloudflare.com/tag/ai-search/)[AI Bots](https://blog.cloudflare.com/tag/ai-bots/)
-
-Search is how we find nearly everything on the web — creators, merchants, answers. AI is rewriting the rules, leaving creators caught between staying discoverable in an agentic era and getting paid for their work. Today we're launching two initiatives to help....
-
-* [![Matthew Conroy](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4eSl1O8o3xW52wkuiDjncy/456f363c1a37f5ca4556264e3522dd0f/1639599929437.jpg)](https://blog.cloudflare.com/author/matthew-conroy/)  
 [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
 
-[Your site, your rules: new AI traffic options for all customers](https://blog.cloudflare.com/content-independence-day-ai-options/)
+July 1, 2026[Your site, your rules: new AI traffic options for all customers](https://blog.cloudflare.com/content-independence-day-ai-options/)
 
-2026-07-01
+For our second Content Independence Day, we're giving website owners finer options to manage AI traffic. Instead of a one-size-fits-all block, all customers can now easily distinguish and manage Search, Agent, and Training bots, alongside the new ability to protect ad-monetized pages.
 
-[Content Independence Day](https://blog.cloudflare.com/tag/content-independence-day/)[AI Bots](https://blog.cloudflare.com/tag/ai-bots/)[AI](https://blog.cloudflare.com/tag/ai/)[Crawler Hints](https://blog.cloudflare.com/tag/crawler-hints/)[Bot Management](https://blog.cloudflare.com/tag/bot-management/)
+![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-For our second Content Independence Day, we're giving website owners finer options to manage AI traffic. Instead of a one-size-fits-all block, all customers can now easily distinguish and manage Search, Agent, and Training bots, alongside the new ability to protect ad-monetized pages....
+[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
 
-* [![Jin-Hee Lee](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47LTVC3FaSVzkAumTWfFIi/4424dfc2819cbc4a8fff6b72ce93047e/Jin-Hee_Lee.jpg)](https://blog.cloudflare.com/author/jin-hee-lee/)  
-[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/)
-* [![Bryan Becker](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kBqyzmku9cEHgPNi6tXFI/bba53c7cb300e5294c56cb383f4429ed/1739490651156.jpg)](https://blog.cloudflare.com/author/bryan-becker/)  
-[Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
+July 1, 2026[Announcing the Monetization Gateway: charge for any resource behind Cloudflare via x402](https://blog.cloudflare.com/monetization-gateway/)
 
-[Unmasking the crawls with Attribution Business Insights](https://blog.cloudflare.com/attribution-business-insights/)
+We're opening the waitlist for our Monetization Gateway, which will allow you to charge for any web page, dataset, API, or MCP tool behind Cloudflare. The charges will settle in stablecoins over the x402 open protocol, with no payments stack of your own to build.
 
-2026-07-01
+![Rohin Lohe](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4732TDPVKGF30GJC5C5KJV.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Justin Ridgely](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PGKA3M43DHXBD4JK7ZH5.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Content Independence Day](https://blog.cloudflare.com/tag/content-independence-day/)[AI](https://blog.cloudflare.com/tag/ai/)[Bots](https://blog.cloudflare.com/tag/bots/)[Bot Management](https://blog.cloudflare.com/tag/bot-management/)[Security](https://blog.cloudflare.com/tag/security/)
+[Rohin Lohe](https://blog.cloudflare.com/author/rohin/), [Justin Ridgely](https://blog.cloudflare.com/author/justin-ridgely/), and [Will Papper](https://blog.cloudflare.com/author/will-papper/)
 
-Cloudflare's new Attribution Business Insights dashboard helps website owners understand crawler behavior, appetite, and potential value, fueling business-level conversations around crawl compensation....
+July 1, 2026[Content Independence Day, one year on: building the business model for the agentic Internet](https://blog.cloudflare.com/agentic-internet-bot-report/)
 
-* [![Jin-Hee Lee](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47LTVC3FaSVzkAumTWfFIi/4424dfc2819cbc4a8fff6b72ce93047e/Jin-Hee_Lee.jpg)](https://blog.cloudflare.com/author/jin-hee-lee/)  
-[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/)
-* [![Oliver Payne](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3phveVkUWIGTAPpf1Ipw4S/807750522045d122a239e33c4cdbb839/_tmp_mini_magick20230111-41-g8g2kg.jpg)](https://blog.cloudflare.com/author/oliver-payne/)  
-[Oliver Payne](https://blog.cloudflare.com/author/oliver-payne/)
+One year after declaring Content Independence Day, a dynamic market for monetized content has officially emerged. In this report, we examine how the rise of autonomous AI agents is upending traditional search referrals and detail the new infrastructure required to support a sustainable web economy. 
 
-[How we built saga rollbacks for Cloudflare Workflows](https://blog.cloudflare.com/rollbacks-for-workflows/)
+![Arielle Weiss](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q27P8MJVNRWP3T72QCMX.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Zach Albertson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMPKP5X812DFFWSFK61EG.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Emily Lanfear](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF8NNKWVPXS9KJSP1PP9.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-2026-06-25
+[Arielle Weiss](https://blog.cloudflare.com/author/arielle-weiss/), [Zach Albertson](https://blog.cloudflare.com/author/zach-albertson/), and [Emily Lanfear](https://blog.cloudflare.com/author/emily-lanfear/)
 
-[Workflows](https://blog.cloudflare.com/tag/workflows/)[Cloudflare Workers](https://blog.cloudflare.com/tag/workers/)[Developers](https://blog.cloudflare.com/tag/developers/)
+June 25, 2026[How we built saga rollbacks for Cloudflare Workflows](https://blog.cloudflare.com/rollbacks-for-workflows/)
 
-Cloudflare Workflows, our durable execution engine for multi-step applications, now supports saga-style rollbacks, allowing developers to specify a compensating action for each step.do(). ...
+Cloudflare Workflows, our durable execution engine for multi-step applications, now supports saga-style rollbacks, allowing developers to specify a compensating action for each step.do(). 
 
-* [![Vaishnav Kavitha](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IiXnxLnTXNqST2KXVR8jA/0bdaa17ea9ba49f797c3e634fc58946e/vaish_portrait.jpeg)](https://blog.cloudflare.com/author/vaishnav-kavitha/)  
-[Vaishnav Kavitha](https://blog.cloudflare.com/author/vaishnav-kavitha/)
-* [![Mia Malden](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FY6694OH0p4nMADqEeg6b/49113dde85b295765b541197294fe244/Mia_Malden.jpg)](https://blog.cloudflare.com/author/mia/)  
-[Mia Malden](https://blog.cloudflare.com/author/mia/)
-* [![André Venceslau](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Aj0RF6kebqiWYLfi9rbgR/787c46c89cbcf7c9f6242074985d7091/Andre%C3%8C__Venceslau.png)](https://blog.cloudflare.com/author/andre-venceslau/)  
-[André Venceslau](https://blog.cloudflare.com/author/andre-venceslau/)
+![Vaishnav Kavitha](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMMZ8JJQ1SE783SASV4PJ.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Mia Malden](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4559TC07A12MQHAEK8YM1R.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![André Venceslau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TZTSTWQ6JMKEC8GX38NE.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Unlocking the Cloudflare app ecosystem with OAuth for all](https://blog.cloudflare.com/oauth-for-all/)
+[Vaishnav Kavitha](https://blog.cloudflare.com/author/vaishnav-kavitha/), [Mia Malden](https://blog.cloudflare.com/author/mia/), and [André Venceslau](https://blog.cloudflare.com/author/andre-venceslau/)
 
-2026-06-24
+June 24, 2026[Unlocking the Cloudflare app ecosystem with OAuth for all](https://blog.cloudflare.com/oauth-for-all/)
 
-[Developers](https://blog.cloudflare.com/tag/developers/)[API](https://blog.cloudflare.com/tag/api/)[Security](https://blog.cloudflare.com/tag/security/)[OAuth](https://blog.cloudflare.com/tag/oauth/)[Developer Platform](https://blog.cloudflare.com/tag/developer-platform/)[Agents](https://blog.cloudflare.com/tag/agents/)[Product News](https://blog.cloudflare.com/tag/product-news/)[Cloudflare Media Platform](https://blog.cloudflare.com/tag/cloudflare-media-platform/)[Identity](https://blog.cloudflare.com/tag/identity/)
+Self-Managed OAuth is now available to all developers on Cloudflare. Here's how we executed a zero-downtime migration of our core OAuth engine to make it happen.
 
-Self-Managed OAuth is now available to all developers on Cloudflare. Here's how we executed a zero-downtime migration of our core OAuth engine to make it happen....
+![Sam Cabell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMQHZ06NRJ1P977MAN3W6.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Mike Escalante](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49ABPBC57VY77RQCNPXWNP.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Adam Bouhmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V48CPK64MWTYNSCVTA3E.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Nick Comer](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMBJG5ZDTS3AWWAWA2DVW.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-* [![Sam Cabell](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FurLu5stbIo9nxEABOZZh/76dddf6ae7b3a7eeb4893e61e1aeee4b/Sam_Cabell_.webp)](https://blog.cloudflare.com/author/sam-cabell/)  
-[Sam Cabell](https://blog.cloudflare.com/author/sam-cabell/)
-* [![Mike Escalante](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RsjU3Hd0wT6DyNaNEpJnG/0168aa2bda8d8bde855cd30046b2bcdb/mike-escalante.jpg)](https://blog.cloudflare.com/author/mike-escalante/)  
-[Mike Escalante](https://blog.cloudflare.com/author/mike-escalante/)
-* [![Adam Bouhmad](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4aseXY5rjB2mooBiPmcQ9P/77d7246cb53fadde4bbc892adb14759e/Adam_Bouhmad_.webp)](https://blog.cloudflare.com/author/adam-bouhmad/)  
-[Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/)
-* [![Nick Comer](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XX534TzaPzsiYEPzRCJto/f5c0a75889e27da0a645bb6c7fae02f1/Nick_Comer.webp)](https://blog.cloudflare.com/author/nick-comer/)  
-[Nick Comer](https://blog.cloudflare.com/author/nick-comer/)
+[Sam Cabell](https://blog.cloudflare.com/author/sam-cabell/), [Mike Escalante](https://blog.cloudflare.com/author/mike-escalante/), [Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/), and [Nick Comer](https://blog.cloudflare.com/author/nick-comer/)
 
-[The White House's post-quantum executive order is an important milestone. It's time to get to work](https://blog.cloudflare.com/post-quantum-eo-2026/)
+June 23, 2026[The White House's post-quantum executive order is an important milestone. It's time to get to work](https://blog.cloudflare.com/post-quantum-eo-2026/)
 
-2026-06-23
+The new executive order sets a 2030 migration deadline and establishes a powerful foundation for post-quantum resilience. We look at what it gets right, where it can go further, and our migration playbook for government and industry.
 
-[Post-Quantum](https://blog.cloudflare.com/tag/post-quantum/)[Security](https://blog.cloudflare.com/tag/security/)[Cryptography](https://blog.cloudflare.com/tag/cryptography/)[Policy & Legal](https://blog.cloudflare.com/tag/policy/)[Government Innovation](https://blog.cloudflare.com/tag/government-innovation/)[Impact](https://blog.cloudflare.com/tag/impact/)
+![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Vincent Voci](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RVKNDARQNRQJA3MNV87H.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-The new executive order sets a 2030 migration deadline and establishes a powerful foundation for post-quantum resilience. We look at what it gets right, where it can go further, and our migration playbook for government and industry....
+[Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/) and [Vincent Voci](https://blog.cloudflare.com/author/vincent-voci/)
 
-* [![Sharon Goldberg](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cKoimXGrudpdJuCAzYWGI/d84cd85760c1a34559532fc16f5f8d66/goldbe.png)](https://blog.cloudflare.com/author/goldbe/)  
-[Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/)
-* [![Vincent Voci](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KP6nzLk0wmym6FegKJGVv/ba4bddb59446a52f63608d011d45aa89/Voci__Vincent.jpg)](https://blog.cloudflare.com/author/vincent-voci/)  
-[Vincent Voci](https://blog.cloudflare.com/author/vincent-voci/)
+June 22, 2026[How we found a bug in the hyper HTTP library](https://blog.cloudflare.com/hyper-bug/)
 
-[How we found a bug in the hyper HTTP library](https://blog.cloudflare.com/hyper-bug/)
+By rearchitecting the Images binding, we accidentally uncovered a bug that existed in the open-source hyper library across multiple major versions.
 
-2026-06-22
+![Deanna Lam](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KFXCHBMAHQ4B20STFNCC.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Diretnan Domnan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q4B9ZYMXFBZ5X354KFW2.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Matt Lewis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMRANK371K7W3Y3CXQT0M.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Image Optimization](https://blog.cloudflare.com/tag/image-optimization/)[Cloudflare Images](https://blog.cloudflare.com/tag/cloudflare-images/)[Developers](https://blog.cloudflare.com/tag/developers/)[Developer Platform](https://blog.cloudflare.com/tag/developer-platform/)[Cloudflare Workers](https://blog.cloudflare.com/tag/workers/)[Open Source](https://blog.cloudflare.com/tag/open-source/)
+[Deanna Lam](https://blog.cloudflare.com/author/deanna/), [Diretnan Domnan](https://blog.cloudflare.com/author/diretnan-domnan/), and [Matt Lewis](https://blog.cloudflare.com/author/matt-lewis-2/)
 
-By rearchitecting the Images binding, we accidentally uncovered a bug that existed in the open-source hyper library across multiple major versions....
+June 19, 2026[Temporary Cloudflare Accounts for AI agents](https://blog.cloudflare.com/temporary-accounts/)
 
-* [![Deanna Lam](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eGiJ4EopefC4KhjH4khYQ/526640356ab514827ac816ee0708edbb/deanna.jpg)](https://blog.cloudflare.com/author/deanna/)  
-[Deanna Lam](https://blog.cloudflare.com/author/deanna/)
-* [![Diretnan Domnan](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oOTgaZjxRAuCzeXaEprtw/0eb731712c0df92caada05c4f9367189/Diretnan_Domnan.jpg)](https://blog.cloudflare.com/author/diretnan-domnan/)  
-[Diretnan Domnan](https://blog.cloudflare.com/author/diretnan-domnan/)
-* [![Matt Lewis](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eVQLHm81sdW9dnG8jdF3/f8885442bae82760517a56ee2b4e0562/3b157b21a134fcf8.webp)](https://blog.cloudflare.com/author/matt-lewis-2/)  
-[Matt Lewis](https://blog.cloudflare.com/author/matt-lewis-2/)
+The moment an agent needs to deploy something, it slams face-first into a wall built for humans. Today we're rolling out Temporary Accounts on Cloudflare Workers. Any agent can now run wrangler deploy — temporary and get a live Worker in seconds.
 
-[Temporary Cloudflare Accounts for AI agents](https://blog.cloudflare.com/temporary-accounts/)
+![Sid Chatterjee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XJ0J0NXPCD8TWD8F0KKP.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-2026-06-19
+[Sid Chatterjee](https://blog.cloudflare.com/author/sid/), [Celso Martinho](https://blog.cloudflare.com/author/celso/), and [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
 
-[Agents](https://blog.cloudflare.com/tag/agents/)[Wrangler](https://blog.cloudflare.com/tag/wrangler/)[AI](https://blog.cloudflare.com/tag/ai/)[Cloudflare Workers](https://blog.cloudflare.com/tag/workers/)
+June 18, 2026[Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness/)
 
-The moment an agent needs to deploy something, it slams face-first into a wall built for humans. Today we're rolling out Temporary Accounts on Cloudflare Workers. Any agent can now run wrangler deploy — temporary and get a live Worker in seconds....
+We break down the technical architecture behind our multi-stage vulnerability discovery harness and automated triage loop. Learn how we manage state controls, squash false positives through adversarial review, and route around LLM context limits.
 
-* [![Sid Chatterjee](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66pIfBfhDUadwWztfEDfXe/66d41b9c01e48856fd1deb323d9007a9/sid.jpg)](https://blog.cloudflare.com/author/sid/)  
-[Sid Chatterjee](https://blog.cloudflare.com/author/sid/)
-* [![Celso Martinho](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pzgat1zmt1oF1byi7hskH/7b25e8e00117ee44afe36ad27d7d8032/celso.png)](https://blog.cloudflare.com/author/celso/)  
-[Celso Martinho](https://blog.cloudflare.com/author/celso/)
-* [![Brendan Irvine-Broque](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lTJBFKfbqthKbJKPvulre/e8bf53afa7caf1dffeeb55a8c6884959/brendan-irvine-broque.JPG)](https://blog.cloudflare.com/author/brendan-irvine-broque/)  
-[Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
+![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Alexandra Godoi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMS1ZDF1A4G73S5DMSZXN.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Grant Bourzikas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SJJRBDYVMHZKVGKTMJ08.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness/)
+[Dan Jones](https://blog.cloudflare.com/author/dan-jones/), [Alexandra Godoi](https://blog.cloudflare.com/author/alexandra-godoi/), and [Grant Bourzikas](https://blog.cloudflare.com/author/grant/)
 
-2026-06-18
+June 18, 2026[Celebrating 12 years of Project Galileo](https://blog.cloudflare.com/celebrating-12-years-of-project-galileo/)
 
-[Security](https://blog.cloudflare.com/tag/security/)[AI](https://blog.cloudflare.com/tag/ai/)[Engineering](https://blog.cloudflare.com/tag/engineering/)[Research](https://blog.cloudflare.com/tag/research/)[Vulnerabilities](https://blog.cloudflare.com/tag/vulnerabilities/)
+To mark the 12th anniversary of Project Galileo, Cloudflare has released its first comprehensive report analyzing cyberattacks against civil society.
 
-We break down the technical architecture behind our multi-stage vulnerability discovery harness and automated triage loop. Learn how we manage state controls, squash false positives through adversarial review, and route around LLM context limits....
+![Jocelyn Woolbright](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DTBM9W30TE9JQBMJ2CAY.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Allie Funk](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMNE1C77VPBNRVEJWBYMX.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Grace Bennett](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMQKM2KVYPFSPWRS0DNTA.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-* [![Dan Jones](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5k6iQ5uNhroseD4aOteFFB/8a815a92940642ec2f0e16f4ffd2463c/Dan_Jones.webp)](https://blog.cloudflare.com/author/dan-jones/)  
-[Dan Jones](https://blog.cloudflare.com/author/dan-jones/)
-* [![Alexandra Godoi](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7p4lBUsJxJvOGqNHM9DRuQ/cb2ac9c35921f1200b77cd5d817f3e47/unnamed-1.webp)](https://blog.cloudflare.com/author/alexandra-godoi/)  
-[Alexandra Godoi](https://blog.cloudflare.com/author/alexandra-godoi/)
-* [![Grant Bourzikas](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4WvuTuOStSgKhBYE4diUrf/bd098d36f9d94ca86c65d825fd41393d/image__9_.png)](https://blog.cloudflare.com/author/grant/)  
-[Grant Bourzikas](https://blog.cloudflare.com/author/grant/)
+[Jocelyn Woolbright](https://blog.cloudflare.com/author/jocelyn/), [Allie Funk](https://blog.cloudflare.com/author/allie-funk/), and [Grace Bennett](https://blog.cloudflare.com/author/grace-bennett/)
 
-[Celebrating 12 years of Project Galileo](https://blog.cloudflare.com/celebrating-12-years-of-project-galileo/)
+Load more
 
-2026-06-18
+Search is temporarily unavailable.
 
-[Impact](https://blog.cloudflare.com/tag/impact/)[Project Galileo](https://blog.cloudflare.com/tag/project-galileo/)
+[Login opens in a new tab](https://dash.cloudflare.com/login)[Contact Sales opens in a new tab](https://www.cloudflare.com/resource/contact-enterprise-sales/)[Start Building opens in a new tab](https://dash.cloudflare.com/sign-up)
 
-To mark the 12th anniversary of Project Galileo, Cloudflare has released its first comprehensive report analyzing cyberattacks against civil society....
+[ opens in a new tab](https://x.com/cloudflare)[ opens in a new tab](https://www.linkedin.com/company/cloudflare-inc-)[ opens in a new tab](https://blog.cloudflare.com/rss/)
 
-* [![Jocelyn Woolbright](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bDRrsgewAVO6JTmna7b6v/76a5b49472184190ae967a1f962add6a/jocelyn.jpg)](https://blog.cloudflare.com/author/jocelyn/)  
-[Jocelyn Woolbright](https://blog.cloudflare.com/author/jocelyn/)
-* [![Allie Funk](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WP1gpJyByKtO9OqbZG4EN/74172ce4760ea8bd93f5e41156e938a9/4722388db4d95258.webp)](https://blog.cloudflare.com/author/allie-funk/)  
-[Allie Funk](https://blog.cloudflare.com/author/allie-funk/)
-* [![Grace Bennett](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7K1Xu5d5CUVlljUAe9lPgG/d8c19c23f2a1fd91a03a10070fd51334/1728335324986.jpg)](https://blog.cloudflare.com/author/grace-bennett/)  
-[Grace Bennett](https://blog.cloudflare.com/author/grace-bennett/)
+All Categories
 
-[Bringing more agent harnesses and frameworks to Cloudflare, starting with Flue](https://blog.cloudflare.com/agents-platform-flue-sdk/)
+* [AI](https://blog.cloudflare.com/tag/ai/)
+* [Developers](https://blog.cloudflare.com/tag/developers/)
+* [Radar](https://blog.cloudflare.com/tag/cloudflare-radar/)
+* [Product News](https://blog.cloudflare.com/tag/product-news/)
+* [Security](https://blog.cloudflare.com/tag/security/)
+* [Policy & Legal](https://blog.cloudflare.com/tag/policy/)
+* [Zero Trust](https://blog.cloudflare.com/tag/zero-trust/)
+* [Speed & Reliability](https://blog.cloudflare.com/tag/speed-and-reliability/)
+* [Life at Cloudflare](https://blog.cloudflare.com/tag/life-at-cloudflare/)
+* [Partners](https://blog.cloudflare.com/tag/partners/)
 
-2026-06-17
+English
 
-[AI](https://blog.cloudflare.com/tag/ai/)[Cloudflare Workers](https://blog.cloudflare.com/tag/workers/)[Developers](https://blog.cloudflare.com/tag/developers/)[Developer Platform](https://blog.cloudflare.com/tag/developer-platform/)[Durable Objects](https://blog.cloudflare.com/tag/durable-objects/)[SDK](https://blog.cloudflare.com/tag/sdk/)[MCP](https://blog.cloudflare.com/tag/mcp/)
+* Switch Site Language
+* [English](https://blog.cloudflare.com/)
+* [Deutsch](https://blog.cloudflare.com/de-de/)
+* [Español](https://blog.cloudflare.com/es-es/)
+* [Español (Latinoamérica)](https://blog.cloudflare.com/es-la/)
+* [Français](https://blog.cloudflare.com/fr-fr/)
+* [Italiano](https://blog.cloudflare.com/it-it/)
+* [日本語](https://blog.cloudflare.com/ja-jp/)
+* [한국어](https://blog.cloudflare.com/ko-kr/)
+* [繁體中文](https://blog.cloudflare.com/zh-tw/)
+* [简体中文](https://blog.cloudflare.com/zh-cn/)
+* [Português](https://blog.cloudflare.com/pt-br/)
+* [Русский](https://blog.cloudflare.com/ru-ru/)
+* [Bahasa Indonesia](https://blog.cloudflare.com/id-id/)
+* [ภาษาไทย](https://blog.cloudflare.com/th-th/)
+* [Tiếng Việt](https://blog.cloudflare.com/vi-vn/)
+* [Polski](https://blog.cloudflare.com/pl-pl/)
+* [العربية](https://blog.cloudflare.com/ar-ar/)
+* [עברית](https://blog.cloudflare.com/he-il/)
+* [Svenska](https://blog.cloudflare.com/sv-se/)
+* [Nederlands](https://blog.cloudflare.com/nl-nl/)
+* [Türkçe](https://blog.cloudflare.com/tr-tr/)
 
-The Agents SDK is now a runtime any agent framework can build on. Today we're opening up the Agents SDK primitives, with Flue as a first framework targeting Agents SDK, and rolling out agents in the dashboard....
+LightDark
 
-* [![Thomas Gauvin](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2niktUqyQO5YzVIBCwrBGl/9474ec9faff3b27f7ec9013a066b9b54/Thomas_Gauvin.jpg)](https://blog.cloudflare.com/author/thomas-gauvin/)  
-[Thomas Gauvin](https://blog.cloudflare.com/author/thomas-gauvin/)
-
-* [1](https://blog.cloudflare.com/)
-* [2](https://blog.cloudflare.com/page/2/)
-* …
-* [177](https://blog.cloudflare.com/page/177/)
-[Older Posts →](https://blog.cloudflare.com/page/2/)
+```json
+{"@context":"https://schema.org","@type":"WebSite","name":"The Cloudflare Blog","url":"https://blog.cloudflare.com"}
+```
