@@ -1,5 +1,20 @@
 [
 	{
+		"id": "726032b183ee77a1e5e3645f5d6d0a76",
+		"name": "Security Center Admin",
+		"description": "Can manage Security Center insights and configurations.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "f9828bed02e3f6f9b44e50ff177a0f45",
 		"name": "AI Gateway Admin",
 		"description": "Can perform all CRUD actions on AI Gateways and deploy Secrets used by AI Gateway provider configs",
@@ -2134,25 +2149,6 @@
 			"waf": {
 				"read": true,
 				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "051312130d7384b97d7c4fa122eb7519",
-		"name": "Trust and Safety",
-		"description": "Grants access to view and request reviews for blocks on Dashboard",
-		"permissions": {
-			"blocks": {
-				"read": true,
-				"edit": true
 			},
 			"zone": {
 				"read": true,
