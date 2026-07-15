@@ -374,7 +374,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
 		"description": "Delete an existing migration source. Sources with active migrations cannot be deleted.",
@@ -751,7 +755,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.sources",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations": {
 		"description": "List all migrations for the account.",
@@ -1293,7 +1301,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}": {
 		"description": "Fetch details for a single migration.",
@@ -1847,7 +1859,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle": {
 		"description": "Get the current progress of a migration including counts of scanned, imported,\nskipped, and errored objects.\n",
@@ -2357,7 +2373,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations.lifecycle",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/logs": {
 		"description": "List log entries for a specific migration.",
@@ -2792,7 +2812,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations.lifecycle",
+		"x-fern-sdk-method-name": "logs",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/sources": {
 		"description": "List all configured migration sources for the account.",
@@ -3256,7 +3280,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.sources",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
 		"description": "Fetch details for a single migration source.",
@@ -3724,7 +3752,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.sources",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}/connectivity": {
 		"description": "Check the current connectivity status of an existing migration source.",
@@ -4140,7 +4172,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.sources",
+		"x-fern-sdk-method-name": "connectivity",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle/abort": {
 		"description": "Abort a running migration. Objects already imported will not be removed.",
@@ -4390,7 +4426,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations.lifecycle",
+		"x-fern-sdk-method-name": "abort",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle/start": {
 		"description": "Start a pending migration. The migration will begin importing objects from the configured source.",
@@ -4640,7 +4680,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations.lifecycle",
+		"x-fern-sdk-method-name": "start",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
 		"description": "Update the name of an existing migration source.",
@@ -5053,7 +5097,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.sources",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/images/v2/sourcingkit/migrations": {
 		"description": "Create a new migration from an existing source. The migration will import\nobjects from the source bucket into Cloudflare Images.\n",
@@ -5489,7 +5537,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.migrations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/images/v2/sourcingkit/sources": {
 		"description": "Create a new migration source by providing storage credentials. The service\nwill verify connectivity to the bucket before accepting the source.\n",
@@ -5919,7 +5971,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.sources",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/images/v2/sourcingkit/sources/connectivity-precheck": {
 		"description": "Verify connectivity to a storage bucket before creating a source. Returns\nconnectivity status without persisting any state.\n",
@@ -6369,6 +6425,10 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.sourcing-kit.sources",
+		"x-fern-sdk-method-name": "pre-check",
+		"x-forge-hidden": true
 	}
 }

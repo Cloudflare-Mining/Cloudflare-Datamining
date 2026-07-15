@@ -380,7 +380,12 @@
 		"summary": "Delete Signing Key",
 		"tags": [
 			"Cloudflare Images Keys"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.keys",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": false,
+		"x-forge-require-confirmation": "This operation will delete this signing key. This will invalidate any URLs that are signed with this key."
 	},
 	"GET /accounts/{account_id}/images/v1/keys": {
 		"description": "List your CF Images signing keys.",
@@ -755,7 +760,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.keys",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": false
 	},
 	"PUT /accounts/{account_id}/images/v1/keys/{signing_key_name}": {
 		"description": "Create a new CF Images signing key with specified name. Returns all keys available.",
@@ -1138,6 +1147,10 @@
 		"summary": "Create a new Signing Key",
 		"tags": [
 			"Cloudflare Images Keys"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.keys",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": false
 	}
 }

@@ -381,7 +381,12 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.variants",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": false,
+		"x-forge-require-confirmation": "This operation will delete this variant."
 	},
 	"GET /accounts/{account_id}/images/v1/variants": {
 		"description": "List existing CF Images variants.",
@@ -868,7 +873,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.variants",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"description": "Fetch details for a CF Images variant.",
@@ -1395,7 +1404,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.variants",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}/flat": {
 		"description": "Fetch details for a single variant with properties at the top level of the result.",
@@ -1912,7 +1925,11 @@
 		"x-api-token-group": [
 			"Images Read",
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.v1.variants-flat",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"description": "Update a CF Images variant. This will purge the cache for all images associated with the variant.",
@@ -2510,7 +2527,11 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.variants",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": false
 	},
 	"POST /accounts/{account_id}/images/v1/variants": {
 		"description": "Create a CF Images variant that allows you to resize images for different use cases.",
@@ -3104,6 +3125,10 @@
 		],
 		"x-api-token-group": [
 			"Images Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "images.variants",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": false
 	}
 }
