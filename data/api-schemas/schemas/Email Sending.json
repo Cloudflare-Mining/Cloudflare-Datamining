@@ -144,6 +144,14 @@
 															"example": false,
 															"type": "boolean"
 														},
+														"resets_at": {
+															"description": "When the current daily quota window resets. Null when there is no active window.",
+															"example": "2026-07-08T00:00:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
 														"sent": {
 															"description": "Emails sent against the daily quota in the current window.",
 															"example": 42,
@@ -185,7 +193,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.limits",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/sending/messages/{message_id}": {
 		"description": "Returns the raw RFC 5322 MIME message for the given account and message id.",
@@ -1087,13 +1099,15 @@
 										"properties": {
 											"code": {
 												"enum": [
-													10203
+													"10203",
+													"10204"
 												],
-												"type": "number"
+												"type": "string"
 											},
 											"message": {
 												"enum": [
-													"email.sending.error.email.sending_disabled"
+													"email.sending.error.email.sending_disabled",
+													"email.sending.error.email.sender_not_configured"
 												],
 												"type": "string"
 											}
@@ -1136,7 +1150,7 @@
 						}
 					}
 				},
-				"description": "Email sending is disabled for this zone/account."
+				"description": "Email sending is disabled, or the sending domain is not configured for email sending."
 			},
 			"429": {
 				"content": {
@@ -1563,13 +1577,15 @@
 										"properties": {
 											"code": {
 												"enum": [
-													10203
+													"10203",
+													"10204"
 												],
-												"type": "number"
+												"type": "string"
 											},
 											"message": {
 												"enum": [
-													"email.sending.error.email.sending_disabled"
+													"email.sending.error.email.sending_disabled",
+													"email.sending.error.email.sender_not_configured"
 												],
 												"type": "string"
 											}
@@ -1612,7 +1628,7 @@
 						}
 					}
 				},
-				"description": "Email sending is disabled for this zone/account."
+				"description": "Email sending is disabled, or the sending domain is not configured for email sending."
 			},
 			"429": {
 				"content": {

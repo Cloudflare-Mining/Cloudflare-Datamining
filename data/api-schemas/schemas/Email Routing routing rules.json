@@ -293,7 +293,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/routing/rules": {
 		"description": "Lists existing routing rules across all zones in the account.",
@@ -681,7 +685,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "list-account",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/rules": {
 		"description": "Lists existing routing rules.",
@@ -1054,7 +1062,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"description": "Get information for a specific routing rule already created.",
@@ -1351,7 +1363,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/rules/catch_all": {
 		"description": "Get information on the default catch-all routing rule.",
@@ -1606,7 +1622,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules.catch-alls",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/email/routing/rules/plan": {
 		"description": "Computes the Email Routing rule changes that would be needed to reconcile a Wrangler-managed desired ruleset. This endpoint is read-only and does not create, update, or delete rules.",
@@ -2321,7 +2341,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "plan",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/rules": {
 		"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require all destination addresses to be verified.",
@@ -2742,7 +2766,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"description": "Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified.",
@@ -3176,7 +3204,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/catch_all": {
 		"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address. Forward actions require all destination addresses to be verified.",
@@ -3544,6 +3576,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules.catch-alls",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

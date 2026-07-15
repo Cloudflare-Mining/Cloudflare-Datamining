@@ -356,6 +356,49 @@
 												"type": "boolean",
 												"x-auditable": true
 											},
+											"meta": {
+												"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+												"items": {
+													"properties": {
+														"key": {
+															"type": "string"
+														},
+														"ordinal": {
+															"minimum": 0,
+															"type": "integer"
+														},
+														"type": {
+															"enum": [
+																"string",
+																"bool",
+																"int"
+															],
+															"type": "string"
+														},
+														"value": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "boolean"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														}
+													},
+													"required": [
+														"key",
+														"value",
+														"type",
+														"ordinal"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
 											"name": {
 												"example": "block-malicious-workers",
 												"type": "string",
@@ -527,6 +570,49 @@
 									"example": false,
 									"type": "boolean",
 									"x-auditable": true
+								},
+								"meta": {
+									"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+									"items": {
+										"properties": {
+											"key": {
+												"type": "string"
+											},
+											"ordinal": {
+												"minimum": 0,
+												"type": "integer"
+											},
+											"type": {
+												"enum": [
+													"string",
+													"bool",
+													"int"
+												],
+												"type": "string"
+											},
+											"value": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"type": "number"
+													}
+												]
+											}
+										},
+										"required": [
+											"key",
+											"value",
+											"type",
+											"ordinal"
+										],
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"name": {
 									"example": "block-malicious-workers",
@@ -976,6 +1062,49 @@
 														"example": false,
 														"type": "boolean",
 														"x-auditable": true
+													},
+													"meta": {
+														"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+														"items": {
+															"properties": {
+																"key": {
+																	"type": "string"
+																},
+																"ordinal": {
+																	"minimum": 0,
+																	"type": "integer"
+																},
+																"type": {
+																	"enum": [
+																		"string",
+																		"bool",
+																		"int"
+																	],
+																	"type": "string"
+																},
+																"value": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "boolean"
+																		},
+																		{
+																			"type": "number"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"key",
+																"value",
+																"type",
+																"ordinal"
+															],
+															"type": "object"
+														},
+														"type": "array"
 													},
 													"name": {
 														"example": "block-malicious-workers",
@@ -1500,6 +1629,49 @@
 									"type": "boolean",
 									"x-auditable": true
 								},
+								"meta": {
+									"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+									"items": {
+										"properties": {
+											"key": {
+												"type": "string"
+											},
+											"ordinal": {
+												"minimum": 0,
+												"type": "integer"
+											},
+											"type": {
+												"enum": [
+													"string",
+													"bool",
+													"int"
+												],
+												"type": "string"
+											},
+											"value": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"type": "number"
+													}
+												]
+											}
+										},
+										"required": [
+											"key",
+											"value",
+											"type",
+											"ordinal"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
 								"name": {
 									"example": "block-malicious-workers",
 									"type": "string",
@@ -1875,6 +2047,49 @@
 									"example": false,
 									"type": "boolean",
 									"x-auditable": true
+								},
+								"meta": {
+									"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+									"items": {
+										"properties": {
+											"key": {
+												"type": "string"
+											},
+											"ordinal": {
+												"minimum": 0,
+												"type": "integer"
+											},
+											"type": {
+												"enum": [
+													"string",
+													"bool",
+													"int"
+												],
+												"type": "string"
+											},
+											"value": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"type": "number"
+													}
+												]
+											}
+										},
+										"required": [
+											"key",
+											"value",
+											"type",
+											"ordinal"
+										],
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"name": {
 									"example": "block-malicious-workers",

@@ -374,7 +374,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.dnssec",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/dnssec": {
 		"description": "Details about DNSSEC status and configuration.",
@@ -970,7 +973,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.dnssec",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/dnssec/zsk": {
 		"description": "List the Zone Signing Keys (ZSKs) that DNSSEC uses for the zone.",
@@ -1587,7 +1593,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.dnssec.list",
+		"x-fern-sdk-method-name": "zsks"
 	},
 	"PATCH /zones/{zone_id}/dnssec": {
 		"description": "Enable or disable DNSSEC.",
@@ -2221,6 +2230,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.dnssec",
+		"x-fern-sdk-method-name": "edit"
 	}
 }

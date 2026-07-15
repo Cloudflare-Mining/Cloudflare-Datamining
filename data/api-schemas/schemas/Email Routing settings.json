@@ -358,7 +358,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.dns",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing": {
 		"description": "Get information about the settings for your Email Routing zone.",
@@ -600,7 +604,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/dns": {
 		"description": "Show the DNS records needed to configure your Email Routing zone.",
@@ -1168,7 +1176,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.dns",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/email/routing": {
 		"description": "Update the settings for your Email Routing zone.",
@@ -1448,7 +1460,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/email/routing/dns": {
 		"description": "Unlock MX Records previously locked by Email Routing.",
@@ -1707,7 +1723,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.dns",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/disable": {
 		"deprecated": true,
@@ -1955,7 +1975,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing",
+		"x-fern-sdk-method-name": "disable",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation turns off email routing for a zone."
 	},
 	"POST /zones/{zone_id}/email/routing/dns": {
 		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
@@ -2214,7 +2239,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.dns",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/enable": {
 		"deprecated": true,
@@ -2462,7 +2491,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing",
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/unlock": {
 		"deprecated": true,
@@ -2722,7 +2755,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing",
+		"x-fern-sdk-method-name": "unlock",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/email/routing": {
 		"description": "Update the settings for your Email Routing zone.",
@@ -3002,6 +3039,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/paygo-usage": {
-		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\nThis endpoint is currently in alpha and access is restricted to select\naccounts. While in alpha, the endpoint may get breaking changes.\n",
+		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\n",
 		"operationId": "billable-usage-get-paygo-account-usage",
 		"parameters": [
 			{
@@ -326,6 +326,258 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
 		"x-fern-sdk-method-name": "paygo",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/paygo-usage-info": {
+		"description": "Returns high-level usage information for the account, including coverage,\nand subscription metadata.\n",
+		"operationId": "billable-usage-get-paygo-account-usage-info",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a successful response containing subscription info.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details if the request failed.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains any informational messages from the API.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the paygo usage info.",
+									"properties": {
+										"covered": {
+											"description": "Indicates whether the account is covered.",
+											"example": true,
+											"type": "boolean"
+										},
+										"subscriptions": {
+											"description": "List of subscriptions for the account.",
+											"items": {
+												"properties": {
+													"billing_cycle_anchor_timestamp": {
+														"description": "The subscription billing cycle anchor timestamp.",
+														"example": "2023-01-01T00:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"end_timestamp": {
+														"description": "The subscription end timestamp. Omitted for active subscriptions; present only when the subscription has been cancelled.",
+														"example": "2023-12-31T23:59:59Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "The identifier for the Cloudflare subscription.",
+														"example": "3F3CD4CQ6N7FXO7IK6NVFJBOYA",
+														"type": "string"
+													},
+													"start_timestamp": {
+														"description": "The subscription start timestamp.",
+														"example": "2023-01-01T00:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"start_timestamp",
+													"billing_cycle_anchor_timestamp"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"covered",
+										"subscriptions"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates PayGo account usage data was successfully retrieved."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"example": [
+										{
+											"code": 1183,
+											"message": "Invalid request parameters: Please ensure all required parameters are included and correctly formatted."
+										}
+									],
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates the request failed."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get PayGo Account Billable Usage Info (Version 1, Alpha)",
+		"tags": [
+			"Billable Usage"
+		],
+		"x-api-token-group": [
+			"Billing Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": false,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "billing.usage",
+		"x-fern-sdk-method-name": "paygo_info",
 		"x-forge-hidden": true
 	}
 }

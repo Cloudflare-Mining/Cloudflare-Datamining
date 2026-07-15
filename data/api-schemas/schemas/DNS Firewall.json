@@ -400,7 +400,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns-firewall",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dns_firewall": {
 		"description": "List DNS Firewall clusters for an account",
@@ -1240,7 +1244,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns-firewall",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
 		"description": "Show a single DNS Firewall cluster for an account",
@@ -1995,7 +2003,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns-firewall",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns": {
 		"description": "Show reverse DNS configuration (PTR records) for a DNS Firewall cluster",
@@ -2416,7 +2428,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns-firewall.reverse-dns",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
 		"description": "Modify the configuration of a DNS Firewall cluster",
@@ -3301,7 +3317,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns-firewall",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns": {
 		"description": "Update reverse DNS configuration (PTR records) for a DNS Firewall cluster",
@@ -3746,7 +3766,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns-firewall.reverse-dns",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dns_firewall": {
 		"description": "Create a DNS Firewall cluster",
@@ -4636,6 +4660,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns-firewall",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

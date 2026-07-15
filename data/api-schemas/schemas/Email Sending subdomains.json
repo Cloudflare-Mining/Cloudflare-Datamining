@@ -145,7 +145,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains": {
 		"description": "Lists all sending-enabled subdomains for the zone.",
@@ -391,7 +395,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
 		"description": "Gets information for a specific sending subdomain.",
@@ -612,7 +620,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
 		"description": "Returns the expected DNS records for a sending subdomain.",
@@ -879,7 +891,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns/status": {
 		"description": "Returns the desired DNS records for a sending subdomain along with a live diff against actual DNS state. Use this to detect missing, unlocked, foreign, or multi-record conflicts before deciding whether to call the fix endpoint.",
@@ -1385,7 +1401,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
+		"x-fern-sdk-method-name": "get-status",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
 		"description": "Updates the activity-log preview preference for a sending subdomain.",
@@ -1626,7 +1646,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains": {
 		"description": "Creates a new sending subdomain or re-enables sending on an existing subdomain that had it disabled. If zone-level Email Sending has not been enabled yet, the zone flag is automatically set when the entitlement is present.",
@@ -1854,7 +1878,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
 		"description": "Idempotently re-applies the sending DNS records (creates missing records, re-applies the email_routing lock on records whose lock has been cleared). Refuses with a 409 if foreign MX, multiple SPF, multiple DMARC, or multiple DKIM records exist at the relevant DNS names — those require manual cleanup.",
@@ -2366,7 +2394,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
+		"x-fern-sdk-method-name": "fix",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/preview": {
 		"description": "Returns the DNS records that would be created for a sending subdomain, flags which records are missing, and reports any conflicts with existing DNS records. This is a read-only dry-run — no records are created or modified. Use before or after creating a subdomain to check DNS status.",
@@ -2863,6 +2895,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.subdomains",
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-hidden": true
 	}
 }

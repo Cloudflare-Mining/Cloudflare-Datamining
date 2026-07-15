@@ -2129,6 +2129,19 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Submit an appeal for a report. Provide either a list of mitigations to appeal, or an appeal type with its supporting details, but not both. When type is \"counter_notice\", the counter-notice details are required.",
+						"oneOf": [
+							{
+								"required": [
+									"appeals"
+								]
+							},
+							{
+								"required": [
+									"type"
+								]
+							}
+						],
 						"properties": {
 							"appeals": {
 								"description": "List of mitigations to appeal.",
@@ -2155,11 +2168,84 @@
 									"type": "object"
 								},
 								"type": "array"
+							},
+							"data": {
+								"description": "Counter-notice details supporting an appeal.",
+								"properties": {
+									"city": {
+										"type": "string"
+									},
+									"company": {
+										"type": "string"
+									},
+									"counter_notice_response": {
+										"type": "string"
+									},
+									"country": {
+										"type": "string"
+									},
+									"email": {
+										"format": "email",
+										"type": "string"
+									},
+									"full_name": {
+										"type": "string"
+									},
+									"jurisdiction_consent": {
+										"type": "boolean"
+									},
+									"perjury_attestation": {
+										"type": "boolean"
+									},
+									"phone_number": {
+										"type": "string"
+									},
+									"signature": {
+										"type": "string"
+									},
+									"state": {
+										"type": "string"
+									},
+									"street_address": {
+										"type": "string"
+									},
+									"urls": {
+										"items": {
+											"format": "uri",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"zip_code": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"full_name",
+									"street_address",
+									"city",
+									"state",
+									"country",
+									"zip_code",
+									"phone_number",
+									"email",
+									"urls",
+									"perjury_attestation",
+									"jurisdiction_consent",
+									"signature"
+								],
+								"type": "object"
+							},
+							"type": {
+								"description": "The type of appeal being submitted.",
+								"enum": [
+									"counter_notice",
+									"content_removed"
+								],
+								"example": "counter_notice",
+								"type": "string"
 							}
 						},
-						"required": [
-							"appeals"
-						],
 						"type": "object"
 					}
 				}
