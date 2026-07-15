@@ -44,6 +44,10 @@
 		"tags": [
 			"Integrations"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.integrations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/integrations": {
@@ -208,6 +212,10 @@
 		"tags": [
 			"Integrations"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.integrations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/integrations/{id}": {
@@ -252,7 +260,7 @@
 										},
 										"auth_method": {
 											"display_name": "OAuth 2.0",
-											"slug": "oauth"
+											"id": "oauth"
 										},
 										"authorization_link": {
 											"components": {
@@ -488,6 +496,10 @@
 		"tags": [
 			"Integrations"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.integrations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/one/integrations/{id}": {
@@ -743,7 +755,7 @@
 										},
 										"auth_method": {
 											"display_name": "OAuth 2.0",
-											"slug": "oauth"
+											"id": "oauth"
 										},
 										"authorization_link": {
 											"components": {
@@ -979,10 +991,14 @@
 		"tags": [
 			"Integrations"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.integrations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations": {
-		"description": "Creates a new integration for the specified application. Integration creation with OAuth is not supported by API at the moment. For other auth methods, use `GET /v2/applications/{slug}/credential-guide` to see the required credential structure and example payloads for each vendor.",
+		"description": "Creates a new integration for the specified application. Integration creation with OAuth is not supported by API at the moment. For other auth methods, use `GET /v2/applications/{application_id}/credential-guide` to see the required credential structure and example payloads for each vendor.",
 		"operationId": "create_integration_v2",
 		"parameters": [
 			{
@@ -1026,12 +1042,15 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"BITBUCKET",
 									"BOX",
+									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
 									"GOOGLE_WORKSPACE",
+									"JIRA",
 									"MICROSOFT_INTERNAL",
 									"SALESFORCE",
 									"SLACK"
@@ -1122,12 +1141,15 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"BITBUCKET",
 									"BOX",
+									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
 									"GOOGLE_WORKSPACE",
+									"JIRA",
 									"MICROSOFT_INTERNAL",
 									"SALESFORCE",
 									"SLACK"
@@ -1195,12 +1217,15 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"BITBUCKET",
 									"BOX",
+									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
 									"GOOGLE_WORKSPACE",
+									"JIRA",
 									"MICROSOFT_INTERNAL",
 									"SALESFORCE",
 									"SLACK"
@@ -1284,7 +1309,7 @@
 										},
 										"auth_method": {
 											"display_name": "OAuth 2.0",
-											"slug": "oauth"
+											"id": "oauth"
 										},
 										"authorization_link": {
 											"components": {
@@ -1520,6 +1545,10 @@
 		"tags": [
 			"Integrations"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.integrations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations/{id}/pause": {
@@ -1564,7 +1593,7 @@
 										},
 										"auth_method": {
 											"display_name": "OAuth 2.0",
-											"slug": "oauth"
+											"id": "oauth"
 										},
 										"authorization_link": {
 											"components": {
@@ -1800,6 +1829,10 @@
 		"tags": [
 			"Integrations"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.integrations",
+		"x-fern-sdk-method-name": "pause",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations/{id}/resume": {
@@ -1844,7 +1877,7 @@
 										},
 										"auth_method": {
 											"display_name": "OAuth 2.0",
-											"slug": "oauth"
+											"id": "oauth"
 										},
 										"authorization_link": {
 											"components": {
@@ -2080,6 +2113,10 @@
 		"tags": [
 			"Integrations"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.integrations",
+		"x-fern-sdk-method-name": "resume",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

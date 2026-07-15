@@ -5147,13 +5147,14 @@
 										"auth_methods": [
 											{
 												"display_name": "OAuth 2.0 Admin Consent",
-												"slug": "oauth2_standard"
+												"id": "oauth2_standard"
 											}
 										],
 										"category": "Productivity",
 										"description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
 										"display_name": "Microsoft",
 										"dlp_enabled": true,
+										"id": "MICROSOFT_INTERNAL",
 										"logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
 										"permissions": [
 											{
@@ -5172,7 +5173,6 @@
 												"severity": "critical"
 											}
 										],
-										"slug": "MICROSOFT_INTERNAL",
 										"supported_environments": [
 											"standard",
 											"fedramp"
@@ -5180,11 +5180,11 @@
 										"use_cases": [
 											{
 												"display_name": "Cloud Access Security Broker",
-												"slug": "casb"
+												"id": "casb"
 											},
 											{
 												"display_name": "Cloud Email Security",
-												"slug": "ces"
+												"id": "ces"
 											}
 										]
 									}
@@ -5204,14 +5204,14 @@
 													"description": "Human-readable auth method name.",
 													"type": "string"
 												},
-												"slug": {
+												"id": {
 													"description": "Auth method identifier.",
 													"type": "string"
 												}
 											},
 											"required": [
 												"display_name",
-												"slug"
+												"id"
 											],
 											"type": "object"
 										},
@@ -5232,6 +5232,22 @@
 									"dlp_enabled": {
 										"description": "Whether DLP scanning is supported.",
 										"type": "boolean"
+									},
+									"id": {
+										"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+										"enum": [
+											"BITBUCKET",
+											"BOX",
+											"CONFLUENCE",
+											"DROPBOX",
+											"GITHUB",
+											"GOOGLE_WORKSPACE",
+											"JIRA",
+											"MICROSOFT_INTERNAL",
+											"SALESFORCE",
+											"SLACK"
+										],
+										"type": "string"
 									},
 									"logo": {
 										"description": "Logo path.",
@@ -5271,19 +5287,6 @@
 										},
 										"type": "array"
 									},
-									"slug": {
-										"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
-										"enum": [
-											"BOX",
-											"DROPBOX",
-											"GITHUB",
-											"GOOGLE_WORKSPACE",
-											"MICROSOFT_INTERNAL",
-											"SALESFORCE",
-											"SLACK"
-										],
-										"type": "string"
-									},
 									"supported_environments": {
 										"description": "Environments this vendor supports (standard, fedramp).",
 										"items": {
@@ -5300,14 +5303,14 @@
 													"description": "Human-readable use case name.",
 													"type": "string"
 												},
-												"slug": {
+												"id": {
 													"description": "Use case identifier (e.g. casb, ces).",
 													"type": "string"
 												}
 											},
 											"required": [
 												"display_name",
-												"slug"
+												"id"
 											],
 											"type": "object"
 										},
@@ -5320,9 +5323,9 @@
 									"description",
 									"display_name",
 									"dlp_enabled",
+									"id",
 									"logo",
 									"permissions",
-									"slug",
 									"supported_environments",
 									"use_cases"
 								],
@@ -5351,9 +5354,13 @@
 		"tags": [
 			"Applications"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.applications",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
-	"GET /accounts/{account_id}/one/applications/{slug}": {
+	"GET /accounts/{account_id}/one/applications/{application_id}": {
 		"description": "Returns full application details including auth methods, use cases, and permissions.",
 		"operationId": "get_application_v2",
 		"parameters": [
@@ -5370,14 +5377,17 @@
 			{
 				"description": "Application/vendor identifier.",
 				"in": "path",
-				"name": "slug",
+				"name": "application_id",
 				"required": true,
 				"schema": {
 					"enum": [
+						"BITBUCKET",
 						"BOX",
+						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
 						"GOOGLE_WORKSPACE",
+						"JIRA",
 						"MICROSOFT_INTERNAL",
 						"SALESFORCE",
 						"SLACK"
@@ -5397,8 +5407,8 @@
 									"auth_methods": [
 										{
 											"display_name": "OAuth 2.0 Admin Consent",
+											"id": "oauth2",
 											"is_default": true,
-											"slug": "oauth2",
 											"supported_environments": [
 												"standard",
 												"fedramp"
@@ -5409,9 +5419,9 @@
 									"description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
 									"display_name": "Microsoft",
 									"dlp_enabled": true,
+									"id": "MICROSOFT_INTERNAL",
 									"instructions": "You'll need a Microsoft 365 admin account with Global Admin or Application Admin role.",
 									"logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
-									"slug": "MICROSOFT_INTERNAL",
 									"use_cases": [
 										{
 											"base_scopes": [
@@ -5432,17 +5442,17 @@
 												{
 													"description": "Automatically remediate security issues",
 													"display_name": "Auto Remediation",
+													"id": "auto_remediation",
 													"scopes": [
 														{
 															"display_name": "Read and write all files",
 															"scope": "Files.ReadWrite.All",
 															"severity": "critical"
 														}
-													],
-													"slug": "auto_remediation"
+													]
 												}
 											],
-											"slug": "casb"
+											"id": "casb"
 										}
 									]
 								}
@@ -5460,13 +5470,13 @@
 												"description": "Human-readable auth method name.",
 												"type": "string"
 											},
+											"id": {
+												"description": "Auth method identifier.",
+												"type": "string"
+											},
 											"is_default": {
 												"description": "Whether this is the default auth method.",
 												"type": "boolean"
-											},
-											"slug": {
-												"description": "Auth method identifier.",
-												"type": "string"
 											},
 											"supported_environments": {
 												"description": "Environments this auth method supports.",
@@ -5478,8 +5488,8 @@
 										},
 										"required": [
 											"display_name",
+											"id",
 											"is_default",
-											"slug",
 											"supported_environments"
 										],
 										"type": "object"
@@ -5502,6 +5512,22 @@
 									"description": "Whether DLP scanning is supported.",
 									"type": "boolean"
 								},
+								"id": {
+									"description": "Vendor identifier.\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+									"enum": [
+										"BITBUCKET",
+										"BOX",
+										"CONFLUENCE",
+										"DROPBOX",
+										"GITHUB",
+										"GOOGLE_WORKSPACE",
+										"JIRA",
+										"MICROSOFT_INTERNAL",
+										"SALESFORCE",
+										"SLACK"
+									],
+									"type": "string"
+								},
 								"instructions": {
 									"description": "Setup instructions for the user.",
 									"nullable": true,
@@ -5510,19 +5536,6 @@
 								"logo": {
 									"description": "Logo path.",
 									"nullable": true,
-									"type": "string"
-								},
-								"slug": {
-									"description": "Vendor identifier.\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
-									"enum": [
-										"BOX",
-										"DROPBOX",
-										"GITHUB",
-										"GOOGLE_WORKSPACE",
-										"MICROSOFT_INTERNAL",
-										"SALESFORCE",
-										"SLACK"
-									],
 									"type": "string"
 								},
 								"use_cases": {
@@ -5584,6 +5597,10 @@
 															"description": "Human-readable feature name.",
 															"type": "string"
 														},
+														"id": {
+															"description": "Feature identifier.",
+															"type": "string"
+														},
 														"scopes": {
 															"description": "Additional scopes when feature is enabled.",
 															"items": {
@@ -5616,23 +5633,19 @@
 																"type": "object"
 															},
 															"type": "array"
-														},
-														"slug": {
-															"description": "Feature identifier.",
-															"type": "string"
 														}
 													},
 													"required": [
 														"description",
 														"display_name",
-														"scopes",
-														"slug"
+														"id",
+														"scopes"
 													],
 													"type": "object"
 												},
 												"type": "array"
 											},
-											"slug": {
+											"id": {
 												"description": "Use case identifier.",
 												"type": "string"
 											}
@@ -5642,7 +5655,7 @@
 											"description",
 											"display_name",
 											"features",
-											"slug"
+											"id"
 										],
 										"type": "object"
 									},
@@ -5655,9 +5668,9 @@
 								"description",
 								"display_name",
 								"dlp_enabled",
+								"id",
 								"instructions",
 								"logo",
-								"slug",
 								"use_cases"
 							],
 							"type": "object"
@@ -5683,9 +5696,13 @@
 		"tags": [
 			"Applications"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.applications",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
-	"GET /accounts/{account_id}/one/applications/{slug}/auth-methods": {
+	"GET /accounts/{account_id}/one/applications/{application_id}/auth-methods": {
 		"description": "Returns available auth methods for the specified vendor, including credential schema, instructions, and example payloads. Use this to understand what credentials are required before calling POST /v2/integrations.",
 		"operationId": "get_application_auth_methods_v2",
 		"parameters": [
@@ -5702,14 +5719,17 @@
 			{
 				"description": "Application/vendor identifier.",
 				"in": "path",
-				"name": "slug",
+				"name": "application_id",
 				"required": true,
 				"schema": {
 					"enum": [
+						"BITBUCKET",
 						"BOX",
+						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
 						"GOOGLE_WORKSPACE",
+						"JIRA",
 						"MICROSOFT_INTERNAL",
 						"SALESFORCE",
 						"SLACK"
@@ -5733,6 +5753,10 @@
 									"human_interaction_required": {
 										"description": "Whether setup requires human interaction or integration can be created purely using API (e.g., For OAuth can not be created without user interaction).",
 										"type": "boolean"
+									},
+									"id": {
+										"description": "Auth method identifier.",
+										"type": "string"
 									},
 									"instructions": {
 										"allOf": [
@@ -5768,20 +5792,16 @@
 										"description": "OAuth redirect URL for vendors requiring human interaction.",
 										"nullable": true,
 										"type": "string"
-									},
-									"slug": {
-										"description": "Auth method identifier.",
-										"type": "string"
 									}
 								},
 								"required": [
 									"display_name",
 									"human_interaction_required",
+									"id",
 									"instructions",
 									"payload_example",
 									"payload_schema",
-									"redirect_url",
-									"slug"
+									"redirect_url"
 								],
 								"type": "object"
 							},
@@ -5808,9 +5828,13 @@
 		"tags": [
 			"Applications"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.applications.auth_methods",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
-	"GET /accounts/{account_id}/one/applications/{slug}/setup-flows": {
+	"GET /accounts/{account_id}/one/applications/{application_id}/setup-flows": {
 		"description": "Returns all available setup flows for the application, one per auth method.",
 		"operationId": "get_application_setup_flows_v2",
 		"parameters": [
@@ -5825,7 +5849,28 @@
 				}
 			},
 			{
-				"description": "Filter by auth method slug. Get available slugs from GET /v2/applications.",
+				"description": "Application/vendor identifier.",
+				"in": "path",
+				"name": "application_id",
+				"required": true,
+				"schema": {
+					"enum": [
+						"BITBUCKET",
+						"BOX",
+						"CONFLUENCE",
+						"DROPBOX",
+						"GITHUB",
+						"GOOGLE_WORKSPACE",
+						"JIRA",
+						"MICROSOFT_INTERNAL",
+						"SALESFORCE",
+						"SLACK"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by auth method id. Get available ids from GET /v2/applications.",
 				"in": "query",
 				"name": "auth_method",
 				"schema": {
@@ -5841,14 +5886,6 @@
 						"fedramp",
 						"standard"
 					],
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "slug",
-				"required": true,
-				"schema": {
 					"type": "string"
 				}
 			}
@@ -6029,7 +6066,7 @@
 												"description": "OAuth configuration for setup flows that use OAuth.",
 												"properties": {
 													"authorization_url": {
-														"description": "Authorization URL for the requested environment.",
+														"description": "Full OAuth authorization URL with query parameters.",
 														"nullable": true,
 														"type": "string"
 													},
@@ -6265,6 +6302,10 @@
 		"tags": [
 			"Applications"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero_trust.casb.applications.setup_flows",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/resource-library/applications": {
