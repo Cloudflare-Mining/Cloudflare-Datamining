@@ -193,7 +193,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.scans",
+		"x-fern-sdk-method-name": "dom",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/har/{scan_id}": {
 		"description": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
@@ -680,7 +684,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.scans",
+		"x-fern-sdk-method-name": "har",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/responses/{response_id}": {
 		"description": "Returns the raw response of the network request. Find the `response_id` in the `data.requests.response.hash`.",
@@ -792,7 +800,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.responses",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/result/{scan_id}": {
 		"description": "Get URL scan by uuid",
@@ -5082,7 +5094,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.scans",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/screenshots/{scan_id}.png": {
 		"description": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
@@ -5293,7 +5309,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.scans",
+		"x-fern-sdk-method-name": "screenshot",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/search": {
 		"description": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'path:\"/bundles/jquery.js\"': Searches for scans who requested resources with the given path.<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.<br/>- 'page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2025-01 TO 2025-02]': my scans from 2025 January to 2025 February.",
@@ -5534,7 +5554,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.scans",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/urlscanner/v2/bulk": {
 		"description": "Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish.",
@@ -5800,7 +5824,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.scans",
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/urlscanner/v2/scan": {
 		"description": "Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
@@ -6321,6 +6349,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-scanner.scans",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

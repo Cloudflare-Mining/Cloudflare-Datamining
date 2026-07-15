@@ -161,6 +161,13 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "url-scanner.response",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		},
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/responses/methods/get/) instead."
 	},
 	"GET /accounts/{account_id}/urlscanner/scan": {
@@ -522,6 +529,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "url-scanner.scan.get.urlscanner",
+		"x-fern-sdk-method-name": "scans",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		},
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/list/) instead."
 	},
@@ -2082,6 +2096,13 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "url-scanner.scan.get.urlscanner",
+		"x-fern-sdk-method-name": "scan",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		},
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/get/) instead."
 	},
 	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}/har": {
@@ -2725,6 +2746,13 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "url-scanner.scan.har",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		},
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/har/) instead."
 	},
 	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}/screenshot": {
@@ -3038,6 +3066,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "url-scanner.scan.screenshot",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		},
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/screenshot/) instead."
 	},
@@ -3682,6 +3717,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "url-scanner.scan",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		},
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/create/) instead."
 	}
