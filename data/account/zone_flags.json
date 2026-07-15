@@ -304,6 +304,7 @@
 		"ech": false,
 		"gRPC": false,
 		"grpc_beta": true,
+		"grpc_outbound_convert": false,
 		"websocket_handoff": false,
 		"websocket_handover": false
 	},
@@ -404,6 +405,7 @@
 		"encoding_maxbitrate_multiple": 1,
 		"encoding_preset": "faster",
 		"hq_audio": false,
+		"instant_playback": false,
 		"live": true,
 		"live_input_key_rotation": false,
 		"llhls": true,
