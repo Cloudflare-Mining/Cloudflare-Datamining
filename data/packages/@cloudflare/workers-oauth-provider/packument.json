@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"next": "0.0.4-1",
 		"beta": "0.0.0-be89144",
-		"latest": "0.8.1"
+		"latest": "0.8.2"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1678,6 +1678,39 @@
 					}
 				},
 				"unpackedSize": 225463
+			}
+		},
+		"0.8.2": {
+			"name": "@cloudflare/workers-oauth-provider",
+			"version": "0.8.2",
+			"devDependencies": {
+				"@changesets/changelog-github": "^0.5.2",
+				"@changesets/cli": "^2.29.8",
+				"@cloudflare/workers-types": "^4.20251218.0",
+				"pkg-pr-new": "^0.0.62",
+				"prettier": "^3.7.4",
+				"tsdown": "^0.18.1",
+				"typescript": "^5.9.3",
+				"vitest": "^4.1.8"
+			},
+			"dist": {
+				"integrity": "sha512-Pho5qWDl4qj1STI5QYMQfPmJBBkxyrFpXyDl9BrtYOfWHxThabEzdi9p3ezS2cUkbjA0E6L5ki/kq2pcbRUtlg==",
+				"shasum": "546d9ea96f392c458b45c1062fd20c46188837bd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-0.8.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 226136,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-oauth-provider@0.8.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIDlNi0UFtsP+jAeO9eoXqr5vzhvFZpK/AxAQoPInnwhUAiBQMugLqUC2MinfoMWRfoM0dKMP9XJ92APknWSfLl6HiA=="
+					}
+				]
 			}
 		}
 	}
