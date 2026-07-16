@@ -162,7 +162,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.origins",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /radar/origins/{slug}": {
 		"description": "Retrieves the requested origin information with its regions.",
@@ -299,19 +303,23 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.origins",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /radar/origins/summary/{dimension}": {
 		"description": "Retrieves an aggregated summary of origin metrics grouped by the specified dimension.",
 		"operationId": "radar-get-origins-summary",
 		"parameters": [
 			{
-				"description": "Specifies the origin attribute by which to group the results.",
+				"description": "Specifies the origin attribute by which to group the results. `ORIGIN` groups across all providers and does not accept an `origin` or `region`. `REGION` requires an `origin`. `SUCCESS_RATE` and `PERCENTILE` require both an `origin` and a `region` and constrain the `metric` (`SUCCESS_RATE` supports only `REQUESTS`; `PERCENTILE` supports any metric except `REQUESTS`). `limitPerGroup` is only supported on the `REGION` dimension.",
 				"in": "path",
 				"name": "dimension",
 				"required": true,
 				"schema": {
-					"description": "Specifies the origin attribute by which to group the results.",
+					"description": "Specifies the origin attribute by which to group the results. `ORIGIN` groups across all providers and does not accept an `origin` or `region`. `REGION` requires an `origin`. `SUCCESS_RATE` and `PERCENTILE` require both an `origin` and a `region` and constrain the `metric` (`SUCCESS_RATE` supports only `REQUESTS`; `PERCENTILE` supports any metric except `REQUESTS`). `limitPerGroup` is only supported on the `REGION` dimension.",
 					"enum": [
 						"ORIGIN",
 						"REGION",
@@ -335,11 +343,11 @@
 				}
 			},
 			{
-				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -350,11 +358,11 @@
 				}
 			},
 			{
-				"description": "Start of the date range.",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Start of the date range.",
+					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -364,11 +372,11 @@
 				}
 			},
 			{
-				"description": "End of the date range (inclusive).",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "End of the date range (inclusive).",
+					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -378,21 +386,21 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 					"example": 10,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
+				"description": "Filters results by origin. Required for every dimension except `ORIGIN`; must not be set on the `ORIGIN` dimension, which groups across all providers.",
 				"in": "query",
 				"name": "origin",
 				"schema": {
-					"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
+					"description": "Filters results by origin. Required for every dimension except `ORIGIN`; must not be set on the `ORIGIN` dimension, which groups across all providers.",
 					"example": [
 						"AMAZON"
 					],
@@ -410,12 +418,12 @@
 				}
 			},
 			{
-				"description": "Specifies the metric to retrieve.",
+				"description": "Specifies the metric to retrieve. Allowed metrics depend on the selected dimension (see the `dimension` path parameter).",
 				"in": "query",
 				"name": "metric",
 				"required": true,
 				"schema": {
-					"description": "Specifies the metric to retrieve.",
+					"description": "Specifies the metric to retrieve. Allowed metrics depend on the selected dimension (see the `dimension` path parameter).",
 					"enum": [
 						"CONNECTION_FAILURES",
 						"REQUESTS",
@@ -429,11 +437,11 @@
 				}
 			},
 			{
-				"description": "Filters results by origin region.",
+				"description": "Filters results by origin region. Requires `origin` to be set and is validated against it.",
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "Filters results by origin region.",
+					"description": "Filters results by origin region. Requires `origin` to be set and is validated against it.",
 					"example": [
 						"us-east-1"
 					],
@@ -740,18 +748,22 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.origins",
+		"x-fern-sdk-method-name": "summary",
+		"x-forge-hidden": true
 	},
 	"GET /radar/origins/timeseries": {
 		"description": "Retrieves the time series of origin metrics for the specified origin.",
 		"operationId": "radar-get-origins-timeseries",
 		"parameters": [
 			{
-				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 					"enum": [
 						"15m",
 						"1h",
@@ -776,11 +788,11 @@
 				}
 			},
 			{
-				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -791,11 +803,11 @@
 				}
 			},
 			{
-				"description": "Start of the date range.",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Start of the date range.",
+					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -805,11 +817,11 @@
 				}
 			},
 			{
-				"description": "End of the date range (inclusive).",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "End of the date range (inclusive).",
+					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -842,12 +854,12 @@
 				}
 			},
 			{
-				"description": "Specifies the metric to retrieve.",
+				"description": "Specifies the metric to retrieve. Without a `region`, only `REQUESTS` or `CONNECTION_FAILURES` are available; specify a `region` to use the latency metrics.",
 				"in": "query",
 				"name": "metric",
 				"required": true,
 				"schema": {
-					"description": "Specifies the metric to retrieve.",
+					"description": "Specifies the metric to retrieve. Without a `region`, only `REQUESTS` or `CONNECTION_FAILURES` are available; specify a `region` to use the latency metrics.",
 					"enum": [
 						"CONNECTION_FAILURES",
 						"REQUESTS",
@@ -861,11 +873,11 @@
 				}
 			},
 			{
-				"description": "Filters results by origin region.",
+				"description": "Filters results by origin region. Requires `origin` to be set and is validated against it.",
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "Filters results by origin region.",
+					"description": "Filters results by origin region. Requires `origin` to be set and is validated against it.",
 					"example": [
 						"us-east-1"
 					],
@@ -1194,19 +1206,23 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.origins",
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-hidden": true
 	},
 	"GET /radar/origins/timeseries_groups/{dimension}": {
 		"description": "Retrieves the distribution of origin metrics grouped by the specified dimension over time.",
 		"operationId": "radar-get-origins-timeseries-group",
 		"parameters": [
 			{
-				"description": "Specifies the origin attribute by which to group the results.",
+				"description": "Specifies the origin attribute by which to group the results. `ORIGIN` groups across all providers and does not accept an `origin` or `region`. `REGION` requires an `origin`. `SUCCESS_RATE` and `PERCENTILE` require both an `origin` and a `region` and constrain the `metric` (`SUCCESS_RATE` supports only `REQUESTS`; `PERCENTILE` supports any metric except `REQUESTS`). `limitPerGroup` is only supported on the `REGION` dimension.",
 				"in": "path",
 				"name": "dimension",
 				"required": true,
 				"schema": {
-					"description": "Specifies the origin attribute by which to group the results.",
+					"description": "Specifies the origin attribute by which to group the results. `ORIGIN` groups across all providers and does not accept an `origin` or `region`. `REGION` requires an `origin`. `SUCCESS_RATE` and `PERCENTILE` require both an `origin` and a `region` and constrain the `metric` (`SUCCESS_RATE` supports only `REQUESTS`; `PERCENTILE` supports any metric except `REQUESTS`). `limitPerGroup` is only supported on the `REGION` dimension.",
 					"enum": [
 						"ORIGIN",
 						"REGION",
@@ -1217,11 +1233,11 @@
 				}
 			},
 			{
-				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
-					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 					"enum": [
 						"15m",
 						"1h",
@@ -1246,11 +1262,11 @@
 				}
 			},
 			{
-				"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Filters results by date range. For example, use `7d` and `7dcontrol` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
 					"items": {
 						"example": "7d",
@@ -1261,11 +1277,11 @@
 				}
 			},
 			{
-				"description": "Start of the date range.",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Start of the date range.",
+					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1275,11 +1291,11 @@
 				}
 			},
 			{
-				"description": "End of the date range (inclusive).",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "End of the date range (inclusive).",
+					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1289,21 +1305,21 @@
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
-					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
+					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 					"example": 10,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
+				"description": "Filters results by origin. Required for every dimension except `ORIGIN`; must not be set on the `ORIGIN` dimension, which groups across all providers.",
 				"in": "query",
 				"name": "origin",
 				"schema": {
-					"description": "Filters results by origin. Required for all dimensions except ORIGIN.",
+					"description": "Filters results by origin. Required for every dimension except `ORIGIN`; must not be set on the `ORIGIN` dimension, which groups across all providers.",
 					"example": [
 						"AMAZON"
 					],
@@ -1321,12 +1337,12 @@
 				}
 			},
 			{
-				"description": "Specifies the metric to retrieve.",
+				"description": "Specifies the metric to retrieve. Allowed metrics depend on the selected dimension (see the `dimension` path parameter).",
 				"in": "query",
 				"name": "metric",
 				"required": true,
 				"schema": {
-					"description": "Specifies the metric to retrieve.",
+					"description": "Specifies the metric to retrieve. Allowed metrics depend on the selected dimension (see the `dimension` path parameter).",
 					"enum": [
 						"CONNECTION_FAILURES",
 						"REQUESTS",
@@ -1340,11 +1356,11 @@
 				}
 			},
 			{
-				"description": "Filters results by origin region.",
+				"description": "Filters results by origin region. Requires `origin` to be set and is validated against it.",
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "Filters results by origin region.",
+					"description": "Filters results by origin region. Requires `origin` to be set and is validated against it.",
 					"example": [
 						"us-east-1"
 					],
@@ -1703,6 +1719,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.origins",
+		"x-fern-sdk-method-name": "timeseries-groups",
+		"x-forge-hidden": true
 	}
 }

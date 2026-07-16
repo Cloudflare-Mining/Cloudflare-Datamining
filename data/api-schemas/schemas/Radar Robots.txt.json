@@ -341,7 +341,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.robots-txt.top",
+		"x-fern-sdk-method-name": "domain-categories",
+		"x-forge-hidden": true
 	},
 	"GET /radar/robots_txt/top/user_agents/directive": {
 		"description": "Retrieves the top user agents on robots.txt files.",
@@ -720,6 +724,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.robots-txt.top.user-agents",
+		"x-fern-sdk-method-name": "directive",
+		"x-forge-hidden": true
 	}
 }
