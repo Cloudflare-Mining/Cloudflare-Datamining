@@ -2,7 +2,7 @@
 	"name": "vinext",
 	"dist-tags": {
 		"beta": "1.0.0-beta.0",
-		"latest": "1.0.0-beta.1"
+		"latest": "1.0.0-beta.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3604,13 +3604,73 @@
 			"name": "vinext",
 			"version": "1.0.0-beta.1",
 			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+				"pathslash": "^0.1.0",
+				"vite-plus": "0.2.2",
+				"@types/node": "^25.9.2",
+				"am-i-vibing": "^0.5.0",
+				"@types/react": "^19.2.16",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.27",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.7"
+			},
+			"peerDependencies": {
+				"vite": "^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "0401efcf9f806925b157a5297b25ea798db72dbb",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-1.0.0-beta.1.tgz",
+				"fileCount": 864,
+				"integrity": "sha512-epfX5y/li8dTzBRoVcJK19vWf/kM50bSkYhqF8BePz4/Y3oPClTAndYgkMNmRxPJ5rps2H2ZNcxlnAoLWKuAXw==",
+				"signatures": [
+					{
+						"sig": "MEQCIBiTBUx6jNXpYY1UeH+SqVjtgLBAhLmu/ihq+BbDchrWAiBcYAW/ceF8UYN9/nX80lb2esCXgReGvvF1i9IQDabSqg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@1.0.0-beta.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4664313
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.0-beta.2": {
+			"name": "vinext",
+			"version": "1.0.0-beta.2",
+			"dependencies": {
 				"@unpic/react": "^1.0.2",
 				"@vercel/og": "^0.8.6",
 				"image-size": "2.0.2",
 				"ipaddr.js": "^2.1.0",
 				"magic-string": "^0.30.21",
 				"vite-plugin-commonjs": "^0.10.4",
-				"web-vitals": "^4.2.4"
+				"web-vitals": "^4.2.4",
+				"@vinext/types": "^1.0.0-beta.2"
 			},
 			"devDependencies": {
 				"@types/node": "^25.9.2",
@@ -3637,13 +3697,13 @@
 				"vinext": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-epfX5y/li8dTzBRoVcJK19vWf/kM50bSkYhqF8BePz4/Y3oPClTAndYgkMNmRxPJ5rps2H2ZNcxlnAoLWKuAXw==",
-				"shasum": "0401efcf9f806925b157a5297b25ea798db72dbb",
-				"tarball": "https://registry.npmjs.org/vinext/-/vinext-1.0.0-beta.1.tgz",
-				"fileCount": 864,
-				"unpackedSize": 4664313,
+				"integrity": "sha512-ihBni6mUKEDm69moFYLkt7dHzo/dX4hEqNgzB2+GCGpGKK5XWE40qGD1rxm9SHvsDDwzl+XeQCUVHcFwz/zZEw==",
+				"shasum": "2bc7b9c9e08fff71f515b7aa389e9500d5c0034e",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-1.0.0-beta.2.tgz",
+				"fileCount": 881,
+				"unpackedSize": 4787476,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@1.0.0-beta.1",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@1.0.0-beta.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -3651,7 +3711,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIBiTBUx6jNXpYY1UeH+SqVjtgLBAhLmu/ihq+BbDchrWAiBcYAW/ceF8UYN9/nX80lb2esCXgReGvvF1i9IQDabSqg=="
+						"sig": "MEQCIH33zNnojr/JiZDWigwJVn793KJs6n2lWgt6GSHsRfOZAiAjX7ZK1AcKP+4ke6XRetQoj/JuoB/qODF58Metk14HcQ=="
 					}
 				]
 			},
