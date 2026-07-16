@@ -68,7 +68,7 @@ Media
 
 Security
 
-[**Client-Side Security**Prevent browser supply chain attacks](/products/client-side-security/)
+[**Client-Side Security**Client-Side Protection](/products/client-side-security/)
 
 [**DDoS Protection**Mitigation Solutions](/products/ddos/)
 
