@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations |&nbsp;Austin, US</h3>
+<h3>Available Locations | Austin, TX or Seattle, WA</h3>
 <h3>About the Role</h3>
 <p>The Cloudflare Hyperdrive team builds the technology that makes regional databases feel like they are global. Hyperdrive is a core piece of the Cloudflare Developer Platform that accelerates database queries from Cloudflare Workers by pooling connections and caching data at the edge. By eliminating the massive latency overhead of TCP, TLS, and database-specific handshakes, Hyperdrive allows developers to use the databases they already know and love—like PostgreSQL and MySQL—without the "cold start" performance penalties typically associated with serverless environments.</p>
 <h3>Responsibilities</h3>
@@ -31,6 +31,38 @@
 	<li>Familiarity with the Cloudflare Workers ecosystem and the unique stateful connection challenges of ephemeral computing.</li>
 	<li>You’ve contributed to database drivers, ORMs, or low-level networking libraries.</li>
 	<li>Experience using eBPF, perf, or other profiling tools to find and kill bottlenecks.</li>
+</ul>
+<h3>Compensation</h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $150,000 - $206,000</li>
+</ul>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h3>Health &amp; Welfare Benefits</h3>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<h3>Financial Benefits</h3>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<h3>Time Off</h3>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

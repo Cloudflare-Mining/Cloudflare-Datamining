@@ -26,7 +26,8 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -41,7 +42,7 @@
 		}
 	],
 	"id": 8016162,
-	"updated_at": "2026-07-07T09:40:48-04:00",
+	"updated_at": "2026-07-16T14:26:36-04:00",
 	"requisition_id": "893",
 	"title": "System Engineer, Cloudflare Hyperdrive",
 	"company_name": "Cloudflare",
@@ -61,6 +62,13 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
