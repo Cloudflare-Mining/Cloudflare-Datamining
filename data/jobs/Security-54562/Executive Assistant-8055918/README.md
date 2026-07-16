@@ -5,67 +5,33 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations | Austin, TX or Seattle, WA</h3>
-<h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>ETI's Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, fast, and scalable.</p>
-<p>You'll be joining a highly motivated team that is building the next generation of Cloudflare’s distributed storage services.</p>
-<h3>Responsibilities</h3>
-<p>In this role, you will own the distributed database systems that run across Cloudflare's edge network and power services such as R2, Durable Objects, and Workers KV. We expect you to go a layer deeper than a database operator to fix the underlying problems. You will own your code from inception through production rollout. On any given day, you might:</p>
+<h2><strong>Available Locations: Austin Texas</strong></h2>
+<h2><strong>About the Role</strong></h2>
+<p>Cloudflare is looking for a bright, proactive, and detail-oriented <strong>Executive Assistant </strong>to support two leaders in our Security organization, the Head of Cloudforce One and VP Product Delivery and Security . We are looking for a dynamic and dedicated candidate who is comfortable with multi-tasking and prioritization in a fast-speed environment with close attention to detail, accuracy, and timeliness.</p>
+<p>In this role, you will work on complex issues requiring an in-depth evaluation of variable factors. You will determine methods on new assignments, coordinate the efforts of others, and network extensively with key contacts across the business.</p>
+<h2><strong>Responsibilities</strong></h2>
 <ul>
-	<li>Add new features and extensions to the database to meet the needs of R2, Durable Objects, and Workers KV</li>
-	<li>Hold the bar on correctness through code review, testing, and staged rollout so defects are caught before customer impact</li>
-	<li>Tune performance and resource utilization across staged rollouts and production</li>
-	<li>Optimize data placement and replication for our edge topology, and partner with service teams on schema design and query performance</li>
-	<li>Build the observability and tooling that make the database supportable across its consumers</li>
-	<li>You can expect to interact with a variety of languages and technologies including Go, Rust, Saltstack, and Terraform.</li>
+	<li><strong>Strategic Calendar Optimization:</strong> Strategically plan the long-term calendar with minimal direction, aligning it seamlessly with executive and business priorities. Act as a trusted sounding board to optimize the executives' schedules and time.</li>
+	<li><strong>Travel &amp; Logistics Ownership:</strong> Own all trip-related matters from end to end, serving as the central point person for all domestic and international travel logistics.</li>
+	<li><strong>Communication &amp; Inbox Management:</strong> Manage the executives' communications - prioritizing incoming requests, handling sensitive information with strict confidentiality, identifying urgent matters, and drafting responses with oversight. Serve as a trusted communicator with a strong knowledge of business priorities and their impact on the managers and the broader team.</li>
+	<li><strong>Project Management &amp; Deliverables:</strong> Independently manage small-to-medium projects and determine administrative methods for new initiatives with little direction. Create executive-level materials, including presentations and spreadsheets, with minimal guidance.</li>
+	<li><strong>Core Administrative Support:</strong> Prepare and manage expense reports, coordinate internal/external meeting needs, and assist with event planning as needed.</li>
+	<li><strong>Community Leadership &amp; Mentorship:</strong> Serve as a recognized leader within the admin community. Take an active role in interviewing, training, and formally mentoring other administrative staff, while helping to coordinate team-wide efforts.</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<h2><strong>Requirements</strong></h2>
 <ul>
-	<li>Source-code level experience contributing to a distributed database or distributed storage system. Examples include distributed SQL databases (CockroachDB, TiDB / TiKV, YugabyteDB, Spanner), Raft-based or Paxos-based storage systems (etcd, FoundationDB), wide-column stores (Cassandra, ScyllaDB), document databases (MongoDB), or comparable systems</li>
-	<li>Strong programming skills in Go, Rust, C++, or another systems language, with a willingness to be productive in Go for this role</li>
-	<li>Deep understanding of distributed systems concepts: consensus protocols (Raft or Paxos), data replication, MVCC, transaction isolation levels, fault tolerance, and partition tolerance</li>
-	<li>Experience reading, debugging, and modifying complex codebases under correctness constraints (concurrency, durability, consistency)</li>
-	<li>Familiarity with LSM-tree storage engines (RocksDB, LevelDB, Pebble, SlateDB) or comparable storage internals</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage: bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Experience with monitoring tools (Prometheus, Grafana) and analytics tools (Clickhouse) for operating production database systems</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
+	<li><strong>5+ years</strong> of experience as an Executive Assistant, preferably in a high-growth environment.</li>
+	<li><strong>Analytical Scope &amp; Judgment:</strong> Proven experience tackling complex issues that require an in-depth evaluation of variable factors, with the ability to determine methods on new assignments independently.</li>
+	<li><strong>Communication Excellence:</strong> Outstanding written and verbal communication skills; trusted to interact with key contacts and senior leadership across the organization.</li>
+	<li><strong>Autonomy &amp; Proactiveness:</strong> Exceptional ability to manage your own time, hit the ground running, and take absolute charge of the position with minimal direction.</li>
+	<li><strong>Technical &amp; Material Creation:</strong> Proficient in building professional presentations, managing spreadsheets, and drafting high-level correspondence.</li>
+	<li><strong>Mindset:</strong> A "no task is too small" attitude paired with the high-level strategic thinking needed to optimize an executive's day-to-day operations.</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<h2><strong>Bonus Points</strong></h2>
 <ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
-</ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li><strong>AI Experience:</strong> Familiarity with using AI tools to streamline administrative tasks and increase efficiency.</li>
+	<li><strong>Google Workspace:</strong> Strong proficiency with Google Workspace (Gmail, Calendar, Docs, and Sheets).</li>
+	<li><strong>Navan Experience:</strong> Prior experience using Navan for booking travel and managing expenses.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,68 +5,42 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations | Austin, TX or Seattle, WA</h3>
-<h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>ETI's Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, fast, and scalable.</p>
-<p>You'll be joining a highly motivated team that is building the next generation of Cloudflare’s distributed storage services.</p>
-<h3>Responsibilities</h3>
-<p>In this role, you will own the distributed database systems that run across Cloudflare's edge network and power services such as R2, Durable Objects, and Workers KV. We expect you to go a layer deeper than a database operator to fix the underlying problems. You will own your code from inception through production rollout. On any given day, you might:</p>
+<p><strong>Available Locations: </strong>Lisbon</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare One is one of the fastest-growing segments of our business. To maintain this velocity, we need a GTM Engineer who can bridge the gap between complex technical infrastructure and high-velocity sales execution. In this role, you'll design, build, and ship AI-powered applications that scale our sales, marketing, and support functions as a competitive advantage.</p>
+<p>You apply judgement and taste to design systems that make reps’ lives easier. You know when to build in the tools they already use every day and when to build something custom. You think two to three steps ahead on how the thing you're building today fits into the broader systems architecture tomorrow. And you bring a point of view on our stack, on what we should be building, and on where AI can do something that low-code tooling simply can't.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Add new features and extensions to the database to meet the needs of R2, Durable Objects, and Workers KV</li>
-	<li>Hold the bar on correctness through code review, testing, and staged rollout so defects are caught before customer impact</li>
-	<li>Tune performance and resource utilization across staged rollouts and production</li>
-	<li>Optimize data placement and replication for our edge topology, and partner with service teams on schema design and query performance</li>
-	<li>Build the observability and tooling that make the database supportable across its consumers</li>
-	<li>You can expect to interact with a variety of languages and technologies including Go, Rust, Saltstack, and Terraform.</li>
+	<li>Design and maintain the data foundation our Deal Desk org runs on, spanning account and contact data quality and enrichment workflows across our stack</li>
+	<li>Ship deal desk productivity workflows fast: triage asks from the team, identify the low-hanging fruit, and build it, biasing for shipping small + fast and iterating vs designing the perfect solution</li>
+	<li>Know when to go custom: not everything belongs in a point-and-click tool. You're comfortable spinning up bespoke AI-powered solutions when the problem calls for it, and you make that call with judgment, not default</li>
+	<li>Think in systems, not solutions: every workflow you build has upstream and downstream implications. You anticipate them, design for them, and don't create technical debt that someone else has to unwind six months later</li>
+	<li>Integrate third-party APIs to sync events and information across disparate systems, ensuring data flows reliably between the tools your team depends on every day</li>
+	<li>Document what you build. If people can't find it, understand it, or trust it, it doesn't matter how well it works</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Source-code level experience contributing to a distributed database or distributed storage system. Examples include distributed SQL databases (CockroachDB, TiDB / TiKV, YugabyteDB, Spanner), Raft-based or Paxos-based storage systems (etcd, FoundationDB), wide-column stores (Cassandra, ScyllaDB), document databases (MongoDB), or comparable systems</li>
-	<li>Strong programming skills in Go, Rust, C++, or another systems language, with a willingness to be productive in Go for this role</li>
-	<li>Deep understanding of distributed systems concepts: consensus protocols (Raft or Paxos), data replication, MVCC, transaction isolation levels, fault tolerance, and partition tolerance</li>
-	<li>Experience reading, debugging, and modifying complex codebases under correctness constraints (concurrency, durability, consistency)</li>
-	<li>Familiarity with LSM-tree storage engines (RocksDB, LevelDB, Pebble, SlateDB) or comparable storage internals</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage: bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Experience with monitoring tools (Prometheus, Grafana) and analytics tools (Clickhouse) for operating production database systems</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
+	<li>3+ years of experience in GTM Engineering, workflow automation, or a technical RevOps role, ideally at a high-growth, AI-native B2B company</li>
+	<li>Direct experience with Salesforce. You know the data model, you've built on it, and you're comfortable owning changes</li>
+	<li>Fluency with AI coding assistants - you're actively building with these tools, not just experimenting with them</li>
+	<li>A track record of owning end-to-end AI and automation workflows, not just contributing to or consuming them</li>
+	<li>A fundamental understanding of APIs and webhooks to integrate third-party systems</li>
+	<li>Strong judgment on the build decision: you know when low-code gets you 80% of the way there and when it becomes the bottleneck, and you act accordingly</li>
+	<li>Systems thinker: you naturally break problems into composable parts, building solutions with separation of concerns so they're reusable, extensible, and easy to maintain</li>
+	<li>High agency + bias for action: you're not paralyzed by ambiguity or imperfect tooling. You know how to experiment, build fast, and clean up as you go</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Compensation</strong></p>
 <ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li data-path-to-node="1">For Portugal based hires: Estimated annual salary is between €54,000 - €68,000.
+		<ul>
+			<li>
+				<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+			</li>
+		</ul>
+	</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p data-path-to-node="3"><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></p>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

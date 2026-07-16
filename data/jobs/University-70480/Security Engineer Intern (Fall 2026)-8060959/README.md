@@ -5,36 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available location(s): </strong>Austin, US</p>
+<p><strong>About Cloudflare's Security Team</strong></p>
+<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
+<p>Security Engineering spans across the <em>Cyber Defense &amp; Engineering</em> and <em>CloudforceOne Threat Intelligence &amp; Research</em> teams within the Security group under our Chief Security Officer. Security at Cloudflare ensures that this massive flow of traffic remains secure and resilient against evolving threats. While our core engineering teams build the software that handles traffic, our security engineers build the systems that protect it. Technologies we use to defend the Internet include Go, Rust, Python, TypeScript and C/C++.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal Security Engineering intern is passionate about making the Internet a more secure place. You will work alongside experienced security engineers to identify vulnerabilities, harden our infrastructure, and build tools that protect billions of Internet users. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for engineers who want to learn how to defend systems at a scale that few other companies can offer.</p>
+<p><strong>What would you do as a Cloudflare intern?</strong></p>
 <ul>
-	<li>Bengaluru, India</li>
+	<li>Ship and deliver security-focused projects over 12-16 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with Product, Infrastructure, and Engineering teams to integrate security into every stage of the development lifecycle.</li>
+	<li>Work closely with a mentor to guide you through the internship, develop your security expertise, and help with career goals.</li>
+	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups.</li>
+	<li>Present your security project to the entire company at the end of the internship.</li>
+	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+	<li>Write for our Cloudflare blog (e.g., documenting a new security tool or a vulnerability research finding) and be featured on Cloudflare.tv sessions.</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.</p>
-<p>The Engineering Platform and Productivity team has a charter to build a self-service, resilient, and scalable platform using a combination of Open Source projects, intellectual property, and internal infrastructure. The charter includes to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes services that are redundant for each product development team to build and that serve high volumes of requests every day.</p>
-<p>As an engineer in the Engineering Productivity and Platforms organization, you'll be building and managing tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. The role includes both software engineering and DevOps operational responsibilities. The ideal candidate will care deeply about providing other engineers with an excellent development experience.</p>
-<p>Additionally, this role has a focus on Agentic Engineering, and building tools for engineers internally to leverage modern AI agents, models, and agentic practices - including MCP servers, agentic IDEs, autonomous agents, evals, and make AI-native improvements to our internal SDLC and solving context engineering at scale.</p>
-<h2>Responsibilities</h2>
+<p>You can check out our<a href="https://blog.cloudflare.com/tag/internship-experience/"> internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Design and build developer productivity tooling including MCP servers and agents.</li>
-	<li>Drive initiatives that make our engineers happier and more productive.</li>
-	<li>Help respond and prevent incidents impacting core platforms.</li>
-	<li>Harden the platform against security threats and resource contention issues.</li>
-	<li>Improve our GitOps systems and practices.</li>
-	<li>Work with app teams to understand their potential challenges and help them choose the best way to architect their systems.</li>
+	<li>Education: Currently pursuing a degree in Computer Science, Cybersecurity, Computer Engineering, or a related technical field.</li>
+	<li>Security Fundamentals: A solid understanding of the OWASP Top 10, common attack vectors (XSS, SQLi, CSRF), and how to mitigate them.</li>
+	<li>AI Experience: Familiarity with using AI tools to streamline tasks and increase efficiency.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in the location of the internship.</li>
+	<li>Local to Austin; relocation not provided.</li>
+	<li><strong>Bonus:</strong> Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using<a href="https://www.cloudflare.com/students/"> Cloudflare for Students.</a></li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Please note</strong></p>
 <ul>
-	<li><strong>Desirable skills, knowledge and experience.</strong></li>
-	<li>Ability to work with codebases in Bash, TypeScript and Go.</li>
-	<li>Excellent debugging skills.</li>
-	<li>Source control experience including branching, merging and rebasing.</li>
-	<li>The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem.</li>
-</ul>
-<h2>Bonus Points</h2>
-<ul>
-	<li>Providing guidance and building platforms across multiple zones and regions as foundation for other teams to build distributed highly-available applications.</li>
-	<li>Worked in a platform engineering team/ engineering productivity team in the past.</li>
+	<li>We will be hiring interns through the fall and early spring on a rolling basis until all roles are filled.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

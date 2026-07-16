@@ -5,68 +5,39 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations | Austin, TX or Seattle, WA</h3>
-<h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>ETI's Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, fast, and scalable.</p>
-<p>You'll be joining a highly motivated team that is building the next generation of Cloudflare’s distributed storage services.</p>
-<h3>Responsibilities</h3>
-<p>In this role, you will own the distributed database systems that run across Cloudflare's edge network and power services such as R2, Durable Objects, and Workers KV. We expect you to go a layer deeper than a database operator to fix the underlying problems. You will own your code from inception through production rollout. On any given day, you might:</p>
+<p><strong>Location: </strong>Austin</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare has embarked on a transformation of our entire quote to cash process. We’re looking for a seasoned product manager who will take charge of these processes, providing leadership, communication and accountability for successful delivery. You will:&nbsp;</p>
 <ul>
-	<li>Add new features and extensions to the database to meet the needs of R2, Durable Objects, and Workers KV</li>
-	<li>Hold the bar on correctness through code review, testing, and staged rollout so defects are caught before customer impact</li>
-	<li>Tune performance and resource utilization across staged rollouts and production</li>
-	<li>Optimize data placement and replication for our edge topology, and partner with service teams on schema design and query performance</li>
-	<li>Build the observability and tooling that make the database supportable across its consumers</li>
-	<li>You can expect to interact with a variety of languages and technologies including Go, Rust, Saltstack, and Terraform.</li>
+	<li>Own your space. You will manage a set of key products in the Quote to Cash lifecycle, directly impacting our various Partners around the world. Additionally, this role will directly support the AI Monetization motions for Cloudflare's numerous AI focused offerings.</li>
+	<li>Work horizontally. Disparate groups like Engineering, Program Management, Finance, Revenue Operations, Business Intelligence and external vendors like Stripe and Salesforce all need to keep plans aligned and work together to deliver commitments.</li>
+	<li>Span timescales. Short term deliverables like supporting product launches, medium term ones like migrating billing progresses and longer term ones like a full ERP implementation all need to be serviced. The urgent cannot starve the important.&nbsp;</li>
+	<li>Span domains. You need to simultaneously let other teams rely on the roadmaps you publish while being responsive to the interrupt-driven nature of the business. When shifts do occur, you need to proactively communicate with other teams to maintain trust.&nbsp;</li>
+	<li>Commit to quality. Our #1 priority is to have an accurate picture of revenue and service of our customers but we also have numerous other concerns like speed of innovation and advancing the roadmap.</li>
+	<li>Communicate and collaborate. Essential to the success of this program is the ability to listen, learn, synthesize and communicate outwards as well as influence through persuasion.</li>
+	<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
+	<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<p>&nbsp;</p>
+<p><strong>Some of the domains you will touch include</strong>: Billing, Invoicing, Sales &amp; Opportunity management, Credit &amp; Collections, Pricing &amp; Quoting, Contract &amp; Entitlement Management, Partners &amp; Resellers, Taxation, Bad debt, BI Reporting, ERP Implementation.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Desirable Skills</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>Source-code level experience contributing to a distributed database or distributed storage system. Examples include distributed SQL databases (CockroachDB, TiDB / TiKV, YugabyteDB, Spanner), Raft-based or Paxos-based storage systems (etcd, FoundationDB), wide-column stores (Cassandra, ScyllaDB), document databases (MongoDB), or comparable systems</li>
-	<li>Strong programming skills in Go, Rust, C++, or another systems language, with a willingness to be productive in Go for this role</li>
-	<li>Deep understanding of distributed systems concepts: consensus protocols (Raft or Paxos), data replication, MVCC, transaction isolation levels, fault tolerance, and partition tolerance</li>
-	<li>Experience reading, debugging, and modifying complex codebases under correctness constraints (concurrency, durability, consistency)</li>
-	<li>Familiarity with LSM-tree storage engines (RocksDB, LevelDB, Pebble, SlateDB) or comparable storage internals</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage: bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Experience with monitoring tools (Prometheus, Grafana) and analytics tools (Clickhouse) for operating production database systems</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
+	<li>Demonstrated success delivering technology solutions in the Billing space</li>
+	<li>Knowledge of best practices for in fintech, financial reporting, compliance or other similar domain at a Saas company</li>
+	<li>Experience managing customer facing products focused on global payments, tax, checkout, invoicing, and other quote to cash activities&nbsp;</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>Internet native companies tend to think a little differently than the Fortune 500. We’d love to meet folks with a history of delivering with the cadence and timescales of those born on the Internet.&nbsp;</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+	<li>Finance fluency - You’re dealing with data that represents money and that implies a certain level of care. You’ll also be working with a lot of finance types. Fluency in this world might be helpful</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

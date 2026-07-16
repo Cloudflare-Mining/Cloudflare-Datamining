@@ -5,68 +5,75 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations | Austin, TX or Seattle, WA</h3>
-<h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>ETI's Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, fast, and scalable.</p>
-<p>You'll be joining a highly motivated team that is building the next generation of Cloudflare’s distributed storage services.</p>
-<h3>Responsibilities</h3>
-<p>In this role, you will own the distributed database systems that run across Cloudflare's edge network and power services such as R2, Durable Objects, and Workers KV. We expect you to go a layer deeper than a database operator to fix the underlying problems. You will own your code from inception through production rollout. On any given day, you might:</p>
+<h1><strong>Software Engineer, AI Agents</strong></h1>
+<p><strong>Location:</strong> India, Bangalore</p>
+<h2><strong>Exp:</strong> 5 - 10yrs</h2>
+<h2><strong>Why This Role Matters</strong></h2>
+<p>At Cloudflare, we're building industrial-scale AI agents that support customers directly. This isn't research theater. Your code will power real customer interactions from day one, at global scale.</p>
+<p>Cloudflare already has the parts. You will assemble Workers, Durable Objects, KV, R2, D1, Vectorize, Workers AI, AI Gateway, and the Agent SDK into real agents customers use every day.</p>
+<h2><strong>Role Intent</strong></h2>
+<p>Ship production agents on the Cloudflare stack. Build, deploy, learn, repeat. Your code is the front door for Cloudflare customers.</p>
+<h2><strong>What You Will Do</strong></h2>
 <ul>
-	<li>Add new features and extensions to the database to meet the needs of R2, Durable Objects, and Workers KV</li>
-	<li>Hold the bar on correctness through code review, testing, and staged rollout so defects are caught before customer impact</li>
-	<li>Tune performance and resource utilization across staged rollouts and production</li>
-	<li>Optimize data placement and replication for our edge topology, and partner with service teams on schema design and query performance</li>
-	<li>Build the observability and tooling that make the database supportable across its consumers</li>
-	<li>You can expect to interact with a variety of languages and technologies including Go, Rust, Saltstack, and Terraform.</li>
+	<li>Build agents on Workers with Durable Objects for state and short term memory</li>
+	<li>Wire tools with the Agent SDK, MCP, and function calling</li>
+	<li>Use Vectorize, KV, R2, and D1 for semantic memory, cache, files, and config</li>
+	<li>Run models through Workers AI and AI Gateway; integrate third parties when needed</li>
+	<li>Create evals, guardrails, and audits. Measure, tune, re-ship fast</li>
+	<li>Build agents that summarize, propose fixes, and escalate cleanly to humans</li>
+	<li>Expose agent health and metrics in transparent dashboards. No mystery boxes</li>
+	<li>Integrate with queues and webhooks; publish events on Queues or Pub/Sub</li>
+	<li>Cut cost per case and time to first response. Prove it with data.</li>
+	<li>Take end to end ownership including on call for what you ship (with team support)</li>
+	<li>Design and maintain robust observability for distributed AI workflows, implementing structured logging and end-to-end tracing across async service boundaries to ensure visibility into agent reasoning and execution.</li>
+	<li>Architect security boundaries for agent-led operations; implementing secure credential handling, multi-layer approval gates, and fine-grained trust scoping for mutative actions.</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<h2><strong>Must Have</strong></h2>
 <ul>
-	<li>Source-code level experience contributing to a distributed database or distributed storage system. Examples include distributed SQL databases (CockroachDB, TiDB / TiKV, YugabyteDB, Spanner), Raft-based or Paxos-based storage systems (etcd, FoundationDB), wide-column stores (Cassandra, ScyllaDB), document databases (MongoDB), or comparable systems</li>
-	<li>Strong programming skills in Go, Rust, C++, or another systems language, with a willingness to be productive in Go for this role</li>
-	<li>Deep understanding of distributed systems concepts: consensus protocols (Raft or Paxos), data replication, MVCC, transaction isolation levels, fault tolerance, and partition tolerance</li>
-	<li>Experience reading, debugging, and modifying complex codebases under correctness constraints (concurrency, durability, consistency)</li>
-	<li>Familiarity with LSM-tree storage engines (RocksDB, LevelDB, Pebble, SlateDB) or comparable storage internals</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage: bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Experience with monitoring tools (Prometheus, Grafana) and analytics tools (Clickhouse) for operating production database systems</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
+	<li>Demonstrated success shipping production systems. Repos and releases that show real work.</li>
+	<li>Strong in TypeScript or Rust on Workers. HTTP, queues, async, performance</li>
+	<li>Fluency with Durable Objects, KV or R2, and either D1 or Postgres</li>
+	<li>Hands on with model tooling. Prompt I/O, tool calling, evals, safety checks</li>
+	<li>Observability mindset. Logs, traces, metrics, redlines</li>
+	<li>Experience with a2a/multi-agent frameworks</li>
+	<li>Experience developing LLM evaluation frameworks; automated scoring systems, CI-integrated quality gates.</li>
+	<li>Bias for simple, scalable designs</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<h2><strong>Nice to Have</strong></h2>
 <ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>Workers AI, AI Gateway, and Vectorize in production</li>
+	<li>Salesforce or Service Cloud experience. Webhooks and case APIs</li>
+	<li>Security depth. Prompt injection protection, secrets detection, PII handling</li>
+	<li>OSS agent frameworks. Know what to borrow and what to throw away.</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
+<h2><strong>How We Build</strong></h2>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Align fast on what matters.</li>
+	<li>Divide and conquer. Own your piece.</li>
+	<li>Ship. Watch customers use it.</li>
+	<li>Learn and repeat.</li>
 </ul>
-<h3>Financial Benefits</h3>
+<h2><strong>Why Join Cloudflare in India?</strong></h2>
+<p><strong>Impact at global scale:</strong> Your code will serve Cloudflare's customers across every region. Tens of millions of Internet properties depend on us.</p>
+<p><strong>Work on the edge:</strong> Few companies give engineers the chance to build AI directly into an edge platform that runs in 300+ cities worldwide.</p>
+<p><strong>Career growth:</strong> As one of the early engineers in our India based AI team, you'll have visibility, leadership opportunities, and a direct hand in shaping Cloudflare's AI roadmap.</p>
+<p><strong>Culture of ownership:</strong> We believe in autonomy, accountability, and trust. Engineers here own outcomes, not just tickets.</p>
+<p><strong>Learn and grow fast:</strong> Collaborate with peers across Support, Product, Security, and AI Platform teams. We encourage knowledge sharing, mentorship, and continuous learning.</p>
+<h2><strong>Interview Signal</strong></h2>
+<p>Expect to demonstrate your ability to:</p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li>Build a mini agent on Workers using the Agent SDK</li>
+	<li>Store session memory in Durable Objects</li>
+	<li>Add semantic recall with Vectorize</li>
+	<li>Ship behind a KV flag with traces and observability</li>
+	<li>Push to production fast and take ownership</li>
 </ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h2><strong>Team Mission</strong></h2>
+<p>The Agent Tech team owns the end to end stack for customer facing agents on Cloudflare. Everything runs at the edge.</p>
+<p><strong>Core Stack:</strong> Workers, Durable Objects, KV, R2, D1, Queues, Pub/Sub, Vectorize, Workers AI, AI Gateway, Pages, Zero Trust.</p>
+<p><strong>Principles:</strong> Ship fast. Measure truth. Simplify relentlessly. Own outcomes.</p>
+<p>&nbsp;</p>
+<p><strong>Fraud Alert:</strong>&nbsp;<em>Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @</em><a href="http://cloudflare.com/"><span class="s1"><em>cloudflare.com</em></span></a><em>&nbsp;email addresses.</em></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

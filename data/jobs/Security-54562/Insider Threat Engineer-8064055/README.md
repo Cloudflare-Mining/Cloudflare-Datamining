@@ -5,68 +5,67 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations | Austin, TX or Seattle, WA</h3>
-<h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>ETI's Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, fast, and scalable.</p>
-<p>You'll be joining a highly motivated team that is building the next generation of Cloudflare’s distributed storage services.</p>
-<h3>Responsibilities</h3>
-<p>In this role, you will own the distributed database systems that run across Cloudflare's edge network and power services such as R2, Durable Objects, and Workers KV. We expect you to go a layer deeper than a database operator to fix the underlying problems. You will own your code from inception through production rollout. On any given day, you might:</p>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong>About the role</strong></p>
+<p>We are seeking a highly skilled and experienced <strong>Insider Threat Tech Lead</strong> to join our dynamic and growing Security Threat Detection, Response and Emulation team. This is a critical role that will be at the forefront of protecting our company from malicious and negligent insider activities. You will be responsible for leading the technical aspects of our Insider Threat program, including investigations, threat hunting, and the development of cutting-edge detections and responses.</p>
+<p>This role requires a unique blend of technical expertise, regulatory and legal knowledge, investigative skills, and strong interpersonal communication. You will be a key point of contact and collaborator with our Privacy, Legal, GRC and HR teams, ensuring that all activities are conducted with the utmost care, in accordance with company policy, and in compliance with legal and ethical standards.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Add new features and extensions to the database to meet the needs of R2, Durable Objects, and Workers KV</li>
-	<li>Hold the bar on correctness through code review, testing, and staged rollout so defects are caught before customer impact</li>
-	<li>Tune performance and resource utilization across staged rollouts and production</li>
-	<li>Optimize data placement and replication for our edge topology, and partner with service teams on schema design and query performance</li>
-	<li>Build the observability and tooling that make the database supportable across its consumers</li>
-	<li>You can expect to interact with a variety of languages and technologies including Go, Rust, Saltstack, and Terraform.</li>
+	<li><strong>Lead Insider Threat Digital Investigations:</strong>
+		<ul>
+			<li>
+				<ul>
+					<li>Conduct comprehensive technical investigations individually and partnering with our incident response teams into potential insider threat incidents, including data exfiltration, intellectual property theft, unauthorized access, and other malicious activities.</li>
+					<li>Knowledge and execution experience in collecting, preserving , and analyzing digital evidence from a variety of sources (e.g., endpoints, network logs, cloud services, email, etc.).</li>
+					<li>Document all investigative steps and findings in a clear, concise, and defensible manner.</li>
+					<li>Present findings to senior leadership and cross-functional partners (Legal, HR, Privacy) in a professional and objective manner.</li>
+					<li>Ensuring regulatory, legal and privacy requirements are met through all</li>
+				</ul>
+			</li>
+			<li><strong>Insider Threat Hunting:</strong>
+				<ul>
+					<li>Proactively hunt for insider threats using a variety of security tools and data sources (e.g., SIEM, DLP, EDR, UEBA).</li>
+					<li>Develop and execute threat hunting hypotheses based on emerging threats, attack techniques, and an understanding of our company's unique environment.</li>
+					<li>Correlate disparate data points to identify anomalous or suspicious user behaviors.</li>
+				</ul>
+			</li>
+			<li><strong>Detection &amp; Response Improvement:</strong>
+				<ul>
+					<li>Collaborate closely with the Security Incident Response Team (SIRT) and Threat Detection teams to continuously enhance our insider threat detection capabilities.</li>
+					<li>Design, develop, and implement new rules, alerts, and use cases in our security tools to identify insider threat indicators.</li>
+					<li>Evaluate and recommend new technologies and processes to mature our Insider Threat program.</li>
+					<li>Develop and refine response playbooks for various insider threat scenarios.</li>
+				</ul>
+			</li>
+			<li><strong>Cross-Functional Collaboration:</strong>
+				<ul>
+					<li>Serve as the primary technical liaison for the Insider Threat program, building strong, trusted relationships with Legal, HR, and Privacy teams.</li>
+					<li>Work in lockstep with these teams to ensure that investigations are conducted with sensitivity, respect for employee privacy, and within legal and ethical guidelines.</li>
+					<li>Provide technical expertise and guidance during policy development and incident response planning.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<p><strong>Required Qualifications:</strong></p>
 <ul>
-	<li>Source-code level experience contributing to a distributed database or distributed storage system. Examples include distributed SQL databases (CockroachDB, TiDB / TiKV, YugabyteDB, Spanner), Raft-based or Paxos-based storage systems (etcd, FoundationDB), wide-column stores (Cassandra, ScyllaDB), document databases (MongoDB), or comparable systems</li>
-	<li>Strong programming skills in Go, Rust, C++, or another systems language, with a willingness to be productive in Go for this role</li>
-	<li>Deep understanding of distributed systems concepts: consensus protocols (Raft or Paxos), data replication, MVCC, transaction isolation levels, fault tolerance, and partition tolerance</li>
-	<li>Experience reading, debugging, and modifying complex codebases under correctness constraints (concurrency, durability, consistency)</li>
-	<li>Familiarity with LSM-tree storage engines (RocksDB, LevelDB, Pebble, SlateDB) or comparable storage internals</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage: bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Experience with monitoring tools (Prometheus, Grafana) and analytics tools (Clickhouse) for operating production database systems</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
+	<li>5+ years of experience in a technical security role, with at least 2+ years focused on insider threat, digital forensics, or security investigations.</li>
+	<li>Proven experience in conducting and leading complex technical investigations, including the use of forensic tools (e.g., EnCase, FTK, X-Ways, or open-source alternatives).</li>
+	<li>Deep understanding of security technologies such as SIEM (e.g., Splunk, Elastic), EDR (e.g., CrowdStrike, SentinelOne), and UEBA like data sources.</li>
+	<li>Strong scripting and programming skills (e.g., Python, PowerShell) to automate tasks and analyze large datasets.</li>
+	<li>Excellent communication skills, both written and verbal, with the ability to explain complex technical concepts to non-technical audiences.</li>
+	<li>Experience working with legal and HR teams on sensitive employee-related matters.</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Preferred Qualifications:</strong></p>
 <ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>Certifications such as GCIH, GCFA, GCTI, or similar.</li>
+	<li>Experience with cloud-based security and investigations (e.g., AWS, GCP, Azure).</li>
+	<li>Prior experience in a tech product or fast-paced startup environment.</li>
+	<li>Knowledge of legal and regulatory frameworks related to data privacy and digital evidence (e.g., GDPR, CCPA).</li>
+	<li>Legal/Court evidence handling, presentation and implementation of procedures&nbsp;</li>
 </ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
