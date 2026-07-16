@@ -30,6 +30,9 @@ jobs:
                   npm ci
                   npm run mine
               env:
+                  # optional AI summary service for commit descriptions/notifications; miners skip it when unset
+                  SUMMARY_URL: ${{ secrets.SUMMARY_URL }}
+                  SUMMARY_TOKEN: ${{ secrets.SUMMARY_TOKEN }}
                   DISCORD_URL: ${{ secrets.DISCORD_URL }}
                   DISCORD_WEBHOOK_ACCOUNT: ${{ secrets.DISCORD_WEBHOOK_ACCOUNT }}
                   DISCORD_WEBHOOK_API: ${{ secrets.DISCORD_WEBHOOK_API }}

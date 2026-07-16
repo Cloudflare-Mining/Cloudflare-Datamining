@@ -10,6 +10,7 @@ import fetch from 'node-fetch';
 import { rimraf } from 'rimraf';
 //import OpenAPIParser from '@readme/openapi-parser';
 
+import { summarizeStagedChanges } from './summarize.js';
 import { sortObjectByKeys, tryAndPush } from './utils.js';
 
 async function run() {
@@ -66,15 +67,21 @@ async function run() {
 
 		console.log('Pushing!');
 		const prefix = dateFormat(new Date(), 'd mmmm yyyy');
+		const commitMessage = `${prefix} - API Schemas were updated! [skip ci]`;
 		await tryAndPush(
 			[
 				'data/api-schemas/*.json',
 				'data/api-schemas/schemas/*.json',
 			],
-			`${prefix} - API Schemas were updated! [skip ci]`,
+			commitMessage,
 			'CFData - API Schema Data Update',
 			'Pushed API Schema Data: ' + prefix,
 			'DISCORD_WEBHOOK_API',
+			() => summarizeStagedChanges(commitMessage, {
+				kind: 'openapi',
+				// the aggregated spec duplicates the per-tag files, so its diff would spend the patch budget twice
+				excludeFromPatches: ['data/api-schemas/openapi.json'],
+			}),
 		);
 
 		console.log('Done! :)');

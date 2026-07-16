@@ -19,10 +19,10 @@ export function getHttpsAgent() {
 }
 https.globalAgent = getHttpsAgent();
 
-// We want it to be ran from root not scripts
-const git = simpleGit({ baseDir: path.resolve('..') });
+// We want it to be ran from root not scripts. Exported so the summarizer can inspect the staged diff.
+export const git = simpleGit({ baseDir: path.resolve('..') });
 
-export async function sendToDiscord(name, msg, type) {
+export async function sendToDiscord(name, msg, type, embedDescription = null) {
 	let url = process.env.DISCORD_URL;
 	if (type?.startsWith?.('DISCORD_WEBHOOK') && process.env[type]) {
 		url = process.env[type];
@@ -31,19 +31,24 @@ export async function sendToDiscord(name, msg, type) {
 		console.warn('Can not send Discord webhook as no URL is set', name, msg);
 		return;
 	}
+	const payload = {
+		username: name,
+		content: msg,
+	};
+	if (embedDescription) {
+		// Discord caps embed descriptions at 4096 chars.
+		payload.embeds = [{ description: embedDescription.slice(0, 4096) }];
+	}
 	return fetch(`${url}?wait=true`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({
-			username: name,
-			content: msg,
-		}),
+		body: JSON.stringify(payload),
 	});
 }
 
-export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage, type = 'default') {
+export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage, type = 'default', describeChanges = null) {
 	if (!process.env.CI) {
 		console.log('Not pushing changes as not in CI environment.');
 		return;
@@ -58,12 +63,22 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		}
 
 		await git.add(files);
-		await git.commit(commitMessage);
+		// Best-effort commit description; a failure just means a plain commit message.
+		let body = null;
+		if (describeChanges) {
+			try {
+				body = await describeChanges();
+			} catch (err) {
+				console.error('describeChanges failed:', err.message);
+			}
+		}
+		await git.commit(body ? [commitMessage, body] : commitMessage);
 		await git.push('origin', 'main');
 		const commit = (await git.log({ maxCount: 1 })).latest;
 		if (commit.hash !== prevCommit.hash) {
 			const commitUrl = `https://github.com/Cloudflare-Mining/Cloudflare-Datamining/commit/${commit.hash}`;
-			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`, type);
+			// Include the summary as an embed so changes are readable without clicking through to the commit.
+			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`, type, body);
 		}
 	} catch (err) {
 		console.error(err);
