@@ -1737,6 +1737,24 @@
 		"category": "email_and_messaging"
 	},
 	{
+		"id": "23b43337688744f7b87905848733e335",
+		"name": "Field Extractors Read",
+		"description": "Grants read access to account field extractors",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security"
+	},
+	{
+		"id": "041d31cb33014bc4b9137077d8db4f71",
+		"name": "Field Extractors Write",
+		"description": "Grants read and edit access to account field extractors",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security"
+	},
+	{
 		"id": "a2c61201f92a4e06a901f156795388a9",
 		"name": "Firewall for AI Read",
 		"description": "Grants read access to Firewall for AI settings.",
