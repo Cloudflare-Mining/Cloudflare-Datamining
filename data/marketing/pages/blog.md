@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 17, 2026[Cloudflare WAF protects WordPress applications from two high-severity vulnerabilities ](https://blog.cloudflare.com/wordpress-vulnerabilities/)
+
+Cloudflare has deployed two WAF rules in response to high-severity vulnerabilities disclosed to us by the WordPress security team. The new rules protect all Cloudflare customers using affected WordPress versions, but customers should still update immediately to a patched release.
+
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXQSMGN3Z955B45GCJR4REK3.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/wordpress-vulnerabilities/)
+
 July 14, 2026[A broken DNSSEC rollover took down .al. Now 1.1.1.1 tells you when validation is bypassed](https://blog.cloudflare.com/dnssec-nta-ede-33/)
 
 When a failed DNSSEC key rollover took down the .al TLD, we deployed a Negative Trust Anchor to restore resolution. This time, though, clients didn't have to take our word for it: 1.1.1.1 returned EDE 33, a new DNS error code that signals directly in the response that DNSSEC validation was bypassed.
@@ -13,8 +23,6 @@ When a failed DNSSEC key rollover took down the .al TLD, we deployed a Negative 
 ![Sebastiaan Neuteboom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GH720TA5A2634QYMAXZR.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)
-
-[![BLOG-3309 1](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M774M6X72TNJFMVW93WZ.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/dnssec-nta-ede-33/)
 
 July 13, 2026[Introducing Precursor: detecting agentic behavior with continuous client-side signals](https://blog.cloudflare.com/introducing-precursor/)
 
@@ -151,14 +159,6 @@ We break down the technical architecture behind our multi-stage vulnerability di
 ![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Alexandra Godoi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMS1ZDF1A4G73S5DMSZXN.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Grant Bourzikas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SJJRBDYVMHZKVGKTMJ08.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), [Alexandra Godoi](https://blog.cloudflare.com/author/alexandra-godoi/), and [Grant Bourzikas](https://blog.cloudflare.com/author/grant/)
-
-June 18, 2026[Celebrating 12 years of Project Galileo](https://blog.cloudflare.com/celebrating-12-years-of-project-galileo/)
-
-To mark the 12th anniversary of Project Galileo, Cloudflare has released its first comprehensive report analyzing cyberattacks against civil society.
-
-![Jocelyn Woolbright](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DTBM9W30TE9JQBMJ2CAY.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Allie Funk](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMNE1C77VPBNRVEJWBYMX.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Grace Bennett](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMQKM2KVYPFSPWRS0DNTA.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Jocelyn Woolbright](https://blog.cloudflare.com/author/jocelyn/), [Allie Funk](https://blog.cloudflare.com/author/allie-funk/), and [Grace Bennett](https://blog.cloudflare.com/author/grace-bennett/)
 
 Load more
 
