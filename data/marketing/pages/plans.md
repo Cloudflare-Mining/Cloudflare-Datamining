@@ -322,22 +322,6 @@ Pay-as-you-goNo limit
 
 ContractNo limit
 
-Uptime Guarantee
-
-—
-
-100% SLA
-
-100% SLA
-
-Uptime Guarantee
-
-Free—
-
-Pay-as-you-go100% SLA
-
-Contract100% SLA
-
 Support
 
 Community forums + Discord

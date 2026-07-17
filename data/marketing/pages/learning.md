@@ -44,10 +44,6 @@ image: https://www.cloudflare.com/preview.png
 
  "The cloud" refers to servers that are accessed over the Internet, and the software and databases that run on those servers. Cloud servers are located in data centers all over the world. 
 
-#####  Learn about zero trust 
-
- Unlike traditional perimeter-based network security, Zero Trust security trusts no one and no device by default. Learn about the principles comprising Zero Trust architecture. 
-
 #####  Learn about SASE 
 
  Secure access service edge (SASE) is an IT model that combines software-defined wide area networking with core security services, delivered on the cloud edge. 
