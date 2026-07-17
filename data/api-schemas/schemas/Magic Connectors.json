@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"description": "Deletes a Magic WAN Connector.",
-		"operationId": "mconn-connector-delete",
+		"operationId": "mconn-connectors-delete",
 		"parameters": [
 			{
 				"in": "path",
@@ -612,11 +612,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connectors",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors": {
 		"description": "Lists Magic WAN Connectors.",
-		"operationId": "mconn-connector-list",
+		"operationId": "mconn-connectors-list",
 		"parameters": [
 			{
 				"in": "path",
@@ -1162,11 +1166,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connectors",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}": {
-		"description": "Fetches a Magic WAN Connector.",
-		"operationId": "mconn-connector-fetch",
+		"description": "Gets a Magic WAN Connector.",
+		"operationId": "mconn-connectors-get",
 		"parameters": [
 			{
 				"in": "path",
@@ -1765,7 +1773,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch Connector",
+		"summary": "Get Connector",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -1778,11 +1786,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connectors",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
 		"description": "Lists interrupts for a Magic WAN Connector.",
-		"operationId": "mconn-connector-interrupt-list",
+		"operationId": "mconn-connector-interrupts-list",
 		"parameters": [
 			{
 				"in": "path",
@@ -2330,7 +2342,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connector-interrupts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events": {
 		"description": "Lists Magic WAN Connector Telemetry Events",
@@ -7431,8 +7447,8 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/magic/connectors/{connector_id}": {
-		"description": "Updates properties of a Magic WAN Connector. May be used to re-provision a license key.",
-		"operationId": "mconn-connector-update",
+		"description": "Edits properties of a Magic WAN Connector. May be used to re-provision a license key.",
+		"operationId": "mconn-connectors-edit",
 		"parameters": [
 			{
 				"in": "path",
@@ -8124,7 +8140,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Connector",
+		"summary": "Edit Connector",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -8136,11 +8152,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connectors",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/connectors": {
 		"description": "Creates a Magic WAN Connector.",
-		"operationId": "mconn-connector-create",
+		"operationId": "mconn-connectors-create",
 		"parameters": [
 			{
 				"in": "path",
@@ -8928,11 +8948,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connectors",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
 		"description": "Creates an interrupt for a Magic WAN Connector.",
-		"operationId": "mconn-connector-interrupt-create",
+		"operationId": "mconn-connector-interrupts-create",
 		"parameters": [
 			{
 				"in": "path",
@@ -9594,11 +9618,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connector-interrupts",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/connectors/{connector_id}": {
-		"description": "Replaces properties of a Magic WAN Connector. May be used to re-provision a license key.",
-		"operationId": "mconn-connector-replace",
+		"description": "Updates properties of a Magic WAN Connector. May be used to re-provision a license key.",
+		"operationId": "mconn-connectors-update",
 		"parameters": [
 			{
 				"in": "path",
@@ -10290,7 +10318,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Replace Connector",
+		"summary": "Update Connector",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -10302,6 +10330,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connectors",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
