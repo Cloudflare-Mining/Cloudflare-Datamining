@@ -1,0 +1,124 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"object": {
+			"type": "string"
+		},
+		"created": {
+			"type": "number"
+		},
+		"model": {
+			"type": "string"
+		},
+		"choices": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"index": {
+						"type": "number"
+					},
+					"message": {
+						"type": "object",
+						"properties": {
+							"role": {
+								"type": "string"
+							},
+							"content": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"tool_calls": {
+								"anyOf": [
+									{
+										"type": "array",
+										"items": {}
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"audio": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"data": {
+										"type": "string"
+									},
+									"expires_at": {
+										"type": "number"
+									},
+									"transcript": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": {}
+							}
+						},
+						"required": [
+							"role"
+						],
+						"additionalProperties": {}
+					},
+					"finish_reason": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						]
+					}
+				},
+				"required": [
+					"index",
+					"message",
+					"finish_reason"
+				],
+				"additionalProperties": {}
+			}
+		},
+		"usage": {
+			"type": "object",
+			"properties": {
+				"prompt_tokens": {
+					"type": "number"
+				},
+				"completion_tokens": {
+					"type": "number"
+				},
+				"total_tokens": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"prompt_tokens",
+				"completion_tokens",
+				"total_tokens"
+			],
+			"additionalProperties": {}
+		}
+	},
+	"required": [
+		"id",
+		"object",
+		"created",
+		"model",
+		"choices"
+	],
+	"additionalProperties": {}
+}
