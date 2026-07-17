@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/ai-search-snippet",
 	"dist-tags": {
-		"latest": "0.0.41"
+		"latest": "0.0.42"
 	},
 	"versions": {
 		"0.0.17": {
@@ -641,19 +641,51 @@
 			"name": "@cloudflare/ai-search-snippet",
 			"version": "0.0.41",
 			"devDependencies": {
+				"vite": "^7.3.0",
+				"terser": "^5.49.0",
+				"vitest": "^3.2.4",
+				"vite-plugin-dts": "^4.5.4"
+			},
+			"dist": {
+				"shasum": "a183966998844df32141a69d23631a6b7afd31cd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-search-snippet/-/ai-search-snippet-0.0.41.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-o7/UIMzwkwQROi0ML2mAc48QtOdJnHjpasGNW6gjkopDSprOeSCMIVm35DM6ORG2t/2mzgLmTLNFJpfhekQ1VQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAtVHUVxboj9VEcu3qF6o6TW/BFqch2FLWXicntndMOHAiEA+4iMH6zUkjnsDRfvCrLYmbLqvlgiCMJ41fjnz8j33I8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-search-snippet@0.0.41",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 946683
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"0.0.42": {
+			"name": "@cloudflare/ai-search-snippet",
+			"version": "0.0.42",
+			"devDependencies": {
 				"terser": "^5.49.0",
 				"vite": "^7.3.0",
 				"vite-plugin-dts": "^4.5.4",
 				"vitest": "^3.2.4"
 			},
 			"dist": {
-				"integrity": "sha512-o7/UIMzwkwQROi0ML2mAc48QtOdJnHjpasGNW6gjkopDSprOeSCMIVm35DM6ORG2t/2mzgLmTLNFJpfhekQ1VQ==",
-				"shasum": "a183966998844df32141a69d23631a6b7afd31cd",
-				"tarball": "https://registry.npmjs.org/@cloudflare/ai-search-snippet/-/ai-search-snippet-0.0.41.tgz",
-				"fileCount": 7,
-				"unpackedSize": 946683,
+				"integrity": "sha512-LSNCvszcgEb+hgH1jpKCGaBrXScbahpjFVoXuDGiUyC9Td7hDR57+YdMMcBbhDa7S4GYaoCO1aziJYjvC0fwnw==",
+				"shasum": "8fd322e6d2f67f954ce32004485512b76a84334a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-search-snippet/-/ai-search-snippet-0.0.42.tgz",
+				"fileCount": 16,
+				"unpackedSize": 1509370,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-search-snippet@0.0.41",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-search-snippet@0.0.42",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -661,7 +693,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIAtVHUVxboj9VEcu3qF6o6TW/BFqch2FLWXicntndMOHAiEA+4iMH6zUkjnsDRfvCrLYmbLqvlgiCMJ41fjnz8j33I8="
+						"sig": "MEUCIQDCylJd/yc2HKwYFMg4t4WRSKb98j7zO602EahUnUwobAIgY8Qjr73uuSol2Mcjcif64lR9T+M2rbfqoae1eI3swLg="
 					}
 				]
 			},
