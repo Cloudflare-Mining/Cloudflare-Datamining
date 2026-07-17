@@ -8,11 +8,11 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 July 17, 2026[Cloudflare WAF protects WordPress applications from two high-severity vulnerabilities ](https://blog.cloudflare.com/wordpress-vulnerabilities/)
 
-Cloudflare has deployed two WAF rules in response to high-severity vulnerabilities disclosed to us by the WordPress security team. The new rules protect all Cloudflare customers using affected WordPress versions, but customers should still update immediately to a patched release.
+Cloudflare has deployed two WAF rules in response to high-severity vulnerabilities disclosed to us by the WordPress security team. The new rules protect all Cloudflare customers using affected WordPress versions, but customers should still update immediately to a patched release
 
-![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Ah-young Choi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499N66WDQ6E6CZPNZ7JJ9W.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Georgie Yoxall](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HTH4Y5JB9BR4J2PDNJZG.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Vikram Grover](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZQ9V87C8WK94DX4J9EPSD.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
-[Daniele Molteni](https://blog.cloudflare.com/author/daniele/)
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/), [Ah-young Choi](https://blog.cloudflare.com/author/ah-young-choi/), [Georgie Yoxall](https://blog.cloudflare.com/author/georgie/), [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/), and [Vikram Grover](https://blog.cloudflare.com/author/vikram-grover/)
 
 [![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXQSMGN3Z955B45GCJR4REK3.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/wordpress-vulnerabilities/)
 
