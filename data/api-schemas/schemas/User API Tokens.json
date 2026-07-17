@@ -278,7 +278,7 @@
 		}
 	},
 	"GET /user/tokens": {
-		"description": "List all access tokens you created.",
+		"description": "List all access tokens you created. Results include active, disabled, and recently-expired tokens when include_expired is set to true.",
 		"operationId": "user-api-tokens-list-tokens",
 		"parameters": [
 			{
@@ -313,6 +313,15 @@
 					],
 					"example": "desc",
 					"type": "string"
+				}
+			},
+			{
+				"description": "When true, includes recently-expired tokens in the response.",
+				"in": "query",
+				"name": "include_expired",
+				"schema": {
+					"default": false,
+					"type": "boolean"
 				}
 			}
 		],

@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/roles": {
+		"deprecated": true,
 		"description": "Get all available roles for an account.",
 		"operationId": "account-roles-list-roles",
 		"parameters": [
@@ -596,9 +597,11 @@
 			"enum": [
 				"#organization:read"
 			]
-		}
+		},
+		"x-stainless-deprecation-message": "Use /accounts/{account_id}/iam/permission_groups instead."
 	},
 	"GET /accounts/{account_id}/roles/{role_id}": {
+		"deprecated": true,
 		"description": "Get information about a specific role for an account.",
 		"operationId": "account-roles-role-details",
 		"parameters": [
@@ -1154,6 +1157,7 @@
 			"enum": [
 				"#organization:read"
 			]
-		}
+		},
+		"x-stainless-deprecation-message": "Use /accounts/{account_id}/iam/permission_groups/{permission_group_id} instead."
 	}
 }

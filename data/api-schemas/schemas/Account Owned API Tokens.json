@@ -297,7 +297,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/tokens": {
-		"description": "List all Account Owned API tokens created for this account.",
+		"description": "List all Account Owned API tokens created for this account. Results include active, disabled, and recently-expired tokens when include_expired is set to true.",
 		"operationId": "account-api-tokens-list-tokens",
 		"parameters": [
 			{
@@ -351,6 +351,15 @@
 					],
 					"example": "desc",
 					"type": "string"
+				}
+			},
+			{
+				"description": "When true, includes recently-expired tokens in the response.",
+				"in": "query",
+				"name": "include_expired",
+				"schema": {
+					"default": false,
+					"type": "boolean"
 				}
 			}
 		],
