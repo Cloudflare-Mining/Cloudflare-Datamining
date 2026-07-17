@@ -298,7 +298,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.pages.tests",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/speed_api/schedule/{url}": {
 		"description": "Deletes a scheduled test for a page.",
@@ -599,7 +603,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.schedule",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/availabilities": {
 		"description": "Retrieves quota for all plans, as well as the current zone quota.",
@@ -1151,7 +1159,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.availabilities",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages": {
 		"description": "Lists all webpages which have been tested.",
@@ -1751,7 +1763,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.pages",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"description": "Test history (list of tests) for a specific webpage.",
@@ -2387,7 +2403,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.pages.tests",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests/{test_id}": {
 		"description": "Retrieves the result of a specific test.",
@@ -2939,7 +2959,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.pages.tests",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/trend": {
 		"description": "Lists the core web vital metrics trend over time for a specific page.",
@@ -3356,7 +3380,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.pages",
+		"x-fern-sdk-method-name": "trend",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/schedule/{url}": {
 		"description": "Retrieves the test schedule for a page in a specific region.",
@@ -3698,7 +3726,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.schedule",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"description": "Starts a test for a specific webpage, in a specific region.",
@@ -4289,7 +4321,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.pages.tests",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/speed_api/schedule/{url}": {
 		"description": "Creates a scheduled test for a page.",
@@ -4946,6 +4982,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "speed.schedule",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

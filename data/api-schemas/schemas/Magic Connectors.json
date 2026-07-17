@@ -2815,11 +2815,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connector-telemetry-events",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/{event_t}.{event_n}": {
-		"description": "Fetches Magic WAN Connector Telemetry Event",
-		"operationId": "mconn-connector-telemetry-events-fetch",
+		"description": "Gets Magic WAN Connector Telemetry Event",
+		"operationId": "mconn-connector-telemetry-events-get",
 		"parameters": [
 			{
 				"in": "path",
@@ -3319,7 +3323,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch Event",
+		"summary": "Get Event",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -3332,11 +3336,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connector-telemetry-events",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest": {
-		"description": "Fetches latest Magic WAN Connector Telemetry Events",
-		"operationId": "mconn-connector-telemetry-events-fetch-latest",
+		"description": "Gets latest Magic WAN Connector Telemetry Events",
+		"operationId": "mconn-connector-telemetry-events-latest-get",
 		"parameters": [
 			{
 				"in": "path",
@@ -3835,7 +3843,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch latest Events",
+		"summary": "Get latest Events",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -3848,7 +3856,9 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots": {
 		"description": "Lists Magic WAN Connector Telemetry Snapshots",
@@ -4299,11 +4309,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connector-telemetry-snapshots",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/{snapshot_t}": {
-		"description": "Fetches Magic WAN Connector Telemetry Snapshot",
-		"operationId": "mconn-connector-telemetry-snapshots-fetch",
+		"description": "Gets Magic WAN Connector Telemetry Snapshot",
+		"operationId": "mconn-connector-telemetry-snapshots-get",
 		"parameters": [
 			{
 				"in": "path",
@@ -5855,7 +5869,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch Snapshot",
+		"summary": "Get Snapshot",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -5868,11 +5882,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "connector-telemetry-snapshots",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest": {
-		"description": "Fetches latest Magic WAN Connector Telemetry Snapshots",
-		"operationId": "mconn-connector-telemetry-snapshots-fetch-latest",
+		"description": "Gets latest Magic WAN Connector Telemetry Snapshots",
+		"operationId": "mconn-connector-telemetry-snapshots-latest-get",
 		"parameters": [
 			{
 				"in": "path",
@@ -7431,7 +7449,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch latest Snapshots",
+		"summary": "Get latest Snapshots",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -7444,7 +7462,9 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"description": "Edits properties of a Magic WAN Connector. May be used to re-provision a license key.",

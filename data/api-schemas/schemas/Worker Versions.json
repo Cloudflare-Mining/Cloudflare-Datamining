@@ -2255,6 +2255,102 @@
 																			"type": "array",
 																			"x-stainless-collection-type": "set"
 																		},
+																		"exports": {
+																			"allOf": [
+																				{
+																					"additionalProperties": {
+																						"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+																						"properties": {
+																							"cache": {
+																								"allOf": [
+																									{
+																										"additionalProperties": false,
+																										"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																										"properties": {
+																											"enabled": {
+																												"description": "Whether caching is enabled for this entrypoint.",
+																												"example": true,
+																												"type": "boolean",
+																												"x-auditable": true
+																											}
+																										},
+																										"required": [
+																											"enabled"
+																										],
+																										"type": "object"
+																									}
+																								],
+																								"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+																							},
+																							"renamed_to": {
+																								"description": "Destination class name for a `state: renamed` tombstone. The\ntarget must appear as a live (`created`) entry in the same\n`exports` map. Write-only: never present in GET responses.\n",
+																								"type": "string",
+																								"writeOnly": true
+																							},
+																							"state": {
+																								"description": "Lifecycle state of the export entry. Defaults to `created`\n(a normal, live export) when omitted.\n\n`deleted`, `renamed`, and `transferred` are tombstones:\nwrite-only lifecycle operations that retire, rename, or hand\noff a provisioned Durable Object namespace. They are applied\nat upload and are filtered out of GET responses, so a read\nonly ever returns `created` or `expecting-transfer`.\n\n`expecting-transfer` is a live export whose data is being\nreceived from another script via the two-phase transfer flow;\nit carries `storage` and `transfer_from`.\n",
+																								"enum": [
+																									"created",
+																									"deleted",
+																									"renamed",
+																									"transferred",
+																									"expecting-transfer"
+																								],
+																								"type": "string"
+																							},
+																							"storage": {
+																								"description": "Storage backend for a `type: durable-object` export. Required\nfor live Durable Object entries (`created` and\n`expecting-transfer`). `sqlite` selects SQLite-backed storage;\n`legacy-kv` selects the legacy key-value storage.\n",
+																								"enum": [
+																									"sqlite",
+																									"legacy-kv"
+																								],
+																								"type": "string"
+																							},
+																							"transfer_from": {
+																								"description": "Source script for a `state: expecting-transfer` entry. The\nnamespace on this script is materialised from the source\nscript's data via the pending-transfer flow. Present on reads\nfor `expecting-transfer` entries.\n",
+																								"type": "string"
+																							},
+																							"transferred_to": {
+																								"description": "Destination script for a `state: transferred` tombstone. Must\nreference a script in the same account; cross-dispatch-namespace\ntransfers are rejected. Write-only: never present in GET\nresponses.\n",
+																								"type": "string",
+																								"writeOnly": true
+																							},
+																							"type": {
+																								"description": "The kind of export.",
+																								"enum": [
+																									"worker",
+																									"durable-object"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+																					"example": {
+																						"Admin": {
+																							"cache": {
+																								"enabled": true
+																							},
+																							"type": "worker"
+																						},
+																						"default": {
+																							"cache": {
+																								"enabled": false
+																							},
+																							"type": "worker"
+																						}
+																					},
+																					"maxProperties": 100,
+																					"type": "object"
+																				}
+																			],
+																			"description": "Declarative exports for this version, including\nDurable Object classes (with their `storage`\nbackend) and named Worker entrypoints. Tombstoned\nlifecycle entries are omitted, so only live exports\n(`created` and `expecting-transfer`) are returned.\n",
+																			"readOnly": true
+																		},
 																		"limits": {
 																			"description": "Resource limits for the Worker.",
 																			"example": {
@@ -3959,6 +4055,102 @@
 																					"type": "array",
 																					"x-stainless-collection-type": "set"
 																				},
+																				"exports": {
+																					"allOf": [
+																						{
+																							"additionalProperties": {
+																								"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+																								"properties": {
+																									"cache": {
+																										"allOf": [
+																											{
+																												"additionalProperties": false,
+																												"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																												"properties": {
+																													"enabled": {
+																														"description": "Whether caching is enabled for this entrypoint.",
+																														"example": true,
+																														"type": "boolean",
+																														"x-auditable": true
+																													}
+																												},
+																												"required": [
+																													"enabled"
+																												],
+																												"type": "object"
+																											}
+																										],
+																										"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+																									},
+																									"renamed_to": {
+																										"description": "Destination class name for a `state: renamed` tombstone. The\ntarget must appear as a live (`created`) entry in the same\n`exports` map. Write-only: never present in GET responses.\n",
+																										"type": "string",
+																										"writeOnly": true
+																									},
+																									"state": {
+																										"description": "Lifecycle state of the export entry. Defaults to `created`\n(a normal, live export) when omitted.\n\n`deleted`, `renamed`, and `transferred` are tombstones:\nwrite-only lifecycle operations that retire, rename, or hand\noff a provisioned Durable Object namespace. They are applied\nat upload and are filtered out of GET responses, so a read\nonly ever returns `created` or `expecting-transfer`.\n\n`expecting-transfer` is a live export whose data is being\nreceived from another script via the two-phase transfer flow;\nit carries `storage` and `transfer_from`.\n",
+																										"enum": [
+																											"created",
+																											"deleted",
+																											"renamed",
+																											"transferred",
+																											"expecting-transfer"
+																										],
+																										"type": "string"
+																									},
+																									"storage": {
+																										"description": "Storage backend for a `type: durable-object` export. Required\nfor live Durable Object entries (`created` and\n`expecting-transfer`). `sqlite` selects SQLite-backed storage;\n`legacy-kv` selects the legacy key-value storage.\n",
+																										"enum": [
+																											"sqlite",
+																											"legacy-kv"
+																										],
+																										"type": "string"
+																									},
+																									"transfer_from": {
+																										"description": "Source script for a `state: expecting-transfer` entry. The\nnamespace on this script is materialised from the source\nscript's data via the pending-transfer flow. Present on reads\nfor `expecting-transfer` entries.\n",
+																										"type": "string"
+																									},
+																									"transferred_to": {
+																										"description": "Destination script for a `state: transferred` tombstone. Must\nreference a script in the same account; cross-dispatch-namespace\ntransfers are rejected. Write-only: never present in GET\nresponses.\n",
+																										"type": "string",
+																										"writeOnly": true
+																									},
+																									"type": {
+																										"description": "The kind of export.",
+																										"enum": [
+																											"worker",
+																											"durable-object"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+																							"example": {
+																								"Admin": {
+																									"cache": {
+																										"enabled": true
+																									},
+																									"type": "worker"
+																								},
+																								"default": {
+																									"cache": {
+																										"enabled": false
+																									},
+																									"type": "worker"
+																								}
+																							},
+																							"maxProperties": 100,
+																							"type": "object"
+																						}
+																					],
+																					"description": "Declarative exports for this version, including\nDurable Object classes (with their `storage`\nbackend) and named Worker entrypoints. Tombstoned\nlifecycle entries are omitted, so only live exports\n(`created` and `expecting-transfer`) are returned.\n",
+																					"readOnly": true
+																				},
 																				"limits": {
 																					"description": "Resource limits for the Worker.",
 																					"example": {
@@ -5629,6 +5821,39 @@
 																}
 															],
 															"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+														},
+														"renamed_to": {
+															"description": "Destination class name for a `state: renamed` tombstone. The\ntarget must appear as a live (`created`) entry in the same\n`exports` map. Write-only: never present in GET responses.\n",
+															"type": "string",
+															"writeOnly": true
+														},
+														"state": {
+															"description": "Lifecycle state of the export entry. Defaults to `created`\n(a normal, live export) when omitted.\n\n`deleted`, `renamed`, and `transferred` are tombstones:\nwrite-only lifecycle operations that retire, rename, or hand\noff a provisioned Durable Object namespace. They are applied\nat upload and are filtered out of GET responses, so a read\nonly ever returns `created` or `expecting-transfer`.\n\n`expecting-transfer` is a live export whose data is being\nreceived from another script via the two-phase transfer flow;\nit carries `storage` and `transfer_from`.\n",
+															"enum": [
+																"created",
+																"deleted",
+																"renamed",
+																"transferred",
+																"expecting-transfer"
+															],
+															"type": "string"
+														},
+														"storage": {
+															"description": "Storage backend for a `type: durable-object` export. Required\nfor live Durable Object entries (`created` and\n`expecting-transfer`). `sqlite` selects SQLite-backed storage;\n`legacy-kv` selects the legacy key-value storage.\n",
+															"enum": [
+																"sqlite",
+																"legacy-kv"
+															],
+															"type": "string"
+														},
+														"transfer_from": {
+															"description": "Source script for a `state: expecting-transfer` entry. The\nnamespace on this script is materialised from the source\nscript's data via the pending-transfer flow. Present on reads\nfor `expecting-transfer` entries.\n",
+															"type": "string"
+														},
+														"transferred_to": {
+															"description": "Destination script for a `state: transferred` tombstone. Must\nreference a script in the same account; cross-dispatch-namespace\ntransfers are rejected. Write-only: never present in GET\nresponses.\n",
+															"type": "string",
+															"writeOnly": true
 														},
 														"type": {
 															"description": "The kind of export.",
@@ -7379,6 +7604,102 @@
 																					"type": "array",
 																					"x-stainless-collection-type": "set"
 																				},
+																				"exports": {
+																					"allOf": [
+																						{
+																							"additionalProperties": {
+																								"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+																								"properties": {
+																									"cache": {
+																										"allOf": [
+																											{
+																												"additionalProperties": false,
+																												"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																												"properties": {
+																													"enabled": {
+																														"description": "Whether caching is enabled for this entrypoint.",
+																														"example": true,
+																														"type": "boolean",
+																														"x-auditable": true
+																													}
+																												},
+																												"required": [
+																													"enabled"
+																												],
+																												"type": "object"
+																											}
+																										],
+																										"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+																									},
+																									"renamed_to": {
+																										"description": "Destination class name for a `state: renamed` tombstone. The\ntarget must appear as a live (`created`) entry in the same\n`exports` map. Write-only: never present in GET responses.\n",
+																										"type": "string",
+																										"writeOnly": true
+																									},
+																									"state": {
+																										"description": "Lifecycle state of the export entry. Defaults to `created`\n(a normal, live export) when omitted.\n\n`deleted`, `renamed`, and `transferred` are tombstones:\nwrite-only lifecycle operations that retire, rename, or hand\noff a provisioned Durable Object namespace. They are applied\nat upload and are filtered out of GET responses, so a read\nonly ever returns `created` or `expecting-transfer`.\n\n`expecting-transfer` is a live export whose data is being\nreceived from another script via the two-phase transfer flow;\nit carries `storage` and `transfer_from`.\n",
+																										"enum": [
+																											"created",
+																											"deleted",
+																											"renamed",
+																											"transferred",
+																											"expecting-transfer"
+																										],
+																										"type": "string"
+																									},
+																									"storage": {
+																										"description": "Storage backend for a `type: durable-object` export. Required\nfor live Durable Object entries (`created` and\n`expecting-transfer`). `sqlite` selects SQLite-backed storage;\n`legacy-kv` selects the legacy key-value storage.\n",
+																										"enum": [
+																											"sqlite",
+																											"legacy-kv"
+																										],
+																										"type": "string"
+																									},
+																									"transfer_from": {
+																										"description": "Source script for a `state: expecting-transfer` entry. The\nnamespace on this script is materialised from the source\nscript's data via the pending-transfer flow. Present on reads\nfor `expecting-transfer` entries.\n",
+																										"type": "string"
+																									},
+																									"transferred_to": {
+																										"description": "Destination script for a `state: transferred` tombstone. Must\nreference a script in the same account; cross-dispatch-namespace\ntransfers are rejected. Write-only: never present in GET\nresponses.\n",
+																										"type": "string",
+																										"writeOnly": true
+																									},
+																									"type": {
+																										"description": "The kind of export.",
+																										"enum": [
+																											"worker",
+																											"durable-object"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"type"
+																								],
+																								"type": "object"
+																							},
+																							"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+																							"example": {
+																								"Admin": {
+																									"cache": {
+																										"enabled": true
+																									},
+																									"type": "worker"
+																								},
+																								"default": {
+																									"cache": {
+																										"enabled": false
+																									},
+																									"type": "worker"
+																								}
+																							},
+																							"maxProperties": 100,
+																							"type": "object"
+																						}
+																					],
+																					"description": "Declarative exports for this version, including\nDurable Object classes (with their `storage`\nbackend) and named Worker entrypoints. Tombstoned\nlifecycle entries are omitted, so only live exports\n(`created` and `expecting-transfer`) are returned.\n",
+																					"readOnly": true
+																				},
 																				"limits": {
 																					"description": "Resource limits for the Worker.",
 																					"example": {
@@ -9099,6 +9420,102 @@
 																							"readOnly": true,
 																							"type": "array",
 																							"x-stainless-collection-type": "set"
+																						},
+																						"exports": {
+																							"allOf": [
+																								{
+																									"additionalProperties": {
+																										"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+																										"properties": {
+																											"cache": {
+																												"allOf": [
+																													{
+																														"additionalProperties": false,
+																														"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																														"properties": {
+																															"enabled": {
+																																"description": "Whether caching is enabled for this entrypoint.",
+																																"example": true,
+																																"type": "boolean",
+																																"x-auditable": true
+																															}
+																														},
+																														"required": [
+																															"enabled"
+																														],
+																														"type": "object"
+																													}
+																												],
+																												"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+																											},
+																											"renamed_to": {
+																												"description": "Destination class name for a `state: renamed` tombstone. The\ntarget must appear as a live (`created`) entry in the same\n`exports` map. Write-only: never present in GET responses.\n",
+																												"type": "string",
+																												"writeOnly": true
+																											},
+																											"state": {
+																												"description": "Lifecycle state of the export entry. Defaults to `created`\n(a normal, live export) when omitted.\n\n`deleted`, `renamed`, and `transferred` are tombstones:\nwrite-only lifecycle operations that retire, rename, or hand\noff a provisioned Durable Object namespace. They are applied\nat upload and are filtered out of GET responses, so a read\nonly ever returns `created` or `expecting-transfer`.\n\n`expecting-transfer` is a live export whose data is being\nreceived from another script via the two-phase transfer flow;\nit carries `storage` and `transfer_from`.\n",
+																												"enum": [
+																													"created",
+																													"deleted",
+																													"renamed",
+																													"transferred",
+																													"expecting-transfer"
+																												],
+																												"type": "string"
+																											},
+																											"storage": {
+																												"description": "Storage backend for a `type: durable-object` export. Required\nfor live Durable Object entries (`created` and\n`expecting-transfer`). `sqlite` selects SQLite-backed storage;\n`legacy-kv` selects the legacy key-value storage.\n",
+																												"enum": [
+																													"sqlite",
+																													"legacy-kv"
+																												],
+																												"type": "string"
+																											},
+																											"transfer_from": {
+																												"description": "Source script for a `state: expecting-transfer` entry. The\nnamespace on this script is materialised from the source\nscript's data via the pending-transfer flow. Present on reads\nfor `expecting-transfer` entries.\n",
+																												"type": "string"
+																											},
+																											"transferred_to": {
+																												"description": "Destination script for a `state: transferred` tombstone. Must\nreference a script in the same account; cross-dispatch-namespace\ntransfers are rejected. Write-only: never present in GET\nresponses.\n",
+																												"type": "string",
+																												"writeOnly": true
+																											},
+																											"type": {
+																												"description": "The kind of export.",
+																												"enum": [
+																													"worker",
+																													"durable-object"
+																												],
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"type"
+																										],
+																										"type": "object"
+																									},
+																									"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+																									"example": {
+																										"Admin": {
+																											"cache": {
+																												"enabled": true
+																											},
+																											"type": "worker"
+																										},
+																										"default": {
+																											"cache": {
+																												"enabled": false
+																											},
+																											"type": "worker"
+																										}
+																									},
+																									"maxProperties": 100,
+																									"type": "object"
+																								}
+																							],
+																							"description": "Declarative exports for this version, including\nDurable Object classes (with their `storage`\nbackend) and named Worker entrypoints. Tombstoned\nlifecycle entries are omitted, so only live exports\n(`created` and `expecting-transfer`) are returned.\n",
+																							"readOnly": true
 																						},
 																						"limits": {
 																							"description": "Resource limits for the Worker.",
