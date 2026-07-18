@@ -1,0 +1,3 @@
+# `vitest-pool-workers`
+
+Reserved
