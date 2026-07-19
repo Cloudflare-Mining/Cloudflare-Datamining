@@ -4,6 +4,9 @@ on:
   workflow_dispatch: {}
 
 name: Mine CF Marketing Site
+concurrency:
+  group: mine-marketing
+  cancel-in-progress: false
 jobs:
   runner:
     runs-on: ubuntu-latest
