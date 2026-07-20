@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 20, 2026[Cloudflare Internal DNS is now generally available](https://blog.cloudflare.com/internal-dns/)
+
+Cloudflare Internal DNS brings authoritative and recursive DNS for private networks to the same global network and control plane that runs Cloudflare's Zero Trust, networking, and public DNS.
+
+![Enrique Somoza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY0CFW3DJ9J69XDCMWR1NNSG.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Hannes Gerhart](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P53YA8A3G53W0H9FH0TT.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Enrique Somoza](https://blog.cloudflare.com/author/enrique-somoza/) and [Hannes Gerhart](https://blog.cloudflare.com/author/hannes/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY0B5CQFP24NSNHD7AAZ2WRT.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/internal-dns/)
+
 July 17, 2026[Cloudflare WAF protects WordPress applications from two high-severity vulnerabilities ](https://blog.cloudflare.com/wordpress-vulnerabilities/)
 
 Cloudflare has deployed two WAF rules in response to high-severity vulnerabilities disclosed to us by the WordPress security team. The new rules protect all Cloudflare customers using affected WordPress versions, but customers should still update immediately to a patched release
@@ -13,8 +23,6 @@ Cloudflare has deployed two WAF rules in response to high-severity vulnerabiliti
 ![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Ah-young Choi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499N66WDQ6E6CZPNZ7JJ9W.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Georgie Yoxall](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HTH4Y5JB9BR4J2PDNJZG.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Vikram Grover](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZQ9V87C8WK94DX4J9EPSD.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Daniele Molteni](https://blog.cloudflare.com/author/daniele/), [Ah-young Choi](https://blog.cloudflare.com/author/ah-young-choi/), [Georgie Yoxall](https://blog.cloudflare.com/author/georgie/), [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/), and [Vikram Grover](https://blog.cloudflare.com/author/vikram-grover/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXQSMGN3Z955B45GCJR4REK3.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/wordpress-vulnerabilities/)
 
 July 14, 2026[A broken DNSSEC rollover took down .al. Now 1.1.1.1 tells you when validation is bypassed](https://blog.cloudflare.com/dnssec-nta-ede-33/)
 
@@ -42,7 +50,7 @@ Smart Tiered Cache allows for precise upper tier selection for origins hosted on
 
 July 9, 2026[Why we cannot wait for better post-quantum signature algorithms](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
 
-NIST is advancing nine new post-quantum signature algorithms as potential candidates for future standardization. We take a closer look at all of them, and argue that while they are in the works and show great potential, we should use ML-DSA for now — the best one currently available.
+NIST is advancing nine new post-quantum signature algorithms as potential candidates for future standardization. We look at all of them, and argue that while they are in the works and show great potential, we should use ML-DSA for now — the best one currently available.
 
 ![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
@@ -151,14 +159,6 @@ The moment an agent needs to deploy something, it slams face-first into a wall b
 ![Sid Chatterjee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XJ0J0NXPCD8TWD8F0KKP.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Sid Chatterjee](https://blog.cloudflare.com/author/sid/), [Celso Martinho](https://blog.cloudflare.com/author/celso/), and [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
-
-June 18, 2026[Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness/)
-
-We break down the technical architecture behind our multi-stage vulnerability discovery harness and automated triage loop. Learn how we manage state controls, squash false positives through adversarial review, and route around LLM context limits.
-
-![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Alexandra Godoi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMS1ZDF1A4G73S5DMSZXN.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Grant Bourzikas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SJJRBDYVMHZKVGKTMJ08.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Dan Jones](https://blog.cloudflare.com/author/dan-jones/), [Alexandra Godoi](https://blog.cloudflare.com/author/alexandra-godoi/), and [Grant Bourzikas](https://blog.cloudflare.com/author/grant/)
 
 Load more
 
