@@ -182,7 +182,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Lists indexed items in an AI Search instance.",
@@ -608,7 +610,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
 		"description": "Retrieves a specific indexed item from an AI Search instance.",
@@ -870,7 +874,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/chunks": {
 		"description": "Lists chunks for a specific item in an AI Search instance, including their text content.",
@@ -1177,7 +1183,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "chunks"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/download": {
 		"description": "Downloads the raw file content for a specific item from the managed AI Search instance storage.",
@@ -1383,7 +1391,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "download"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/logs": {
 		"description": "Lists processing logs for a specific item in an AI Search instance.",
@@ -1690,7 +1700,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "logs"
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
 		"description": "Syncs an item to an AI Search instance index.",
@@ -2024,7 +2036,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "sync"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Uploads a file to a managed AI Search instance via multipart/form-data.",
@@ -2426,7 +2440,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "upload"
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Creates or updates an indexed item in an AI Search instance.",
@@ -2790,6 +2806,8 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.items",
+		"x-fern-sdk-method-name": "upsert"
 	}
 }

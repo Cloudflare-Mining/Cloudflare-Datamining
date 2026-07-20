@@ -283,6 +283,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "list"
 	},
@@ -485,6 +486,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -767,6 +769,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "logs"
 	},
@@ -1064,7 +1067,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "list"
 	},
@@ -1277,7 +1279,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -1570,7 +1571,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "logs"
 	},
@@ -1833,6 +1833,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "cancel",
 		"x-forge-require-confirmation": "This will cancel the running indexing job."
@@ -2106,7 +2107,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "cancel",
 		"x-forge-require-confirmation": "This will cancel the running indexing job."
@@ -2404,6 +2404,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "create"
 	},
@@ -2710,7 +2711,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "create"
 	}

@@ -286,6 +286,66 @@
 											"servers": {
 												"items": {
 													"properties": {
+														"auth_config_summary": {
+															"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+															"properties": {
+																"auth_mode": {
+																	"enum": [
+																		"dcr",
+																		"manual"
+																	],
+																	"type": "string"
+																},
+																"client_secret_version": {
+																	"type": "number"
+																},
+																"config": {
+																	"properties": {
+																		"authorization_endpoint": {
+																			"type": "string"
+																		},
+																		"issuer": {
+																			"type": "string"
+																		},
+																		"resource": {
+																			"type": "string"
+																		},
+																		"revocation_endpoint": {
+																			"type": "string"
+																		},
+																		"token_endpoint": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"has_client_secret": {
+																	"type": "boolean"
+																},
+																"registration_info": {
+																	"properties": {
+																		"client_id": {
+																			"type": "string"
+																		},
+																		"redirect_uris": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"scope": {
+																			"type": "string"
+																		},
+																		"token_endpoint_auth_method": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
 														"auth_type": {
 															"enum": [
 																"oauth",
@@ -698,6 +758,66 @@
 										"servers": {
 											"items": {
 												"properties": {
+													"auth_config_summary": {
+														"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+														"properties": {
+															"auth_mode": {
+																"enum": [
+																	"dcr",
+																	"manual"
+																],
+																"type": "string"
+															},
+															"client_secret_version": {
+																"type": "number"
+															},
+															"config": {
+																"properties": {
+																	"authorization_endpoint": {
+																		"type": "string"
+																	},
+																	"issuer": {
+																		"type": "string"
+																	},
+																	"resource": {
+																		"type": "string"
+																	},
+																	"revocation_endpoint": {
+																		"type": "string"
+																	},
+																	"token_endpoint": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"has_client_secret": {
+																"type": "boolean"
+															},
+															"registration_info": {
+																"properties": {
+																	"client_id": {
+																		"type": "string"
+																	},
+																	"redirect_uris": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"scope": {
+																		"type": "string"
+																	},
+																	"token_endpoint_auth_method": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
+													},
 													"auth_type": {
 														"enum": [
 															"oauth",
@@ -1021,6 +1141,154 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/access/ai-controls/mcp/portals/{portal_id}/servers/{server_id}/effective-redirect-uri": {
+		"description": "Returns the redirect URI the gateway will actually send to the upstream OAuth provider for this (portal, server) pair. Stable for the lifetime of the configuration unless MCP-22 rollout state changes. Use this value verbatim when registering the OAuth app at the upstream.",
+		"operationId": "mcp-portals-api-effective-redirect-uri",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "portal_id",
+				"required": true,
+				"schema": {
+					"description": "portal id",
+					"example": "my-mcp-portal",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "server_id",
+				"required": true,
+				"schema": {
+					"example": "github-mcp",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "a86a8f5c339544d7bdc89926de14fb8c",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"redirect_uri": {
+											"format": "uri",
+											"type": "string"
+										},
+										"source": {
+											"enum": [
+												"per_portal",
+												"shared_mcp22"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"redirect_uri",
+										"source"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the effective redirect URI and its source."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Resolve the OAuth redirect_uri the admin must register at the upstream",
+		"tags": [
+			"MCP Portal"
+		],
+		"x-api-token-group": [
+			"MCP Portals Write",
+			"MCP Portals Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.mcp_portals"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/portals": {
 		"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
 		"operationId": "mcp-portals-api-create-portals",
@@ -1231,6 +1499,66 @@
 										"servers": {
 											"items": {
 												"properties": {
+													"auth_config_summary": {
+														"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+														"properties": {
+															"auth_mode": {
+																"enum": [
+																	"dcr",
+																	"manual"
+																],
+																"type": "string"
+															},
+															"client_secret_version": {
+																"type": "number"
+															},
+															"config": {
+																"properties": {
+																	"authorization_endpoint": {
+																		"type": "string"
+																	},
+																	"issuer": {
+																		"type": "string"
+																	},
+																	"resource": {
+																		"type": "string"
+																	},
+																	"revocation_endpoint": {
+																		"type": "string"
+																	},
+																	"token_endpoint": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"has_client_secret": {
+																"type": "boolean"
+															},
+															"registration_info": {
+																"properties": {
+																	"client_id": {
+																		"type": "string"
+																	},
+																	"redirect_uris": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"scope": {
+																		"type": "string"
+																	},
+																	"token_endpoint_auth_method": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
+													},
 													"auth_type": {
 														"enum": [
 															"oauth",
@@ -1771,6 +2099,66 @@
 										"servers": {
 											"items": {
 												"properties": {
+													"auth_config_summary": {
+														"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+														"properties": {
+															"auth_mode": {
+																"enum": [
+																	"dcr",
+																	"manual"
+																],
+																"type": "string"
+															},
+															"client_secret_version": {
+																"type": "number"
+															},
+															"config": {
+																"properties": {
+																	"authorization_endpoint": {
+																		"type": "string"
+																	},
+																	"issuer": {
+																		"type": "string"
+																	},
+																	"resource": {
+																		"type": "string"
+																	},
+																	"revocation_endpoint": {
+																		"type": "string"
+																	},
+																	"token_endpoint": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"has_client_secret": {
+																"type": "boolean"
+															},
+															"registration_info": {
+																"properties": {
+																	"client_id": {
+																		"type": "string"
+																	},
+																	"redirect_uris": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"scope": {
+																		"type": "string"
+																	},
+																	"token_endpoint_auth_method": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
+													},
 													"auth_type": {
 														"enum": [
 															"oauth",

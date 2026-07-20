@@ -382,6 +382,12 @@
 													"type": "array",
 													"x-auditable": true
 												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
@@ -856,6 +862,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This will permanently delete the AI Search instance and all its indexed data."
@@ -1253,6 +1260,12 @@
 													"type": "array",
 													"x-auditable": true
 												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
@@ -1727,7 +1740,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This will permanently delete the AI Search instance and all its indexed data."
@@ -1776,6 +1788,7 @@
 				"name": "search",
 				"schema": {
 					"description": "Filter instances whose id contains this string (case-insensitive).",
+					"maxLength": 64,
 					"type": "string"
 				}
 			},
@@ -2176,6 +2189,12 @@
 														"maxItems": 1,
 														"nullable": true,
 														"type": "array",
+														"x-auditable": true
+													},
+													"default_domain_enabled": {
+														"default": true,
+														"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+														"type": "boolean",
 														"x-auditable": true
 													},
 													"enabled": {
@@ -2688,6 +2707,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "list"
 	},
@@ -3072,6 +3092,12 @@
 													"maxItems": 1,
 													"nullable": true,
 													"type": "array",
+													"x-auditable": true
+												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"enabled": {
@@ -3548,6 +3574,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -3747,6 +3774,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "stats"
 	},
@@ -3794,6 +3822,7 @@
 				"name": "search",
 				"schema": {
 					"description": "Filter instances whose id contains this string (case-insensitive).",
+					"maxLength": 64,
 					"type": "string"
 				}
 			},
@@ -4204,6 +4233,12 @@
 														"maxItems": 1,
 														"nullable": true,
 														"type": "array",
+														"x-auditable": true
+													},
+													"default_domain_enabled": {
+														"default": true,
+														"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+														"type": "boolean",
 														"x-auditable": true
 													},
 													"enabled": {
@@ -4716,7 +4751,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "list"
 	},
@@ -5113,6 +5147,12 @@
 													"type": "array",
 													"x-auditable": true
 												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
@@ -5587,7 +5627,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -5797,7 +5836,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "stats"
 	},
@@ -6123,6 +6161,12 @@
 										"maxItems": 1,
 										"nullable": true,
 										"type": "array",
+										"x-auditable": true
+									},
+									"default_domain_enabled": {
+										"default": true,
+										"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+										"type": "boolean",
 										"x-auditable": true
 									},
 									"enabled": {
@@ -6875,6 +6919,12 @@
 													"type": "array",
 													"x-auditable": true
 												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
@@ -7389,6 +7439,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "create"
 	},
@@ -7682,6 +7733,42 @@
 																	"image_url"
 																],
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"file": {
+																		"properties": {
+																			"file_data": {
+																				"maxLength": 13981144,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"file_id": {
+																				"type": "string"
+																			},
+																			"filename": {
+																				"maxLength": 255,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"filename"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"file"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"file"
+																],
+																"type": "object"
 															}
 														]
 													},
@@ -7837,6 +7924,42 @@
 																			"required": [
 																				"type",
 																				"image_url"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"file": {
+																					"properties": {
+																						"file_data": {
+																							"maxLength": 13981144,
+																							"minLength": 1,
+																							"type": "string"
+																						},
+																						"file_id": {
+																							"type": "string"
+																						},
+																						"filename": {
+																							"maxLength": 255,
+																							"minLength": 1,
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"filename"
+																					],
+																					"type": "object"
+																				},
+																				"type": {
+																					"enum": [
+																						"file"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"file"
 																			],
 																			"type": "object"
 																		}
@@ -8377,6 +8500,42 @@
 																	"image_url"
 																],
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"file": {
+																		"properties": {
+																			"file_data": {
+																				"maxLength": 13981144,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"file_id": {
+																				"type": "string"
+																			},
+																			"filename": {
+																				"maxLength": 255,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"filename"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"file"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"file"
+																],
+																"type": "object"
 															}
 														]
 													},
@@ -8650,6 +8809,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "search"
 	},
@@ -8985,6 +9145,12 @@
 										"maxItems": 1,
 										"nullable": true,
 										"type": "array",
+										"x-auditable": true
+									},
+									"default_domain_enabled": {
+										"default": true,
+										"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+										"type": "boolean",
 										"x-auditable": true
 									},
 									"enabled": {
@@ -9737,6 +9903,12 @@
 													"type": "array",
 													"x-auditable": true
 												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
@@ -10251,7 +10423,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "create"
 	},
@@ -10555,6 +10726,42 @@
 																	"image_url"
 																],
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"file": {
+																		"properties": {
+																			"file_data": {
+																				"maxLength": 13981144,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"file_id": {
+																				"type": "string"
+																			},
+																			"filename": {
+																				"maxLength": 255,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"filename"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"file"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"file"
+																],
+																"type": "object"
 															}
 														]
 													},
@@ -10710,6 +10917,42 @@
 																			"required": [
 																				"type",
 																				"image_url"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"file": {
+																					"properties": {
+																						"file_data": {
+																							"maxLength": 13981144,
+																							"minLength": 1,
+																							"type": "string"
+																						},
+																						"file_id": {
+																							"type": "string"
+																						},
+																						"filename": {
+																							"maxLength": 255,
+																							"minLength": 1,
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"filename"
+																					],
+																					"type": "object"
+																				},
+																				"type": {
+																					"enum": [
+																						"file"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"file"
 																			],
 																			"type": "object"
 																		}
@@ -10958,7 +11201,135 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "chat-completions"
+	},
+	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/purge_cache": {
+		"description": "Purges all cached search results for an AI Search instance. A new internal cache key is generated, immediately orphaning all prior cached entries.",
+		"operationId": "ai-search-namespace-purge-instance-cache",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"example": "my-ai-search",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Namespace name",
+				"example": "my-namespace",
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Cache purged successfully."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Ai search not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Purge search cache.",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai-search"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "purge-cache"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/search": {
 		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.",
@@ -11260,6 +11631,42 @@
 																	"image_url"
 																],
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"file": {
+																		"properties": {
+																			"file_data": {
+																				"maxLength": 13981144,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"file_id": {
+																				"type": "string"
+																			},
+																			"filename": {
+																				"maxLength": 255,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"filename"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"file"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"file"
+																],
+																"type": "object"
 															}
 														]
 													},
@@ -11533,7 +11940,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "search"
 	},
@@ -11857,6 +12263,12 @@
 										"maxItems": 1,
 										"nullable": true,
 										"type": "array",
+										"x-auditable": true
+									},
+									"default_domain_enabled": {
+										"default": true,
+										"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+										"type": "boolean",
 										"x-auditable": true
 									},
 									"enabled": {
@@ -12654,6 +13066,12 @@
 													"type": "array",
 													"x-auditable": true
 												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
@@ -13168,6 +13586,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "update"
 	},
@@ -13503,6 +13922,12 @@
 										"type": "array",
 										"x-auditable": true
 									},
+									"default_domain_enabled": {
+										"default": true,
+										"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+										"type": "boolean",
+										"x-auditable": true
+									},
 									"enabled": {
 										"default": false,
 										"type": "boolean"
@@ -14298,6 +14723,12 @@
 													"type": "array",
 													"x-auditable": true
 												},
+												"default_domain_enabled": {
+													"default": true,
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
@@ -14812,7 +15243,6 @@
 			"pro": true
 		},
 		"x-fern-availability": "beta",
-		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "update"
 	}

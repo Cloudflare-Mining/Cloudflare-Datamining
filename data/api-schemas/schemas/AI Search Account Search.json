@@ -300,6 +300,42 @@
 																	"image_url"
 																],
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"file": {
+																		"properties": {
+																			"file_data": {
+																				"maxLength": 13981144,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"file_id": {
+																				"type": "string"
+																			},
+																			"filename": {
+																				"maxLength": 255,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"filename"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"file"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"file"
+																],
+																"type": "object"
 															}
 														]
 													},
@@ -456,6 +492,42 @@
 																			"required": [
 																				"type",
 																				"image_url"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"file": {
+																					"properties": {
+																						"file_data": {
+																							"maxLength": 13981144,
+																							"minLength": 1,
+																							"type": "string"
+																						},
+																						"file_id": {
+																							"type": "string"
+																						},
+																						"filename": {
+																							"maxLength": 255,
+																							"minLength": 1,
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"filename"
+																					],
+																					"type": "object"
+																				},
+																				"type": {
+																					"enum": [
+																						"file"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"file"
 																			],
 																			"type": "object"
 																		}
@@ -726,7 +798,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "multi-chat-completions"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/search": {
 		"description": "Performs a semantic search query against multiple AI Search instances in parallel, merging the retrieved results into a single ranked response.",
@@ -1029,6 +1103,42 @@
 																	"image_url"
 																],
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"file": {
+																		"properties": {
+																			"file_data": {
+																				"maxLength": 13981144,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"file_id": {
+																				"type": "string"
+																			},
+																			"filename": {
+																				"maxLength": 255,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"filename"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"file"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"file"
+																],
+																"type": "object"
 															}
 														]
 													},
@@ -1326,6 +1436,8 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "multi-search"
 	}
 }

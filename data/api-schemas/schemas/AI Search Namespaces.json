@@ -691,9 +691,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "ai-search.namespaces.move",
-		"x-fern-sdk-method-name": "instance",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "move"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces": {
 		"description": "Create a new namespace.",

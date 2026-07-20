@@ -202,7 +202,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.tokens",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/ai-search/tokens": {
 		"description": "List tokens.",
@@ -432,7 +434,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.tokens",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/tokens/{id}": {
 		"description": "Read token.",
@@ -648,7 +652,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.tokens",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/ai-search/tokens": {
 		"description": "Create a new token.",
@@ -841,7 +847,9 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.tokens",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/ai-search/tokens/{id}": {
 		"description": "Update token.",
@@ -1084,6 +1092,8 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.tokens",
+		"x-fern-sdk-method-name": "update"
 	}
 }
