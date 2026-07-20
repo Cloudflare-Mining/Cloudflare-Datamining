@@ -407,6 +407,22 @@
 				"value": "262144"
 			},
 			{
+				"property_id": "function_calling",
+				"value": "true"
+			},
+			{
+				"property_id": "reasoning",
+				"value": "true"
+			},
+			{
+				"property_id": "terms",
+				"value": "https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE"
+			},
+			{
+				"property_id": "vision",
+				"value": "true"
+			},
+			{
 				"property_id": "price",
 				"value": [
 					{
@@ -425,22 +441,6 @@
 						"currency": "USD"
 					}
 				]
-			},
-			{
-				"property_id": "function_calling",
-				"value": "true"
-			},
-			{
-				"property_id": "reasoning",
-				"value": "true"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE"
-			},
-			{
-				"property_id": "vision",
-				"value": "true"
 			}
 		]
 	},
@@ -1353,6 +1353,14 @@
 				"value": "262144"
 			},
 			{
+				"property_id": "function_calling",
+				"value": "true"
+			},
+			{
+				"property_id": "reasoning",
+				"value": "true"
+			},
+			{
 				"property_id": "price",
 				"value": [
 					{
@@ -1371,14 +1379,6 @@
 						"currency": "USD"
 					}
 				]
-			},
-			{
-				"property_id": "function_calling",
-				"value": "true"
-			},
-			{
-				"property_id": "reasoning",
-				"value": "true"
 			}
 		]
 	},
@@ -1625,21 +1625,6 @@
 				"value": "256000"
 			},
 			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.1,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 0.3,
-						"currency": "USD"
-					}
-				]
-			},
-			{
 				"property_id": "function_calling",
 				"value": "true"
 			},
@@ -1654,6 +1639,21 @@
 			{
 				"property_id": "vision",
 				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.1,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 0.3,
+						"currency": "USD"
+					}
+				]
 			}
 		]
 	},
