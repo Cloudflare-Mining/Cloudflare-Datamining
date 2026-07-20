@@ -358,5 +358,20 @@
 	"tunnels.logs.table.unknown_context": "Fallback display value when log level or event type is empty or missing",
 	"tunnels.logs.errors.noReplicas": "No tunnel replicas found",
 	"tunnels.logs.errors.replicasList": "Error getting list of tunnel replicas",
-	"tunnels.logs.errors.token": "Error getting tunnel JWT token"
+	"tunnels.logs.errors.token": "Error getting tunnel JWT token",
+	"tunnels.logs.filterPanel.title": "Filters",
+	"tunnels.logs.filterPanel.logLevel": "Log Level",
+	"tunnels.logs.filterPanel.eventType": "Event Type",
+	"tunnels.logs.filterPanel.replicas": "Replicas",
+	"tunnels.logs.filterPanel.clearAll": "Clear all",
+	"tunnels.logs.filterPanel.removeFilter": "Remove filter",
+	"tunnels.logs.level.debug": "Debug",
+	"tunnels.logs.level.info": "Info",
+	"tunnels.logs.level.warn": "Warning",
+	"tunnels.logs.level.error": "Error",
+	"tunnels.logs.eventType.cloudflared": "Cloudflared",
+	"tunnels.logs.eventType.http": "HTTP",
+	"tunnels.logs.eventType.tcp": "TCP",
+	"tunnels.logs.eventType.udp": "UDP",
+	"tunnels.logs.eventType.unknown": "Unknown"
 }
