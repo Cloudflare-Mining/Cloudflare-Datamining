@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8028403?gh_jid=8028403",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7983529?gh_jid=7983529",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3480413,
+	"internal_job_id": 3464555,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5700 - Customer Support",
+			"value": "5150 - Field Sales",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Dallas, US",
+				"Houston, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,24 +35,40 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Customer Support"
+				"Sales"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 8028403,
-	"updated_at": "2026-07-14T14:54:32-04:00",
-	"requisition_id": null,
-	"title": "Network Security Support Engineer",
+	"id": 7983529,
+	"updated_at": "2026-07-20T13:20:18-04:00",
+	"requisition_id": "23124",
+	"title": "Sales Director, Majors (TOLA)",
 	"company_name": "Cloudflare",
-	"first_published": "2026-06-30T15:30:57-04:00",
+	"first_published": "2026-06-08T16:12:36-04:00",
 	"language": "en",
 	"application_deadline": null,
 	"departments": [
 		{
-			"id": 29101,
-			"name": "Customer Support",
-			"child_ids": [],
+			"id": 29066,
+			"name": "Sales",
+			"child_ids": [
+				227430,
+				70661,
+				71029,
+				90946,
+				90947,
+				90948,
+				70657,
+				70662,
+				70658,
+				70659,
+				70660,
+				74075,
+				70663,
+				70664,
+				144594
+			],
 			"parent_id": null
 		}
 	],
@@ -59,6 +77,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 62225,
+			"name": "Dallas, TX",
+			"location": "Dallas, Texas, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 76874,
+			"name": "Houston, TX",
+			"location": "Houston, Texas, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}
