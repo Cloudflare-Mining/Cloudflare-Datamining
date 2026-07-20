@@ -259,7 +259,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "token-validation.configuration",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/token_validation/config": {
 		"description": "Lists all token validation configurations for this zone",
@@ -657,6 +661,52 @@
 																			],
 																			"description": "JSON representation of an ES384 key",
 																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"kid": {
+																							"description": "Key ID",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"kid"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"alg": {
+																							"description": "Algorithm",
+																							"enum": [
+																								"HS256",
+																								"HS384",
+																								"HS512"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"kty": {
+																							"description": "Key Type",
+																							"enum": [
+																								"oct"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"kty",
+																						"alg"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"description": "JSON representation of a symmetric verification key in API responses (secret material is redacted).",
+																			"type": "object"
 																		}
 																	],
 																	"type": "object"
@@ -908,7 +958,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "token-validation.configuration",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/token_validation/config/{config_id}": {
 		"description": "Get a single Token Configuration",
@@ -1242,6 +1296,52 @@
 																		],
 																		"description": "JSON representation of an ES384 key",
 																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"HS256",
+																							"HS384",
+																							"HS512"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"oct"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"alg"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of a symmetric verification key in API responses (secret material is redacted).",
+																		"type": "object"
 																	}
 																],
 																"type": "object"
@@ -1491,7 +1591,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "token-validation.configuration",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/token_validation/config/{config_id}": {
 		"description": "Edit fields of an existing Token Configuration",
@@ -1843,6 +1947,804 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "token-validation.configuration",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
+	},
+	"PATCH /zones/{zone_id}/token_validation/config/{config_id}/credentials": {
+		"description": "Edit Token Configuration credentials. The provided `keys` array defines the full resulting key set (stored keys omitted from payload are removed). For each provided key identity (`{alg,kid}`), payload fields overwrite the stored key before validation and omitted fields inherit from the stored key. Key identities must be unique within the request. Existing symmetric keys (`kty: \"oct\"`) preserve stored key material when `k` is omitted; send `k` to rotate. `k: null` is invalid.",
+		"externalDocs": {
+			"description": "Learn more about JSON Web Tokens Validation.",
+			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
+		},
+		"operationId": "token-validation-config-credentials-edit",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request payload for PATCH credentials. Provided keys define the complete stored key set, and stored keys omitted from payload are removed. For each provided key identity (`{alg,kid}`), payload fields overwrite the stored key before validation and omitted fields inherit from the stored key. Key identities must be unique.",
+						"properties": {
+							"keys": {
+								"items": {
+									"description": "JSON representation of a JWKS key for PATCH credentials requests.",
+									"oneOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"RS256",
+																"RS384",
+																"RS512",
+																"PS256",
+																"PS384",
+																"PS512"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"e": {
+															"description": "RSA exponent",
+															"type": "string",
+															"x-auditable": false
+														},
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"RSA"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"n": {
+															"description": "RSA modulus",
+															"type": "string",
+															"x-auditable": false
+														}
+													},
+													"required": [
+														"kty",
+														"alg",
+														"n",
+														"e"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of an RSA key.",
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"EC"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"x": {
+															"description": "X EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														},
+														"y": {
+															"description": "Y EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														}
+													},
+													"required": [
+														"kty",
+														"x",
+														"y"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"ES256"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"crv": {
+															"description": "Curve",
+															"enum": [
+																"P-256"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"alg",
+														"crv"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of an ES256 key",
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"EC"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"x": {
+															"description": "X EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														},
+														"y": {
+															"description": "Y EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														}
+													},
+													"required": [
+														"kty",
+														"x",
+														"y"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"ES384"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"crv": {
+															"description": "Curve",
+															"enum": [
+																"P-384"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"alg",
+														"crv"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of an ES384 key",
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"HS256",
+																"HS384",
+																"HS512"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"k": {
+															"description": "Symmetric key material. Optional for PATCH: omit to preserve existing secret for matching `{alg,kid}`; send a string to rotate. `k: null` is invalid.",
+															"type": "string",
+															"x-auditable": false
+														},
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"oct"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kty",
+														"alg"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of a symmetric key for PATCH requests.",
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								"maxItems": 4,
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"keys"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"keys": {
+											"items": {
+												"description": "JSON representation of a JWKS key.",
+												"example": {
+													"alg": "ES256",
+													"crv": "P-256",
+													"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
+													"kty": "EC",
+													"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
+													"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
+												},
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"RS256",
+																			"RS384",
+																			"RS512",
+																			"PS256",
+																			"PS384",
+																			"PS512"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"e": {
+																		"description": "RSA exponent",
+																		"type": "string",
+																		"x-auditable": false
+																	},
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"RSA"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"n": {
+																		"description": "RSA modulus",
+																		"type": "string",
+																		"x-auditable": false
+																	}
+																},
+																"required": [
+																	"kty",
+																	"alg",
+																	"n",
+																	"e"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of an RSA key.",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"EC"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"x": {
+																		"description": "X EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	},
+																	"y": {
+																		"description": "Y EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	}
+																},
+																"required": [
+																	"kty",
+																	"x",
+																	"y"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"ES256"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"crv": {
+																		"description": "Curve",
+																		"enum": [
+																			"P-256"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"alg",
+																	"crv"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of an ES256 key",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"EC"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"x": {
+																		"description": "X EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	},
+																	"y": {
+																		"description": "Y EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	}
+																},
+																"required": [
+																	"kty",
+																	"x",
+																	"y"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"ES384"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"crv": {
+																		"description": "Curve",
+																		"enum": [
+																			"P-384"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"alg",
+																	"crv"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of an ES384 key",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"HS256",
+																			"HS384",
+																			"HS512"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"oct"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kty",
+																	"alg"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of a symmetric verification key in API responses (secret material is redacted).",
+														"type": "object"
+													}
+												],
+												"type": "object"
+											},
+											"maxItems": 4,
+											"minItems": 1,
+											"type": "array"
+										}
+									},
+									"required": [
+										"keys"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "OK"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit Token Configuration credentials",
+		"tags": [
+			"Token Validation Token Configuration"
+		],
+		"x-api-token-group": [
+			"Account API Gateway",
+			"Domain API Gateway"
 		]
 	},
 	"POST /zones/{zone_id}/token_validation/config": {
@@ -1858,18 +2760,11 @@
 					"schema": {
 						"properties": {
 							"credentials": {
+								"description": "Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.",
 								"properties": {
 									"keys": {
 										"items": {
-											"description": "JSON representation of a JWKS key.",
-											"example": {
-												"alg": "ES256",
-												"crv": "P-256",
-												"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
-												"kty": "EC",
-												"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
-												"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
-											},
+											"description": "JSON representation of a JWKS key for create and PUT requests.",
 											"oneOf": [
 												{
 													"allOf": [
@@ -2074,6 +2969,58 @@
 														}
 													],
 													"description": "JSON representation of an ES384 key",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"kid": {
+																	"description": "Key ID",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"kid"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"alg": {
+																	"description": "Algorithm",
+																	"enum": [
+																		"HS256",
+																		"HS384",
+																		"HS512"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"k": {
+																	"description": "Symmetric key material. Required for create and PUT update requests.",
+																	"type": "string",
+																	"x-auditable": false
+																},
+																"kty": {
+																	"description": "Key Type",
+																	"enum": [
+																		"oct"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"kty",
+																"alg",
+																"k"
+															],
+															"type": "object"
+														}
+													],
+													"description": "JSON representation of a symmetric key for create/PUT requests.",
 													"type": "object"
 												}
 											],
@@ -2475,6 +3422,52 @@
 																		],
 																		"description": "JSON representation of an ES384 key",
 																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"HS256",
+																							"HS384",
+																							"HS512"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"oct"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"alg"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of a symmetric verification key in API responses (secret material is redacted).",
+																		"type": "object"
 																	}
 																],
 																"type": "object"
@@ -2722,10 +3715,14 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "token-validation.configuration",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/token_validation/config/{config_id}/credentials": {
-		"description": "Update Token Configuration credentials",
+		"description": "Update Token Configuration credentials with full replacement semantics. Key identities (`{alg,kid}`) must be unique within the request. Symmetric keys (`kty: \"oct\"`) require `k`; `k: null` is invalid.",
 		"externalDocs": {
 			"description": "Learn more about JSON Web Tokens Validation.",
 			"url": "https://developers.cloudflare.com/api-shield/security/jwt-validation/"
@@ -2735,18 +3732,11 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.",
 						"properties": {
 							"keys": {
 								"items": {
-									"description": "JSON representation of a JWKS key.",
-									"example": {
-										"alg": "ES256",
-										"crv": "P-256",
-										"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
-										"kty": "EC",
-										"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
-										"y": "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"
-									},
+									"description": "JSON representation of a JWKS key for create and PUT requests.",
 									"oneOf": [
 										{
 											"allOf": [
@@ -2951,6 +3941,58 @@
 												}
 											],
 											"description": "JSON representation of an ES384 key",
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"HS256",
+																"HS384",
+																"HS512"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"k": {
+															"description": "Symmetric key material. Required for create and PUT update requests.",
+															"type": "string",
+															"x-auditable": false
+														},
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"oct"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kty",
+														"alg",
+														"k"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of a symmetric key for create/PUT requests.",
 											"type": "object"
 										}
 									],
@@ -3275,6 +4317,52 @@
 															}
 														],
 														"description": "JSON representation of an ES384 key",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"HS256",
+																			"HS384",
+																			"HS512"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"oct"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kty",
+																	"alg"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of a symmetric verification key in API responses (secret material is redacted).",
 														"type": "object"
 													}
 												],

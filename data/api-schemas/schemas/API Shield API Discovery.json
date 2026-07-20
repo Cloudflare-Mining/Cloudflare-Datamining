@@ -452,7 +452,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.discovery",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations": {
 		"description": "Retrieve the most up to date view of discovered operations",
@@ -1021,7 +1025,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.discovery.operations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"description": "Retrieve a single discovered operation by ID",
@@ -1755,7 +1763,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.discovery.operations",
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"description": "Update the `state` on a discovered operation",

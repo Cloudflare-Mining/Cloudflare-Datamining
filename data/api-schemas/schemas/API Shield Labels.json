@@ -367,7 +367,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"description": "Delete user label",
@@ -678,7 +682,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"description": "Remove label(s) on an operation in endpoint management",
@@ -1121,7 +1129,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/labels": {
 		"description": "Bulk remove label(s) on operation(s) in endpoint management",
@@ -1617,7 +1629,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/labels": {
 		"description": "Retrieve all labels",
@@ -2074,7 +2090,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/managed/{name}": {
 		"description": "Retrieve managed label",
@@ -2427,7 +2447,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.managed",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"description": "Retrieve user label",
@@ -2768,7 +2792,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"description": "Update certain fields on a label",
@@ -3104,7 +3132,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/labels/user": {
 		"description": "Create user labels",
@@ -3495,7 +3527,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"description": "Attach label(s) on an operation in endpoint management",
@@ -3940,7 +3976,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/labels": {
 		"description": "Bulk attach label(s) on operation(s) in endpoint management",
@@ -4438,7 +4478,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation": {
 		"description": "Replace all operations(s) attached to a managed label",
@@ -4829,7 +4873,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.managed.resources.operation",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}": {
 		"description": "Update all fields on a label",
@@ -5165,7 +5213,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.user",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation": {
 		"description": "Replace all operations(s) attached to a user label",
@@ -5544,7 +5596,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.labels.user.resources.operation",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/labels": {
 		"description": "Replace label(s) on an operation in endpoint management",
@@ -5987,7 +6043,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/labels": {
 		"description": "Bulk replace label(s) on operation(s) in endpoint management",
@@ -6493,6 +6553,10 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "api-gateway.operations.labels",
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-hidden": true
 	}
 }

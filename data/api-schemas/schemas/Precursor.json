@@ -112,6 +112,17 @@
 								{
 									"properties": {
 										"result": {
+											"example": {
+												"default_mode": "min-friction",
+												"enforcement_rules": [
+													{
+														"description": "Enforce max-security on the shop page",
+														"enabled": true,
+														"expression": "http.request.uri.path eq \"/shop\"",
+														"mode": "max-security"
+													}
+												]
+											},
 											"minProperties": 1,
 											"properties": {
 												"default_mode": {
@@ -287,6 +298,17 @@
 										{
 											"properties": {
 												"result": {
+													"example": {
+														"default_mode": "min-friction",
+														"enforcement_rules": [
+															{
+																"description": "Enforce max-security on the shop page",
+																"enabled": true,
+																"expression": "http.request.uri.path eq \"/shop\"",
+																"mode": "max-security"
+															}
+														]
+													},
 													"minProperties": 1,
 													"properties": {
 														"default_mode": {
@@ -556,6 +578,17 @@
 						}
 					},
 					"schema": {
+						"example": {
+							"default_mode": "min-friction",
+							"enforcement_rules": [
+								{
+									"description": "Enforce max-security on the shop page",
+									"enabled": true,
+									"expression": "http.request.uri.path eq \"/shop\"",
+									"mode": "max-security"
+								}
+							]
+						},
 						"minProperties": 1,
 						"properties": {
 							"default_mode": {
@@ -725,6 +758,17 @@
 								{
 									"properties": {
 										"result": {
+											"example": {
+												"default_mode": "min-friction",
+												"enforcement_rules": [
+													{
+														"description": "Enforce max-security on the shop page",
+														"enabled": true,
+														"expression": "http.request.uri.path eq \"/shop\"",
+														"mode": "max-security"
+													}
+												]
+											},
 											"minProperties": 1,
 											"properties": {
 												"default_mode": {
@@ -900,6 +944,17 @@
 										{
 											"properties": {
 												"result": {
+													"example": {
+														"default_mode": "min-friction",
+														"enforcement_rules": [
+															{
+																"description": "Enforce max-security on the shop page",
+																"enabled": true,
+																"expression": "http.request.uri.path eq \"/shop\"",
+																"mode": "max-security"
+															}
+														]
+													},
 													"minProperties": 1,
 													"properties": {
 														"default_mode": {

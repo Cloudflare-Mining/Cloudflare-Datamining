@@ -256,7 +256,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/settings": {
 		"description": "Retrieves the current global schema validation settings for a zone.",
@@ -528,7 +532,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations": {
 		"description": "Lists all per-operation schema validation settings configured for the zone.",
@@ -870,7 +878,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
 		"description": "Retrieves the schema validation settings configured for a specific API operation.",
@@ -1146,7 +1158,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings": {
 		"description": "Partially updates global schema validation settings for a zone using PATCH semantics.",
@@ -1449,7 +1465,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings/operations": {
 		"description": "Updates schema validation settings for multiple API operations in a single request. Efficient for applying consistent validation rules across endpoints.",
@@ -1771,7 +1791,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings": {
 		"description": "Fully updates global schema validation settings for a zone, replacing existing configuration.",
@@ -2085,7 +2109,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
 		"description": "Fully updates schema validation settings for a specific API operation.",
@@ -2395,6 +2423,10 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.settings.operations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

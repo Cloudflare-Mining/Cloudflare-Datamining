@@ -510,7 +510,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Edit"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens/{id}": {
 		"description": "Revokes an Artifacts repository token.",
@@ -930,7 +934,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Edit"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces": {
 		"description": "Lists Artifacts namespaces for an account.",
@@ -1347,7 +1355,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}": {
 		"description": "Returns an Artifacts namespace summary.",
@@ -1850,7 +1862,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": {
 		"description": "Lists repositories in a namespace.",
@@ -2310,7 +2326,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}": {
 		"description": "Returns repository metadata.",
@@ -2916,7 +2936,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/blob/{hash}": {
 		"description": "Returns raw bytes for an immutable Git blob object. Blob responses are cacheable forever by hash.",
@@ -3549,7 +3573,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/commit/{hash}": {
 		"description": "Returns decoded metadata for an immutable Git commit object. Commit responses are cacheable forever by hash.",
@@ -4079,7 +4107,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/file": {
 		"description": "Returns raw bytes for a file resolved by ref and path.",
@@ -4716,7 +4748,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/log": {
 		"description": "Returns commit metadata walking backwards from a ref, branch, tag, or HEAD.",
@@ -5255,7 +5291,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/raw/{ref}/{path}": {
 		"description": "Returns file bytes resolved by ref and path, with a sniffed content type and browser-safe response headers.",
@@ -5910,7 +5950,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tokens": {
 		"description": "Lists tokens for a repository.",
@@ -6549,7 +6593,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tree/{hash}": {
 		"description": "Returns decoded entries for an immutable Git tree object. Tree responses are cacheable forever by hash.",
@@ -7079,7 +7127,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Read"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": {
 		"description": "Creates a Git-compatible Artifacts repository in a namespace.",
@@ -7590,7 +7642,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Edit"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/fork": {
 		"description": "Forks a source repository into a new repository.",
@@ -8297,7 +8353,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Edit"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/import": {
 		"description": "Imports an HTTPS Git repository into an Artifacts repository.",
@@ -9376,7 +9436,11 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Edit"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens": {
 		"description": "Creates a scoped Git token for a repository.",
@@ -9980,6 +10044,10 @@
 		],
 		"x-api-token-group": [
 			"Artifacts Edit"
-		]
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "artifacts.namespaces",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

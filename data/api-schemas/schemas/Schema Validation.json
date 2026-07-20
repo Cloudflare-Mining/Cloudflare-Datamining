@@ -253,7 +253,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas": {
 		"description": "Lists all OpenAPI schemas uploaded to API Shield with pagination support.",
@@ -661,7 +665,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
 		"description": "Gets the contents and metadata of a specific OpenAPI schema uploaded to API Shield.",
@@ -997,7 +1005,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}/operations": {
 		"description": "Retrieves all operations from the schema. Operations that already exist in API Shield Endpoint Management will be returned as full operations.",
@@ -1883,7 +1895,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.schemas.operations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/hosts": {
 		"description": "Lists all unique hosts found in uploaded OpenAPI schemas for the zone.",
@@ -2259,7 +2275,11 @@
 			"Account API Gateway Read",
 			"Domain API Gateway",
 			"Domain API Gateway Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.schemas.hosts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
 		"description": "Modifies an existing OpenAPI schema in API Shield, updating the validation rules for associated API operations.",
@@ -2598,7 +2618,11 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/schema_validation/schemas": {
 		"description": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.",
@@ -3131,6 +3155,10 @@
 		"x-api-token-group": [
 			"Account API Gateway",
 			"Domain API Gateway"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "schema-validation.schemas",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }
