@@ -1343,11 +1343,11 @@ Built on systems powering 20% of the Internet, our platform runs on the same bat
 
 [ Security ](/products/#security) 
 
-[  DDoS Protection  Mitigation Solutions ](/products/ddos/) [  Rate Limiting  Abuse prevention ](/products/rate-limiting/) [  SSL  Secure Your Site with SSL ](/products/ssl/) [  Turnstile  A CAPTCHA Replacement Solution ](/products/turnstile/) [  WAF  Web Application Firewall ](/products/waf/) [  Magic Transit  DDoS Protection for Networks ](/products/magic-transit/) [  Client-Side Security  Prevent browser supply chain attacks ](/products/client-side-security/) 
+[  DDoS Protection  Mitigation Solutions ](/products/ddos/) [  Rate Limiting  Abuse prevention ](/products/rate-limiting/) [  SSL  Secure Your Site with SSL ](/products/ssl/) [  Turnstile  A CAPTCHA Replacement Solution ](/products/turnstile/) [  WAF  Web Application Firewall ](/products/waf/) [  Magic Transit  DDoS Protection for Networks ](/products/magic-transit/) [  Client-Side Security  Prevent browser supply chain attacks ](/products/client-side-security/) [  Bot Management  Block bad bots ](/products/bot-management/) 
 
 [ Network & Content Delivery ](/products/#network) 
 
-[  Bot Management  Block bad bots ](/products/bot-management/) [  CDN  Faster delivery & caching ](/products/cdn/) [  DNS  Fast DNS ](/products/dns/) [  Load Balancing  Zero downtime ](/products/load-balancing/) [  TURN / SFU  Real-time infra ](/products/turn-sfu/) [  Analytics  Web Performance & Security ](/products/analytics/) 
+[  CDN  Faster delivery & caching ](/products/cdn/) [  DNS  Fast DNS ](/products/dns/) [  Load Balancing  Zero downtime ](/products/load-balancing/) [  TURN / SFU  Real-time infra ](/products/turn-sfu/) [  Analytics  Web Performance & Security ](/products/analytics/) 
 
 # Build without boundaries
 
