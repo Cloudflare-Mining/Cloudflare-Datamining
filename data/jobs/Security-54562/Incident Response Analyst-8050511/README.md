@@ -31,7 +31,7 @@
 <h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
 <ul>
 	<li><strong>Education:</strong> Bachelor's degree in Computer Science, Information Systems, Cybersecurity, a related technical field, or equivalent training/practical experience.</li>
-	<li><strong>Experience:</strong> 3+ years of overall experience in cybersecurity, including 2+ years of dedicated Incident Response / Digital Forensics experience, and 1+ years in a customer-facing role.</li>
+	<li><strong>Experience:</strong> 3 to 5 years of overall experience in cybersecurity, including 2+ years of dedicated Incident Response / Digital Forensics experience, and 1+ years in a customer-facing role.</li>
 	<li><strong>OS &amp; Cloud Environments:</strong> In-depth understanding of Windows operating systems and general knowledge of Unix, Linux, and Mac environments. Familiarity with cloud environments (AWS, Azure, O365, Google Cloud, Cloudflare) and cloud IR methodologies.</li>
 	<li><strong>Network Forensic Analysis:</strong> Strong technical knowledge of common network protocols and design patterns (TCP/IP, HTTPS, FTP, SFTP, SSH, RDP, CIFS/SMB, NFS). Experience with network analysis tools like Bro/Zeek or Suricata, and analyzing associated network logs.</li>
 	<li><strong>Industry Standards:</strong> Solid understanding of MITRE ATT&amp;CK and NIST Cyber Security Frameworks.</li>

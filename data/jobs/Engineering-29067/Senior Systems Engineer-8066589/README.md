@@ -15,7 +15,7 @@
 <h4><strong>Responsibilities</strong></h4>
 <p><strong>&nbsp;(Must-Have Skills)</strong></p>
 <ul>
-	<li>3+ years of professional experience designing, building, and operating production distributed systems at scale.</li>
+	<li>5+ years of professional experience designing, building, and operating production distributed systems at scale.</li>
 	<li>Strong proficiency in at least one system or backend language such as Go, Rust, or C/C++, and a willingness to work in others as the codebase demands.</li>
 	<li>Solid grasp of distributed systems fundamentals, including:</li>
 	<ul>
