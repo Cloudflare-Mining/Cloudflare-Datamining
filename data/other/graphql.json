@@ -442,7 +442,8 @@
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of processed requests",
 		"dimensions": "List of dimensions to group by",
-		"sum": "The sum of values for a metric per dimension"
+		"sum": "The sum of values for a metric per dimension",
+		"uniq": ""
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsConfidence": {
 		"__description": "",
@@ -462,8 +463,11 @@
 		"datetimeMinute": "The date and time truncated to the minute",
 		"error": "Was the response an error: 1 , 0 for no error",
 		"gateway": "Gateway name",
+		"metadataCommonName": "Access service principal name extracted from request metadata",
 		"metadataKeys": "Metadata keys saved on ai-gateway request",
 		"metadataRaw": "Metadata saved in on ai-gateway request",
+		"metadataSessionId": "Framework session ID extracted from request metadata (opt-in per gateway)",
+		"metadataUserId": "Access user ID (JWT sub claim) extracted from request metadata",
 		"metadataValues": "Metadata values saved on ai-gateway request",
 		"model": "Which models was the request sent to",
 		"prompts": "Prompts used on ai-gateway request",
@@ -502,6 +506,11 @@
 		"erroredRequests": "Confidence interval for the corresponding point estimate",
 		"uncachedTokensIn": "Confidence interval for the corresponding point estimate",
 		"uncachedTokensOut": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountAiGatewayRequestsAdaptiveGroupsUniq": {
+		"__description": "",
+		"sessions": "Approximate count of unique sessions",
+		"users": "Approximate count of unique authenticated users"
 	},
 	"AccountAiGatewaySizeAdaptiveGroups": {
 		"__description": "AI Gateway Stored Rows",
