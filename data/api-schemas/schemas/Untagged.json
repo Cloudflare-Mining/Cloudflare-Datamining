@@ -1,4 +1,134 @@
 {
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/ingest": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories/{memory_id}": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/recall": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/remember": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/sessions/{session_id}": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/summary": [
+		{
+			"description": "Cloudflare Account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"pattern": "^\\d+$",
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/analytics_engine/sql": [
 		{
 			"description": "Cloudflare account identifier.",
