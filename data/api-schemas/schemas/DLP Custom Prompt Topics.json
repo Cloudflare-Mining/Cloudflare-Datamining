@@ -399,6 +399,7 @@
 													},
 													"topic": {
 														"maxLength": 50,
+														"minLength": 2,
 														"type": "string"
 													},
 													"updated_at": {
@@ -703,6 +704,7 @@
 												},
 												"topic": {
 													"maxLength": 50,
+													"minLength": 2,
 													"type": "string"
 												},
 												"updated_at": {
@@ -893,6 +895,7 @@
 							},
 							"topic": {
 								"maxLength": 50,
+								"minLength": 2,
 								"type": "string"
 							}
 						},
@@ -1032,6 +1035,7 @@
 												},
 												"topic": {
 													"maxLength": 50,
+													"minLength": 2,
 													"type": "string"
 												},
 												"updated_at": {
@@ -1229,6 +1233,7 @@
 							},
 							"topic": {
 								"maxLength": 50,
+								"minLength": 2,
 								"type": "string"
 							}
 						},
@@ -1368,6 +1373,7 @@
 												},
 												"topic": {
 													"maxLength": 50,
+													"minLength": 2,
 													"type": "string"
 												},
 												"updated_at": {
