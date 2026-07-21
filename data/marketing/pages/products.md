@@ -68,8 +68,6 @@ Media
 
 Security
 
-[**Bot Management**Block bad bots](/products/bot-management/)
-
 [**Client-Side Security**Prevent browser supply chain attacks](/products/client-side-security/)
 
 [**DDoS Protection**Mitigation Solutions](/products/ddos/)
@@ -95,6 +93,8 @@ Network
 [**API Shield**API Security & Monitoring](/products/api-shield/)
 
 [**Argo Smart Routing**Accelerate Web Apps](/products/argo-smart-routing/)
+
+[**Bot Management**Block bad bots](/products/bot-management/)
 
 [**CDN**Faster delivery & caching](/products/cdn/)
 
