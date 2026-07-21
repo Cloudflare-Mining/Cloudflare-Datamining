@@ -1,10 +1,19 @@
 ---
 description: Technical deep dives, product updates, and insights from the teams that are helping to build a better Internet.
 title: The Cloudflare Blog
-image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY31N4V.png
 ---
 
 [Skip to content](#main-content)
+
+July 21, 2026[How the 2026 World Cup affected Internet traffic](https://blog.cloudflare.com/2026-world-cup-internet-traffic/)
+
+We analyzed global HTTP traffic to explore how kickoff times, streaming habits, and hydration breaks reshaped online activity worldwide. From late-night traffic surges to halftime browsing spikes, here is how the world connected during the global tournament.
+
+![Sabina Zejnilovic](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B114HP8HRQ7MA3FAFRSN.JPG&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Francisco Contente](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY2CF3W577J0ES3RM3DTCG49.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Sabina Zejnilovic](https://blog.cloudflare.com/author/sabina/), [Francisco Contente](https://blog.cloudflare.com/author/francisco-content/), and [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY24JZR9KTR3M5THP0VXA506.png&w=1200&h=628&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/2026-world-cup-internet-traffic/)
 
 July 20, 2026[Cloudflare Internal DNS is now generally available](https://blog.cloudflare.com/internal-dns/)
 
@@ -13,8 +22,6 @@ Cloudflare Internal DNS brings authoritative and recursive DNS for private netwo
 ![Enrique Somoza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY0CFW3DJ9J69XDCMWR1NNSG.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Hannes Gerhart](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P53YA8A3G53W0H9FH0TT.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Enrique Somoza](https://blog.cloudflare.com/author/enrique-somoza/) and [Hannes Gerhart](https://blog.cloudflare.com/author/hannes/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY0B5CQFP24NSNHD7AAZ2WRT.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/internal-dns/)
 
 July 17, 2026[Cloudflare WAF protects WordPress applications from two high-severity vulnerabilities ](https://blog.cloudflare.com/wordpress-vulnerabilities/)
 
@@ -151,14 +158,6 @@ By rearchitecting the Images binding, we accidentally uncovered a bug that exist
 ![Deanna Lam](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KFXCHBMAHQ4B20STFNCC.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Diretnan Domnan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q4B9ZYMXFBZ5X354KFW2.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Matt Lewis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMRANK371K7W3Y3CXQT0M.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Deanna Lam](https://blog.cloudflare.com/author/deanna/), [Diretnan Domnan](https://blog.cloudflare.com/author/diretnan-domnan/), and [Matt Lewis](https://blog.cloudflare.com/author/matt-lewis-2/)
-
-June 19, 2026[Temporary Cloudflare Accounts for AI agents](https://blog.cloudflare.com/temporary-accounts/)
-
-The moment an agent needs to deploy something, it slams face-first into a wall built for humans. Today we're rolling out Temporary Accounts on Cloudflare Workers. Any agent can now run wrangler deploy — temporary and get a live Worker in seconds.
-
-![Sid Chatterjee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XJ0J0NXPCD8TWD8F0KKP.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Sid Chatterjee](https://blog.cloudflare.com/author/sid/), [Celso Martinho](https://blog.cloudflare.com/author/celso/), and [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
 
 Load more
 
