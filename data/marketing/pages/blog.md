@@ -14,7 +14,7 @@ We analyzed global HTTP traffic to explore how kickoff times, streaming habits, 
 
 [Sabina Zejnilovic](https://blog.cloudflare.com/author/sabina/), [Francisco Contente](https://blog.cloudflare.com/author/francisco-content/), and [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY24JZR9KTR3M5THP0VXA506.png&w=1200&h=628&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/2026-world-cup-internet-traffic/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY2S8WG5GK2XNGGD1S4H5H3B.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/2026-world-cup-internet-traffic/)
 
 July 20, 2026[Cloudflare Internal DNS is now generally available](https://blog.cloudflare.com/internal-dns/)
 
