@@ -237,6 +237,18 @@
 				}
 			},
 			{
+				"description": "Filter by the ID of the device settings profile assigned to the registration.",
+				"explode": false,
+				"in": "query",
+				"name": "policy.id",
+				"schema": {
+					"description": "The ID of the device settings profile.",
+					"example": "11ffb86f-3f0c-4306-b4a2-e62f872b166a",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Comma-separated list of additional information that should be included in the registration response. Supported values are: \"policy\".\n",
 				"in": "query",
 				"name": "include",

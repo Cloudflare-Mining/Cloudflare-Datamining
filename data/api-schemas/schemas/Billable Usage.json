@@ -17,7 +17,7 @@
 				}
 			},
 			{
-				"description": "Start date for the usage query (ISO 8601).",
+				"description": "Start date for the usage query (ISO 8601). The provided time range must include the subscription billing cycle anchor day, otherwise no usage data is returned. Subscription anchor days are provided on the response of the /accounts/{account_id}/paygo-usage-info endpoint.",
 				"in": "query",
 				"name": "from",
 				"schema": {
