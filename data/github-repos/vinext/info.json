@@ -22,7 +22,6 @@
 	"default_branch": "main",
 	"branches": [
 		"alt/prerender-rsc-sidechannel",
-		"changeset-release/main",
 		"chonky-list",
 		"chore/bundle-zero-dep-leaves",
 		"ci/commit-version-bump",
@@ -120,6 +119,7 @@
 		"codex/fix-viewport-prefetch-hang",
 		"codex/fix-web-worker-deployment-id",
 		"codex/fix-webpack-loader-transform-parity",
+		"codex/fix-worker-fetch-content-encoding",
 		"codex/fix-worker-parity-track6",
 		"codex/fix-wrangler-suspense-streaming",
 		"codex/native-tsconfig-paths-gap-repro",
@@ -176,7 +176,6 @@
 		"fix/route-handler-dynamic-detection",
 		"fix/route-handler-dynamic-detection-v2",
 		"fix/route-handler-dynamic-detection-v3",
-		"fix/rsc-dev-server-error-logging",
 		"fix/rsc-navigation-credentials",
 		"fix/rsc-optimizedeps-react-server",
 		"fix/strip-set-cookie-from-app-route-isr-cache-clean",
