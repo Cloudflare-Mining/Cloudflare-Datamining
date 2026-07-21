@@ -5,46 +5,33 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About Cloudflare's Security Team</strong></p>
-<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
-<p>The Enterprise Identity &amp; Access Management (IAM) Business Enablement team plans strategic alignment by optimizing IAM processes - such as user provisioning and access controls - to enhance overall efficiency and improve the user experience. Ultimately, the team ensures that security measures actively accelerate business operations while maintaining full regulatory compliance.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
-<h4><strong>What you'll do</strong></h4>
+<h2>Available Locations:Austin, US</h2>
+<h2>About the Role</h2>
+<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
+<h2>Responsibilities</h2>
+<p>As a product manager on the Enterprise Readiness team, you will be responsible for helping to build the capabilities that our largest customers demand that will help them effectively scale their use of Cloudflare. You will:</p>
 <ul>
-	<li>
-		<ul>
-			<li>Execute a specialized security project over 12 weeks that directly improves Cloudflare’s defensive posture.</li>
-			<li>High-level job responsibilities includes but not limited to -&nbsp;
-				<ul>
-					<li>Contribute to the development and maintenance of the user access review dashboard and associated metrics.</li>
-					<li>Execute comprehensive group analysis to precisely determine and document organizational group descriptions and ownership mandates.</li>
-					<li>Provide analytical support pertaining to the implementation and strategic application of Role-Based Access Control (RBAC).</li>
-				</ul>
-			</li>
-			<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
-			<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
-			<li>Present your security project to the entire company at the end of the internship.</li>
-			<li>Connect and learn from our executives and leadership team including our co-founders.</li>
-			<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
-		</ul>
-	</li>
+	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on organizations and partners.</li>
+	<li>The Product Manager role requires deep familiarity with the <strong>Terraform</strong> <strong>SDK</strong></li>
+	<li>A significant challenge in this role is navigating the tension between enterprise requirements and simplicity for individual users, a friction point that requires careful design decisions&nbsp;</li>
+	<li>The position involves leading <strong>API</strong> design reviews, determining best practices for company-wide implementation, such as pagination, versioning, and deprecation</li>
+	<li>The job demands a 50/50 balance between building a personal roadmap and convincing other product managers to adopt a unified API standard</li>
+	<li>The Product Manager will primarily engage with practitioners, including<strong> platform engineers</strong>,<strong> DevOps</strong> professionals, and<strong> enterprise architects</strong>, rather than executive leadership</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>Proficiency with Google Sheets for filtering, sorting, VLOOKUP, and basic data manipulation to support review efforts.</li>
-	<li>Familiarity with SQL is a significant plus, as IGA analysis often involves querying access logs or user tables to support metrics and dashboards.</li>
-	<li>Understanding of roles, groups, and permissions, and how they relate to the concept of "least privilege."</li>
-	<li>Ability to use tools like Google Docs, Wiki to create clear, organized documentation for processes, roles, and review evidence.</li>
-	<li>Clear and professional verbal and written communication skills for interacting with application owners and stakeholders to gather information during access reviews.</li>
-	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
-	<li>Curiosity, empathy and ability to get things done.</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In office 3-5 days a week in our Austin office</li>
+	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience</li>
+	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.</li>
+	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.</li>
+	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.</li>
 </ul>
-<p><strong>Bonus:</strong> Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></p>
+<h2>Bonus Points</h2>
+<ul>
+	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.</li>
+	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
