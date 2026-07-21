@@ -184,7 +184,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"item_id": {
+				"description": "Indexed item ID.",
+				"flagName": "item-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Lists indexed items in an AI Search instance.",
@@ -612,7 +627,18 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
 		"description": "Retrieves a specific indexed item from an AI Search instance.",
@@ -876,7 +902,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"item_id": {
+				"description": "Indexed item ID.",
+				"flagName": "item-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/chunks": {
 		"description": "Lists chunks for a specific item in an AI Search instance, including their text content.",
@@ -1185,7 +1226,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "chunks"
+		"x-fern-sdk-method-name": "chunks",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"item_id": {
+				"description": "Indexed item ID.",
+				"flagName": "item-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/download": {
 		"description": "Downloads the raw file content for a specific item from the managed AI Search instance storage.",
@@ -1393,7 +1449,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "download"
+		"x-fern-sdk-method-name": "download",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"item_id": {
+				"description": "Indexed item ID.",
+				"flagName": "item-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/logs": {
 		"description": "Lists processing logs for a specific item in an AI Search instance.",
@@ -1702,7 +1773,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "logs"
+		"x-fern-sdk-method-name": "logs",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"item_id": {
+				"description": "Indexed item ID.",
+				"flagName": "item-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
 		"description": "Syncs an item to an AI Search instance index.",
@@ -2038,7 +2124,26 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "sync"
+		"x-fern-sdk-method-name": "sync",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"item_id": {
+				"description": "Indexed item ID.",
+				"flagName": "item-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			},
+			"next_action": {
+				"default": "INDEX",
+				"hidden": true
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Uploads a file to a managed AI Search instance via multipart/form-data.",
@@ -2442,7 +2547,18 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "upload"
+		"x-fern-sdk-method-name": "upload",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Creates or updates an indexed item in an AI Search instance.",
@@ -2808,6 +2924,21 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
-		"x-fern-sdk-method-name": "upsert"
+		"x-fern-sdk-method-name": "upsert",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			},
+			"next_action": {
+				"default": "INDEX",
+				"hidden": true
+			}
+		}
 	}
 }

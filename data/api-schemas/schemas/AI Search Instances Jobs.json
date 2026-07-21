@@ -1068,7 +1068,18 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
 		"description": "Retrieves details for a specific AI Search indexing job.",
@@ -1280,7 +1291,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"job_id": {
+				"description": "Indexing job ID.",
+				"flagName": "job-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}/logs": {
 		"description": "Lists log entries for an AI Search indexing job.",
@@ -1572,7 +1598,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "logs"
+		"x-fern-sdk-method-name": "logs",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"job_id": {
+				"description": "Indexing job ID.",
+				"flagName": "job-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
 		"description": "Cancel an in-progress indexing job for an AI Search instance.",
@@ -1836,7 +1877,7 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "cancel",
-		"x-forge-require-confirmation": "This will cancel the running indexing job."
+		"x-forge-require-confirmation": "This operation cancels the running indexing job."
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
 		"description": "Cancel an in-progress indexing job for an AI Search instance.",
@@ -2109,7 +2150,26 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "cancel",
-		"x-forge-require-confirmation": "This will cancel the running indexing job."
+		"x-forge-params": {
+			"action": {
+				"default": "cancel",
+				"hidden": true
+			},
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"job_id": {
+				"description": "Indexing job ID.",
+				"flagName": "job-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		},
+		"x-forge-require-confirmation": "This operation cancels the running indexing job."
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/jobs": {
 		"description": "Creates a new indexing job for an AI Search instance.",
@@ -2712,6 +2772,20 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-params": {
+			"description": {
+				"description": "Optional description for the indexing job."
+			},
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	}
 }

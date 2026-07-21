@@ -800,7 +800,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "multi-chat-completions"
+		"x-fern-sdk-method-name": "multi-chat-completions",
+		"x-forge-params": {
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/search": {
 		"description": "Performs a semantic search query against multiple AI Search instances in parallel, merging the retrieved results into a single ranked response.",
@@ -1438,6 +1445,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "multi-search"
+		"x-fern-sdk-method-name": "multi-search",
+		"x-forge-params": {
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			},
+			"query": {
+				"description": "Text to search for.",
+				"positional": true
+			}
+		}
 	}
 }

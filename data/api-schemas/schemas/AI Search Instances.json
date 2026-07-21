@@ -865,7 +865,7 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This will permanently delete the AI Search instance and all its indexed data."
+		"x-forge-require-confirmation": "This operation permanently deletes the AI Search instance and all its indexed data."
 	},
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
 		"description": "Permanently delete an AI Search instance and all its indexed data.",
@@ -1742,7 +1742,18 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This will permanently delete the AI Search instance and all its indexed data."
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		},
+		"x-forge-require-confirmation": "This operation permanently deletes the AI Search instance and all its indexed data."
 	},
 	"GET /accounts/{account_id}/ai-search/instances": {
 		"description": "List all AI Search instances in the account.",
@@ -4752,7 +4763,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-params": {
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			},
+			"namespace": {
+				"hidden": true
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
 		"description": "Retrieve the configuration and status of an AI Search instance.",
@@ -5628,7 +5649,18 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/stats": {
 		"description": "Retrieve usage and indexing statistics for an AI Search instance.",
@@ -5837,7 +5869,18 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "stats"
+		"x-fern-sdk-method-name": "stats",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/instances": {
 		"description": "Create a new AI Search instance with the given configuration.",
@@ -10424,7 +10467,27 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-params": {
+			"id": {
+				"description": "Unique ID for the new AI Search instance.",
+				"positional": true
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			},
+			"source": {
+				"description": "R2 bucket name or root website URL to index."
+			},
+			"source_params": {
+				"description": "Optional data source settings as a JSON object."
+			},
+			"type": {
+				"description": "Data source type: r2 or web-crawler."
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/chat/completions": {
 		"description": "Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses.",
@@ -11203,7 +11266,18 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "chat-completions"
+		"x-fern-sdk-method-name": "chat-completions",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/purge_cache": {
 		"description": "Purges all cached search results for an AI Search instance. A new internal cache key is generated, immediately orphaning all prior cached entries.",
@@ -11329,7 +11403,18 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "purge-cache"
+		"x-fern-sdk-method-name": "purge-cache",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/search": {
 		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.",
@@ -11941,7 +12026,22 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			},
+			"query": {
+				"description": "Text to search for.",
+				"positional": true
+			}
+		}
 	},
 	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
 		"description": "Update the configuration of an AI Search instance.",
@@ -15244,6 +15344,23 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace to use for this operation.",
+				"flagName": "namespace"
+			},
+			"source": {
+				"description": "R2 bucket name or root website URL to index."
+			},
+			"source_params": {
+				"description": "Optional data source settings as a JSON object."
+			}
+		}
 	}
 }

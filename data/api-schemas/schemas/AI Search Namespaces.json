@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}": {
-		"description": "Permanently delete a namespace. The namespace must be empty (no instances).",
+		"description": "Permanently delete a namespace. The namespace must be empty (no instances), and the default namespace cannot be deleted.",
 		"operationId": "ai-search-delete-namespace",
 		"parameters": [
 			{
@@ -139,7 +139,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete namespace.",
+		"summary": "Delete a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -157,10 +157,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This will permanently delete the namespace."
+		"x-forge-params": {
+			"name": {
+				"description": "Namespace to delete.",
+				"flagName": "namespace"
+			}
+		},
+		"x-forge-require-confirmation": "This operation permanently deletes the namespace."
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces": {
-		"description": "List namespaces.",
+		"description": "List namespaces in the account, including their descriptions and creation times.",
 		"operationId": "ai-search-list-namespaces",
 		"parameters": [
 			{
@@ -342,7 +348,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List namespaces.",
+		"summary": "List namespaces",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -362,7 +368,7 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}": {
-		"description": "Read namespace.",
+		"description": "Retrieve a namespace and its description.",
 		"operationId": "ai-search-fetch-namespace",
 		"parameters": [
 			{
@@ -483,7 +489,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Read namespace.",
+		"summary": "Get a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -500,10 +506,16 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-params": {
+			"name": {
+				"description": "Namespace to retrieve.",
+				"flagName": "namespace"
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' as new_namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces).",
+		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' with --destination-namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces).",
 		"operationId": "ai-search-move-instance",
 		"parameters": [
 			{
@@ -692,10 +704,25 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-search",
-		"x-fern-sdk-method-name": "move"
+		"x-fern-sdk-method-name": "move",
+		"x-forge-params": {
+			"id": {
+				"description": "AI Search instance ID.",
+				"flagName": "instance-id"
+			},
+			"name": {
+				"default": "default",
+				"description": "Namespace currently containing the instance.",
+				"flagName": "source-namespace"
+			},
+			"new_namespace": {
+				"description": "Namespace to move the instance into.",
+				"flagName": "destination-namespace"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces": {
-		"description": "Create a new namespace.",
+		"description": "Create a namespace for organizing AI Search instances.",
 		"operationId": "ai-search-create-namespace",
 		"parameters": [
 			{
@@ -919,7 +946,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create namespace.",
+		"summary": "Create a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -936,10 +963,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-params": {
+			"name": {
+				"description": "Name for the new namespace.",
+				"flagName": "namespace",
+				"positional": true
+			}
+		}
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}": {
-		"description": "Update namespace.",
+		"description": "Update the description of an existing namespace. The default namespace cannot be modified.",
 		"operationId": "ai-search-update-namespace",
 		"parameters": [
 			{
@@ -1118,7 +1152,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update namespace.",
+		"summary": "Update a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -1135,6 +1169,12 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-params": {
+			"name": {
+				"description": "Namespace to update.",
+				"flagName": "namespace"
+			}
+		}
 	}
 }

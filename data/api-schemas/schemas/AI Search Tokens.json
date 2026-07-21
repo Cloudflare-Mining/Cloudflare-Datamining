@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/tokens/{id}": {
-		"description": "Delete token.",
+		"description": "Permanently delete a stored AI Search credential. Credentials in use by an instance cannot be deleted.",
 		"operationId": "ai-search-delete-tokens",
 		"parameters": [
 			{
@@ -187,7 +187,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete token.",
+		"summary": "Delete a token",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -204,10 +204,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.tokens",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-params": {
+			"id": {
+				"description": "Stored credential record ID.",
+				"flagName": "token-id"
+			}
+		},
+		"x-forge-require-confirmation": "This operation permanently deletes the stored credential."
 	},
 	"GET /accounts/{account_id}/ai-search/tokens": {
-		"description": "List tokens.",
+		"description": "List stored AI Search credentials in the account without exposing their secrets.",
 		"operationId": "ai-search-list-tokens",
 		"parameters": [
 			{
@@ -419,7 +426,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List tokens.",
+		"summary": "List tokens",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -439,7 +446,7 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/tokens/{id}": {
-		"description": "Read token.",
+		"description": "Retrieve a stored AI Search credential without exposing its secret.",
 		"operationId": "ai-search-fetch-tokens",
 		"parameters": [
 			{
@@ -637,7 +644,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Read token.",
+		"summary": "Get a token",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -654,10 +661,16 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.tokens",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-params": {
+			"id": {
+				"description": "Stored credential record ID.",
+				"flagName": "token-id"
+			}
+		}
 	},
 	"POST /accounts/{account_id}/ai-search/tokens": {
-		"description": "Create a new token.",
+		"description": "Create a stored Cloudflare credential for an AI Search instance to access its data source.",
 		"operationId": "ai-search-create-tokens",
 		"parameters": [
 			{
@@ -832,7 +845,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create token.",
+		"summary": "Create a token",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -849,10 +862,27 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.tokens",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-params": {
+			"cf_api_id": {
+				"description": "Cloudflare API token ID.",
+				"flagName": "api-token-id"
+			},
+			"cf_api_key": {
+				"description": "Cloudflare API token value.",
+				"flagName": "api-token"
+			},
+			"legacy": {
+				"description": "Whether the credential uses the legacy API key format."
+			},
+			"name": {
+				"description": "Human-readable name for the credential.",
+				"positional": true
+			}
+		}
 	},
 	"PUT /accounts/{account_id}/ai-search/tokens/{id}": {
-		"description": "Update token.",
+		"description": "Replace a stored AI Search credential and invalidate cached credentials for instances that use it.",
 		"operationId": "ai-search-update-tokens",
 		"parameters": [
 			{
@@ -1077,7 +1107,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update token.",
+		"summary": "Update a token",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -1094,6 +1124,26 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.tokens",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-params": {
+			"cf_api_id": {
+				"description": "Cloudflare API token ID.",
+				"flagName": "api-token-id"
+			},
+			"cf_api_key": {
+				"description": "Cloudflare API token value.",
+				"flagName": "api-token"
+			},
+			"id": {
+				"description": "Stored credential record ID.",
+				"flagName": "token-id"
+			},
+			"legacy": {
+				"description": "Whether the credential uses the legacy API key format."
+			},
+			"name": {
+				"description": "Human-readable name for the credential."
+			}
+		}
 	}
 }

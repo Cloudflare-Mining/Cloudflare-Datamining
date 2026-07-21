@@ -3573,6 +3573,11 @@
 											"items": {
 												"additionalProperties": false,
 												"properties": {
+													"block_any_queries": {
+														"description": "Whether to block DNS ANY queries. Defaults to true.",
+														"type": "boolean",
+														"x-auditable": true
+													},
 													"burst_sensitivity": {
 														"description": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
 														"type": "string",
@@ -3629,6 +3634,7 @@
 													"profile_sensitivity",
 													"rate_sensitivity",
 													"burst_sensitivity",
+													"block_any_queries",
 													"created_on",
 													"modified_on"
 												],
@@ -3904,6 +3910,11 @@
 										"result": {
 											"additionalProperties": false,
 											"properties": {
+												"block_any_queries": {
+													"description": "Whether to block DNS ANY queries. Defaults to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"burst_sensitivity": {
 													"description": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
 													"type": "string",
@@ -3960,6 +3971,7 @@
 												"profile_sensitivity",
 												"rate_sensitivity",
 												"burst_sensitivity",
+												"block_any_queries",
 												"created_on",
 												"modified_on"
 											],
@@ -8636,6 +8648,11 @@
 					"schema": {
 						"additionalProperties": false,
 						"properties": {
+							"block_any_queries": {
+								"description": "The new value for whether to block DNS ANY queries. Optional.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"burst_sensitivity": {
 								"description": "The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'.",
 								"type": "string",
@@ -8757,6 +8774,11 @@
 										"result": {
 											"additionalProperties": false,
 											"properties": {
+												"block_any_queries": {
+													"description": "Whether to block DNS ANY queries. Defaults to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"burst_sensitivity": {
 													"description": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
 													"type": "string",
@@ -8813,6 +8835,7 @@
 												"profile_sensitivity",
 												"rate_sensitivity",
 												"burst_sensitivity",
+												"block_any_queries",
 												"created_on",
 												"modified_on"
 											],
@@ -11313,6 +11336,11 @@
 					"schema": {
 						"additionalProperties": false,
 						"properties": {
+							"block_any_queries": {
+								"description": "Whether to block DNS ANY queries. Optional. Defaults to true.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"burst_sensitivity": {
 								"description": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
 								"type": "string",
@@ -11452,6 +11480,11 @@
 										"result": {
 											"additionalProperties": false,
 											"properties": {
+												"block_any_queries": {
+													"description": "Whether to block DNS ANY queries. Defaults to true.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"burst_sensitivity": {
 													"description": "The burst sensitivity. Must be one of 'low', 'medium', 'high'.",
 													"type": "string",
@@ -11508,6 +11541,7 @@
 												"profile_sensitivity",
 												"rate_sensitivity",
 												"burst_sensitivity",
+												"block_any_queries",
 												"created_on",
 												"modified_on"
 											],
