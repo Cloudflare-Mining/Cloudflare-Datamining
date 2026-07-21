@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/moq/relays/{relay_id}": {
-		"description": "Soft-deletes a MoQ relay.",
+		"description": "Soft-deletes a MoQ relay. The relay ID goes in the URL path —\n`DELETE /accounts/{account_id}/moq/relays/{relay_id}` — not the\nrequest body; there is no collection-level delete endpoint.\n",
 		"operationId": "moq-relays-delete",
 		"parameters": [
 			{
@@ -104,7 +104,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -160,7 +160,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -216,7 +216,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -372,7 +372,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -428,7 +428,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -484,7 +484,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -707,7 +707,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -856,10 +856,14 @@
 																		"description": "A single upstream MOQT server publisher.",
 																		"properties": {
 																			"url": {
-																				"description": "Upstream MOQT server publisher URL.",
+																				"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
+																				"format": "uri",
 																				"type": "string"
 																			}
 																		},
+																		"required": [
+																			"url"
+																		],
 																		"type": "object"
 																	},
 																	"type": "array"
@@ -927,7 +931,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -983,7 +987,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1039,7 +1043,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1295,7 +1299,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1351,7 +1355,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1407,7 +1411,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1461,7 +1465,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/moq/relays": {
-		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is set to defaults (upstreams off).\nUse PUT to modify.\n",
+		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is always set to defaults (upstreams\noff) and cannot be supplied here — sending a non-empty `config` is\nrejected (21014); `null` or `{}` is accepted as absent. Use PUT to\nconfigure the relay after it exists.\n",
 		"operationId": "moq-relays-create",
 		"parameters": [
 			{
@@ -1484,6 +1488,7 @@
 							"name": {
 								"description": "Human-readable name for the relay.",
 								"example": "Production Live Stream",
+								"minLength": 1,
 								"type": "string"
 							}
 						},
@@ -1565,10 +1570,14 @@
 																		"description": "A single upstream MOQT server publisher.",
 																		"properties": {
 																			"url": {
-																				"description": "Upstream MOQT server publisher URL.",
+																				"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
+																				"format": "uri",
 																				"type": "string"
 																			}
 																		},
+																		"required": [
+																			"url"
+																		],
 																		"type": "object"
 																	},
 																	"type": "array"
@@ -1725,7 +1734,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1764,7 +1773,7 @@
 						}
 					}
 				},
-				"description": "Bad request. Possible errors:\n- 21002: Request body too small (empty or missing name)\n- 21004: Failed to decode body (invalid JSON)\n"
+				"description": "Bad request. Possible errors:\n- 21002: Request body too small\n- 21004: Failed to decode body (invalid JSON)\n- 21011: Invalid relay name (must not be empty)\n- 21014: Config cannot be set on create (set it via PUT after the relay exists)\n"
 			},
 			"409": {
 				"content": {
@@ -1781,7 +1790,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1837,7 +1846,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1893,7 +1902,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -2191,7 +2200,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -2247,7 +2256,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -2303,7 +2312,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -2359,7 +2368,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -2413,7 +2422,7 @@
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/moq/relays/{relay_id}": {
-		"description": "Updates a relay's name and/or configuration. Partial updates:\nomitted fields are preserved. Config sub-objects replace as\nwhole objects when present.\n",
+		"description": "Updates a relay's name and/or configuration. The relay ID goes in\nthe URL path — `PUT /accounts/{account_id}/moq/relays/{relay_id}` —\nnot the request body; there is no collection-level update endpoint.\nThis is also the only way to set a relay's config (config cannot be\nset at create time). Partial updates: omitted fields are preserved;\nconfig sub-objects replace as whole objects when present.\n",
 		"operationId": "moq-relays-update",
 		"parameters": [
 			{
@@ -2460,10 +2469,14 @@
 													"description": "A single upstream MOQT server publisher.",
 													"properties": {
 														"url": {
-															"description": "Upstream MOQT server publisher URL.",
+															"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
+															"format": "uri",
 															"type": "string"
 														}
 													},
+													"required": [
+														"url"
+													],
 													"type": "object"
 												},
 												"type": "array"
@@ -2553,10 +2566,14 @@
 																		"description": "A single upstream MOQT server publisher.",
 																		"properties": {
 																			"url": {
-																				"description": "Upstream MOQT server publisher URL.",
+																				"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
+																				"format": "uri",
 																				"type": "string"
 																			}
 																		},
+																		"required": [
+																			"url"
+																		],
 																		"type": "object"
 																	},
 																	"type": "array"
@@ -2624,7 +2641,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -2663,7 +2680,7 @@
 						}
 					}
 				},
-				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21011 (name must not be empty)."
+				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21011 (name must not be empty), 21013 (invalid upstream URL — must be an absolute moqt:// or https:// URL with a host)."
 			},
 			"404": {
 				"content": {
@@ -2680,7 +2697,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -2736,7 +2753,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: Token limit reached — max 10 tokens per relay (HTTP 409)\n- 21010: Invalid operations — must be a non-empty subset of \"publish\" and \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n- 21012: Token expiry too long — expires must be no more than 1 year out (HTTP 400)\n- 21013: Invalid upstream URL — must be an absolute moqt:// or https:// URL with a host (HTTP 400)\n- 21014: Config cannot be set on create — set it via PUT after the relay exists (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {

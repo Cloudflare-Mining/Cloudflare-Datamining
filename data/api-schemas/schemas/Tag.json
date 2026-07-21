@@ -212,10 +212,11 @@
 					"items": {
 						"properties": {
 							"field": {
-								"description": "The indicator field to search on. Allowed: value, indicatorType.",
+								"description": "The indicator field to search on. Allowed: value, indicatorType, uuid.",
 								"enum": [
 									"value",
-									"indicatorType"
+									"indicatorType",
+									"uuid"
 								],
 								"example": "value",
 								"type": "string"
@@ -644,6 +645,18 @@
 					},
 					"type": "array"
 				}
+			},
+			{
+				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+				"in": "query",
+				"name": "cache",
+				"schema": {
+					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+					"enum": [
+						"from-graph"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -1031,10 +1044,11 @@
 					"items": {
 						"properties": {
 							"field": {
-								"description": "The indicator field to search on. Allowed: value, indicatorType.",
+								"description": "The indicator field to search on. Allowed: value, indicatorType, uuid.",
 								"enum": [
 									"value",
-									"indicatorType"
+									"indicatorType",
+									"uuid"
 								],
 								"example": "value",
 								"type": "string"

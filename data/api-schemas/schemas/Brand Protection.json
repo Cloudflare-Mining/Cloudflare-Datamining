@@ -540,6 +540,28 @@
 				"schema": {
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "Optional page number for paginated list requests. Defaults to 1 when only per_page is supplied. Omit page and per_page to preserve the legacy full-list response.",
+					"exclusiveMinimum": true,
+					"maximum": 1000000,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "Optional number of queries per page for paginated list requests. Defaults to 100 when only page is supplied. Maximum 100. Omit page and per_page to preserve the legacy full-list response.",
+					"exclusiveMinimum": true,
+					"maximum": 100,
+					"minimum": 0,
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
@@ -547,65 +569,221 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"items": {
-								"properties": {
-									"created": {
-										"type": "string"
-									},
-									"parameters": {
-										"nullable": true,
+							"properties": {
+								"errors": {
+									"items": {
 										"properties": {
-											"max_time": {
-												"type": "string"
-											},
-											"min_time": {
-												"type": "string"
-											},
-											"string_matches": {
-												"items": {
-													"properties": {
-														"pattern": {
-															"minLength": 1,
-															"type": "string"
-														}
+											"code": {
+												"anyOf": [
+													{
+														"type": "string"
 													},
-													"required": [
-														"pattern"
-													],
-													"type": "object"
-												},
-												"type": "array"
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
 											}
 										},
 										"required": [
-											"string_matches"
+											"message"
 										],
 										"type": "object"
 									},
-									"query_id": {
-										"type": "integer"
-									},
-									"query_tag": {
-										"type": "string"
-									},
-									"scan": {
-										"type": "boolean"
-									},
-									"updated": {
-										"type": "string"
-									}
+									"type": "array"
 								},
-								"required": [
-									"query_id",
-									"query_tag",
-									"scan",
-									"parameters",
-									"created",
-									"updated"
-								],
-								"type": "object"
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"anyOf": [
+										{
+											"items": {
+												"properties": {
+													"created": {
+														"type": "string"
+													},
+													"parameters": {
+														"nullable": true,
+														"properties": {
+															"max_time": {
+																"type": "string"
+															},
+															"min_time": {
+																"type": "string"
+															},
+															"string_matches": {
+																"items": {
+																	"properties": {
+																		"pattern": {
+																			"maxLength": 200,
+																			"minLength": 1,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"pattern"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"string_matches"
+														],
+														"type": "object"
+													},
+													"query_id": {
+														"type": "integer"
+													},
+													"query_tag": {
+														"type": "string"
+													},
+													"scan": {
+														"type": "boolean"
+													},
+													"updated": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"query_id",
+													"query_tag",
+													"scan",
+													"parameters",
+													"created",
+													"updated"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										{
+											"properties": {
+												"created": {
+													"type": "string"
+												},
+												"parameters": {
+													"nullable": true,
+													"properties": {
+														"max_time": {
+															"type": "string"
+														},
+														"min_time": {
+															"type": "string"
+														},
+														"string_matches": {
+															"items": {
+																"properties": {
+																	"pattern": {
+																		"maxLength": 200,
+																		"minLength": 1,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"pattern"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"string_matches"
+													],
+													"type": "object"
+												},
+												"query_id": {
+													"type": "integer"
+												},
+												"query_tag": {
+													"type": "string"
+												},
+												"scan": {
+													"type": "boolean"
+												},
+												"updated": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"query_id",
+												"query_tag",
+												"scan",
+												"parameters",
+												"created",
+												"updated"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"result_info": {
+									"description": "Present on paginated list responses when page or per_page is supplied.",
+									"properties": {
+										"count": {
+											"minimum": 0,
+											"type": "integer"
+										},
+										"page": {
+											"exclusiveMinimum": true,
+											"minimum": 0,
+											"type": "integer"
+										},
+										"per_page": {
+											"exclusiveMinimum": true,
+											"minimum": 0,
+											"type": "integer"
+										},
+										"total_count": {
+											"minimum": 0,
+											"type": "integer"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
 							},
-							"type": "array"
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1692,6 +1870,7 @@
 								"items": {
 									"properties": {
 										"pattern": {
+											"maxLength": 200,
 											"minLength": 1,
 											"type": "string"
 										}
@@ -1701,6 +1880,7 @@
 									],
 									"type": "object"
 								},
+								"maxItems": 100,
 								"minItems": 1,
 								"type": "array"
 							},
@@ -1798,6 +1978,7 @@
 								"items": {
 									"properties": {
 										"pattern": {
+											"maxLength": 200,
 											"minLength": 1,
 											"type": "string"
 										}
@@ -1807,6 +1988,7 @@
 									],
 									"type": "object"
 								},
+								"maxItems": 100,
 								"minItems": 1,
 								"type": "array"
 							},

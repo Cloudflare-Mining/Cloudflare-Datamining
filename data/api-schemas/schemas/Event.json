@@ -607,6 +607,17 @@
 					],
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "cache",
+				"schema": {
+					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+					"enum": [
+						"from-graph"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
