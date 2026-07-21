@@ -1,24 +1,59 @@
 {
 	"name": "@cloudflare/create-nimbus-docs",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.5.0"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/create-nimbus-docs",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-7anKqbQVTru5YOTxTNpRuB6uu3acf+1gF1h757kVOVSer+b7pwhQZGTBM/XPAnZnovQCgCb4hKn4eH2BKXpJYA==",
 				"shasum": "4dd1ef9fe8be3f3fca63aebb7fc4d3743708f36c",
 				"tarball": "https://registry.npmjs.org/@cloudflare/create-nimbus-docs/-/create-nimbus-docs-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 118,
+				"integrity": "sha512-7anKqbQVTru5YOTxTNpRuB6uu3acf+1gF1h757kVOVSer+b7pwhQZGTBM/XPAnZnovQCgCb4hKn4eH2BKXpJYA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCNSGfbR8NgTCIO47J4lrfAwNtYK8ZTSYWLrvl8TiiXjgIhAKySZSvyFOjjn7UMAKy9Z+hOOhPNOIYme5Yaxc+t7mcI",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 118
+			}
+		},
+		"0.5.0": {
+			"name": "@cloudflare/create-nimbus-docs",
+			"version": "0.5.0",
+			"dependencies": {
+				"@clack/prompts": "^0.9.1",
+				"giget": "^3.3.0",
+				"mri": "^1.2.0"
+			},
+			"devDependencies": {
+				"@types/mri": "^1.1.4",
+				"@types/node": "^20.17.0",
+				"tsdown": "^0.20.3",
+				"tsx": "^4.22.3",
+				"typescript": "^5.8.3"
+			},
+			"bin": {
+				"create-nimbus-docs": "dist/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-HOO/QD6UCsh2V8qZNKVNZqZnK0U8nCjBzyqzdo68JhsnRhGHOv0qMuadSsKRv6bKNYYMP4bq8tTqnrrfO/vxFg==",
+				"shasum": "656e5e7e06086f805a96716a6565b40a3870ea45",
+				"tarball": "https://registry.npmjs.org/@cloudflare/create-nimbus-docs/-/create-nimbus-docs-0.5.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 21938,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCNSGfbR8NgTCIO47J4lrfAwNtYK8ZTSYWLrvl8TiiXjgIhAKySZSvyFOjjn7UMAKy9Z+hOOhPNOIYme5Yaxc+t7mcI"
+						"sig": "MEUCICfqX20XvQZAYbuXldxabwRF9aYdmvqno1qBr8+vzFU/AiEA92ydRdkd3xfDKtkgOU1JVYvEDXJO2D3PZgMr7S8qrzE="
 					}
 				]
+			},
+			"engines": {
+				"node": ">=22.12.0"
 			}
 		}
 	}

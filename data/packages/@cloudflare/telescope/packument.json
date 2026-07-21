@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/telescope",
 	"dist-tags": {
-		"latest": "1.1.1"
+		"latest": "1.2.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -126,6 +126,61 @@
 					}
 				},
 				"unpackedSize": 428991
+			},
+			"engines": {
+				"node": ">=24"
+			}
+		},
+		"1.2.0": {
+			"name": "@cloudflare/telescope",
+			"version": "1.2.0",
+			"dependencies": {
+				"@sitespeed.io/throttle": "^5.0.0",
+				"adm-zip": "^0.5.16",
+				"commander": "^10.0.0",
+				"ejs": "^3.1.10",
+				"ffmpeg": "^0.0.4",
+				"playwright": "^1.60.0",
+				"playwright-webkit": "^1.60.0",
+				"zod": "^3.25.76"
+			},
+			"devDependencies": {
+				"@playwright/test": "^1.60.0",
+				"@types/adm-zip": "^0.5.7",
+				"@types/ejs": "^3.1.5",
+				"@types/node": "^25.2.1",
+				"@typescript-eslint/eslint-plugin": "^8.54.0",
+				"@typescript-eslint/parser": "^8.54.0",
+				"@vitest/coverage-v8": "^4.1.8",
+				"eslint": "^9.39.2",
+				"msw": "^2.12.10",
+				"prettier": "^3.6.2",
+				"prettier-plugin-ejs": "^1.0.3",
+				"ts-node": "^10.9.2",
+				"typescript": "^5.9.3",
+				"vitest": "^4.1.8"
+			},
+			"bin": {
+				"telescope": "dist/src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-sZpBWZVvO2vzxFCQIpvMYi8ZsJiu9JcBzYVEmn/g4SZ3y5wra35AqN9R3uJ4Z3zdYc2OlC4G1WW2Wfr15LsVjA==",
+				"shasum": "8c831ad83d037884208ce0b5c68d72365f2996b0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/telescope/-/telescope-1.2.0.tgz",
+				"fileCount": 77,
+				"unpackedSize": 435575,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2ftelescope@1.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCtFgoeJ0x4/GGxRgYJ/rvIX8VzPLdq36ZuelehS6+izAIgJs0QOdbSkn+Ohq8LuTdaP35ElRGs6HD+LihUlY3Ygjo="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=24"
