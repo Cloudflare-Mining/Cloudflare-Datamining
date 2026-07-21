@@ -1669,8 +1669,8 @@
 																								"type": "object"
 																							},
 																							"learned_available": {
-																								"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
-																								"example": true,
+																								"description": "Deprecated. Always false.",
+																								"example": false,
 																								"type": "boolean",
 																								"x-auditable": true
 																							},
