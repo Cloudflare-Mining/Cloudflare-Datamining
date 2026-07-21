@@ -42,7 +42,7 @@
 	<li><strong>Authentic Narrative:</strong> Position Cloudflare’s employer brand as an authentic reflection of our&nbsp; culture, attracting builders and sellers who are passionate about shaping an AI-first Internet.</li>
 	<li><strong>Future Talent Pipelines:</strong> Run early-career, university, and diversity recruiting initiatives with the same structured, metrics-driven approach applied to our senior staff engineering hires.</li>
 </ul>
-<h3>Highly Valued Signals</h3>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li><strong>Ideal Non-Traditional Backgrounds: </strong>We highly value senior people leaders&nbsp; from Management Consulting, Investment Banking, Engineering, Sales or corporate strategy environments, other functions within people leadership, where problem-solving begins with systems-level modeling, rigorous data diagnostics, and structural thinking.</li>
 	<li><strong>Infrastructure Tech Deep Roots:</strong> Prior leadership experience at a SaaS, cloud infrastructure, cybersecurity, consumer, company where keeping a world-class technical bar is foundational to the company's success.</li>
