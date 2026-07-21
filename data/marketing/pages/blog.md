@@ -1,6 +1,7 @@
 ---
 description: Technical deep dives, product updates, and insights from the teams that are helping to build a better Internet.
 title: The Cloudflare Blog
+image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY31N4V.png
 ---
 
 [Skip to content](#main-content)
