@@ -403,7 +403,7 @@
 		"enabled": true
 	},
 	"billing-unified-checkout-open-invoice": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-unified-checkout-page-rules": {
 		"enabled": true
@@ -2021,7 +2021,13 @@
 		]
 	},
 	"prg-login-cf-connect-2026": {
-		"enabled": false
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"cta",
+			"no-cta",
+			"orange"
+		]
 	},
 	"prg-media-sidenav-routing-changes": {
 		"enabled": false
