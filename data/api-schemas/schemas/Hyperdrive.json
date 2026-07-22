@@ -3247,6 +3247,597 @@
 			}
 		}
 	},
+	"POST /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}/restart": {
+		"description": "Restarts the connection pool for the specified Hyperdrive configuration without changing its configuration. Existing connections are drained and a new pool is established at the edge.",
+		"operationId": "restart-hyperdrive",
+		"parameters": [
+			{
+				"description": "The Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Define configurations using a unique string identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The unique identifier of the Hyperdrive configuration.",
+				"in": "path",
+				"name": "hyperdrive_id",
+				"required": true,
+				"schema": {
+					"description": "Define configurations using a unique string identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"type": "object"
+												},
+												"success": {
+													"description": "Return the status of the API call success.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"caching": {
+															"discriminator": {
+																"mapping": {
+																	"false": "#/components/schemas/hyperdrive_hyperdrive-caching-enabled",
+																	"true": "#/components/schemas/hyperdrive_hyperdrive-caching-disabled"
+																},
+																"propertyName": "disabled"
+															},
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "Set to true to disable caching of SQL responses. Default is false.",
+																					"type": "boolean",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"disabled": {
+																					"description": "Set to true to disable caching of SQL responses. Default is false.",
+																					"type": "boolean",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"max_age": {
+																					"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
+																					"example": 60,
+																					"type": "integer",
+																					"x-auditable": true
+																				},
+																				"stale_while_revalidate": {
+																					"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
+																					"example": 15,
+																					"type": "integer",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																}
+															],
+															"type": "object"
+														},
+														"created_on": {
+															"description": "Defines the creation time of the Hyperdrive configuration.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Define configurations using a unique string identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "Defines the last modified time of the Hyperdrive configuration.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"mtls": {
+															"description": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.",
+															"properties": {
+																"ca_certificate_id": {
+																	"description": "Define CA certificate ID obtained after uploading CA cert.",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"mtls_certificate_id": {
+																	"description": "Define mTLS certificate ID obtained after uploading client cert.",
+																	"example": "00000000-0000-0000-0000-0000000000",
+																	"type": "string"
+																},
+																"sslmode": {
+																	"description": "Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.",
+																	"example": "verify-full",
+																	"type": "string"
+																}
+															},
+															"title": "mTLS",
+															"type": "object"
+														},
+														"name": {
+															"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
+															"example": "example-hyperdrive",
+															"type": "string",
+															"x-auditable": true
+														},
+														"origin": {
+															"oneOf": [
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "Set the name of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"password": {
+																							"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																							"type": "string",
+																							"writeOnly": true,
+																							"x-sensitive": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql",
+																								"mysql"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"user": {
+																							"description": "Set the user of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"host": {
+																					"description": "Defines the host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"port": {
+																					"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+																					"example": 5432,
+																					"type": "integer",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"port"
+																			],
+																			"title": "Public Database",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Public Database"
+																},
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "Set the name of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"password": {
+																							"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																							"type": "string",
+																							"writeOnly": true,
+																							"x-sensitive": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql",
+																								"mysql"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"user": {
+																							"description": "Set the user of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"access_client_id": {
+																					"description": "Defines the Client ID of the Access token to use when connecting to the origin database.",
+																					"example": "0123456789abcdef0123456789abcdef.access",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"access_client_secret": {
+																					"description": "Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.",
+																					"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"writeOnly": true,
+																					"x-sensitive": true
+																				},
+																				"host": {
+																					"description": "Defines the host (hostname or IP) of your origin database.",
+																					"example": "database.example.com",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"host",
+																				"access_client_id",
+																				"access_client_secret"
+																			],
+																			"title": "Access-protected Database behind Cloudflare Tunnel",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Access-protected Database behind Cloudflare Tunnel"
+																},
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"database": {
+																							"description": "Set the name of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"password": {
+																							"description": "Set the password needed to access your origin database. The API never returns this write-only value.",
+																							"type": "string",
+																							"writeOnly": true,
+																							"x-sensitive": true
+																						},
+																						"scheme": {
+																							"description": "Specifies the URL scheme used to connect to your origin database.",
+																							"enum": [
+																								"postgres",
+																								"postgresql",
+																								"mysql"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"user": {
+																							"description": "Set the user of your origin database.",
+																							"example": "postgres",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"title": "Connection Options",
+																					"type": "object"
+																				}
+																			],
+																			"required": [
+																				"scheme",
+																				"database",
+																				"user",
+																				"password"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"description": "Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself.\n",
+																			"properties": {
+																				"service_id": {
+																					"description": "The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.",
+																					"example": "0123456789abcdef0123456789abcdef",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"service_id"
+																			],
+																			"title": "Database reachable through a Workers VPC",
+																			"type": "object"
+																		}
+																	],
+																	"title": "Database reachable through a Workers VPC"
+																}
+															],
+															"type": "object"
+														},
+														"origin_connection_limit": {
+															"description": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.\n\nMaximum allowed: 20 for free tier accounts, 100 for paid tier accounts.\nIf not specified, defaults to 20 for free tier and 60 for paid tier.\nContact Cloudflare if you need a higher limit.\n",
+															"example": 60,
+															"minimum": 5,
+															"type": "integer",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"origin"
+													],
+													"type": "object"
+												}
+											],
+											"required": [
+												"caching"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Restart Hyperdrive Response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Return the status of the API call success.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Restart Hyperdrive Failure Response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Restart Hyperdrive",
+		"tags": [
+			"Hyperdrive"
+		],
+		"x-api-token-group": [
+			"Hyperdrive Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "restart",
+		"x-forge-hidden": true
+	},
 	"PUT /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"description": "Updates and returns the specified Hyperdrive configuration.",
 		"operationId": "update-hyperdrive",
