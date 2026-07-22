@@ -124,10 +124,12 @@
 																	"x-auditable": true
 																},
 																"foundation_dns": {
-																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+																	"deprecated": true,
+																	"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 																},
 																"internal_dns": {
 																	"description": "Settings for this internal zone.",
@@ -378,6 +380,7 @@
 																	"description": "Nameserver type",
 																	"enum": [
 																		"cloudflare.standard",
+																		"cloudflare.advanced",
 																		"custom.account",
 																		"custom.tenant",
 																		"custom.zone"
@@ -523,10 +526,12 @@
 																			"x-auditable": true
 																		},
 																		"foundation_dns": {
-																			"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+																			"deprecated": true,
+																			"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 																		},
 																		"internal_dns": {
 																			"description": "Settings for this internal zone.",
@@ -777,6 +782,7 @@
 																			"description": "Nameserver type",
 																			"enum": [
 																				"cloudflare.standard",
+																				"cloudflare.advanced",
 																				"custom.account",
 																				"custom.tenant",
 																				"custom.zone"
@@ -990,10 +996,12 @@
 												"x-auditable": true
 											},
 											"foundation_dns": {
-												"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+												"deprecated": true,
+												"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
 												"example": false,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 											},
 											"internal_dns": {
 												"description": "Settings for this internal zone.",
@@ -1125,6 +1133,7 @@
 												"description": "Nameserver type",
 												"enum": [
 													"cloudflare.standard",
+													"cloudflare.advanced",
 													"custom.account",
 													"custom.tenant",
 													"custom.zone"
@@ -1254,10 +1263,12 @@
 																	"x-auditable": true
 																},
 																"foundation_dns": {
-																	"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+																	"deprecated": true,
+																	"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 																},
 																"internal_dns": {
 																	"description": "Settings for this internal zone.",
@@ -1508,6 +1519,7 @@
 																	"description": "Nameserver type",
 																	"enum": [
 																		"cloudflare.standard",
+																		"cloudflare.advanced",
 																		"custom.account",
 																		"custom.tenant",
 																		"custom.zone"
@@ -1653,10 +1665,12 @@
 																			"x-auditable": true
 																		},
 																		"foundation_dns": {
-																			"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+																			"deprecated": true,
+																			"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 																		},
 																		"internal_dns": {
 																			"description": "Settings for this internal zone.",
@@ -1907,6 +1921,7 @@
 																			"description": "Nameserver type",
 																			"enum": [
 																				"cloudflare.standard",
+																				"cloudflare.advanced",
 																				"custom.account",
 																				"custom.tenant",
 																				"custom.zone"

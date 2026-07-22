@@ -2192,6 +2192,23 @@
 					"type": "array",
 					"uniqueItems": true
 				}
+			},
+			{
+				"description": "Schema kinds to include in exported OpenAPI schemas.",
+				"explode": true,
+				"in": "query",
+				"name": "include_schema_kind",
+				"schema": {
+					"items": {
+						"enum": [
+							"learned"
+						],
+						"type": "string"
+					},
+					"type": "array",
+					"uniqueItems": true
+				},
+				"style": "form"
 			}
 		],
 		"responses": {
