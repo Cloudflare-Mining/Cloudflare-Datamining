@@ -1042,16 +1042,19 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"ANTHROPIC",
 									"BITBUCKET",
 									"BOX",
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
+									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
 									"MICROSOFT_INTERNAL",
+									"OPENAI",
 									"SALESFORCE",
 									"SLACK"
 								],
@@ -1141,16 +1144,19 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"ANTHROPIC",
 									"BITBUCKET",
 									"BOX",
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
+									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
 									"MICROSOFT_INTERNAL",
+									"OPENAI",
 									"SALESFORCE",
 									"SLACK"
 								],
@@ -1217,16 +1223,19 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"ANTHROPIC",
 									"BITBUCKET",
 									"BOX",
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
+									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
 									"MICROSOFT_INTERNAL",
+									"OPENAI",
 									"SALESFORCE",
 									"SLACK"
 								],

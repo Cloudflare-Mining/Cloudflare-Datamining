@@ -5140,53 +5140,68 @@
 				"content": {
 					"application/json": {
 						"examples": {
-							"Microsoft365": {
-								"summary": "Microsoft 365 application",
+							"SampleSuccessfulReturn": {
+								"summary": "Example application list response",
 								"value": [
 									{
-										"auth_methods": [
+										"errors": [],
+										"messages": [],
+										"result": [
 											{
-												"display_name": "OAuth 2.0 Admin Consent",
-												"id": "oauth2_standard"
+												"auth_methods": [
+													{
+														"display_name": "OAuth 2.0 Admin Consent",
+														"id": "oauth2_standard"
+													}
+												],
+												"category": "Productivity",
+												"description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
+												"display_name": "Microsoft",
+												"dlp_enabled": true,
+												"id": "microsoft_internal",
+												"logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
+												"permissions": [
+													{
+														"display_name": "Read all users' full profiles",
+														"scope": "User.Read.All",
+														"severity": "high"
+													},
+													{
+														"display_name": "Read all files",
+														"scope": "Files.Read.All",
+														"severity": "high"
+													},
+													{
+														"display_name": "Read and write mail",
+														"scope": "Mail.ReadWrite",
+														"severity": "critical"
+													}
+												],
+												"supported_environments": [
+													"standard",
+													"fedramp"
+												],
+												"use_cases": [
+													{
+														"display_name": "Cloud Access Security Broker",
+														"id": "casb"
+													},
+													{
+														"display_name": "Cloud Email Security",
+														"id": "ces"
+													}
+												]
 											}
 										],
-										"category": "Productivity",
-										"description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
-										"display_name": "Microsoft",
-										"dlp_enabled": true,
-										"id": "MICROSOFT_INTERNAL",
-										"logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
-										"permissions": [
-											{
-												"display_name": "Read all users' full profiles",
-												"scope": "User.Read.All",
-												"severity": "high"
-											},
-											{
-												"display_name": "Read all files",
-												"scope": "Files.Read.All",
-												"severity": "high"
-											},
-											{
-												"display_name": "Read and write mail",
-												"scope": "Mail.ReadWrite",
-												"severity": "critical"
-											}
-										],
-										"supported_environments": [
-											"standard",
-											"fedramp"
-										],
-										"use_cases": [
-											{
-												"display_name": "Cloud Access Security Broker",
-												"id": "casb"
-											},
-											{
-												"display_name": "Cloud Email Security",
-												"id": "ces"
-											}
-										]
+										"result_info": {
+											"count": 1,
+											"next": null,
+											"page": 1,
+											"per_page": 10,
+											"previous": null,
+											"total_count": 1
+										},
+										"success": true
 									}
 								]
 							}
@@ -5234,16 +5249,19 @@
 										"type": "boolean"
 									},
 									"id": {
-										"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+										"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 										"enum": [
+											"ANTHROPIC",
 											"BITBUCKET",
 											"BOX",
 											"CONFLUENCE",
 											"DROPBOX",
 											"GITHUB",
+											"GOOGLE_CLOUD_PLATFORM",
 											"GOOGLE_WORKSPACE",
 											"JIRA",
 											"MICROSOFT_INTERNAL",
+											"OPENAI",
 											"SALESFORCE",
 											"SLACK"
 										],
@@ -5381,14 +5399,17 @@
 				"required": true,
 				"schema": {
 					"enum": [
+						"ANTHROPIC",
 						"BITBUCKET",
 						"BOX",
 						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
+						"GOOGLE_CLOUD_PLATFORM",
 						"GOOGLE_WORKSPACE",
 						"JIRA",
 						"MICROSOFT_INTERNAL",
+						"OPENAI",
 						"SALESFORCE",
 						"SLACK"
 					],
@@ -5419,7 +5440,7 @@
 									"description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
 									"display_name": "Microsoft",
 									"dlp_enabled": true,
-									"id": "MICROSOFT_INTERNAL",
+									"id": "microsoft_internal",
 									"instructions": "You'll need a Microsoft 365 admin account with Global Admin or Application Admin role.",
 									"logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
 									"use_cases": [
@@ -5513,16 +5534,19 @@
 									"type": "boolean"
 								},
 								"id": {
-									"description": "Vendor identifier.\n\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+									"description": "Vendor identifier.\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 									"enum": [
+										"ANTHROPIC",
 										"BITBUCKET",
 										"BOX",
 										"CONFLUENCE",
 										"DROPBOX",
 										"GITHUB",
+										"GOOGLE_CLOUD_PLATFORM",
 										"GOOGLE_WORKSPACE",
 										"JIRA",
 										"MICROSOFT_INTERNAL",
+										"OPENAI",
 										"SALESFORCE",
 										"SLACK"
 									],
@@ -5723,14 +5747,17 @@
 				"required": true,
 				"schema": {
 					"enum": [
+						"ANTHROPIC",
 						"BITBUCKET",
 						"BOX",
 						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
+						"GOOGLE_CLOUD_PLATFORM",
 						"GOOGLE_WORKSPACE",
 						"JIRA",
 						"MICROSOFT_INTERNAL",
+						"OPENAI",
 						"SALESFORCE",
 						"SLACK"
 					],
@@ -5855,14 +5882,17 @@
 				"required": true,
 				"schema": {
 					"enum": [
+						"ANTHROPIC",
 						"BITBUCKET",
 						"BOX",
 						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
+						"GOOGLE_CLOUD_PLATFORM",
 						"GOOGLE_WORKSPACE",
 						"JIRA",
 						"MICROSOFT_INTERNAL",
+						"OPENAI",
 						"SALESFORCE",
 						"SLACK"
 					],
@@ -6021,6 +6051,13 @@
 								"summary": "Anthropic Admin API Key setup flow",
 								"value": [
 									{
+										"auth_config": {
+											"authorization_url": null,
+											"client_id": null,
+											"requires_pkce": false,
+											"scopes": [],
+											"url_placeholders": []
+										},
 										"default": true,
 										"description": "Connect to Anthropic using an admin API key.",
 										"id": "anthropic_admin_api_key",

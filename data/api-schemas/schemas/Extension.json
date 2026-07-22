@@ -1,0 +1,1216 @@
+{
+	"GET /accounts/{account_id}/registrar-sandbox/extensions": {
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on each supported\nextension (TLD).\n\nThis endpoint uses cursor-based pagination. Results are ordered by\nextension name by default. To fetch the next page, pass the `cursor`\nvalue from the `result_info` object in the response as the `cursor`\nquery parameter in your next request. An empty `cursor` string\nindicates there are no more pages.\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"operationId": "sandbox-registrar-extension-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter extensions by exact name match.\nFor example, `name=com` returns only the `com` extension.\n",
+				"example": "com",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Opaque token from a previous response's `result_info.cursor`.\nPass this value to fetch the next page of results. Omit (or\npass an empty string) for the first page.\n",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"maxLength": 256,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Number of items to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Sort direction for results. Defaults to ascending order.\n",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Column to sort results by. Defaults to `name` when omitted.\n",
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"default": "name",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+												"properties": {
+													"metadata": {
+														"description": "Extension metadata",
+														"properties": {
+															"name": {
+																"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+																"type": "string"
+															},
+															"tld": {
+																"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"tld"
+														],
+														"type": "object"
+													},
+													"registration_schema": {
+														"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
+														"type": "object"
+													}
+												},
+												"required": [
+													"metadata",
+													"registration_schema"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"description": "Cursor-based pagination metadata.",
+											"properties": {
+												"count": {
+													"description": "Number of items in the current result set.",
+													"type": "integer"
+												},
+												"cursor": {
+													"description": "Opaque token for the next page. Empty string when no more pages.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "Number of items per page.",
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully returned extensions.",
+				"headers": {
+					"ETag": {
+						"description": "Opaque identifier for the current version of the response. Send this value in the `If-None-Match` header on subsequent requests to enable conditional GET.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "Not Modified — client cache is current. Returned when the request includes an `If-None-Match` header matching the current ETag."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List extensions failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List extensions",
+		"tags": [
+			"Extension"
+		]
+	},
+	"GET /accounts/{account_id}/registrar-sandbox/extensions/{extension}": {
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on a specific\nextension (TLD).\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"operationId": "sandbox-registrar-extension-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "The extension name (e.g., `com`, `co.uk`).",
+				"example": "com",
+				"in": "path",
+				"name": "extension",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+											"properties": {
+												"metadata": {
+													"description": "Extension metadata",
+													"properties": {
+														"name": {
+															"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+															"type": "string"
+														},
+														"tld": {
+															"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"tld"
+													],
+													"type": "object"
+												},
+												"registration_schema": {
+													"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
+													"type": "object"
+												}
+											},
+											"required": [
+												"metadata",
+												"registration_schema"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully returned extension.",
+				"headers": {
+					"ETag": {
+						"description": "Opaque identifier for the current version of the response. Send this value in the `If-None-Match` header on subsequent requests to enable conditional GET.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "Not Modified — client cache is current. Returned when the request includes an `If-None-Match` header matching the current ETag."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get extension failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get extension",
+		"tags": [
+			"Extension"
+		]
+	},
+	"GET /accounts/{account_id}/registrar/extensions": {
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on each supported\nextension (TLD).\n\nThis endpoint uses cursor-based pagination. Results are ordered by\nextension name by default. To fetch the next page, pass the `cursor`\nvalue from the `result_info` object in the response as the `cursor`\nquery parameter in your next request. An empty `cursor` string\nindicates there are no more pages.\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"operationId": "registrar-extension-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter extensions by exact name match.\nFor example, `name=com` returns only the `com` extension.\n",
+				"example": "com",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Opaque token from a previous response's `result_info.cursor`.\nPass this value to fetch the next page of results. Omit (or\npass an empty string) for the first page.\n",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"maxLength": 256,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Number of items to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Sort direction for results. Defaults to ascending order.\n",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Column to sort results by. Defaults to `name` when omitted.\n",
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"default": "name",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+												"properties": {
+													"metadata": {
+														"description": "Extension metadata",
+														"properties": {
+															"name": {
+																"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+																"type": "string"
+															},
+															"tld": {
+																"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"tld"
+														],
+														"type": "object"
+													},
+													"registration_schema": {
+														"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
+														"type": "object"
+													}
+												},
+												"required": [
+													"metadata",
+													"registration_schema"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"description": "Cursor-based pagination metadata.",
+											"properties": {
+												"count": {
+													"description": "Number of items in the current result set.",
+													"type": "integer"
+												},
+												"cursor": {
+													"description": "Opaque token for the next page. Empty string when no more pages.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "Number of items per page.",
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully returned extensions.",
+				"headers": {
+					"ETag": {
+						"description": "Opaque identifier for the current version of the response. Send this value in the `If-None-Match` header on subsequent requests to enable conditional GET.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "Not Modified — client cache is current. Returned when the request includes an `If-None-Match` header matching the current ETag."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List extensions failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List extensions",
+		"tags": [
+			"Extension"
+		]
+	},
+	"GET /accounts/{account_id}/registrar/extensions/{extension}": {
+		"description": "Returns metadata and JSON Schema documents describing the expected input\nstructure for registration operations on a specific\nextension (TLD).\n\nSupports HTTP conditional GET via `ETag`. Include the `ETag` value\nfrom a previous response in an `If-None-Match` header to receive a\n`304 Not Modified` when the data has not changed.\n",
+		"operationId": "registrar-extension-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "The extension name (e.g., `com`, `co.uk`).",
+				"example": "com",
+				"in": "path",
+				"name": "extension",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Extension entry with metadata and JSON Schema documents for the registration operation.",
+											"properties": {
+												"metadata": {
+													"description": "Extension metadata",
+													"properties": {
+														"name": {
+															"description": "The full name of the extension. For example, \"co.uk\", or \"uk\"",
+															"type": "string"
+														},
+														"tld": {
+															"description": "The tld of the extension. For example, for \"co.uk\", it's \"uk\". For \"uk\", it's \"uk\"",
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"tld"
+													],
+													"type": "object"
+												},
+												"registration_schema": {
+													"description": "JSON Schema describing the expected input structure for registration operations on this extension.",
+													"type": "object"
+												}
+											},
+											"required": [
+												"metadata",
+												"registration_schema"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully returned extension.",
+				"headers": {
+					"ETag": {
+						"description": "Opaque identifier for the current version of the response. Send this value in the `If-None-Match` header on subsequent requests to enable conditional GET.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "Not Modified — client cache is current. Returned when the request includes an `If-None-Match` header matching the current ETag."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get extension failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get extension",
+		"tags": [
+			"Extension"
+		]
+	}
+}

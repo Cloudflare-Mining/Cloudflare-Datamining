@@ -224,7 +224,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.crawl",
+		"x-fern-sdk-group-name": "browser-run.crawl",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -305,7 +305,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true
 	},
@@ -643,7 +643,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.crawl",
+		"x-fern-sdk-group-name": "browser-run.crawl",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -842,7 +842,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser",
 		"x-fern-sdk-method-name": "launch",
 		"x-forge-hidden": true
 	},
@@ -1052,7 +1052,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser",
 		"x-fern-sdk-method-name": "connect",
 		"x-forge-hidden": true
 	},
@@ -1250,7 +1250,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.json",
+		"x-fern-sdk-group-name": "browser-run.devtools.json",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -1457,7 +1457,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser.targets",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
 		"x-fern-sdk-method-name": "activate",
 		"x-forge-hidden": true
 	},
@@ -1664,7 +1664,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser.targets",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
 		"x-fern-sdk-method-name": "close",
 		"x-forge-hidden": true
 	},
@@ -1862,7 +1862,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser.targets",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -2095,7 +2095,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser.targets",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -2326,7 +2326,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser",
 		"x-fern-sdk-method-name": "protocol",
 		"x-forge-hidden": true
 	},
@@ -2508,7 +2508,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser",
 		"x-fern-sdk-method-name": "version",
 		"x-forge-hidden": true
 	},
@@ -2660,7 +2660,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser.page",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser.page",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -2794,7 +2794,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.session",
+		"x-fern-sdk-group-name": "browser-run.devtools.session",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -2918,7 +2918,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.session",
+		"x-fern-sdk-group-name": "browser-run.devtools.session",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -3975,8 +3975,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.accessibilityTree",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "accessibility-tree",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/content": {
@@ -4899,8 +4899,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.content",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "content",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/crawl": {
@@ -6229,7 +6229,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.crawl",
+		"x-fern-sdk-group-name": "browser-run.crawl",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -6402,7 +6402,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -7383,8 +7383,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.json",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "json",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/links": {
@@ -8306,8 +8306,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.links",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "links",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/markdown": {
@@ -9218,8 +9218,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.markdown",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "markdown",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/pdf": {
@@ -10251,8 +10251,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.pdf",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "pdf",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/scrape": {
@@ -11257,8 +11257,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.scrape",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "scrape",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/screenshot": {
@@ -12287,8 +12287,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.screenshot",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "screenshot",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/browser-rendering/snapshot": {
@@ -13433,8 +13433,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.snapshot",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-group-name": "browser-run.quick-action",
+		"x-fern-sdk-method-name": "snapshot",
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new": {
@@ -13632,7 +13632,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "browser-rendering.devtools.browser.targets",
+		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}

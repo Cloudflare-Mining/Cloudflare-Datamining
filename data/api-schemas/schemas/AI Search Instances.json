@@ -1849,65 +1849,29 @@
 							"properties": {
 								"result": {
 									"items": {
+										"additionalProperties": false,
 										"properties": {
 											"ai_gateway_id": {
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"ai_search_model": {
-												"enum": [
-													"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-													"@cf/zai-org/glm-4.7-flash",
-													"@cf/meta/llama-3.1-8b-instruct-fast",
-													"@cf/meta/llama-3.1-8b-instruct-fp8",
-													"@cf/meta/llama-4-scout-17b-16e-instruct",
-													"@cf/qwen/qwen3-30b-a3b-fp8",
-													"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-													"@cf/moonshotai/kimi-k2-instruct",
-													"@cf/google/gemma-3-12b-it",
-													"@cf/google/gemma-4-26b-a4b-it",
-													"@cf/moonshotai/kimi-k2.5",
-													"anthropic/claude-3-7-sonnet",
-													"anthropic/claude-sonnet-4",
-													"anthropic/claude-opus-4",
-													"anthropic/claude-3-5-haiku",
-													"cerebras/qwen-3-235b-a22b-instruct",
-													"cerebras/qwen-3-235b-a22b-thinking",
-													"cerebras/llama-3.3-70b",
-													"cerebras/llama-4-maverick-17b-128e-instruct",
-													"cerebras/llama-4-scout-17b-16e-instruct",
-													"cerebras/gpt-oss-120b",
-													"google-ai-studio/gemini-2.5-flash",
-													"google-ai-studio/gemini-2.5-pro",
-													"grok/grok-4",
-													"groq/llama-3.3-70b-versatile",
-													"groq/llama-3.1-8b-instant",
-													"openai/gpt-5",
-													"openai/gpt-5-mini",
-													"openai/gpt-5-nano",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"cache": {
-												"default": true,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"cache_threshold": {
-												"default": "close_enough",
 												"enum": [
 													"super_strict_match",
 													"close_enough",
 													"flexible_friend",
-													"anything_goes"
+													"anything_goes",
+													null
 												],
-												"type": "string",
-												"x-auditable": true
+												"nullable": true,
+												"type": "string"
 											},
 											"cache_ttl": {
 												"anyOf": [
@@ -1971,35 +1935,30 @@
 														],
 														"type": "number"
 													}
-												],
-												"default": 172800,
-												"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
-												"x-auditable": true
+												]
+											},
+											"chunk": {
+												"type": "boolean"
 											},
 											"chunk_overlap": {
-												"default": 10,
-												"maximum": 30,
-												"minimum": 0,
-												"type": "integer",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"chunk_size": {
-												"minimum": 64,
-												"type": "integer",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"created_at": {
 												"format": "date-time",
-												"readOnly": true,
 												"type": "string"
 											},
 											"created_by": {
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"custom_metadata": {
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"data_type": {
 															"enum": [
@@ -2011,8 +1970,6 @@
 															"type": "string"
 														},
 														"field_name": {
-															"maxLength": 64,
-															"minLength": 1,
 															"type": "string"
 														}
 													},
@@ -2022,77 +1979,41 @@
 													],
 													"type": "object"
 												},
-												"maxItems": 5,
-												"type": "array",
-												"x-auditable": true
+												"nullable": true,
+												"type": "array"
 											},
 											"embedding_model": {
-												"enum": [
-													"@cf/qwen/qwen3-embedding-0.6b",
-													"@cf/qwen/qwen3-vl-embedding-2b",
-													"@cf/baai/bge-m3",
-													"@cf/baai/bge-large-en-v1.5",
-													"@cf/google/embeddinggemma-300m",
-													"google-ai-studio/gemini-embedding-001",
-													"google-ai-studio/gemini-embedding-2-preview",
-													"google-ai-studio/gemini-embedding-2",
-													"openai/text-embedding-3-small",
-													"openai/text-embedding-3-large",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"enable": {
-												"default": true,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"engine_version": {
-												"default": 3,
-												"readOnly": true,
 												"type": "number"
 											},
 											"fusion_method": {
-												"default": "rrf",
 												"enum": [
 													"max",
 													"rrf"
 												],
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"hybrid_search_enabled": {
-												"default": false,
-												"deprecated": true,
-												"description": "Deprecated — use index_method instead.",
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"id": {
-												"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-												"example": "my-ai-search",
-												"maxLength": 64,
-												"minLength": 1,
-												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"index_method": {
-												"default": {
-													"keyword": false,
-													"vector": true
+												"additionalProperties": {
+													"nullable": true
 												},
-												"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
 												"properties": {
 													"keyword": {
-														"description": "Enable keyword (BM25) storage backend.",
 														"type": "boolean"
 													},
 													"vector": {
-														"description": "Enable vector (embedding) storage backend.",
 														"type": "boolean"
 													}
 												},
@@ -2100,15 +2021,15 @@
 													"vector",
 													"keyword"
 												],
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"indexing_options": {
+												"additionalProperties": {
+													"nullable": true
+												},
 												"nullable": true,
 												"properties": {
 													"keyword_tokenizer": {
-														"default": "porter",
-														"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 														"enum": [
 															"porter",
 															"trigram"
@@ -2116,23 +2037,22 @@
 														"type": "string"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"last_activity": {
 												"format": "date-time",
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"max_num_results": {
-												"default": 10,
-												"maximum": 50,
-												"minimum": 1,
-												"type": "integer",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"metadata": {
+												"additionalProperties": {
+													"nullable": true
+												},
+												"nullable": true,
 												"properties": {
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
@@ -2141,36 +2061,32 @@
 														"type": "string"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"modified_at": {
 												"format": "date-time",
-												"readOnly": true,
 												"type": "string"
 											},
 											"modified_by": {
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"namespace": {
-												"nullable": true,
 												"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-												"readOnly": true,
 												"type": "string"
 											},
 											"paused": {
-												"default": false,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"public_endpoint_id": {
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"public_endpoint_params": {
+												"additionalProperties": {
+													"nullable": true
+												},
+												"nullable": true,
 												"properties": {
 													"authorized_hosts": {
 														"items": {
@@ -2179,54 +2095,51 @@
 														"type": "array"
 													},
 													"chat_completions_endpoint": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"disabled": {
-																"default": false,
-																"description": "Disable chat completions endpoint for this public endpoint",
 																"type": "boolean"
 															}
 														},
 														"type": "object"
 													},
 													"custom_domains": {
-														"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 														"items": {
-															"description": "Custom domain hostname (must be a Verified zone on this account).",
-															"example": "search.example.com",
 															"maxLength": 253,
 															"minLength": 1,
+															"pattern": "^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,}$",
 															"type": "string"
 														},
 														"maxItems": 1,
 														"nullable": true,
-														"type": "array",
-														"x-auditable": true
+														"type": "array"
 													},
 													"default_domain_enabled": {
-														"default": true,
-														"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
-														"type": "boolean",
-														"x-auditable": true
+														"type": "boolean"
 													},
 													"enabled": {
-														"default": false,
 														"type": "boolean"
 													},
 													"mcp": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"description": {
-																"default": "Finds exactly what you're looking for",
 																"type": "string"
 															},
 															"disabled": {
-																"default": false,
-																"description": "Disable MCP endpoint for this public endpoint",
 																"type": "boolean"
 															}
 														},
 														"type": "object"
 													},
 													"rate_limit": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"period_ms": {
 																"maximum": 3600000,
@@ -2248,49 +2161,48 @@
 														"type": "object"
 													},
 													"search_endpoint": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"disabled": {
-																"default": false,
-																"description": "Disable search endpoint for this public endpoint",
 																"type": "boolean"
 															}
 														},
 														"type": "object"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"reranking": {
-												"default": false,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"reranking_model": {
-												"enum": [
-													"@cf/baai/bge-reranker-base",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"retrieval_options": {
+												"additionalProperties": {
+													"nullable": true
+												},
 												"nullable": true,
 												"properties": {
 													"boost_by": {
-														"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
-														"example": [
-															{
-																"direction": "desc",
-																"field": "timestamp"
-															}
-														],
 														"items": {
+															"additionalProperties": {
+																"nullable": true
+															},
 															"properties": {
+																"dataType": {
+																	"enum": [
+																		"number",
+																		"datetime",
+																		"text",
+																		"boolean"
+																	],
+																	"type": "string"
+																},
 																"direction": {
-																	"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 																	"enum": [
 																		"asc",
 																		"desc",
@@ -2300,8 +2212,6 @@
 																	"type": "string"
 																},
 																"field": {
-																	"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists.",
-																	"example": "timestamp",
 																	"maxLength": 64,
 																	"minLength": 1,
 																	"type": "string"
@@ -2316,7 +2226,6 @@
 														"type": "array"
 													},
 													"keyword_match_mode": {
-														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 														"enum": [
 															"and",
 															"or"
@@ -2324,135 +2233,69 @@
 														"type": "string"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"rewrite_model": {
-												"enum": [
-													"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-													"@cf/zai-org/glm-4.7-flash",
-													"@cf/meta/llama-3.1-8b-instruct-fast",
-													"@cf/meta/llama-3.1-8b-instruct-fp8",
-													"@cf/meta/llama-4-scout-17b-16e-instruct",
-													"@cf/qwen/qwen3-30b-a3b-fp8",
-													"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-													"@cf/moonshotai/kimi-k2-instruct",
-													"@cf/google/gemma-3-12b-it",
-													"@cf/google/gemma-4-26b-a4b-it",
-													"@cf/moonshotai/kimi-k2.5",
-													"anthropic/claude-3-7-sonnet",
-													"anthropic/claude-sonnet-4",
-													"anthropic/claude-opus-4",
-													"anthropic/claude-3-5-haiku",
-													"cerebras/qwen-3-235b-a22b-instruct",
-													"cerebras/qwen-3-235b-a22b-thinking",
-													"cerebras/llama-3.3-70b",
-													"cerebras/llama-4-maverick-17b-128e-instruct",
-													"cerebras/llama-4-scout-17b-16e-instruct",
-													"cerebras/gpt-oss-120b",
-													"google-ai-studio/gemini-2.5-flash",
-													"google-ai-studio/gemini-2.5-pro",
-													"grok/grok-4",
-													"groq/llama-3.3-70b-versatile",
-													"groq/llama-3.1-8b-instant",
-													"openai/gpt-5",
-													"openai/gpt-5-mini",
-													"openai/gpt-5-nano",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"rewrite_query": {
-												"default": false,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"score_threshold": {
-												"default": 0.4,
-												"maximum": 1,
-												"minimum": 0,
-												"type": "number",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"source": {
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"source_params": {
+												"additionalProperties": {
+													"nullable": true
+												},
 												"nullable": true,
 												"properties": {
 													"exclude_items": {
-														"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
-														"example": [
-															"/admin/**",
-															"/private/**",
-															"**\\temp\\**"
-														],
 														"items": {
-															"maxLength": 512,
-															"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 															"type": "string"
 														},
-														"maxItems": 10,
 														"type": "array"
 													},
 													"include_items": {
-														"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
-														"example": [
-															"/blog/**",
-															"/docs/**/*.html",
-															"**\\blog\\**.html"
-														],
 														"items": {
-															"maxLength": 512,
-															"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 															"type": "string"
 														},
-														"maxItems": 10,
 														"type": "array"
 													},
 													"prefix": {
 														"type": "string"
 													},
 													"r2_jurisdiction": {
-														"default": "default",
 														"type": "string"
 													},
 													"web_crawler": {
-														"default": {
-															"parse_type": "sitemap"
+														"additionalProperties": {
+															"nullable": true
 														},
 														"properties": {
 															"parse_options": {
+																"additionalProperties": {
+																	"nullable": true
+																},
 																"properties": {
 																	"content_selector": {
-																		"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
-																		"example": [
-																			{
-																				"path": "**/blog/**",
-																				"selector": "article div.post-body"
-																			},
-																			{
-																				"path": "**/docs/**",
-																				"selector": "main"
-																			}
-																		],
 																		"items": {
+																			"additionalProperties": {
+																				"nullable": true
+																			},
 																			"properties": {
 																				"path": {
-																					"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
-																					"example": "**/article/**",
 																					"maxLength": 200,
 																					"minLength": 1,
 																					"type": "string"
 																				},
 																				"selector": {
-																					"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
-																					"example": "article div.post-body",
 																					"maxLength": 200,
 																					"minLength": 1,
 																					"type": "string"
@@ -2465,7 +2308,6 @@
 																			"type": "object"
 																		},
 																		"maxItems": 10,
-																		"minItems": 1,
 																		"type": "array"
 																	},
 																	"include_headers": {
@@ -2474,22 +2316,12 @@
 																			"pattern": "^[\\t\\x20-\\x7E]*$",
 																			"type": "string"
 																		},
-																		"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
-																		"example": {
-																			"cache-control": "no-cache, no-store"
-																		},
 																		"type": "object"
 																	},
 																	"include_images": {
-																		"default": false,
 																		"type": "boolean"
 																	},
 																	"specific_sitemaps": {
-																		"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
-																		"example": [
-																			"https://example.com/sitemap.xml",
-																			"https://example.com/blog-sitemap.xml"
-																		],
 																		"items": {
 																			"format": "uri",
 																			"type": "string"
@@ -2498,14 +2330,12 @@
 																		"type": "array"
 																	},
 																	"use_browser_rendering": {
-																		"default": true,
 																		"type": "boolean"
 																	}
 																},
 																"type": "object"
 															},
 															"parse_type": {
-																"default": "sitemap",
 																"enum": [
 																	"sitemap",
 																	"crawl"
@@ -2516,12 +2346,16 @@
 														"type": "object"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"status": {
-												"default": "waiting",
-												"readOnly": true,
+												"type": "string"
+											},
+											"summarization": {
+												"type": "boolean"
+											},
+											"summarization_model": {
+												"nullable": true,
 												"type": "string"
 											},
 											"sync_interval": {
@@ -2574,15 +2408,23 @@
 														],
 														"type": "number"
 													}
-												],
-												"default": 21600,
-												"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
-												"x-auditable": true
+												]
+											},
+											"system_prompt_ai_search": {
+												"nullable": true,
+												"type": "string"
+											},
+											"system_prompt_index_summarization": {
+												"nullable": true,
+												"type": "string"
+											},
+											"system_prompt_rewrite_query": {
+												"nullable": true,
+												"type": "string"
 											},
 											"token_id": {
-												"format": "uuid",
-												"type": "string",
-												"x-auditable": true
+												"nullable": true,
+												"type": "string"
 											},
 											"type": {
 												"enum": [
@@ -2591,14 +2433,55 @@
 													null
 												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											}
 										},
 										"required": [
 											"id",
+											"engine_version",
+											"enable",
+											"type",
+											"source",
+											"source_params",
+											"ai_gateway_id",
+											"token_id",
+											"cache",
+											"cache_threshold",
+											"cache_ttl",
+											"summarization",
+											"rewrite_query",
+											"reranking",
+											"index_method",
+											"hybrid_search_enabled",
+											"fusion_method",
+											"indexing_options",
+											"retrieval_options",
+											"summarization_model",
+											"embedding_model",
+											"rewrite_model",
+											"ai_search_model",
+											"reranking_model",
+											"system_prompt_ai_search",
+											"system_prompt_index_summarization",
+											"system_prompt_rewrite_query",
+											"chunk",
+											"chunk_size",
+											"chunk_overlap",
+											"score_threshold",
+											"max_num_results",
+											"public_endpoint_id",
+											"public_endpoint_params",
+											"paused",
+											"status",
+											"metadata",
+											"custom_metadata",
+											"sync_interval",
 											"created_at",
-											"modified_at"
+											"created_by",
+											"modified_at",
+											"modified_by",
+											"last_activity",
+											"namespace"
 										],
 										"type": "object"
 									},
@@ -3893,65 +3776,29 @@
 							"properties": {
 								"result": {
 									"items": {
+										"additionalProperties": false,
 										"properties": {
 											"ai_gateway_id": {
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"ai_search_model": {
-												"enum": [
-													"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-													"@cf/zai-org/glm-4.7-flash",
-													"@cf/meta/llama-3.1-8b-instruct-fast",
-													"@cf/meta/llama-3.1-8b-instruct-fp8",
-													"@cf/meta/llama-4-scout-17b-16e-instruct",
-													"@cf/qwen/qwen3-30b-a3b-fp8",
-													"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-													"@cf/moonshotai/kimi-k2-instruct",
-													"@cf/google/gemma-3-12b-it",
-													"@cf/google/gemma-4-26b-a4b-it",
-													"@cf/moonshotai/kimi-k2.5",
-													"anthropic/claude-3-7-sonnet",
-													"anthropic/claude-sonnet-4",
-													"anthropic/claude-opus-4",
-													"anthropic/claude-3-5-haiku",
-													"cerebras/qwen-3-235b-a22b-instruct",
-													"cerebras/qwen-3-235b-a22b-thinking",
-													"cerebras/llama-3.3-70b",
-													"cerebras/llama-4-maverick-17b-128e-instruct",
-													"cerebras/llama-4-scout-17b-16e-instruct",
-													"cerebras/gpt-oss-120b",
-													"google-ai-studio/gemini-2.5-flash",
-													"google-ai-studio/gemini-2.5-pro",
-													"grok/grok-4",
-													"groq/llama-3.3-70b-versatile",
-													"groq/llama-3.1-8b-instant",
-													"openai/gpt-5",
-													"openai/gpt-5-mini",
-													"openai/gpt-5-nano",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"cache": {
-												"default": true,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"cache_threshold": {
-												"default": "close_enough",
 												"enum": [
 													"super_strict_match",
 													"close_enough",
 													"flexible_friend",
-													"anything_goes"
+													"anything_goes",
+													null
 												],
-												"type": "string",
-												"x-auditable": true
+												"nullable": true,
+												"type": "string"
 											},
 											"cache_ttl": {
 												"anyOf": [
@@ -4015,35 +3862,30 @@
 														],
 														"type": "number"
 													}
-												],
-												"default": 172800,
-												"description": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).",
-												"x-auditable": true
+												]
+											},
+											"chunk": {
+												"type": "boolean"
 											},
 											"chunk_overlap": {
-												"default": 10,
-												"maximum": 30,
-												"minimum": 0,
-												"type": "integer",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"chunk_size": {
-												"minimum": 64,
-												"type": "integer",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"created_at": {
 												"format": "date-time",
-												"readOnly": true,
 												"type": "string"
 											},
 											"created_by": {
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"custom_metadata": {
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"data_type": {
 															"enum": [
@@ -4055,8 +3897,6 @@
 															"type": "string"
 														},
 														"field_name": {
-															"maxLength": 64,
-															"minLength": 1,
 															"type": "string"
 														}
 													},
@@ -4066,77 +3906,41 @@
 													],
 													"type": "object"
 												},
-												"maxItems": 5,
-												"type": "array",
-												"x-auditable": true
+												"nullable": true,
+												"type": "array"
 											},
 											"embedding_model": {
-												"enum": [
-													"@cf/qwen/qwen3-embedding-0.6b",
-													"@cf/qwen/qwen3-vl-embedding-2b",
-													"@cf/baai/bge-m3",
-													"@cf/baai/bge-large-en-v1.5",
-													"@cf/google/embeddinggemma-300m",
-													"google-ai-studio/gemini-embedding-001",
-													"google-ai-studio/gemini-embedding-2-preview",
-													"google-ai-studio/gemini-embedding-2",
-													"openai/text-embedding-3-small",
-													"openai/text-embedding-3-large",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"enable": {
-												"default": true,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"engine_version": {
-												"default": 3,
-												"readOnly": true,
 												"type": "number"
 											},
 											"fusion_method": {
-												"default": "rrf",
 												"enum": [
 													"max",
 													"rrf"
 												],
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"hybrid_search_enabled": {
-												"default": false,
-												"deprecated": true,
-												"description": "Deprecated — use index_method instead.",
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"id": {
-												"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-												"example": "my-ai-search",
-												"maxLength": 64,
-												"minLength": 1,
-												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"index_method": {
-												"default": {
-													"keyword": false,
-													"vector": true
+												"additionalProperties": {
+													"nullable": true
 												},
-												"description": "Controls which storage backends are used during indexing. Defaults to vector-only.",
 												"properties": {
 													"keyword": {
-														"description": "Enable keyword (BM25) storage backend.",
 														"type": "boolean"
 													},
 													"vector": {
-														"description": "Enable vector (embedding) storage backend.",
 														"type": "boolean"
 													}
 												},
@@ -4144,15 +3948,15 @@
 													"vector",
 													"keyword"
 												],
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"indexing_options": {
+												"additionalProperties": {
+													"nullable": true
+												},
 												"nullable": true,
 												"properties": {
 													"keyword_tokenizer": {
-														"default": "porter",
-														"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 														"enum": [
 															"porter",
 															"trigram"
@@ -4160,23 +3964,22 @@
 														"type": "string"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"last_activity": {
 												"format": "date-time",
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"max_num_results": {
-												"default": 10,
-												"maximum": 50,
-												"minimum": 1,
-												"type": "integer",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"metadata": {
+												"additionalProperties": {
+													"nullable": true
+												},
+												"nullable": true,
 												"properties": {
 													"created_from_aisearch_wizard": {
 														"type": "boolean"
@@ -4185,36 +3988,32 @@
 														"type": "string"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"modified_at": {
 												"format": "date-time",
-												"readOnly": true,
 												"type": "string"
 											},
 											"modified_by": {
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"namespace": {
-												"nullable": true,
 												"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-												"readOnly": true,
 												"type": "string"
 											},
 											"paused": {
-												"default": false,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"public_endpoint_id": {
 												"nullable": true,
-												"readOnly": true,
 												"type": "string"
 											},
 											"public_endpoint_params": {
+												"additionalProperties": {
+													"nullable": true
+												},
+												"nullable": true,
 												"properties": {
 													"authorized_hosts": {
 														"items": {
@@ -4223,54 +4022,51 @@
 														"type": "array"
 													},
 													"chat_completions_endpoint": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"disabled": {
-																"default": false,
-																"description": "Disable chat completions endpoint for this public endpoint",
 																"type": "boolean"
 															}
 														},
 														"type": "object"
 													},
 													"custom_domains": {
-														"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
 														"items": {
-															"description": "Custom domain hostname (must be a Verified zone on this account).",
-															"example": "search.example.com",
 															"maxLength": 253,
 															"minLength": 1,
+															"pattern": "^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,}$",
 															"type": "string"
 														},
 														"maxItems": 1,
 														"nullable": true,
-														"type": "array",
-														"x-auditable": true
+														"type": "array"
 													},
 													"default_domain_enabled": {
-														"default": true,
-														"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
-														"type": "boolean",
-														"x-auditable": true
+														"type": "boolean"
 													},
 													"enabled": {
-														"default": false,
 														"type": "boolean"
 													},
 													"mcp": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"description": {
-																"default": "Finds exactly what you're looking for",
 																"type": "string"
 															},
 															"disabled": {
-																"default": false,
-																"description": "Disable MCP endpoint for this public endpoint",
 																"type": "boolean"
 															}
 														},
 														"type": "object"
 													},
 													"rate_limit": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"period_ms": {
 																"maximum": 3600000,
@@ -4292,49 +4088,48 @@
 														"type": "object"
 													},
 													"search_endpoint": {
+														"additionalProperties": {
+															"nullable": true
+														},
 														"properties": {
 															"disabled": {
-																"default": false,
-																"description": "Disable search endpoint for this public endpoint",
 																"type": "boolean"
 															}
 														},
 														"type": "object"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"reranking": {
-												"default": false,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"reranking_model": {
-												"enum": [
-													"@cf/baai/bge-reranker-base",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"retrieval_options": {
+												"additionalProperties": {
+													"nullable": true
+												},
 												"nullable": true,
 												"properties": {
 													"boost_by": {
-														"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
-														"example": [
-															{
-																"direction": "desc",
-																"field": "timestamp"
-															}
-														],
 														"items": {
+															"additionalProperties": {
+																"nullable": true
+															},
 															"properties": {
+																"dataType": {
+																	"enum": [
+																		"number",
+																		"datetime",
+																		"text",
+																		"boolean"
+																	],
+																	"type": "string"
+																},
 																"direction": {
-																	"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.",
 																	"enum": [
 																		"asc",
 																		"desc",
@@ -4344,8 +4139,6 @@
 																	"type": "string"
 																},
 																"field": {
-																	"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not_exists); text/boolean fields only support exists/not_exists.",
-																	"example": "timestamp",
 																	"maxLength": 64,
 																	"minLength": 1,
 																	"type": "string"
@@ -4360,7 +4153,6 @@
 														"type": "array"
 													},
 													"keyword_match_mode": {
-														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 														"enum": [
 															"and",
 															"or"
@@ -4368,135 +4160,69 @@
 														"type": "string"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"rewrite_model": {
-												"enum": [
-													"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-													"@cf/zai-org/glm-4.7-flash",
-													"@cf/meta/llama-3.1-8b-instruct-fast",
-													"@cf/meta/llama-3.1-8b-instruct-fp8",
-													"@cf/meta/llama-4-scout-17b-16e-instruct",
-													"@cf/qwen/qwen3-30b-a3b-fp8",
-													"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-													"@cf/moonshotai/kimi-k2-instruct",
-													"@cf/google/gemma-3-12b-it",
-													"@cf/google/gemma-4-26b-a4b-it",
-													"@cf/moonshotai/kimi-k2.5",
-													"anthropic/claude-3-7-sonnet",
-													"anthropic/claude-sonnet-4",
-													"anthropic/claude-opus-4",
-													"anthropic/claude-3-5-haiku",
-													"cerebras/qwen-3-235b-a22b-instruct",
-													"cerebras/qwen-3-235b-a22b-thinking",
-													"cerebras/llama-3.3-70b",
-													"cerebras/llama-4-maverick-17b-128e-instruct",
-													"cerebras/llama-4-scout-17b-16e-instruct",
-													"cerebras/gpt-oss-120b",
-													"google-ai-studio/gemini-2.5-flash",
-													"google-ai-studio/gemini-2.5-pro",
-													"grok/grok-4",
-													"groq/llama-3.3-70b-versatile",
-													"groq/llama-3.1-8b-instant",
-													"openai/gpt-5",
-													"openai/gpt-5-mini",
-													"openai/gpt-5-nano",
-													"",
-													null
-												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"rewrite_query": {
-												"default": false,
-												"type": "boolean",
-												"x-auditable": true
+												"type": "boolean"
 											},
 											"score_threshold": {
-												"default": 0.4,
-												"maximum": 1,
-												"minimum": 0,
-												"type": "number",
-												"x-auditable": true
+												"nullable": true,
+												"type": "number"
 											},
 											"source": {
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											},
 											"source_params": {
+												"additionalProperties": {
+													"nullable": true
+												},
 												"nullable": true,
 												"properties": {
 													"exclude_items": {
-														"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
-														"example": [
-															"/admin/**",
-															"/private/**",
-															"**\\temp\\**"
-														],
 														"items": {
-															"maxLength": 512,
-															"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 															"type": "string"
 														},
-														"maxItems": 10,
 														"type": "array"
 													},
 													"include_items": {
-														"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
-														"example": [
-															"/blog/**",
-															"/docs/**/*.html",
-															"**\\blog\\**.html"
-														],
 														"items": {
-															"maxLength": 512,
-															"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 															"type": "string"
 														},
-														"maxItems": 10,
 														"type": "array"
 													},
 													"prefix": {
 														"type": "string"
 													},
 													"r2_jurisdiction": {
-														"default": "default",
 														"type": "string"
 													},
 													"web_crawler": {
-														"default": {
-															"parse_type": "sitemap"
+														"additionalProperties": {
+															"nullable": true
 														},
 														"properties": {
 															"parse_options": {
+																"additionalProperties": {
+																	"nullable": true
+																},
 																"properties": {
 																	"content_selector": {
-																		"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.",
-																		"example": [
-																			{
-																				"path": "**/blog/**",
-																				"selector": "article div.post-body"
-																			},
-																			{
-																				"path": "**/docs/**",
-																				"selector": "main"
-																			}
-																		],
 																		"items": {
+																			"additionalProperties": {
+																				"nullable": true
+																			},
 																			"properties": {
 																				"path": {
-																					"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
-																					"example": "**/article/**",
 																					"maxLength": 200,
 																					"minLength": 1,
 																					"type": "string"
 																				},
 																				"selector": {
-																					"description": "CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, \\). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.",
-																					"example": "article div.post-body",
 																					"maxLength": 200,
 																					"minLength": 1,
 																					"type": "string"
@@ -4509,7 +4235,6 @@
 																			"type": "object"
 																		},
 																		"maxItems": 10,
-																		"minItems": 1,
 																		"type": "array"
 																	},
 																	"include_headers": {
@@ -4518,22 +4243,12 @@
 																			"pattern": "^[\\t\\x20-\\x7E]*$",
 																			"type": "string"
 																		},
-																		"description": "Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).",
-																		"example": {
-																			"cache-control": "no-cache, no-store"
-																		},
 																		"type": "object"
 																	},
 																	"include_images": {
-																		"default": false,
 																		"type": "boolean"
 																	},
 																	"specific_sitemaps": {
-																		"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
-																		"example": [
-																			"https://example.com/sitemap.xml",
-																			"https://example.com/blog-sitemap.xml"
-																		],
 																		"items": {
 																			"format": "uri",
 																			"type": "string"
@@ -4542,14 +4257,12 @@
 																		"type": "array"
 																	},
 																	"use_browser_rendering": {
-																		"default": true,
 																		"type": "boolean"
 																	}
 																},
 																"type": "object"
 															},
 															"parse_type": {
-																"default": "sitemap",
 																"enum": [
 																	"sitemap",
 																	"crawl"
@@ -4560,12 +4273,16 @@
 														"type": "object"
 													}
 												},
-												"type": "object",
-												"x-auditable": true
+												"type": "object"
 											},
 											"status": {
-												"default": "waiting",
-												"readOnly": true,
+												"type": "string"
+											},
+											"summarization": {
+												"type": "boolean"
+											},
+											"summarization_model": {
+												"nullable": true,
 												"type": "string"
 											},
 											"sync_interval": {
@@ -4618,15 +4335,23 @@
 														],
 														"type": "number"
 													}
-												],
-												"default": 21600,
-												"description": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).",
-												"x-auditable": true
+												]
+											},
+											"system_prompt_ai_search": {
+												"nullable": true,
+												"type": "string"
+											},
+											"system_prompt_index_summarization": {
+												"nullable": true,
+												"type": "string"
+											},
+											"system_prompt_rewrite_query": {
+												"nullable": true,
+												"type": "string"
 											},
 											"token_id": {
-												"format": "uuid",
-												"type": "string",
-												"x-auditable": true
+												"nullable": true,
+												"type": "string"
 											},
 											"type": {
 												"enum": [
@@ -4635,14 +4360,55 @@
 													null
 												],
 												"nullable": true,
-												"type": "string",
-												"x-auditable": true
+												"type": "string"
 											}
 										},
 										"required": [
 											"id",
+											"engine_version",
+											"enable",
+											"type",
+											"source",
+											"source_params",
+											"ai_gateway_id",
+											"token_id",
+											"cache",
+											"cache_threshold",
+											"cache_ttl",
+											"summarization",
+											"rewrite_query",
+											"reranking",
+											"index_method",
+											"hybrid_search_enabled",
+											"fusion_method",
+											"indexing_options",
+											"retrieval_options",
+											"summarization_model",
+											"embedding_model",
+											"rewrite_model",
+											"ai_search_model",
+											"reranking_model",
+											"system_prompt_ai_search",
+											"system_prompt_index_summarization",
+											"system_prompt_rewrite_query",
+											"chunk",
+											"chunk_size",
+											"chunk_overlap",
+											"score_threshold",
+											"max_num_results",
+											"public_endpoint_id",
+											"public_endpoint_params",
+											"paused",
+											"status",
+											"metadata",
+											"custom_metadata",
+											"sync_interval",
 											"created_at",
-											"modified_at"
+											"created_by",
+											"modified_at",
+											"modified_by",
+											"last_activity",
+											"namespace"
 										],
 										"type": "object"
 									},

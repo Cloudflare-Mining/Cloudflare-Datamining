@@ -1186,26 +1186,6 @@
 																						"type": "string",
 																						"x-auditable": true
 																					},
-																					"data": {
-																						"description": "Components of a MX record.",
-																						"properties": {
-																							"priority": {
-																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																								"example": 10,
-																								"maximum": 65535,
-																								"minimum": 0,
-																								"type": "number",
-																								"x-auditable": true
-																							},
-																							"target": {
-																								"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																								"example": "mx.example.com",
-																								"type": "string",
-																								"x-auditable": true
-																							}
-																						},
-																						"type": "object"
-																					},
 																					"priority": {
 																						"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																						"example": 10,
@@ -3472,14 +3452,6 @@
 																					"data": {
 																						"description": "Components of a URI record.",
 																						"properties": {
-																							"priority": {
-																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																								"example": 10,
-																								"maximum": 65535,
-																								"minimum": 0,
-																								"type": "number",
-																								"x-auditable": true
-																							},
 																							"target": {
 																								"description": "The record content.",
 																								"example": "http://example.com/example.html",
@@ -4217,26 +4189,6 @@
 																								"format": "hostname",
 																								"type": "string",
 																								"x-auditable": true
-																							},
-																							"data": {
-																								"description": "Components of a MX record.",
-																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
-																									"target": {
-																										"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																										"example": "mx.example.com",
-																										"type": "string",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
 																							},
 																							"priority": {
 																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -6504,14 +6456,6 @@
 																							"data": {
 																								"description": "Components of a URI record.",
 																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
 																									"target": {
 																										"description": "The record content.",
 																										"example": "http://example.com/example.html",
@@ -7398,26 +7342,6 @@
 																					"format": "hostname",
 																					"type": "string",
 																					"x-auditable": true
-																				},
-																				"data": {
-																					"description": "Components of a MX record.",
-																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
-																						"target": {
-																							"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																							"example": "mx.example.com",
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"type": "object"
 																				},
 																				"priority": {
 																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -9685,14 +9609,6 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -10392,26 +10308,6 @@
 																							"format": "hostname",
 																							"type": "string",
 																							"x-auditable": true
-																						},
-																						"data": {
-																							"description": "Components of a MX record.",
-																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
-																								"target": {
-																									"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																									"example": "mx.example.com",
-																									"type": "string",
-																									"x-auditable": true
-																								}
-																							},
-																							"type": "object"
 																						},
 																						"priority": {
 																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -12679,14 +12575,6 @@
 																						"data": {
 																							"description": "Components of a URI record.",
 																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
 																								"target": {
 																									"description": "The record content.",
 																									"example": "http://example.com/example.html",
@@ -13756,26 +13644,6 @@
 																						"format": "hostname",
 																						"type": "string",
 																						"x-auditable": true
-																					},
-																					"data": {
-																						"description": "Components of a MX record.",
-																						"properties": {
-																							"priority": {
-																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																								"example": 10,
-																								"maximum": 65535,
-																								"minimum": 0,
-																								"type": "number",
-																								"x-auditable": true
-																							},
-																							"target": {
-																								"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																								"example": "mx.example.com",
-																								"type": "string",
-																								"x-auditable": true
-																							}
-																						},
-																						"type": "object"
 																					},
 																					"priority": {
 																						"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -16043,14 +15911,6 @@
 																					"data": {
 																						"description": "Components of a URI record.",
 																						"properties": {
-																							"priority": {
-																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																								"example": 10,
-																								"maximum": 65535,
-																								"minimum": 0,
-																								"type": "number",
-																								"x-auditable": true
-																							},
 																							"target": {
 																								"description": "The record content.",
 																								"example": "http://example.com/example.html",
@@ -17259,26 +17119,6 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"data": {
-														"description": "Components of a MX record.",
-														"properties": {
-															"priority": {
-																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																"example": 10,
-																"maximum": 65535,
-																"minimum": 0,
-																"type": "number",
-																"x-auditable": true
-															},
-															"target": {
-																"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																"example": "mx.example.com",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
-													},
 													"priority": {
 														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
@@ -19545,14 +19385,6 @@
 													"data": {
 														"description": "Components of a URI record.",
 														"properties": {
-															"priority": {
-																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																"example": 10,
-																"maximum": 65535,
-																"minimum": 0,
-																"type": "number",
-																"x-auditable": true
-															},
 															"target": {
 																"description": "The record content.",
 																"example": "http://example.com/example.html",
@@ -20136,26 +19968,6 @@
 																					"format": "hostname",
 																					"type": "string",
 																					"x-auditable": true
-																				},
-																				"data": {
-																					"description": "Components of a MX record.",
-																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
-																						"target": {
-																							"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																							"example": "mx.example.com",
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"type": "object"
 																				},
 																				"priority": {
 																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -22423,14 +22235,6 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -23130,26 +22934,6 @@
 																							"format": "hostname",
 																							"type": "string",
 																							"x-auditable": true
-																						},
-																						"data": {
-																							"description": "Components of a MX record.",
-																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
-																								"target": {
-																									"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																									"example": "mx.example.com",
-																									"type": "string",
-																									"x-auditable": true
-																								}
-																							},
-																							"type": "object"
 																						},
 																						"priority": {
 																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -25417,14 +25201,6 @@
 																						"data": {
 																							"description": "Components of a URI record.",
 																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
 																								"target": {
 																									"description": "The record content.",
 																									"example": "http://example.com/example.html",
@@ -26198,26 +25974,6 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"data": {
-														"description": "Components of a MX record.",
-														"properties": {
-															"priority": {
-																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																"example": 10,
-																"maximum": 65535,
-																"minimum": 0,
-																"type": "number",
-																"x-auditable": true
-															},
-															"target": {
-																"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																"example": "mx.example.com",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
-													},
 													"priority": {
 														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 														"example": 10,
@@ -28484,14 +28240,6 @@
 													"data": {
 														"description": "Components of a URI record.",
 														"properties": {
-															"priority": {
-																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																"example": 10,
-																"maximum": 65535,
-																"minimum": 0,
-																"type": "number",
-																"x-auditable": true
-															},
 															"target": {
 																"description": "The record content.",
 																"example": "http://example.com/example.html",
@@ -29075,26 +28823,6 @@
 																					"format": "hostname",
 																					"type": "string",
 																					"x-auditable": true
-																				},
-																				"data": {
-																					"description": "Components of a MX record.",
-																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
-																						"target": {
-																							"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																							"example": "mx.example.com",
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"type": "object"
 																				},
 																				"priority": {
 																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -31362,14 +31090,6 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -32069,26 +31789,6 @@
 																							"format": "hostname",
 																							"type": "string",
 																							"x-auditable": true
-																						},
-																						"data": {
-																							"description": "Components of a MX record.",
-																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
-																								"target": {
-																									"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																									"example": "mx.example.com",
-																									"type": "string",
-																									"x-auditable": true
-																								}
-																							},
-																							"type": "object"
 																						},
 																						"priority": {
 																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -34356,14 +34056,6 @@
 																						"data": {
 																							"description": "Components of a URI record.",
 																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
 																								"target": {
 																									"description": "The record content.",
 																									"example": "http://example.com/example.html",
@@ -35165,26 +34857,6 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"data": {
-																			"description": "Components of a MX record.",
-																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
-																				"target": {
-																					"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																					"example": "mx.example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
 																		"priority": {
 																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
@@ -37451,14 +37123,6 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -37962,26 +37626,6 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"data": {
-																			"description": "Components of a MX record.",
-																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
-																				"target": {
-																					"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																					"example": "mx.example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
 																		"priority": {
 																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
@@ -40248,14 +39892,6 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -40747,26 +40383,6 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"data": {
-																			"description": "Components of a MX record.",
-																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
-																				"target": {
-																					"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																					"example": "mx.example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
 																		"priority": {
 																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
@@ -43033,14 +42649,6 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -43648,26 +43256,6 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
-																							"data": {
-																								"description": "Components of a MX record.",
-																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
-																									"target": {
-																										"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																										"example": "mx.example.com",
-																										"type": "string",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
-																							},
 																							"priority": {
 																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
@@ -45934,14 +45522,6 @@
 																							"data": {
 																								"description": "Components of a URI record.",
 																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
 																									"target": {
 																										"description": "The record content.",
 																										"example": "http://example.com/example.html",
@@ -46539,26 +46119,6 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
-																							"data": {
-																								"description": "Components of a MX record.",
-																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
-																									"target": {
-																										"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																										"example": "mx.example.com",
-																										"type": "string",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
-																							},
 																							"priority": {
 																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
@@ -48825,14 +48385,6 @@
 																							"data": {
 																								"description": "Components of a URI record.",
 																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
 																									"target": {
 																										"description": "The record content.",
 																										"example": "http://example.com/example.html",
@@ -49430,26 +48982,6 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
-																							"data": {
-																								"description": "Components of a MX record.",
-																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
-																									"target": {
-																										"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																										"example": "mx.example.com",
-																										"type": "string",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
-																							},
 																							"priority": {
 																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
@@ -51716,14 +51248,6 @@
 																							"data": {
 																								"description": "Components of a URI record.",
 																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
 																									"target": {
 																										"description": "The record content.",
 																										"example": "http://example.com/example.html",
@@ -52321,26 +51845,6 @@
 																								"type": "string",
 																								"x-auditable": true
 																							},
-																							"data": {
-																								"description": "Components of a MX record.",
-																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
-																									"target": {
-																										"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																										"example": "mx.example.com",
-																										"type": "string",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
-																							},
 																							"priority": {
 																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																								"example": 10,
@@ -54607,14 +54111,6 @@
 																							"data": {
 																								"description": "Components of a URI record.",
 																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
 																									"target": {
 																										"description": "The record content.",
 																										"example": "http://example.com/example.html",
@@ -56229,26 +55725,6 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"data": {
-																			"description": "Components of a MX record.",
-																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
-																				"target": {
-																					"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																					"example": "mx.example.com",
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
 																		"priority": {
 																			"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
 																			"example": 10,
@@ -58515,14 +57991,6 @@
 																		"data": {
 																			"description": "Components of a URI record.",
 																			"properties": {
-																				"priority": {
-																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																					"example": 10,
-																					"maximum": 65535,
-																					"minimum": 0,
-																					"type": "number",
-																					"x-auditable": true
-																				},
 																				"target": {
 																					"description": "The record content.",
 																					"example": "http://example.com/example.html",
@@ -59140,26 +58608,6 @@
 																								"format": "hostname",
 																								"type": "string",
 																								"x-auditable": true
-																							},
-																							"data": {
-																								"description": "Components of a MX record.",
-																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
-																									"target": {
-																										"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																										"example": "mx.example.com",
-																										"type": "string",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
 																							},
 																							"priority": {
 																								"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -61427,14 +60875,6 @@
 																							"data": {
 																								"description": "Components of a URI record.",
 																								"properties": {
-																									"priority": {
-																										"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																										"example": 10,
-																										"maximum": 65535,
-																										"minimum": 0,
-																										"type": "number",
-																										"x-auditable": true
-																									},
 																									"target": {
 																										"description": "The record content.",
 																										"example": "http://example.com/example.html",
@@ -62602,26 +62042,6 @@
 														"format": "hostname",
 														"type": "string",
 														"x-auditable": true
-													},
-													"data": {
-														"description": "Components of a MX record.",
-														"properties": {
-															"priority": {
-																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																"example": 10,
-																"maximum": 65535,
-																"minimum": 0,
-																"type": "number",
-																"x-auditable": true
-															},
-															"target": {
-																"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																"example": "mx.example.com",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
 													},
 													"priority": {
 														"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -64889,14 +64309,6 @@
 													"data": {
 														"description": "Components of a URI record.",
 														"properties": {
-															"priority": {
-																"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																"example": 10,
-																"maximum": 65535,
-																"minimum": 0,
-																"type": "number",
-																"x-auditable": true
-															},
 															"target": {
 																"description": "The record content.",
 																"example": "http://example.com/example.html",
@@ -65480,26 +64892,6 @@
 																					"format": "hostname",
 																					"type": "string",
 																					"x-auditable": true
-																				},
-																				"data": {
-																					"description": "Components of a MX record.",
-																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
-																						"target": {
-																							"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																							"example": "mx.example.com",
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"type": "object"
 																				},
 																				"priority": {
 																					"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -67767,14 +67159,6 @@
 																				"data": {
 																					"description": "Components of a URI record.",
 																					"properties": {
-																						"priority": {
-																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																							"example": 10,
-																							"maximum": 65535,
-																							"minimum": 0,
-																							"type": "number",
-																							"x-auditable": true
-																						},
 																						"target": {
 																							"description": "The record content.",
 																							"example": "http://example.com/example.html",
@@ -68474,26 +67858,6 @@
 																							"format": "hostname",
 																							"type": "string",
 																							"x-auditable": true
-																						},
-																						"data": {
-																							"description": "Components of a MX record.",
-																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
-																								"target": {
-																									"description": "A valid mail server hostname, or \".\" for a NULL MX record.",
-																									"example": "mx.example.com",
-																									"type": "string",
-																									"x-auditable": true
-																								}
-																							},
-																							"type": "object"
 																						},
 																						"priority": {
 																							"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
@@ -70761,14 +70125,6 @@
 																						"data": {
 																							"description": "Components of a URI record.",
 																							"properties": {
-																								"priority": {
-																									"description": "Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.",
-																									"example": 10,
-																									"maximum": 65535,
-																									"minimum": 0,
-																									"type": "number",
-																									"x-auditable": true
-																								},
 																								"target": {
 																									"description": "The record content.",
 																									"example": "http://example.com/example.html",
