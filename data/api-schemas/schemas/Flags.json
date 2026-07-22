@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
-		"description": "Permanently deletes a flag. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone.",
+		"description": "Deletes a flag permanently. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone.",
 		"operationId": "flagship_delete_flag",
 		"parameters": [
 			{
@@ -450,7 +450,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.delete"
+				"com.cloudflare.api.account.flagship.app.update"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -458,7 +458,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps.flags",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags": {
 		"description": "Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page.",
@@ -542,7 +546,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"default_variation": {
-												"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+												"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -596,7 +600,26 @@
 																				"type": "string"
 																			},
 																			"value": {
-																				"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																				"oneOf": [
+																					{
+																						"nullable": true,
+																						"type": "string"
+																					},
+																					{
+																						"type": "number"
+																					},
+																					{
+																						"type": "boolean"
+																					},
+																					{
+																						"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																						"type": "object"
+																					},
+																					{
+																						"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																						"type": "array"
+																					}
+																				]
 																			}
 																		},
 																		"required": [
@@ -637,7 +660,26 @@
 																									"type": "string"
 																								},
 																								"value": {
-																									"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																									"oneOf": [
+																										{
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										{
+																											"type": "number"
+																										},
+																										{
+																											"type": "boolean"
+																										},
+																										{
+																											"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																											"type": "object"
+																										},
+																										{
+																											"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																											"type": "array"
+																										}
+																									]
 																								}
 																							},
 																							"required": [
@@ -678,7 +720,26 @@
 																														"type": "string"
 																													},
 																													"value": {
-																														"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																														"oneOf": [
+																															{
+																																"nullable": true,
+																																"type": "string"
+																															},
+																															{
+																																"type": "number"
+																															},
+																															{
+																																"type": "boolean"
+																															},
+																															{
+																																"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																"type": "object"
+																															},
+																															{
+																																"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																"type": "array"
+																															}
+																														]
 																													}
 																												},
 																												"required": [
@@ -719,7 +780,26 @@
 																																			"type": "string"
 																																		},
 																																		"value": {
-																																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																			"oneOf": [
+																																				{
+																																					"nullable": true,
+																																					"type": "string"
+																																				},
+																																				{
+																																					"type": "number"
+																																				},
+																																				{
+																																					"type": "boolean"
+																																				},
+																																				{
+																																					"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																					"type": "object"
+																																				},
+																																				{
+																																					"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																					"type": "array"
+																																				}
+																																			]
 																																		}
 																																	},
 																																	"required": [
@@ -760,7 +840,26 @@
 																																								"type": "string"
 																																							},
 																																							"value": {
-																																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																								"oneOf": [
+																																									{
+																																										"nullable": true,
+																																										"type": "string"
+																																									},
+																																									{
+																																										"type": "number"
+																																									},
+																																									{
+																																										"type": "boolean"
+																																									},
+																																									{
+																																										"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																										"type": "object"
+																																									},
+																																									{
+																																										"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																										"type": "array"
+																																									}
+																																								]
 																																							}
 																																						},
 																																						"required": [
@@ -801,7 +900,26 @@
 																																													"type": "string"
 																																												},
 																																												"value": {
-																																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																													"oneOf": [
+																																														{
+																																															"nullable": true,
+																																															"type": "string"
+																																														},
+																																														{
+																																															"type": "number"
+																																														},
+																																														{
+																																															"type": "boolean"
+																																														},
+																																														{
+																																															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																															"type": "object"
+																																														},
+																																														{
+																																															"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																															"type": "array"
+																																														}
+																																													]
 																																												}
 																																											},
 																																											"required": [
@@ -954,7 +1072,7 @@
 															"type": "array"
 														},
 														"priority": {
-															"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+															"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
 															"minimum": 1,
 															"type": "integer"
 														},
@@ -979,7 +1097,7 @@
 															"type": "object"
 														},
 														"serve_variation": {
-															"description": "Variation served when this rule matches. Must be a key in `variations`.",
+															"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
 															"minLength": 1,
 															"type": "string"
 														}
@@ -994,7 +1112,7 @@
 												"type": "array"
 											},
 											"type": {
-												"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+												"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
 												"enum": [
 													"boolean",
 													"string",
@@ -1032,7 +1150,7 @@
 														}
 													]
 												},
-												"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+												"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
 												"type": "object"
 											}
 										},
@@ -1434,11 +1552,12 @@
 			"Flags"
 		],
 		"x-api-token-group": [
-			"Flagship Read"
+			"Flagship Read",
+			"Flagship Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.read"
+				"com.cloudflare.api.account.flagship.app.read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1446,7 +1565,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps.flags",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"description": "Returns the full flag definition including rules, variations, and audit fields.",
@@ -1521,7 +1644,7 @@
 									"additionalProperties": false,
 									"properties": {
 										"default_variation": {
-											"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+											"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
 											"minLength": 1,
 											"type": "string"
 										},
@@ -1575,7 +1698,26 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																			"oneOf": [
+																				{
+																					"nullable": true,
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				},
+																				{
+																					"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																					"type": "array"
+																				}
+																			]
 																		}
 																	},
 																	"required": [
@@ -1616,7 +1758,26 @@
 																								"type": "string"
 																							},
 																							"value": {
-																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																								"oneOf": [
+																									{
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "boolean"
+																									},
+																									{
+																										"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																										"type": "object"
+																									},
+																									{
+																										"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																										"type": "array"
+																									}
+																								]
 																							}
 																						},
 																						"required": [
@@ -1657,7 +1818,26 @@
 																													"type": "string"
 																												},
 																												"value": {
-																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																													"oneOf": [
+																														{
+																															"nullable": true,
+																															"type": "string"
+																														},
+																														{
+																															"type": "number"
+																														},
+																														{
+																															"type": "boolean"
+																														},
+																														{
+																															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																															"type": "object"
+																														},
+																														{
+																															"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																															"type": "array"
+																														}
+																													]
 																												}
 																											},
 																											"required": [
@@ -1698,7 +1878,26 @@
 																																		"type": "string"
 																																	},
 																																	"value": {
-																																		"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																		"oneOf": [
+																																			{
+																																				"nullable": true,
+																																				"type": "string"
+																																			},
+																																			{
+																																				"type": "number"
+																																			},
+																																			{
+																																				"type": "boolean"
+																																			},
+																																			{
+																																				"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																				"type": "object"
+																																			},
+																																			{
+																																				"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																				"type": "array"
+																																			}
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -1739,7 +1938,26 @@
 																																							"type": "string"
 																																						},
 																																						"value": {
-																																							"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																							"oneOf": [
+																																								{
+																																									"nullable": true,
+																																									"type": "string"
+																																								},
+																																								{
+																																									"type": "number"
+																																								},
+																																								{
+																																									"type": "boolean"
+																																								},
+																																								{
+																																									"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																									"type": "object"
+																																								},
+																																								{
+																																									"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																									"type": "array"
+																																								}
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -1780,7 +1998,26 @@
 																																												"type": "string"
 																																											},
 																																											"value": {
-																																												"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																												"oneOf": [
+																																													{
+																																														"nullable": true,
+																																														"type": "string"
+																																													},
+																																													{
+																																														"type": "number"
+																																													},
+																																													{
+																																														"type": "boolean"
+																																													},
+																																													{
+																																														"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																														"type": "object"
+																																													},
+																																													{
+																																														"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																														"type": "array"
+																																													}
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -1933,7 +2170,7 @@
 														"type": "array"
 													},
 													"priority": {
-														"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+														"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
 														"minimum": 1,
 														"type": "integer"
 													},
@@ -1958,7 +2195,7 @@
 														"type": "object"
 													},
 													"serve_variation": {
-														"description": "Variation served when this rule matches. Must be a key in `variations`.",
+														"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
 														"minLength": 1,
 														"type": "string"
 													}
@@ -1973,7 +2210,7 @@
 											"type": "array"
 										},
 										"type": {
-											"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
 											"enum": [
 												"boolean",
 												"string",
@@ -2011,7 +2248,7 @@
 													}
 												]
 											},
-											"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
 											"type": "object"
 										}
 									},
@@ -2391,11 +2628,12 @@
 			"Flags"
 		],
 		"x-api-token-group": [
-			"Flagship Read"
+			"Flagship Read",
+			"Flagship Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.read"
+				"com.cloudflare.api.account.flagship.app.read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2403,7 +2641,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps.flags",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/flags": {
 		"description": "Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted.",
@@ -2437,7 +2679,7 @@
 						"additionalProperties": false,
 						"properties": {
 							"default_variation": {
-								"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+								"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
 								"minLength": 1,
 								"type": "string"
 							},
@@ -2491,7 +2733,26 @@
 																"type": "string"
 															},
 															"value": {
-																"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																"oneOf": [
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	},
+																	{
+																		"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																		"type": "array"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -2532,7 +2793,26 @@
 																					"type": "string"
 																				},
 																				"value": {
-																					"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																					"oneOf": [
+																						{
+																							"nullable": true,
+																							"type": "string"
+																						},
+																						{
+																							"type": "number"
+																						},
+																						{
+																							"type": "boolean"
+																						},
+																						{
+																							"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																							"type": "object"
+																						},
+																						{
+																							"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																							"type": "array"
+																						}
+																					]
 																				}
 																			},
 																			"required": [
@@ -2573,7 +2853,26 @@
 																										"type": "string"
 																									},
 																									"value": {
-																										"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																										"oneOf": [
+																											{
+																												"nullable": true,
+																												"type": "string"
+																											},
+																											{
+																												"type": "number"
+																											},
+																											{
+																												"type": "boolean"
+																											},
+																											{
+																												"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																												"type": "object"
+																											},
+																											{
+																												"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																												"type": "array"
+																											}
+																										]
 																									}
 																								},
 																								"required": [
@@ -2614,7 +2913,26 @@
 																															"type": "string"
 																														},
 																														"value": {
-																															"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																															"oneOf": [
+																																{
+																																	"nullable": true,
+																																	"type": "string"
+																																},
+																																{
+																																	"type": "number"
+																																},
+																																{
+																																	"type": "boolean"
+																																},
+																																{
+																																	"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																	"type": "object"
+																																},
+																																{
+																																	"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																	"type": "array"
+																																}
+																															]
 																														}
 																													},
 																													"required": [
@@ -2655,7 +2973,26 @@
 																																				"type": "string"
 																																			},
 																																			"value": {
-																																				"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																				"oneOf": [
+																																					{
+																																						"nullable": true,
+																																						"type": "string"
+																																					},
+																																					{
+																																						"type": "number"
+																																					},
+																																					{
+																																						"type": "boolean"
+																																					},
+																																					{
+																																						"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																						"type": "object"
+																																					},
+																																					{
+																																						"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																						"type": "array"
+																																					}
+																																				]
 																																			}
 																																		},
 																																		"required": [
@@ -2696,7 +3033,26 @@
 																																									"type": "string"
 																																								},
 																																								"value": {
-																																									"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																									"oneOf": [
+																																										{
+																																											"nullable": true,
+																																											"type": "string"
+																																										},
+																																										{
+																																											"type": "number"
+																																										},
+																																										{
+																																											"type": "boolean"
+																																										},
+																																										{
+																																											"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																											"type": "object"
+																																										},
+																																										{
+																																											"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																											"type": "array"
+																																										}
+																																									]
 																																								}
 																																							},
 																																							"required": [
@@ -2849,7 +3205,7 @@
 											"type": "array"
 										},
 										"priority": {
-											"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+											"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
 											"minimum": 1,
 											"type": "integer"
 										},
@@ -2874,7 +3230,7 @@
 											"type": "object"
 										},
 										"serve_variation": {
-											"description": "Variation served when this rule matches. Must be a key in `variations`.",
+											"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
 											"minLength": 1,
 											"type": "string"
 										}
@@ -2889,7 +3245,7 @@
 								"type": "array"
 							},
 							"type": {
-								"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+								"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
 								"enum": [
 									"boolean",
 									"string",
@@ -2921,7 +3277,7 @@
 										}
 									]
 								},
-								"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
 								"type": "object"
 							}
 						},
@@ -2976,7 +3332,7 @@
 									"additionalProperties": false,
 									"properties": {
 										"default_variation": {
-											"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+											"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
 											"minLength": 1,
 											"type": "string"
 										},
@@ -3030,7 +3386,26 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																			"oneOf": [
+																				{
+																					"nullable": true,
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				},
+																				{
+																					"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																					"type": "array"
+																				}
+																			]
 																		}
 																	},
 																	"required": [
@@ -3071,7 +3446,26 @@
 																								"type": "string"
 																							},
 																							"value": {
-																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																								"oneOf": [
+																									{
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "boolean"
+																									},
+																									{
+																										"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																										"type": "object"
+																									},
+																									{
+																										"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																										"type": "array"
+																									}
+																								]
 																							}
 																						},
 																						"required": [
@@ -3112,7 +3506,26 @@
 																													"type": "string"
 																												},
 																												"value": {
-																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																													"oneOf": [
+																														{
+																															"nullable": true,
+																															"type": "string"
+																														},
+																														{
+																															"type": "number"
+																														},
+																														{
+																															"type": "boolean"
+																														},
+																														{
+																															"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																															"type": "object"
+																														},
+																														{
+																															"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																															"type": "array"
+																														}
+																													]
 																												}
 																											},
 																											"required": [
@@ -3153,7 +3566,26 @@
 																																		"type": "string"
 																																	},
 																																	"value": {
-																																		"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																		"oneOf": [
+																																			{
+																																				"nullable": true,
+																																				"type": "string"
+																																			},
+																																			{
+																																				"type": "number"
+																																			},
+																																			{
+																																				"type": "boolean"
+																																			},
+																																			{
+																																				"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																				"type": "object"
+																																			},
+																																			{
+																																				"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																				"type": "array"
+																																			}
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -3194,7 +3626,26 @@
 																																							"type": "string"
 																																						},
 																																						"value": {
-																																							"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																							"oneOf": [
+																																								{
+																																									"nullable": true,
+																																									"type": "string"
+																																								},
+																																								{
+																																									"type": "number"
+																																								},
+																																								{
+																																									"type": "boolean"
+																																								},
+																																								{
+																																									"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																									"type": "object"
+																																								},
+																																								{
+																																									"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																									"type": "array"
+																																								}
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -3235,7 +3686,26 @@
 																																												"type": "string"
 																																											},
 																																											"value": {
-																																												"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																												"oneOf": [
+																																													{
+																																														"nullable": true,
+																																														"type": "string"
+																																													},
+																																													{
+																																														"type": "number"
+																																													},
+																																													{
+																																														"type": "boolean"
+																																													},
+																																													{
+																																														"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																														"type": "object"
+																																													},
+																																													{
+																																														"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																														"type": "array"
+																																													}
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -3388,7 +3858,7 @@
 														"type": "array"
 													},
 													"priority": {
-														"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+														"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
 														"minimum": 1,
 														"type": "integer"
 													},
@@ -3413,7 +3883,7 @@
 														"type": "object"
 													},
 													"serve_variation": {
-														"description": "Variation served when this rule matches. Must be a key in `variations`.",
+														"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
 														"minLength": 1,
 														"type": "string"
 													}
@@ -3428,7 +3898,7 @@
 											"type": "array"
 										},
 										"type": {
-											"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
 											"enum": [
 												"boolean",
 												"string",
@@ -3466,7 +3936,7 @@
 													}
 												]
 											},
-											"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
 											"type": "object"
 										}
 									},
@@ -3850,7 +4320,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.create"
+				"com.cloudflare.api.account.flagship.app.update"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -3858,7 +4328,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps.flags",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"description": "Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry.",
@@ -3902,7 +4376,7 @@
 						"additionalProperties": false,
 						"properties": {
 							"default_variation": {
-								"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+								"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
 								"minLength": 1,
 								"type": "string"
 							},
@@ -3956,7 +4430,26 @@
 																"type": "string"
 															},
 															"value": {
-																"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																"oneOf": [
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "boolean"
+																	},
+																	{
+																		"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																		"type": "object"
+																	},
+																	{
+																		"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																		"type": "array"
+																	}
+																]
 															}
 														},
 														"required": [
@@ -3997,7 +4490,26 @@
 																					"type": "string"
 																				},
 																				"value": {
-																					"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																					"oneOf": [
+																						{
+																							"nullable": true,
+																							"type": "string"
+																						},
+																						{
+																							"type": "number"
+																						},
+																						{
+																							"type": "boolean"
+																						},
+																						{
+																							"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																							"type": "object"
+																						},
+																						{
+																							"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																							"type": "array"
+																						}
+																					]
 																				}
 																			},
 																			"required": [
@@ -4038,7 +4550,26 @@
 																										"type": "string"
 																									},
 																									"value": {
-																										"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																										"oneOf": [
+																											{
+																												"nullable": true,
+																												"type": "string"
+																											},
+																											{
+																												"type": "number"
+																											},
+																											{
+																												"type": "boolean"
+																											},
+																											{
+																												"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																												"type": "object"
+																											},
+																											{
+																												"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																												"type": "array"
+																											}
+																										]
 																									}
 																								},
 																								"required": [
@@ -4079,7 +4610,26 @@
 																															"type": "string"
 																														},
 																														"value": {
-																															"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																															"oneOf": [
+																																{
+																																	"nullable": true,
+																																	"type": "string"
+																																},
+																																{
+																																	"type": "number"
+																																},
+																																{
+																																	"type": "boolean"
+																																},
+																																{
+																																	"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																	"type": "object"
+																																},
+																																{
+																																	"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																	"type": "array"
+																																}
+																															]
 																														}
 																													},
 																													"required": [
@@ -4120,7 +4670,26 @@
 																																				"type": "string"
 																																			},
 																																			"value": {
-																																				"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																				"oneOf": [
+																																					{
+																																						"nullable": true,
+																																						"type": "string"
+																																					},
+																																					{
+																																						"type": "number"
+																																					},
+																																					{
+																																						"type": "boolean"
+																																					},
+																																					{
+																																						"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																						"type": "object"
+																																					},
+																																					{
+																																						"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																						"type": "array"
+																																					}
+																																				]
 																																			}
 																																		},
 																																		"required": [
@@ -4161,7 +4730,26 @@
 																																									"type": "string"
 																																								},
 																																								"value": {
-																																									"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																									"oneOf": [
+																																										{
+																																											"nullable": true,
+																																											"type": "string"
+																																										},
+																																										{
+																																											"type": "number"
+																																										},
+																																										{
+																																											"type": "boolean"
+																																										},
+																																										{
+																																											"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																											"type": "object"
+																																										},
+																																										{
+																																											"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																											"type": "array"
+																																										}
+																																									]
 																																								}
 																																							},
 																																							"required": [
@@ -4314,7 +4902,7 @@
 											"type": "array"
 										},
 										"priority": {
-											"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+											"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
 											"minimum": 1,
 											"type": "integer"
 										},
@@ -4339,7 +4927,7 @@
 											"type": "object"
 										},
 										"serve_variation": {
-											"description": "Variation served when this rule matches. Must be a key in `variations`.",
+											"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
 											"minLength": 1,
 											"type": "string"
 										}
@@ -4354,7 +4942,7 @@
 								"type": "array"
 							},
 							"type": {
-								"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+								"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
 								"enum": [
 									"boolean",
 									"string",
@@ -4386,7 +4974,7 @@
 										}
 									]
 								},
-								"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
 								"type": "object"
 							}
 						},
@@ -4441,7 +5029,7 @@
 									"additionalProperties": false,
 									"properties": {
 										"default_variation": {
-											"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+											"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
 											"minLength": 1,
 											"type": "string"
 										},
@@ -4495,7 +5083,26 @@
 																			"type": "string"
 																		},
 																		"value": {
-																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																			"oneOf": [
+																				{
+																					"nullable": true,
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				},
+																				{
+																					"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.0.properties.value]",
+																					"type": "array"
+																				}
+																			]
 																		}
 																	},
 																	"required": [
@@ -4536,7 +5143,26 @@
 																								"type": "string"
 																							},
 																							"value": {
-																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																								"oneOf": [
+																									{
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "boolean"
+																									},
+																									{
+																										"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																										"type": "object"
+																									},
+																									{
+																										"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																										"type": "array"
+																									}
+																								]
 																							}
 																						},
 																						"required": [
@@ -4577,7 +5203,26 @@
 																													"type": "string"
 																												},
 																												"value": {
-																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																													"oneOf": [
+																														{
+																															"nullable": true,
+																															"type": "string"
+																														},
+																														{
+																															"type": "number"
+																														},
+																														{
+																															"type": "boolean"
+																														},
+																														{
+																															"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																															"type": "object"
+																														},
+																														{
+																															"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																															"type": "array"
+																														}
+																													]
 																												}
 																											},
 																											"required": [
@@ -4618,7 +5263,26 @@
 																																		"type": "string"
 																																	},
 																																	"value": {
-																																		"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																		"oneOf": [
+																																			{
+																																				"nullable": true,
+																																				"type": "string"
+																																			},
+																																			{
+																																				"type": "number"
+																																			},
+																																			{
+																																				"type": "boolean"
+																																			},
+																																			{
+																																				"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																				"type": "object"
+																																			},
+																																			{
+																																				"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																				"type": "array"
+																																			}
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -4659,7 +5323,26 @@
 																																							"type": "string"
 																																						},
 																																						"value": {
-																																							"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																							"oneOf": [
+																																								{
+																																									"nullable": true,
+																																									"type": "string"
+																																								},
+																																								{
+																																									"type": "number"
+																																								},
+																																								{
+																																									"type": "boolean"
+																																								},
+																																								{
+																																									"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																									"type": "object"
+																																								},
+																																								{
+																																									"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																									"type": "array"
+																																								}
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -4700,7 +5383,26 @@
 																																												"type": "string"
 																																											},
 																																											"value": {
-																																												"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																												"oneOf": [
+																																													{
+																																														"nullable": true,
+																																														"type": "string"
+																																													},
+																																													{
+																																														"type": "number"
+																																													},
+																																													{
+																																														"type": "boolean"
+																																													},
+																																													{
+																																														"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																														"type": "object"
+																																													},
+																																													{
+																																														"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.0.properties.value]",
+																																														"type": "array"
+																																													}
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -4853,7 +5555,7 @@
 														"type": "array"
 													},
 													"priority": {
-														"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+														"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
 														"minimum": 1,
 														"type": "integer"
 													},
@@ -4878,7 +5580,7 @@
 														"type": "object"
 													},
 													"serve_variation": {
-														"description": "Variation served when this rule matches. Must be a key in `variations`.",
+														"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
 														"minLength": 1,
 														"type": "string"
 													}
@@ -4893,7 +5595,7 @@
 											"type": "array"
 										},
 										"type": {
-											"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
 											"enum": [
 												"boolean",
 												"string",
@@ -4931,7 +5633,7 @@
 													}
 												]
 											},
-											"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
 											"type": "object"
 										}
 									},
@@ -5315,7 +6017,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.update"
+				"com.cloudflare.api.account.flagship.app.update"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -5323,6 +6025,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps.flags",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

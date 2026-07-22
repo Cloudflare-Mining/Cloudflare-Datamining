@@ -496,7 +496,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.delete"
+				"com.cloudflare.api.account.flagship.app.delete"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -504,7 +504,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps": {
 		"description": "Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included.",
@@ -571,7 +575,7 @@
 												"type": "string"
 											},
 											"updated_by": {
-												"description": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+												"description": "Email of the actor who last modified the app, or `unknown` when unavailable.",
 												"type": "string"
 											}
 										},
@@ -953,7 +957,8 @@
 			"Apps"
 		],
 		"x-api-token-group": [
-			"Flagship Read"
+			"Flagship Read",
+			"Flagship Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -965,7 +970,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}": {
 		"description": "Returns an app's name and audit fields. Flag definitions are not included.",
@@ -1041,7 +1050,7 @@
 											"type": "string"
 										},
 										"updated_by": {
-											"description": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+											"description": "Email of the actor who last modified the app, or `unknown` when unavailable.",
 											"type": "string"
 										}
 									},
@@ -1421,11 +1430,12 @@
 			"Apps"
 		],
 		"x-api-token-group": [
-			"Flagship Read"
+			"Flagship Read",
+			"Flagship Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.read"
+				"com.cloudflare.api.account.flagship.app.read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1433,7 +1443,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/realtime/kit/apps": {
 		"description": "Fetch all apps for your account",
@@ -1739,7 +1753,7 @@
 											"type": "string"
 										},
 										"updated_by": {
-											"description": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+											"description": "Email of the actor who last modified the app, or `unknown` when unavailable.",
 											"type": "string"
 										}
 									},
@@ -2131,7 +2145,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/realtime/kit/apps": {
 		"description": "Create new app for your account",
@@ -2314,7 +2332,7 @@
 											"type": "string"
 										},
 										"updated_by": {
-											"description": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+											"description": "Email of the actor who last modified the app, or `unknown` when unavailable.",
 											"type": "string"
 										}
 									},
@@ -2698,7 +2716,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.flagship.update"
+				"com.cloudflare.api.account.flagship.app.update"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2706,6 +2724,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "flagship.apps",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
