@@ -2329,6 +2329,10 @@
 		"summary": "Generate a JWT to interact with the specified image registry.",
 		"tags": [
 			"Image Registries"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.registries.credentials",
+		"x-fern-sdk-method-name": "generate",
+		"x-forge-hidden": true
 	}
 }
