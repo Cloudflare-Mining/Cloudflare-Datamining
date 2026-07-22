@@ -1,44 +1,72 @@
-<p>What would you say if we told you your IP network can be faster by 10%, and all you have to do is reach out to your account team to make it happen?</p>
-<p>Today, we’re announcing the general availability of Argo for Packets, which provides IP layer network optimizations to supercharge your Cloudflare network services products like <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> (our Layer 3 DDoS protection service), <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a> (which lets you build your own <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan" target="_blank" rel="noopener noreferrer">SD-WAN</a> on top of Cloudflare), and <a href="https://blog.cloudflare.com/cloudflare-for-offices">Cloudflare for Offices</a> (our initiative to provide secure, performant connectivity into thousands of office buildings around the world).</p>
-<p>If you’re not familiar with Argo, it’s a Cloudflare product that makes your traffic faster. Argo finds the fastest, most available path for your traffic on the Internet. Every day, Cloudflare carries trillions of requests, connections, and packets across our network and the Internet. Because our network, our customers, and their end users are well distributed globally, all of these requests flowing across our infrastructure paint a great picture of how different parts of the Internet are performing at any given time. Cloudflare leverages this picture to ensure that your traffic takes the fastest path through our infrastructure.</p>
-<p>Previously, Argo optimized traffic at the Layer 7 application layer and at the Layer 4 protocol layer. With the GA of Argo for Packets, we’re now optimizing the IP layer for your private network. During <a href="https://blog.cloudflare.com/argo-v2">Speed Week we announced</a> the early access for Argo for Packets, and how it can offer a 10% latency reduction. Today, to celebrate Argo for Packets reaching GA, we’re going to dive deeper into the latency reductions, show you examples, explain how you can see even greater optimizations, and talk about how Argo’s secure data plane gives you additional encryption even at Layer 3.</p>
-<p>And if you’re interested in enabling Argo for Packets today, please reach out to your account team to get the process started!</p>
-<h3>Better than BGP</h3>
-<p>As we said during Speed Week, Argo for Packets provides an average 10% latency improvement across the world in our internal testing:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - IfZZ34" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-844 Embedded Image - IfZZ34"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>As we moved towards GA, we found that our real world numbers match our internal testing, and we still see that 10% improvement. But it’s important to note that the 10% latency reduction numbers are an average across all paths across the world. Different customers can see different latency gains depending on their setup.</p>
-<p>Argo for Packets achieves these latency gains by dynamically choosing the best possible path throughout our network. Let’s talk a bit about what that means.</p>
-<p>Normal packets on the network find their way to their destination using something called the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">Border Gateway Protocol (BGP)</a>, which allows packets to traverse the “shortest” path to its destination. However, the shortest path in BGP terms isn’t strongly correlated with latency, but with network hops. For example, path A in a network has two possible paths: 12345 - 54321 - 13335, and 12345 13335. Both networks start from the network 12345 and end at Cloudflare, which is AS 13335. BGP logic dictates that traffic will always go through the second path. But if the first path has a lower network latency or lower packet loss, customers could potentially see better performance and not know it!</p>
-<p>There are two ways to remedy this. The first way is to invest in building out more pipes with network 12345 while expanding the network to be right next to every network. Customers can also build out their own networks or purchase expensive vendor MPLS networks. Either solution will cost a lot of money and time to reach the levels of performance customers want.</p>
-<p>Cloudflare improves customer performance by leveraging our existing global network and backbone, plus the networking data from traffic that’s already being sent over to optimize routes back to you. This allows us to improve which paths are taken as traffic changes and congestion on the Internet happens. Argo looks at every path back from every Cloudflare datacenter back to your origin, down to the individual network path. Argo compares existing Layer 4 traffic and network analytics across all of these unique paths to determine the fastest, most available path.</p>
-<p>To make Argo personalized to your private network, Cloudflare makes use of a data source that we already built for <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>. That data source: health check probes. Cloudflare leverages existing health check probes from every single Cloudflare data center back to each customer’s origin. These probes are used to determine the health of paths from Cloudflare back to a customer for Magic Transit, so that Cloudflare knows which paths back to origin are healthy. These probes contain a variety of information that can also be used to improve performance such as packet loss and latency data. By examining health check probes and adding them to existing Layer 4 data, Cloudflare can get a better understanding of one-way latencies and can construct a map that allows us to see all the interconnected data centers and how fast they are to each other. Cloudflare then finds the best path at layer 3 back to the customer datacenter by picking an entry location where the packet entered our network, and an exit location that is directly connected back to the customer via a Cloudflare Network Interconnect.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - E7s1ZO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-844 Embedded Image - E7s1ZO"></div>
-</figure>
-<p>Using this map, Cloudflare constructs dynamic routes for each customer based on where their traffic enters Cloudflare’s network and where they need to go.</p>
-<p>Let’s dive into some examples of how your latency reductions manifest depending on your setup.</p>
-<h3>Cloudflare’s Network is Your Network</h3>
-<p>In our <a href="https://blog.cloudflare.com/magic-makes-your-network-faster">Speed Week blog</a> outlining how Magic products make your network faster, we outlined several different network topology examples and showed the improvements Magic Transit and Magic WAN had on their networks. Let’s supercharge those numbers by adding Argo for Packets on top of that to see how we can improve performance even further.</p>
-<p>The example from the blog outlined a company with locations in South Carolina, Oregon, and Los Angeles. In that blog, we showed the latency improvements that Magic Transit by itself provided for one leg of the trip. That network looks like this:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - cwAGX0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-844 Embedded Image - cwAGX0"></div>
-</figure>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=750&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=828&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=1080&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=1280&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=1430&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - IgfCF2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="396" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-844 Embedded Image - IgfCF2"></div>
-</figure>
-<p>Let’s break that out to show the latencies between all paths on that network. Let’s assume that South Carolina connects to Atlanta, and Oregon connects to Seattle, which is the most likely scenario:</p>
-<div id="html-block-k1v" class="html-block">
-	<style>
-		#html-block-k1v .tg {
+<div class="mb2 gray5">5 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/argo-for-packets-generally-available">简体中文</a>, <a href="https://blog.cloudflare.com/id-id/argo-for-packets-generally-available">Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/argo-for-packets-generally-available">ไทย</a> and <a href="https://blog.cloudflare.com/ja-jp/argo-for-packets-generally-available">日本語</a>.</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ze9T67g2Ut7CQGQ7soMNr/66a70e17c8d33f4b9e53400fe82d2d4e/image5-14.png" alt="Argo for Packets is Generally Available" class="kg-image" width="1800" height="1013" loading="lazy">
+
+	</figure>
+	<p>What would you say if we told you your IP network can be faster by 10%, and all you have to do is reach out to your account team to make it happen?</p>
+	<p>Today, we’re announcing the general availability of Argo for Packets, which provides IP layer network optimizations to supercharge your Cloudflare network services products like <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> (our Layer 3 DDoS protection service), <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a> (which lets you build your own <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan" target="_blank" rel="noopener noreferrer">SD-WAN</a> on top of Cloudflare), and <a href="https://blog.cloudflare.com/cloudflare-for-offices">Cloudflare for Offices</a> (our initiative to provide secure, performant connectivity into thousands of office buildings around the world).</p>
+	<p>If you’re not familiar with Argo, it’s a Cloudflare product that makes your traffic faster. Argo finds the fastest, most available path for your traffic on the Internet. Every day, Cloudflare carries trillions of requests, connections, and packets across our network and the Internet. Because our network, our customers, and their end users are well distributed globally, all of these requests flowing across our infrastructure paint a great picture of how different parts of the Internet are performing at any given time. Cloudflare leverages this picture to ensure that your traffic takes the fastest path through our infrastructure.</p>
+	<p>Previously, Argo optimized traffic at the Layer 7 application layer and at the Layer 4 protocol layer. With the GA of Argo for Packets, we’re now optimizing the IP layer for your private network. During <a href="https://blog.cloudflare.com/argo-v2">Speed Week we announced</a> the early access for Argo for Packets, and how it can offer a 10% latency reduction. Today, to celebrate Argo for Packets reaching GA, we’re going to dive deeper into the latency reductions, show you examples, explain how you can see even greater optimizations, and talk about how Argo’s secure data plane gives you additional encryption even at Layer 3.</p>
+	<p>And if you’re interested in enabling Argo for Packets today, please reach out to your account team to get the process started!</p>
+	<div class="flex anchor relative">
+		<h3 id="better-than-bgp">Better than BGP</h3>
+		<a href="https://blog.cloudflare.com/#better-than-bgp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As we said during Speed Week, Argo for Packets provides an average 10% latency improvement across the world in our internal testing:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ikoMLDL8TGw5uMACrwHg1/6834d63e080c9ebe7117e1f66993a7fc/image6-14.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
+
+	</figure>
+	<p>As we moved towards GA, we found that our real world numbers match our internal testing, and we still see that 10% improvement. But it’s important to note that the 10% latency reduction numbers are an average across all paths across the world. Different customers can see different latency gains depending on their setup.</p>
+	<p>Argo for Packets achieves these latency gains by dynamically choosing the best possible path throughout our network. Let’s talk a bit about what that means.</p>
+	<p>Normal packets on the network find their way to their destination using something called the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">Border Gateway Protocol (BGP)</a>, which allows packets to traverse the “shortest” path to its destination. However, the shortest path in BGP terms isn’t strongly correlated with latency, but with network hops. For example, path A in a network has two possible paths: 12345 - 54321 - 13335, and 12345 13335. Both networks start from the network 12345 and end at Cloudflare, which is AS 13335. BGP logic dictates that traffic will always go through the second path. But if the first path has a lower network latency or lower packet loss, customers could potentially see better performance and not know it!</p>
+	<p>There are two ways to remedy this. The first way is to invest in building out more pipes with network 12345 while expanding the network to be right next to every network. Customers can also build out their own networks or purchase expensive vendor MPLS networks. Either solution will cost a lot of money and time to reach the levels of performance customers want.</p>
+	<p>Cloudflare improves customer performance by leveraging our existing global network and backbone, plus the networking data from traffic that’s already being sent over to optimize routes back to you. This allows us to improve which paths are taken as traffic changes and congestion on the Internet happens. Argo looks at every path back from every Cloudflare datacenter back to your origin, down to the individual network path. Argo compares existing Layer 4 traffic and network analytics across all of these unique paths to determine the fastest, most available path.</p>
+	<p>To make Argo personalized to your private network, Cloudflare makes use of a data source that we already built for <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>. That data source: health check probes. Cloudflare leverages existing health check probes from every single Cloudflare data center back to each customer’s origin. These probes are used to determine the health of paths from Cloudflare back to a customer for Magic Transit, so that Cloudflare knows which paths back to origin are healthy. These probes contain a variety of information that can also be used to improve performance such as packet loss and latency data. By examining health check probes and adding them to existing Layer 4 data, Cloudflare can get a better understanding of one-way latencies and can construct a map that allows us to see all the interconnected data centers and how fast they are to each other. Cloudflare then finds the best path at layer 3 back to the customer datacenter by picking an entry location where the packet entered our network, and an exit location that is directly connected back to the customer via a Cloudflare Network Interconnect.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ml1iHvry9yunmX1ue1xbc/e0585642360129d42581d12d199fff33/image1-49.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
+
+	</figure>
+	<p>Using this map, Cloudflare constructs dynamic routes for each customer based on where their traffic enters Cloudflare’s network and where they need to go.</p>
+	<p>Let’s dive into some examples of how your latency reductions manifest depending on your setup.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-network-is-your-network">Cloudflare’s Network is Your Network</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-network-is-your-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In our <a href="https://blog.cloudflare.com/magic-makes-your-network-faster">Speed Week blog</a> outlining how Magic products make your network faster, we outlined several different network topology examples and showed the improvements Magic Transit and Magic WAN had on their networks. Let’s supercharge those numbers by adding Argo for Packets on top of that to see how we can improve performance even further.</p>
+	<p>The example from the blog outlined a company with locations in South Carolina, Oregon, and Los Angeles. In that blog, we showed the latency improvements that Magic Transit by itself provided for one leg of the trip. That network looks like this:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Asq79awFbjcKjQEyM1YYj/3c7780faf0a954920c40facdfef73abc/image3-23.png" alt="" class="kg-image" width="1092" height="728" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vZPTaPL8yyUuuosFPL28r/09b17497953c525aafefba63ccb00783/image4-25.png" alt="" class="kg-image" width="1502" height="832" loading="lazy">
+
+	</figure>
+	<p>Let’s break that out to show the latencies between all paths on that network. Let’s assume that South Carolina connects to Atlanta, and Oregon connects to Seattle, which is the most likely scenario:</p>
+	<style type="text/css">
+		.tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		#html-block-k1v .tg td {
+		.tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -49,7 +77,7 @@
 			word-break: normal;
 		}
 
-		#html-block-k1v .tg th {
+		.tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -61,20 +89,36 @@
 			word-break: normal;
 		}
 
-		#html-block-k1v .tg .tg-1wig {
+		.tg .tg-1wig {
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-k1v .tg .tg-lqy6 {
+		.tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		#html-block-k1v .tg .tg-0lax {
+		.tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
 		}
 	</style>
 	<div class="tg-wrap">
@@ -141,26 +185,33 @@
 			</tbody>
 		</table>
 	</div>
-</div>
-<p>For this sample customer network, Argo for Packets improves latencies on every possible path. As you can see the average percent improvement is much higher for this particular network than the global average of 10%.</p>
-<p>Let’s take another example of a customer with locations in Asia: South Korea, Philippines, Singapore, Osaka, and Hong Kong. For a network with those locations, Argo for Packets is able to create a 17% latency reduction by finding the optimal paths between locations that were typically trickiest to navigate, like between South Korea, Osaka, and the Philippines. A customer with many locations will see huge benefits from Argo for Packets, because it optimizes the trickiest paths on the Internet and makes them just as fast as the other paths. It removes the latency incurred by your worst network paths and makes not only your average numbers look good, but especially your 90th percentile latency numbers.</p>
-<p>Reducing these long-tail latencies is critical especially as customers move back to better and start returning to offices all around the world.</p>
-<h3>Next Stop: Your Office</h3>
-<p>Argo for Packets pairs brilliantly with Magic WAN and Cloudflare for Offices to create a hyper-optimized, ultra-secure, private network that adapts to whatever you throw at it. If this is your first time hearing about <a href="https://blog.cloudflare.com/cloudflare-for-offices">Cloudflare for Offices</a>, it’s our new initiative to provide private, secure, performant connectivity to thousands of new locations around the world. And that private connectivity provides a great foundation for Argo for Packets to speed up your network.</p>
-<p>Taking the above example from the United States, if this company adds two new locations in Boston and Dallas, those locations also see significant latency reduction through Argo for Packets. Now, their network looks like this:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="458" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=640&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=750&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=828&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=1080&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=1280&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=1430&amp;h=916&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - YtQcVv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="458" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-844 Embedded Image - YtQcVv"></div>
-</figure>
-<p>Argo for Packets also ensures that those freshly added new offices will immediately see great performance on the private network:</p>
-<div id="html-block-k2e" class="html-block">
-	<style>
-		#html-block-k2e .tg {
+	<p>For this sample customer network, Argo for Packets improves latencies on every possible path. As you can see the average percent improvement is much higher for this particular network than the global average of 10%.</p>
+	<p>Let’s take another example of a customer with locations in Asia: South Korea, Philippines, Singapore, Osaka, and Hong Kong. For a network with those locations, Argo for Packets is able to create a 17% latency reduction by finding the optimal paths between locations that were typically trickiest to navigate, like between South Korea, Osaka, and the Philippines. A customer with many locations will see huge benefits from Argo for Packets, because it optimizes the trickiest paths on the Internet and makes them just as fast as the other paths. It removes the latency incurred by your worst network paths and makes not only your average numbers look good, but especially your 90th percentile latency numbers.</p>
+	<p>Reducing these long-tail latencies is critical especially as customers move back to better and start returning to offices all around the world.</p>
+	<div class="flex anchor relative">
+		<h3 id="next-stop-your-office">Next Stop: Your Office</h3>
+		<a href="https://blog.cloudflare.com/#next-stop-your-office" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Argo for Packets pairs brilliantly with Magic WAN and Cloudflare for Offices to create a hyper-optimized, ultra-secure, private network that adapts to whatever you throw at it. If this is your first time hearing about <a href="https://blog.cloudflare.com/cloudflare-for-offices">Cloudflare for Offices</a>, it’s our new initiative to provide private, secure, performant connectivity to thousands of new locations around the world. And that private connectivity provides a great foundation for Argo for Packets to speed up your network.</p>
+	<p>Taking the above example from the United States, if this company adds two new locations in Boston and Dallas, those locations also see significant latency reduction through Argo for Packets. Now, their network looks like this:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Mtub5sA25DVwRXkxKLa6o/97053ec38ab4138ed1470b24f207ae76/image2-32.png" alt="" class="kg-image" width="1125" height="720" loading="lazy">
+
+	</figure>
+	<p>Argo for Packets also ensures that those freshly added new offices will immediately see great performance on the private network:</p>
+	<style type="text/css">
+		.tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		#html-block-k2e .tg td {
+		.tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -171,7 +222,7 @@
 			word-break: normal;
 		}
 
-		#html-block-k2e .tg th {
+		.tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -183,20 +234,36 @@
 			word-break: normal;
 		}
 
-		#html-block-k2e .tg .tg-1wig {
+		.tg .tg-1wig {
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-k2e .tg .tg-lqy6 {
+		.tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		#html-block-k2e .tg .tg-0lax {
+		.tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
 		}
 	</style>
 	<div class="tg-wrap">
@@ -333,8 +400,15 @@
 			</tbody>
 		</table>
 	</div>
+	<p>Cloudflare for Offices makes it so easy to get those offices set up because customers don’t have to bring their perimeter firewalls, WAN devices, or anything else — they can just plug into Cloudflare at their building, and the power of Cloudflare One allows them to get all their <a href="https://www.cloudflare.com/network-security" target="_blank" rel="noopener noreferrer">network security services</a> over a private connection to Cloudflare, optimized by Argo for Packets.</p>
+	<div class="flex anchor relative">
+		<h3 id="your-network-but-faster">Your Network, but Faster</h3>
+		<a href="https://blog.cloudflare.com/#your-network-but-faster" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Argo for Packets is the perfect complement to any of our Cloudflare One solutions: providing faster bits through your network, built on Cloudflare. Now, your SD-WAN and Magic Transit solutions can be optimized to not just be secure, but performant as well.</p>
+	<p>If you’re interested in turning on Argo for Packets or onboarding your offices to a private and secure connectivity solution, reach out to your account team to get the process started.</p>
 </div>
-<p>Cloudflare for Offices makes it so easy to get those offices set up because customers don’t have to bring their perimeter firewalls, WAN devices, or anything else — they can just plug into Cloudflare at their building, and the power of Cloudflare One allows them to get all their <a href="https://www.cloudflare.com/network-security" target="_blank" rel="noopener noreferrer">network security services</a> over a private connection to Cloudflare, optimized by Argo for Packets.</p>
-<h3>Your Network, but Faster</h3>
-<p>Argo for Packets is the perfect complement to any of our Cloudflare One solutions: providing faster bits through your network, built on Cloudflare. Now, your SD-WAN and Magic Transit solutions can be optimized to not just be secure, but performant as well.</p>
-<p>If you’re interested in turning on Argo for Packets or onboarding your offices to a private and secure connectivity solution, reach out to your account team to get the process started.</p>

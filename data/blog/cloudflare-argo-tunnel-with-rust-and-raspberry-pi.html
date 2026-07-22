@@ -1,243 +1,297 @@
-<p>Yesterday Cloudflare launched <a href="https://developers.cloudflare.com/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a>. In the words of the product team:</p>
-<blockquote>Argo Tunnel exposes applications running on your local web server, on any network with an Internet connection, without adding DNS records or configuring a firewall or router. It just works.</blockquote>
-<p>Once I grokked this, the first thing that came to mind was that I could actually use one of my Raspberry Pi's sitting around to serve a website, without:</p>
-<ul>
-	<li>A flaky DDNS running on my router</li>
-	<li>Exposing my home network to the world</li>
-	<li>A cloud VM</li>
-</ul>
-<p>Ooooh... so exciting.</p>
-<h3>The Rig</h3>
-<p>I'll assume you already have a Raspberry Pi with Raspbian on it.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NWDF0WCNV1SZWMW70WEC.jpeg&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="My rig" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: My rig"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Plug the Pi into your router. It should now have an IP address. Look that up in your router’s admin UI:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="496" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=640&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=750&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=828&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=1080&amp;h=749&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=1280&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMTHVAS45RX9X8HEACQA.png&amp;w=1430&amp;h=992&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Attached devices" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="496" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Attached devices"></div>
-</figure>
-<p>OK, that's promising. Let's connect to that IP using the default pi/raspberry credentials:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ssh</span><span class="sk-005cc5-ffc799"> 192.168.8.26</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> pi</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">pi@192.168.8.26</span><span class="sk-6f42c1-ffc799">'s password: </span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">The programs included with the Debian GNU/Linux system are free software;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">the exact distribution terms for each program are described in the</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">individual files in /usr/share/doc/*/copyright.</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">permitted by applicable law.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Last login: Sun Mar 18 23:24:11 2018 from stevens-air-2.lan</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~ $ </span></span></code></pre>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64D2oSodAjCSr4ZsFdqza7/ed56e59a206a6ba9ca6dc8b09aff39c2/cloudflare-argo-tunnel-with-rust-and-raspberry-pi.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Yesterday Cloudflare launched <a href="https://developers.cloudflare.com/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a>. In the words of the product team:</p>
+	<blockquote>
+		<p>Argo Tunnel exposes applications running on your local web server, on any network with an Internet connection, without adding DNS records or configuring a firewall or router. It just works.</p>
+	</blockquote>
+	<p>Once I grokked this, the first thing that came to mind was that I could actually use one of my Raspberry Pi's sitting around to serve a website, without:</p>
+	<ul>
+		<li>
+			<p>A flaky DDNS running on my router</p>
+		</li>
+		<li>
+			<p>Exposing my home network to the world</p>
+		</li>
+		<li>
+			<p>A cloud VM</p>
+		</li>
+	</ul>
+	<p>Ooooh... so exciting.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-rig">The Rig</h3>
+		<a href="https://blog.cloudflare.com/#the-rig" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>I'll assume you already have a Raspberry Pi with Raspbian on it.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yhfAIyjzM1fchLSHmBBLg/f32e891d40339d5d66139573d9c0e17b/rig.JPG.jpeg" alt="My rig" class="kg-image" width="1024" height="768" loading="lazy">
+
+	</figure>
+	<p>Plug the Pi into your router. It should now have an IP address. Look that up in your router’s admin UI:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nD8bAb7meAZ3X44R4o8YJ/632c6a588761b86e7c7be9f9e87f8c0e/devices.png" alt="Attached devices" class="kg-image" width="747" height="518" loading="lazy">
+
+	</figure>
+	<p>OK, that's promising. Let's connect to that IP using the default pi/raspberry credentials:</p>
+	<pre class="language-bash"><code class="language-bash">$ ssh 192.168.8.26 -l pi
+pi@192.168.8.26's password: 
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Mar 18 23:24:11 2018 from stevens-air-2.lan
+pi@raspberrypi:~ $ </code></pre>
+	<p>We're in!</p>
+	<p><b>Pro tip: quick way to figure it out which type you have is</b></p>
+	<pre class="language-bash"><code class="language-bash">pi@raspberrypi:~ $ cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//'
+a22082</code></pre>
+	<p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory" target="_blank" rel="noopener noreferrer">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
+	<div class="flex anchor relative">
+		<h3 id="internet-connectivity">Internet connectivity</h3>
+		<a href="https://blog.cloudflare.com/#internet-connectivity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>OK, so we have a Pi connected to our router. Let's make 100% sure it can connect to the Internet.</p>
+	<pre class="language-bash"><code class="language-bash">pi@raspberrypi:~$ $ curl -I https://www.cloudflare.com
+HTTP/2 200
+date: Tue, 20 Mar 2018 22:54:20 GMT
+content-type: text/html; charset=utf-8
+set-cookie: __cfduid=dfb9c369ae12fe6eace48ed9b51aedbb01521586460; expires=Wed, 20-Mar-19 22:54:20 GMT; path=/; domain=.cloudflare.com; HttpOnly
+x-powered-by: Express
+cache-control: no-cache
+x-xss-protection: 1; mode=block
+strict-transport-security: max-age=15780000; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+served-in-seconds: 0.025
+set-cookie: __cflb=3128081942; path=/; expires=Wed, 21-Mar-18 21:54:20 GMT
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+server: cloudflare
+cf-ray: 3febc2914beb7f06-SFO-DOG</code></pre>
+	<p>That first line HTTP/2 200 is the OK status code, which is enough to tell us we can connect out to the Internet. Normally this wouldn't be particularly exciting, as it's allowing connections <b>in</b> that causes problems. That's the promise of Argo Tunnels however, it says on the tin we don't need to poke any firewall holes or configure any DNS. Big claim, let's test it.</p>
+	<div class="flex anchor relative">
+		<h3 id="install-the-agent">Install the Agent</h3>
+		<a href="https://blog.cloudflare.com/#install-the-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Go to <a href="https://developers.cloudflare.com/argo-tunnel/downloads" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/argo-tunnel/downloads/</a> to get the url for the ARM build for your Pi. At the time of writing it was <a href="https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz" target="_blank" rel="noopener noreferrer">https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</a></p>
+	<pre class="language-bash"><code class="language-bash">$ wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
+Resolving bin.equinox.io (bin.equinox.io)... 54.243.137.45, 107.22.233.132, 50.19.252.69, ...
+Connecting to bin.equinox.io (bin.equinox.io)|54.243.137.45|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5293773 (5.0M) [application/octet-stream]
+Saving to: ‘cloudflared-stable-linux-arm.tgz’
+...</code></pre>
+	<p>Untar it</p>
+	<pre class="language-bash"><code class="language-bash">$ mkdir argo-tunnel
+$ tar -xvzf cloudflared-stable-linux-arm.tgz -C ./argo-tunnel
+cloudflared
+$ cd argo-tunnel</code></pre>
+	<p>Check you can execute it.</p>
+	<pre class="language-bash"><code class="language-bash">$ ./cloudflared --version
+cloudflared version 2018.3.0 (built 2018-03-02-1820 UTC)</code></pre>
+	<p>Looks OK. Now, we're hoping that the agent will magically connect from the Pi out to the nearest Cloudflare POP. We obviously want that to be secure. Furthermore, we're expecting that when a request comes inbound, it magically gets routed through Cloudflare's network and back to my Raspberry Pi.</p>
+	<p>Seems unlikely, but let’s have faith. Here is my mental model of what's happening:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yhnPd0ciTQSUCgu03CHu7/b5360d9194e28944ed230e6cb5e19fc2/Argo-Tunnel-Diagram.png" alt="My mental model of Argo Tunnel" class="kg-image" width="1563" height="857" loading="lazy">
+
+	</figure>
+	<p>So let's create that secure tunnel. I guess we need some sort of certificate or credentials...</p>
+	<pre class="language-bash"><code class="language-bash">$ ./cloudflared login</code></pre>
+	<p>You'll see output in the command window similar to this:</p>
+	<pre class="language-bash"><code class="language-bash">A browser window should have opened at the following URL:
+
+https://www.cloudflare.com/a/warp?callback=&lt;some token&gt;
+
+If the browser failed to open, open it yourself and visit the URL above.</code></pre>
+	<p>Our headless Pi doesn't have a web browser, so let's copy the url from the console into the browser on our host dev machine.</p>
+	<p>This part assumes you already have a domain on Cloudflare If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">setup guide</a> to get started.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NdfPejq5R5wFIBaw6fjmx/04998230fa9a9fae7cef05e0f282cc43/authorize-choose-domain.png" alt="authorize-choose-domain" class="kg-image" width="1550" height="560" loading="lazy">
+
+	</figure>
+	<p>We're being asked which domain we want this tunnel to sit behind. I've chosen <b>pacman.wiki</b>. Click Authorize.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2e3js21yw4OkiapEadWalz/bbe4e38f7dcffae2b6f3a98395d5ba9b/authorize-confirm.png" alt="authorize-confirm" class="kg-image" width="854" height="237" loading="lazy">
+
+	</figure>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/49TShvgc3EHdZ9O1a8s1Be/2a346df5abf86d07f15e2f8f271a2619/authorize-complete.png" alt="authorize-complete" class="kg-image" width="848" height="217" loading="lazy">
+
+	</figure>
+	<p>You should now see this back on your pi:</p>
+	<pre class="language-bash"><code class="language-bash">You have successfully logged in.
+If you wish to copy your credentials to a server, they have been saved to:
+/home/pi/.cloudflared/cert.pem</code></pre>
+	<p>Aha! That answers how the tunnel gets secured. The agent has created a certificate and will use that to secure the connection back to Cloudflare. Now let's create the tunnel and serve some content!</p>
+	<p><code>$ cloudflared --hostname [hostname] --hello-world</code></p>
+	<p><b>hostname</b> is a fully-qualified domain name under the domain you chose to Authorize for Argo Tunnels earlier. I'm going to use <b>tunnel.pacman.wiki</b></p>
+	<pre class="language-bash"><code class="language-bash">$ ./cloudflared --hostname tunnel.pacman.wiki --hello-world
+INFO[0002] Proxying tunnel requests to https://127.0.0.1:46727 
+INFO[0000] Starting Hello World server at 127.0.0.1:53030 
+INFO[0000] Starting metrics server                       addr="127.0.0.1:53031"
+INFO[0005] Connected to LAX                             
+INFO[0010] Connected to SFO-DOG                         
+INFO[0012] Connected to LAX                             
+INFO[0012] Connected to SFO-DOG  </code></pre>
+	<p>Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki" target="_blank" rel="noopener noreferrer">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HzTsm0DkHPzZSQ527zAYb/1dec3343ed9ec63465c60fb28dbe60ed/success-1.png" alt="Success!" class="kg-image" width="1160" height="701" loading="lazy">
+
+	</figure>
+	<p>And back on the Pi</p>
+	<pre class="language-bash"><code class="language-bash">INFO[0615] GET https://127.0.0.1:62627/ HTTP/1.1 CF-RAY=4067701b598e8184-LAX
+INFO[0615] 200 OK  CF-RAY=4067701b598e8184-LAX</code></pre>
+	<p>Mind. Blown. So what happened here exactly...</p>
+	<ol>
+		<li>
+			<p>The agent on the Pi created a secure tunnel (a persistent http2 connection) back to the nearest Cloudflare Argo Tunnels server</p>
+		</li>
+		<li>
+			<p>The tunnel was secured with the certificate generated by the agent.</p>
+		</li>
+		<li>
+			<p>A request for <a href="https://tunnel.pacman.wiki" target="_blank" rel="noopener noreferrer">https://tunnel.pacman.wiki</a> went from my browser out through the Internet and was routed to the nearest Cloudflare <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">datacenter</a></p>
+		</li>
+		<li>
+			<p>Cloudflare received the request, saw the domain was Cloudflare managed and saw a tunnel set up to that hostname</p>
+		</li>
+		<li>
+			<p>The request got routed over that http2 connection back to my Pi</p>
+		</li>
+	</ol>
+	<p>I'm serving traffic over the Internet, from my Pi, with no ports opened on my home router. That is so cool.</p>
+	<div class="flex anchor relative">
+		<h3 id="more-than-hello-world">More than hello world</h3>
+		<a href="https://blog.cloudflare.com/#more-than-hello-world" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you're reading this, I've won my battle with the Cloudflare blog editing team about long form vs short form content :p</p>
+	<p>Serving hello world is great, but I want to expose a real web server. If you're like me, if you can find any vaguely relevant reason to use Rust, then you use Rust. If you're also like me, you want to try one of these async web servers the cool kids talk about on <a href="https://www.reddit.com/r/rust" target="_blank" rel="noopener noreferrer">/r/rust</a> like <a href="https://gotham.rs" target="_blank" rel="noopener noreferrer">gotham</a>. Let's do it.</p>
+	<p>First, install rust using <a href="https://www.rustup.rs" target="_blank" rel="noopener noreferrer">rustup</a>.</p>
+	<p><code>$ curl https://sh.rustup.rs -sSf | sh</code></p>
+	<p>When prompted, just hit enter</p>
+	<pre class="language-bash"><code class="language-bash">1) Proceed with installation (default)
+2) Customize installation
+3) Cancel installation
+...
+  stable installed - rustc 1.24.1 (d3ae9a9e0 2018-02-27)
+...</code></pre>
+	<p>OK, Rust is installed. Now clone Gotham and build the hello_world example:</p>
+	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/gotham-rs/gotham
+$ cd gotham/examples/hello_world
+$ cargo build</code></pre>
+	<p><b>Pro tip:</b> if cargo is not found, run <code>source $HOME/.cargo/env</code>. It will be automatic in future sessions.</p>
+	<p>As cargo does its magic, you can think to yourself about how it's a great package manager, how there really are a lot of dependencies and how OSS really is standing on the shoulders of giants of giants of giants of giants—eventually you'll have the example built.</p>
+	<pre class="language-bash"><code class="language-bash">...
+Compiling gotham_examples_hello_world v0.0.0 (file:///home/pi/argo-tunnel/gotham/examples/hello_world)
+    Finished dev [unoptimized + debuginfo] target(s) in 502.83 secs
+    
+$ cd ../../target/debug
+$ ./gotham_examples_hello_world 
+Listening for requests at http://127.0.0.1:7878</code></pre>
+	<p>We have a rust web server listening on a local port. Let's connect the tunnel to that.</p>
+	<p><code>./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
+	<p>Type <b>gotham.pacman.wiki</b> into your web browser and you'll see those glorious words, "Hello, world".</p>
+	<div class="flex anchor relative">
+		<h2 id="wait-this-post-was-meant-to-be-more-than-hello-world">Wait, this post was meant to be <i>more</i> than hello world.</h2>
+		<a href="https://blog.cloudflare.com/#wait-this-post-was-meant-to-be-more-than-hello-world" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>OK, challenge accepted. Rust being fancy and modern is OK with Unicode. Let's serve some of that.</p>
+	<pre class="language-bash"><code class="language-bash">$ cd examples/hello_world/src/
+$ nano src/main.rs </code></pre>
+	<p>Replace the hello world string:</p>
+	<p><code>Some((String::from("Hello World!").into_bytes(), mime::TEXT_PLAIN)),</code></p>
+	<p>with some Unicode and a content-type hint so the browser know how to render it:</p>
+	<p><code>Some((String::from("&lt;html&gt;&lt;head&gt;&lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8'&gt;&lt;/head&gt;&lt;body&gt;&lt;marquee&gt;Pᗣᗧ•••MᗣN&lt;/marquee&gt;&lt;/body&gt;&lt;/html&gt;").into_bytes(), mime::TEXT_HTML)),</code></p>
+	<p>Build and run</p>
+	<pre class="language-bash"><code class="language-bash">$ cargo build
+...
+./gotham_examples_hello_world 
+Listening for requests at http://127.0.0.1:7878</code></pre>
+	<p><code>$ ./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O0v47vQuYvFKKPsCY134y/22c094cfb746e462c6433e6db493794d/pacman-2.gif" alt="pacman" class="kg-image" width="2316" height="450" loading="lazy">
+
+	</figure>
+	<p>And now we have some unicode served from our Pi at home over the Internet by a highly asynchronous web server written in a fast, safe, high-level language. Cool.</p>
+	<div class="flex anchor relative">
+		<h3 id="are-we-done">Are we done?</h3>
+		<a href="https://blog.cloudflare.com/#are-we-done" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We should probably auto start both the agent and the web server on boot so they don't die when we end our ssh session.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo ./cloudflared service install
+INFO[0000] Failed to copy user configuration. Before running the service, 
+ensure that /etc/cloudflared contains two files, cert.pem and config.yml  
+error="open cert.pem: no such file or directory"</code></pre>
+	<p>Nice error! OK, the product team have helpfully documented what to put in that file <a href="https://developers.cloudflare.com/argo-tunnel/reference/config" target="_blank" rel="noopener noreferrer">here</a></p>
+	<pre class="language-bash"><code class="language-bash">$ sudo cp ~/.cloudflared/cert.pem /etc/cloudflared
+$ sudo nano /etc/cloudflared/config.yml</code></pre>
+
+	<pre class="language-bash"><code class="language-bash">#config.yml
+hostname: gotham.pacman.wiki
+url: http://127.0.0.1:7878</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="autostart-for-the-agent">Autostart for the Agent</h4>
+		<a href="https://blog.cloudflare.com/#autostart-for-the-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-bash"><code class="language-bash">$ sudo ./cloudflared service install
+INFO[0000] Using Systemd                                
+ERRO[0000] systemctl: Created symlink from /etc/systemd/system/multi-user.target.wants/cloudflared.service to /etc/systemd/system/cloudflared.service.
+INFO[0000] systemctl daemon-reload       </code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="autostart-for-the-web-server">Autostart for the Web Server</h4>
+		<a href="https://blog.cloudflare.com/#autostart-for-the-web-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Copy the web server executable somewhere outside the gotham source tree so you can play around with the source code. I copied mine to <code>/home/pi/argo-tunnel/server/bin/</code></p>
+	<p><code>nano /etc/rc.local</code></p>
+	<p>Add line: <code>/home/pi/argo-tunnel/server/bin/gotham_examples_hello_world &amp;</code> just before <code>exit 0</code></p>
+	<p><code>sudo reboot</code></p>
+	<p>On restart, ssh back in again and check both the agent and server are running.</p>
+	<pre class="language-bash"><code class="language-bash">$ sudo ps -aux | grep tunnel
+root       501  0.1  0.2  37636  1976 ?        Sl   06:30   0:00 /home/pi/argo-tunnel/server/bin/gotham_examples_hello_world
+root       977 15.7  1.4 801292 13972 ?        Ssl  06:30   0:01 /home/pi/argo-tunnel/cloudflared --config /etc/cloudflared/config.yml --origincert /etc/cloudflared/cert.pem --no-autoupdate</code></pre>
+	<p>Profit.</p>
 </div>
-<p>We're in!</p>
-<p><strong>Pro tip: quick way to figure it out which type you have is</strong></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~</span><span class="sk-24292e-fff"> $ </span><span class="sk-032f62-99ffe4">cat</span><span class="sk-032f62-99ffe4"> /proc/cpuinfo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 'Revision'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{print $3}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sed</span><span class="sk-032f62-99ffe4"> 's/^1000//'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">a22082</span></span></code></pre>
-</div>
-<p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory" target="_blank" rel="noopener noreferrer">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
-<h3>Internet connectivity</h3>
-<p>OK, so we have a Pi connected to our router. Let's make 100% sure it can connect to the Internet.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~$</span><span class="sk-24292e-fff"> $ </span><span class="sk-032f62-99ffe4">curl</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> https://www.cloudflare.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">HTTP/2</span><span class="sk-005cc5-ffc799"> 200</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">date:</span><span class="sk-032f62-99ffe4"> Tue,</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-032f62-99ffe4"> Mar</span><span class="sk-005cc5-ffc799"> 2018</span><span class="sk-032f62-99ffe4"> 22:54:20</span><span class="sk-032f62-99ffe4"> GMT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">content-type:</span><span class="sk-032f62-99ffe4"> text/html</span><span class="sk-24292e-fff">; charset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">utf-8</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">set-cookie:</span><span class="sk-032f62-99ffe4"> __cfduid=dfb9c369ae12fe6eace48ed9b51aedbb01521586460</span><span class="sk-24292e-fff">; expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">Wed,</span><span class="sk-6f42c1-ffc799"> 20-Mar-19</span><span class="sk-032f62-99ffe4"> 22:54:20</span><span class="sk-032f62-99ffe4"> GMT</span><span class="sk-24292e-fff">; path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">/</span><span class="sk-24292e-fff">; domain</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">.cloudflare.com</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">HttpOnly</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">x-powered-by:</span><span class="sk-032f62-99ffe4"> Express</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cache-control:</span><span class="sk-032f62-99ffe4"> no-cache</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">x-xss-protection:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">; mode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">block</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">strict-transport-security:</span><span class="sk-032f62-99ffe4"> max-age=</span><span class="sk-005cc5-ffc799">15780000</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">includeSubDomains</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">x-content-type-options:</span><span class="sk-032f62-99ffe4"> nosniff</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">x-frame-options:</span><span class="sk-032f62-99ffe4"> SAMEORIGIN</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">served-in-seconds:</span><span class="sk-005cc5-ffc799"> 0.025</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">set-cookie:</span><span class="sk-032f62-99ffe4"> __cflb=</span><span class="sk-005cc5-ffc799">3128081942</span><span class="sk-24292e-fff">; path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">/</span><span class="sk-24292e-fff">; expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">Wed,</span><span class="sk-6f42c1-ffc799"> 21-Mar-18</span><span class="sk-032f62-99ffe4"> 21:54:20</span><span class="sk-032f62-99ffe4"> GMT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">expect-ct:</span><span class="sk-032f62-99ffe4"> max-age=604800,</span><span class="sk-032f62-99ffe4"> report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">server:</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cf-ray:</span><span class="sk-032f62-99ffe4"> 3febc2914beb7f06-SFO-DOG</span></span></code></pre>
-</div>
-<p>That first line HTTP/2 200 is the OK status code, which is enough to tell us we can connect out to the Internet. Normally this wouldn't be particularly exciting, as it's allowing connections <strong>in</strong> that causes problems. That's the promise of Argo Tunnels however, it says on the tin we don't need to poke any firewall holes or configure any DNS. Big claim, let's test it.</p>
-<h3>Install the Agent</h3>
-<p>Go to <a href="https://developers.cloudflare.com/argo-tunnel/downloads" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/argo-tunnel/downloads/</a> to get the url for the ARM build for your Pi. At the time of writing it was <a href="https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz" target="_blank" rel="noopener noreferrer">https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</a></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wget</span><span class="sk-032f62-99ffe4"> https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Resolving</span><span class="sk-032f62-99ffe4"> bin.equinox.io</span><span class="sk-24292e-fff"> (bin.equinox.io)... 54.243.137.45, 107.22.233.132, 50.19.252.69, ...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Connecting</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> bin.equinox.io</span><span class="sk-24292e-fff"> (bin.equinox.io)</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">54.243.137.45</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">:443...</span><span class="sk-032f62-99ffe4"> connected.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">HTTP</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> sent,</span><span class="sk-032f62-99ffe4"> awaiting</span><span class="sk-032f62-99ffe4"> response...</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Length:</span><span class="sk-005cc5-ffc799"> 5293773</span><span class="sk-24292e-fff"> (5.0M) [application/octet-stream]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Saving</span><span class="sk-032f62-99ffe4"> to:</span><span class="sk-032f62-99ffe4"> ‘cloudflared-stable-linux-arm.tgz’</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
-</div>
-<p>Untar it</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mkdir</span><span class="sk-032f62-99ffe4"> argo-tunnel</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-005cc5-99ffe4"> -xvzf</span><span class="sk-032f62-99ffe4"> cloudflared-stable-linux-arm.tgz</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> ./argo-tunnel</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> argo-tunnel</span></span></code></pre>
-</div>
-<p>Check you can execute it.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-005cc5-99ffe4"> --version</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 2018.3.0</span><span class="sk-24292e-fff"> (built </span><span class="sk-032f62-99ffe4">2018-03-02-1820</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-24292e-fff">)</span></span></code></pre>
-</div>
-<p>Looks OK. Now, we're hoping that the agent will magically connect from the Pi out to the nearest Cloudflare POP. We obviously want that to be secure. Furthermore, we're expecting that when a request comes inbound, it magically gets routed through Cloudflare's network and back to my Raspberry Pi.</p>
-<p>Seems unlikely, but let’s have faith. Here is my mental model of what's happening:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="392" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=640&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=750&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=828&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=1080&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=1280&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PESQ3MJ2VR1AGH1DD0G0.png&amp;w=1430&amp;h=784&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="My mental model of Argo Tunnel" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="392" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: My mental model of Argo Tunnel"></div>
-</figure>
-<p>So let's create that secure tunnel. I guess we need some sort of certificate or credentials...</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> login</span></span></code></pre>
-</div>
-<p>You'll see output in the command window similar to this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">A</span><span class="sk-032f62-99ffe4"> browser</span><span class="sk-032f62-99ffe4"> window</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> opened</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> following</span><span class="sk-032f62-99ffe4"> URL:</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">https://www.cloudflare.com/a/warp?callback</span><span class="sk-032f62-99ffe4">=</span><span class="sk-24292e-fff">&lt;some </span><span class="sk-032f62-99ffe4">toke</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">If</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> browser</span><span class="sk-032f62-99ffe4"> failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> open,</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> yourself</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> visit</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-032f62-99ffe4"> above.</span></span></code></pre>
-</div>
-<p>Our headless Pi doesn't have a web browser, so let's copy the url from the console into the browser on our host dev machine.</p>
-<p>This part assumes you already have a domain on Cloudflare If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">setup guide</a> to get started.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="258" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=640&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=750&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=828&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=1080&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=1280&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P9ZG1DHJSYKMCA22RJF9.png&amp;w=1430&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="authorize-choose-domain" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="258" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: authorize-choose-domain"></div>
-</figure>
-<p>We're being asked which domain we want this tunnel to sit behind. I've chosen <strong>pacman.wiki</strong>. Click Authorize.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="198" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=715&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=640&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=715&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=750&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=828&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=1080&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=1280&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EQ8STB0H21C4T5Z89Q9R.png&amp;w=1430&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="authorize-confirm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="198" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: authorize-confirm"></div>
-</figure>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="183" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=715&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=640&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=715&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=750&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=828&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=1080&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=1280&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H8HBH0GEKKBTWVGANF63.png&amp;w=1430&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="authorize-complete" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="183" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: authorize-complete"></div>
-</figure>
-<p>You should now see this back on your pi:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">You</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> successfully</span><span class="sk-032f62-99ffe4"> logged</span><span class="sk-032f62-99ffe4"> in.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">If</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> wish</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> copy</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> credentials</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> server,</span><span class="sk-032f62-99ffe4"> they</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> been</span><span class="sk-032f62-99ffe4"> saved</span><span class="sk-032f62-99ffe4"> to:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">/home/pi/.cloudflared/cert.pem</span></span></code></pre>
-</div>
-<p>Aha! That answers how the tunnel gets secured. The agent has created a certificate and will use that to secure the connection back to Cloudflare. Now let's create the tunnel and serve some content!</p>
-<p><code>$ cloudflared --hostname [hostname] --hello-world</code></p>
-<p><strong>hostname</strong> is a fully-qualified domain name under the domain you chose to Authorize for Argo Tunnels earlier. I'm going to use <strong>tunnel.pacman.wiki</strong></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> tunnel.pacman.wiki</span><span class="sk-005cc5-99ffe4"> --hello-world</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0002]</span><span class="sk-032f62-99ffe4"> Proxying</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> https://127.0.0.1:46727</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Starting</span><span class="sk-032f62-99ffe4"> Hello</span><span class="sk-032f62-99ffe4"> World</span><span class="sk-032f62-99ffe4"> server</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 127.0.0.1:53030</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Starting</span><span class="sk-032f62-99ffe4"> metrics</span><span class="sk-032f62-99ffe4"> server</span><span class="sk-032f62-99ffe4">                       addr="127.0.0.1:53031"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0005]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> LAX</span><span class="sk-24292e-fff">                             </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0010]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> SFO-DOG</span><span class="sk-24292e-fff">                         </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0012]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> LAX</span><span class="sk-24292e-fff">                             </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0012]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> SFO-DOG</span><span class="sk-24292e-fff">  </span></span></code></pre>
-</div>
-<p>Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki" target="_blank" rel="noopener noreferrer">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="432" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=640&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=750&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=828&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=1080&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=1280&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M4Z1C924JX540FV6489V.png&amp;w=1430&amp;h=864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Success!" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="432" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Success!"></div>
-</figure>
-<p>And back on the Pi</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">INFO[0615]</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> https://127.0.0.1:62627/</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span><span class="sk-032f62-99ffe4"> CF-RAY=4067701b598e8184-LAX</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0615]</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span><span class="sk-032f62-99ffe4">  CF-RAY=4067701b598e8184-LAX</span></span></code></pre>
-</div>
-<p>Mind. Blown. So what happened here exactly...</p>
-<ol>
-	<li>The agent on the Pi created a secure tunnel (a persistent http2 connection) back to the nearest Cloudflare Argo Tunnels server</li>
-	<li>The tunnel was secured with the certificate generated by the agent.</li>
-	<li>A request for <a href="https://tunnel.pacman.wiki" target="_blank" rel="noopener noreferrer">https://tunnel.pacman.wiki</a> went from my browser out through the Internet and was routed to the nearest Cloudflare <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">datacenter</a></li>
-	<li>Cloudflare received the request, saw the domain was Cloudflare managed and saw a tunnel set up to that hostname</li>
-	<li>The request got routed over that http2 connection back to my Pi</li>
-</ol>
-<p>I'm serving traffic over the Internet, from my Pi, with no ports opened on my home router. That is so cool.</p>
-<h3>More than hello world</h3>
-<p>If you're reading this, I've won my battle with the Cloudflare blog editing team about long form vs short form content :p</p>
-<p>Serving hello world is great, but I want to expose a real web server. If you're like me, if you can find any vaguely relevant reason to use Rust, then you use Rust. If you're also like me, you want to try one of these async web servers the cool kids talk about on <a href="https://www.reddit.com/r/rust" target="_blank" rel="noopener noreferrer">/r/rust</a> like <a href="https://gotham.rs" target="_blank" rel="noopener noreferrer">gotham</a>. Let's do it.</p>
-<p>First, install rust using <a href="https://www.rustup.rs" target="_blank" rel="noopener noreferrer">rustup</a>.</p>
-<p><code>$ curl https://sh.rustup.rs -sSf | sh</code></p>
-<p>When prompted, just hit enter</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">1</span><span class="sk-24292e-fff">) Proceed with installation (</span><span class="sk-6f42c1-ffc799">default</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2</span><span class="sk-24292e-fff">) Customize installation</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">3</span><span class="sk-24292e-fff">) Cancel installation</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  stable</span><span class="sk-032f62-99ffe4"> installed</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> rustc</span><span class="sk-005cc5-ffc799"> 1.24.1</span><span class="sk-24292e-fff"> (d3ae9a9e0 </span><span class="sk-032f62-99ffe4">2018-02-27</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
-</div>
-<p>OK, Rust is installed. Now clone Gotham and build the hello_world example:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/gotham-rs/gotham</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> gotham/examples/hello_world</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span></span></code></pre>
-</div>
-<p><strong>Pro tip:</strong> if cargo is not found, run <code>source $HOME/.cargo/env</code>. It will be automatic in future sessions.</p>
-<p>As cargo does its magic, you can think to yourself about how it's a great package manager, how there really are a lot of dependencies and how OSS really is standing on the shoulders of giants of giants of giants of giants—eventually you'll have the example built.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Compiling</span><span class="sk-032f62-99ffe4"> gotham_examples_hello_world</span><span class="sk-032f62-99ffe4"> v0.0.0</span><span class="sk-24292e-fff"> (file:///home/pi/argo-tunnel/gotham/examples/hello_world)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Finished</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-24292e-fff"> [unoptimized </span><span class="sk-032f62-99ffe4">+</span><span class="sk-032f62-99ffe4"> debuginfo]</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">in</span><span class="sk-005cc5-ffc799"> 502.83</span><span class="sk-032f62-99ffe4"> secs</span></span>
-<span class="line"><span class="sk-24292e-fff">    </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> ../../target/debug</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./gotham_examples_hello_world</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Listening</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre>
-</div>
-<p>We have a rust web server listening on a local port. Let's connect the tunnel to that.</p>
-<p><code>./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
-<p>Type <strong>gotham.pacman.wiki</strong> into your web browser and you'll see those glorious words, "Hello, world".</p>
-<h2>Wait, this post was meant to be <em>more</em> than hello world.</h2>
-<p>OK, challenge accepted. Rust being fancy and modern is OK with Unicode. Let's serve some of that.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> examples/hello_world/src/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> src/main.rs</span><span class="sk-24292e-fff"> </span></span></code></pre>
-</div>
-<p>Replace the hello world string:</p>
-<p><code>Some((String::from("Hello World!").into_bytes(), mime::TEXT_PLAIN)),</code></p>
-<p>with some Unicode and a content-type hint so the browser know how to render it:</p>
-<p><code>Some((String::from("&lt;html&gt;&lt;head&gt;&lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8'&gt;&lt;/head&gt;&lt;body&gt;&lt;marquee&gt;Pᗣᗧ•••MᗣN&lt;/marquee&gt;&lt;/body&gt;&lt;/html&gt;").into_bytes(), mime::TEXT_HTML)),</code></p>
-<p>Build and run</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">./gotham_examples_hello_world</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Listening</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre>
-</div>
-<p><code>$ ./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="139" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=715&amp;h=139&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=640&amp;h=124&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=715&amp;h=139&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=750&amp;h=146&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=828&amp;h=161&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=1080&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=1280&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458MADFYVN6R3PJKM4XA1F.gif&amp;w=1430&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="pacman" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="139" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: pacman"></div>
-</figure>
-<p>And now we have some unicode served from our Pi at home over the Internet by a highly asynchronous web server written in a fast, safe, high-level language. Cool.</p>
-<h3>Are we done?</h3>
-<p>We should probably auto start both the agent and the web server on boot so they don't die when we end our ssh session.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> install</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> copy</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> configuration.</span><span class="sk-032f62-99ffe4"> Before</span><span class="sk-032f62-99ffe4"> running</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> service,</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ensure</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> /etc/cloudflared</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-032f62-99ffe4"> two</span><span class="sk-032f62-99ffe4"> files,</span><span class="sk-032f62-99ffe4"> cert.pem</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> config.yml</span><span class="sk-24292e-fff">  </span></span>
-<span class="line"><span class="sk-24292e-fff">error</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"open cert.pem: no such file or directory"</span></span></code></pre>
-</div>
-<p>Nice error! OK, the product team have helpfully documented what to put in that file <a href="https://developers.cloudflare.com/argo-tunnel/reference/config" target="_blank" rel="noopener noreferrer">here</a></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/cert.pem</span><span class="sk-032f62-99ffe4"> /etc/cloudflared</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/config.yml</span></span></code></pre>
-</div>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#config.yml</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">hostname:</span><span class="sk-032f62-99ffe4"> gotham.pacman.wiki</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">url:</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre>
-</div>
-<h4>Autostart for the Agent</h4>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> install</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Using</span><span class="sk-032f62-99ffe4"> Systemd</span><span class="sk-24292e-fff">                                </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ERRO[0000]</span><span class="sk-032f62-99ffe4"> systemctl:</span><span class="sk-032f62-99ffe4"> Created</span><span class="sk-032f62-99ffe4"> symlink</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> /etc/systemd/system/multi-user.target.wants/cloudflared.service</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> /etc/systemd/system/cloudflared.service.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> systemctl</span><span class="sk-032f62-99ffe4"> daemon-reload</span><span class="sk-24292e-fff">       </span></span></code></pre>
-</div>
-<h4>Autostart for the Web Server</h4>
-<p>Copy the web server executable somewhere outside the gotham source tree so you can play around with the source code. I copied mine to <code>/home/pi/argo-tunnel/server/bin/</code></p>
-<p><code>nano /etc/rc.local</code></p>
-<p>Add line: <code>/home/pi/argo-tunnel/server/bin/gotham_examples_hello_world &amp;</code> just before <code>exit 0</code></p>
-<p><code>sudo reboot</code></p>
-<p>On restart, ssh back in again and check both the agent and server are running.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ps</span><span class="sk-005cc5-99ffe4"> -aux</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> tunnel</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">root</span><span class="sk-005cc5-ffc799">       501</span><span class="sk-005cc5-ffc799">  0.1</span><span class="sk-005cc5-ffc799">  0.2</span><span class="sk-005cc5-ffc799">  37636</span><span class="sk-005cc5-ffc799">  1976</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4">        Sl</span><span class="sk-032f62-99ffe4">   06:30</span><span class="sk-032f62-99ffe4">   0:00</span><span class="sk-032f62-99ffe4"> /home/pi/argo-tunnel/server/bin/gotham_examples_hello_world</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">root</span><span class="sk-005cc5-ffc799">       977</span><span class="sk-005cc5-ffc799"> 15.7</span><span class="sk-005cc5-ffc799">  1.4</span><span class="sk-005cc5-ffc799"> 801292</span><span class="sk-005cc5-ffc799"> 13972</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4">        Ssl</span><span class="sk-032f62-99ffe4">  06:30</span><span class="sk-032f62-99ffe4">   0:01</span><span class="sk-032f62-99ffe4"> /home/pi/argo-tunnel/cloudflared</span><span class="sk-005cc5-99ffe4"> --config</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/config.yml</span><span class="sk-005cc5-99ffe4"> --origincert</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/cert.pem</span><span class="sk-005cc5-99ffe4"> --no-autoupdate</span></span></code></pre>
-</div>
-<p>Profit.</p>

@@ -1,31 +1,74 @@
-<p>Today, we are announcing a new service to serve more than just the static content of your website with the <a href="https://www.cloudflare.com/application-services/products/automatic-platform-optimization" target="_blank" rel="noopener noreferrer">Automatic Platform Optimization (APO)</a> service. With this launch, we are supporting WordPress, the most popular website hosting solution serving 38% of all websites. Our testing, as detailed below, showed a 72% reduction in Time to First Byte (TTFB), 23% reduction to <a href="https://web.dev/fcp" target="_blank" rel="noopener noreferrer">First Contentful Paint</a>, and 13% reduction in <a href="https://web.dev/speed-index" target="_blank" rel="noopener noreferrer">Speed Index</a> for desktop users at the 90th percentile, by serving nearly all of your website’s content from Cloudflare’s network. This means visitors to your website see not only the first content sooner but all content more quickly.</p>
-<p>With Automatic Platform Optimization for WordPress, your customers won’t suffer any slowness caused by common issues like shared hosting congestion, slow database lookups, or misbehaving plugins. This service is now available for anyone using WordPress.</p>
-<h3>Automatic Platform Optimization Pricing</h3>
-<p>APO for WordPress costs $5/month for customers on our Free plan and is included, at no additional cost, in our Professional, Business, and Enterprise <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">plans</a>. No usage fees, no surprises, <em>just speed</em>.</p>
-<h3>How to get started</h3>
-<p>The easiest way to get started with APO is from your WordPress admin console.</p>
-<p><strong>1</strong>. First, install the <a href="https://wordpress.org/plugins/cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare WordPress plugin</a> on your WordPress website or update to the latest version (3.8.2 or higher).<br><strong>2</strong>. Authenticate the plugin (<a href="https://wordpress.org/plugins/cloudflare/#installation" target="_blank" rel="noopener noreferrer">steps here</a>) to talk to Cloudflare if you have not already done that.<br><strong>3</strong>. From the Home screen of the Cloudflare section, turn on Automatic Platform Optimization.<br><br>Free customers will first be directed to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a> to purchase the service.</p>
-<h3>Why We Built This</h3>
-<p>At Cloudflare, we jump at the opportunity to make hard problems for our customers disappear with the click of a button. Running a consistently fast website is challenging. Many businesses don’t have the time nor money to spend on complicated and expensive performance solutions for their site. Even if they do, it can be extremely costly to pay for specialized attention to ensure you get the best performance possible. Having a fast website doesn’t have to be complicated, though. <strong>The closer your content is to your customers, the better your site will perform.</strong> Static content caching does this for files like images, CSS and JavaScript, but that is only part of the equation. Dynamic content is still fetched from the origin incurring costly round trips and additional processing time. For more info on dynamic versus static content, see our <a href="https://www.cloudflare.com/learning/cdn/caching-static-and-dynamic-content" target="_blank" rel="noopener noreferrer">learning center</a>.</p>
-<p>WordPress is one of the most open platforms in the world, but that means you are always at risk of incurring performance penalties because of plugins or other sources that, while necessary, may be hard to pinpoint and resolve. With the Automatic Platform Optimization service, we put your website into our network that is within 10 milliseconds of 99% of the Internet-connected population in the developed world, all without having to change your existing <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosting</a> provider. This means that for most requests your customers won’t even need to go to your origin, reducing many costly round trips and server processing time. These optimizations run on our edge network, so they also will not impact render or interactivity since no additional JavaScript is run on the client.</p>
-<h3>How We Measure Web Performance</h3>
-<p>Evaluating performance of a website is difficult. There are many different metrics you can track and it is not always obvious which metrics most meaningfully represent a user’s experience. As discussed when we <a href="https://blog.cloudflare.com/new-speed-page" target="_blank" rel="noopener noreferrer">blogged</a> about our new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed" target="_blank" rel="noopener noreferrer">Speed page</a>, we aim to simplify this for customers by automating tests using the infrastructure of webpagetest.org, and summarizing both the results visually and numerically in one place.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="612" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=715&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=640&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=715&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=750&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=828&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=1080&amp;h=924&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=1280&amp;h=1096&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GCVZGR2XY77MDH90C58N.png&amp;w=1430&amp;h=1224&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image4-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="612" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: image4-2"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>The visualization gives you a clear idea of what customers are going to see when they come to your site, and the <em>Critical Loading Times</em> provide the most important metrics to judge your performance. On top of seeing your site’s performance, we provide a list of recommendations for ways to even further increase your performance. If you are using WordPress, then we will test your site with Automatic Platform Optimizations to estimate the benefit you will get with the service.</p>
-<h3>The Benefits of Automatic Platform Optimization</h3>
-<p>We tested APO on over 500 Cloudflare customer websites that run on WordPress to understand what the performance improvements would be. The results speak for themselves:</p>
-<p><strong>Test Results</strong></p>
-<div id="html-block-k26" class="html-block">
-	<style>
-		#html-block-k26 .tg {
+<div class="mb2 gray5">8 min read</div>
+<div class="post-content post-body-content lh-copy gray1">
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pBDoI1dESTWbQFz0Vcsa6/76dfc80f250f0dec6cfd442c2a0dae7d/Birthday-Week-OG-images_WordPress_Optimization.png" alt="Birthday-Week-OG-images WordPress Optimization" class="kg-image" width="3334" height="1668" loading="lazy">
+	</figure>
+	<p>Today, we are announcing a new service to serve more than just the static content of your website with the <a href="https://www.cloudflare.com/application-services/products/automatic-platform-optimization" target="_blank" rel="noopener noreferrer">Automatic Platform Optimization (APO)</a> service. With this launch, we are supporting WordPress, the most popular website hosting solution serving 38% of all websites. Our testing, as detailed below, showed a 72% reduction in Time to First Byte (TTFB), 23% reduction to <a href="https://web.dev/fcp" target="_blank" rel="noopener noreferrer">First Contentful Paint</a>, and 13% reduction in <a href="https://web.dev/speed-index" target="_blank" rel="noopener noreferrer">Speed Index</a> for desktop users at the 90th percentile, by serving nearly all of your website’s content from Cloudflare’s network. This means visitors to your website see not only the first content sooner but all content more quickly.</p>
+	<p>With Automatic Platform Optimization for WordPress, your customers won’t suffer any slowness caused by common issues like shared hosting congestion, slow database lookups, or misbehaving plugins. This service is now available for anyone using WordPress.</p>
+	<div class="flex anchor relative">
+		<h3 id="automatic-platform-optimization-pricing">Automatic Platform Optimization Pricing</h3>
+		<a href="https://blog.cloudflare.com/#automatic-platform-optimization-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>APO for WordPress costs $5/month for customers on our Free plan and is included, at no additional cost, in our Professional, Business, and Enterprise <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">plans</a>. No usage fees, no surprises, <i>just speed</i>.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-to-get-started">How to get started</h3>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The easiest way to get started with APO is from your WordPress admin console.</p>
+	<p><b>1</b>. First, install the <a href="https://wordpress.org/plugins/cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare WordPress plugin</a> on your WordPress website or update to the latest version (3.8.2 or higher).
+		<b>2</b>. Authenticate the plugin (<a href="https://wordpress.org/plugins/cloudflare/#installation" target="_blank" rel="noopener noreferrer">steps here</a>) to talk to Cloudflare if you have not already done that.
+		<b>3</b>. From the Home screen of the Cloudflare section, turn on Automatic Platform Optimization.
+
+		Free customers will first be directed to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a> to purchase the service.
+	</p>
+	<div class="flex anchor relative">
+		<h3 id="why-we-built-this">Why We Built This</h3>
+		<a href="https://blog.cloudflare.com/#why-we-built-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>At Cloudflare, we jump at the opportunity to make hard problems for our customers disappear with the click of a button. Running a consistently fast website is challenging. Many businesses don’t have the time nor money to spend on complicated and expensive performance solutions for their site. Even if they do, it can be extremely costly to pay for specialized attention to ensure you get the best performance possible. Having a fast website doesn’t have to be complicated, though. <b>The closer your content is to your customers, the better your site will perform.</b> Static content caching does this for files like images, CSS and JavaScript, but that is only part of the equation. Dynamic content is still fetched from the origin incurring costly round trips and additional processing time. For more info on dynamic versus static content, see our <a href="https://www.cloudflare.com/learning/cdn/caching-static-and-dynamic-content" target="_blank" rel="noopener noreferrer">learning center</a>.</p>
+	<p>WordPress is one of the most open platforms in the world, but that means you are always at risk of incurring performance penalties because of plugins or other sources that, while necessary, may be hard to pinpoint and resolve. With the Automatic Platform Optimization service, we put your website into our network that is within 10 milliseconds of 99% of the Internet-connected population in the developed world, all without having to change your existing <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosting</a> provider. This means that for most requests your customers won’t even need to go to your origin, reducing many costly round trips and server processing time. These optimizations run on our edge network, so they also will not impact render or interactivity since no additional JavaScript is run on the client.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-measure-web-performance">How We Measure Web Performance</h3>
+		<a href="https://blog.cloudflare.com/#how-we-measure-web-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Evaluating performance of a website is difficult. There are many different metrics you can track and it is not always obvious which metrics most meaningfully represent a user’s experience. As discussed when we <a href="https://blog.cloudflare.com/new-speed-page">blogged</a> about our new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed" target="_blank" rel="noopener noreferrer">Speed page</a>, we aim to simplify this for customers by automating tests using the infrastructure of webpagetest.org, and summarizing both the results visually and numerically in one place.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NWhWuNJ3uph9V9GZVw1aW/be579629678a74e01792f6c6c6f56330/image4-2.png" alt="image4-2" class="kg-image" width="996" height="853" loading="lazy">
+	</figure>
+	<p>The visualization gives you a clear idea of what customers are going to see when they come to your site, and the <i>Critical Loading Times</i> provide the most important metrics to judge your performance. On top of seeing your site’s performance, we provide a list of recommendations for ways to even further increase your performance. If you are using WordPress, then we will test your site with Automatic Platform Optimizations to estimate the benefit you will get with the service.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-benefits-of-automatic-platform-optimization">The Benefits of Automatic Platform Optimization</h3>
+		<a href="https://blog.cloudflare.com/#the-benefits-of-automatic-platform-optimization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We tested APO on over 500 Cloudflare customer websites that run on WordPress to understand what the performance improvements would be. The results speak for themselves:</p>
+	<p><b>Test Results</b></p>
+	<style type="text/css">
+		.tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		#html-block-k26 .tg td {
+		.tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -36,7 +79,7 @@
 			word-break: normal;
 		}
 
-		#html-block-k26 .tg th {
+		.tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -48,7 +91,7 @@
 			word-break: normal;
 		}
 
-		#html-block-k26 .tg .tg-7fs1 {
+		.tg .tg-7fs1 {
 			background-color: #FFF;
 			border-color: #000000;
 			color: #276D9B;
@@ -57,7 +100,7 @@
 			vertical-align: top
 		}
 
-		#html-block-k26 .tg .tg-upde {
+		.tg .tg-upde {
 			background-color: #C0C0C0;
 			border-color: #000000;
 			color: #36393A;
@@ -66,7 +109,7 @@
 			vertical-align: middle
 		}
 
-		#html-block-k26 .tg .tg-fk66 {
+		.tg .tg-fk66 {
 			background-color: #FFF;
 			border-color: #000000;
 			color: #36393A;
@@ -74,7 +117,7 @@
 			vertical-align: top
 		}
 
-		#html-block-k26 .tg .tg-gd6q {
+		.tg .tg-gd6q {
 			background-color: #FFF;
 			border-color: #000000;
 			color: #36393A;
@@ -107,7 +150,7 @@
 				<td class="tg-gd6q">-2.76%</td>
 			</tr>
 			<tr>
-				<td class="tg-7fs1" rowspan="2"><a href="http://web.archive.org/web/20210503002739/https://web.dev/fcp" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline">First Contentful Paint</span></a><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000">(FCP)</span></td>
+				<td class="tg-7fs1" rowspan="2"><a href="http://web.archive.org/web/20210503002739/https://web.dev/fcp" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">First Contentful Paint</span></a><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000">(FCP)</span></td>
 				<td class="tg-fk66"><span style="font-weight:400;font-style:normal">90th</span></td>
 				<td class="tg-gd6q">2655 ms</td>
 				<td class="tg-gd6q">2056 ms</td>
@@ -120,7 +163,7 @@
 				<td class="tg-gd6q">12.46%</td>
 			</tr>
 			<tr>
-				<td class="tg-7fs1" rowspan="2"><a href="http://web.archive.org/web/20210503002739/https://web.dev/speed-index" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline">Speed Index</span></a><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000">(SI)</span></td>
+				<td class="tg-7fs1" rowspan="2"><a href="http://web.archive.org/web/20210503002739/https://web.dev/speed-index" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">Speed Index</span></a><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000">(SI)</span></td>
 				<td class="tg-fk66"><span style="font-weight:400;font-style:normal">90th</span></td>
 				<td class="tg-gd6q">6428</td>
 				<td class="tg-gd6q">5586</td>
@@ -134,38 +177,66 @@
 			</tr>
 		</tbody>
 	</table>
+	<p>Note: Results are based on test results of 505 randomly selected websites that are cached by Cloudflare. Tests were run using WebPageTest from South Carolina, USA and the following environment: Chrome, Cable connection speed.</p>
+	<p>Most importantly, with APO, a site’s TTFB is made both fast and consistent. Because we now serve the HTML from Cloudflare’s edge with 0 origin processing time, getting the first byte to the eyeball is consistently fast. Under heavy load, a WordPress origin can suffer delays in building the HTML and returning it to visitors. APO removes the variance due to load resulting in consistent TTFB &lt;400 ms.</p>
+	<p>Additionally, between faster TTFB and additional caching of third party fonts, we see performance improvements in both FCP and SI for both the fastest and slowest of the sites we tested. Some of this comes naturally from reducing the TTFB, since every millisecond you shave off of TTFB is a potential millisecond gain for other metrics. Caching additional third party fonts allows us to reduce the time it takes to fetch that content. Given fonts can often block paints due to text rendering, this improves the rate at which the page paints, and improves the Speed Index.</p>
+	<p>We asked the folks at <a href="https://kinsta.com" target="_blank" rel="noopener noreferrer">Kinsta</a> to try out APO, given their expertise on WordPress, and tell us what they think. <a href="https://brianli.com" target="_blank" rel="noopener noreferrer">Brian Li</a>, a Website Content Manager at Kinsta, ran a set of tests from around the world on a website hosted in Tokyo. I’ll let him explain what they did and the results:</p>
+	<blockquote>
+		<p>At Kinsta, <a href="https://kinsta.com/blog/fastest-wordpress-hosting" target="_blank" rel="noopener noreferrer">WordPress performance</a> is something that’s near and dear to our hearts. So, when Cloudflare reached out about testing their new Automatic Platform Optimization (APO) service for WordPress, we were all ears.
+
+			This is what we did to test out the new service:</p>
+	</blockquote>
+	<ol>
+		<li>
+			<p>We set up a test site in Tokyo, Japan – one of the 24 high-performance <a href="https://kinsta.com/knowledgebase/google-cloud-data-center-locations" target="_blank" rel="noopener noreferrer">data center locations</a> available for Kinsta customers.</p>
+		</li>
+		<li>
+			<p>We ran several speed tests from six different locations around the world with and without Cloudflare’s APO.</p>
+		</li>
+	</ol>
+	<blockquote>
+		<p>The results were incredible!
+
+			By caching <a href="https://kinsta.com/blog/wordpress-vs-static-html" target="_blank" rel="noopener noreferrer">static HTML</a> on Cloudflare’s edge network, we saw a 70-300% performance increase. As expected, the testing locations furthest away from Tokyo saw the biggest reduction in <a href="https://kinsta.com/blog/ttfb" target="_blank" rel="noopener noreferrer">load time</a>.
+
+			If your WordPress site uses a traditional <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> that only caches CSS, JS, and images, upgrading to Cloudflare’s WordPress APO is a no-brainer and will help you stay competitive with modern Jamstack and static sites that live on the edge by default.</p>
+	</blockquote>
+	<p>Brian’s test results are summarized in this image:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gDzHYWY75hKTwwHOoi6Xz/17e3e423683f032d12d22407bccf74a2/image1-7.png" alt="image1-7" class="kg-image" width="1920" height="1080" loading="lazy">
+	</figure>
+	<p><sub>Page Load Speeds for loading a website hosted in Tokyo from 6 locations worldwide - comparing Kinsta, Kinsta with KeyCDN, and Kinsta with Cloudflare APO.</sub></p>
+	<p>One of the clear benefits, from Kinsta’s testing of APO, is the consistency of performance for serving your site no matter where your visitors are in the world. The consistent sub-second performance shown with APO versus two or three second load times in other setups makes it clear that if you have a global customer base, APO delivers an improved experience for all visitors.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-automatic-platform-optimization-works">How Automatic Platform Optimization Works</h3>
+		<a href="https://blog.cloudflare.com/#how-automatic-platform-optimization-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Automatic Platform Optimization is the result of being able to use the power of <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to intelligently cache dynamic content. By caching dynamic content, we can serve the entire website from our edge network. Think ‘static site’ but without any of the work of having to build or maintain a static site. Customers can keep managing and updating content on their website in the same way and leave the hard work for performance to us. Serving both static and dynamic content from our network results, generally, in no origin requests or origin processing time. This means all the communication occurs between the user’s device and our edge. Reducing the multitude of round trips typically required from our edge to the origin for dynamic content is what makes this service so effective. Let’s first see what it normally looks like to load a WordPress site for a visitor.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nNaWWkM0X15Pp0jwnO0Hc/3c3b17b0325638bdb93e844654f2b92b/image3-3.png" alt="image3-3" class="kg-image" width="1466" height="1222" loading="lazy">
+	</figure>
+	<p><sub>A sequence diagram for a typical user visiting a site‌‌</sub></p>
+	<p>In a regular request flow, Cloudflare is able to cache some of the content like images, CSS, or JS, while other requests go to either the origin or a third party service in order to fetch the content. Most importantly the first request to fetch the HTML for the site needs to go to the origin which is a typical cause of long TTFB, since no other requests get made until the client can receive the HTML and parse it to make subsequent requests.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rbLsPASTNRFCNN5E1ySpm/edc2cc24486bc03730ebf0980654c834/image2-2.png" alt="image2-2" class="kg-image" width="1454" height="1214" loading="lazy">
+	</figure>
+	<p><sub>The same site visit but with APO enabled.</sub></p>
+	<p>Once APO is enabled, all those trips to the origin are removed. TTFB benefits greatly because the first hop starts and ends at Cloudflare’s network. This also means the browser starts working on fetching and painting the webpage sooner meaning each paint event occurs earlier. Last by caching third party fonts, we remove additional requests that would need to leave Cloudflare’s network and extend the time to display text to the user. Often, websites use fonts hosted on third-party domains. While this saves bandwidth costs that would be incurred from hosting it on the origin, depending on where those fonts are hosted, it can still be a costly operation to fetch them. By rehosting the fonts and serving them from our cache, we can reduce one of the remaining costly round trips.</p>
+	<p>With APO for WordPress, you can say bye bye to database congestion or unwieldy plugins slowing down your customers’ experience. These benefits are stacked on top of our already fast <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS connection times</a> and industry leading protocol support like HTTP/2 that ensure we are using the most efficient and the fastest way to connect and deliver your website to your customers.</p>
+	<p>For customers with WordPress sites that support authenticated sessions, you do not have to worry about us caching content from authenticated users and serving it to others. We bypass the cache on standard WordPress and WooCommerce cookies for authenticated users. This ensures customized content for a specific user is only visible to that user. While this has been available to customers with our Business-level service, it is now available for any WordPress customer that enables APO.</p>
+	<p>You might be wondering: “This all sounds great, but what about when I change content on my site?” Because this service works in tandem with our <a href="https://www.cloudflare.com/integrations/wordpress" target="_blank" rel="noopener noreferrer">WordPress plugin</a>, we are able to understand when you make changes and ensure we quickly purge the content in Cloudflare’s edge and refresh it with the new content. With the plugin installed, we detect content changes and update our edge network worldwide with automatic cache purges. As part of this release, we have updated our WordPress plugin, so whether you use APO, you should upgrade to the latest version today. If you do not or cannot use our WordPress plugin, then APO will still provide the same performance benefits, but may serve stale content for up to 30 minutes and when the content is requested again.</p>
+	<p>This service was built on the prototype work originally blogged about <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte">here</a> and <a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers">here</a>. For a more in depth look at the technical side of the service and how Cloudflare Workers allowed us to build the Automatic Platform Optimization service, see the <a href="https://blog.cloudflare.com/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers">accompanying blog post</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="wordpress-today-other-platforms-coming-soon">WordPress Today, Other Platforms Coming Soon</h3>
+		<a href="https://blog.cloudflare.com/#wordpress-today-other-platforms-coming-soon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While today’s announcement is focused on supporting WordPress, this is just the start. We plan to bring these same capabilities to other popular platforms used for web hosting. If you operate a platform and are interested in how we may be able to work together to improve things for all your customers, <a href="https://www.cloudflare.com/partners" target="_blank" rel="noopener noreferrer">please get in touch</a>. If you are running a website, let us know what platform you want to see us bring Automatic Platform Optimization to next.</p>
 </div>
-<p>Note: Results are based on test results of 505 randomly selected websites that are cached by Cloudflare. Tests were run using WebPageTest from South Carolina, USA and the following environment: Chrome, Cable connection speed.</p>
-<p>Most importantly, with APO, a site’s TTFB is made both fast and consistent. Because we now serve the HTML from Cloudflare’s edge with 0 origin processing time, getting the first byte to the eyeball is consistently fast. Under heavy load, a WordPress origin can suffer delays in building the HTML and returning it to visitors. APO removes the variance due to load resulting in consistent TTFB &lt;400 ms.</p>
-<p>Additionally, between faster TTFB and additional caching of third party fonts, we see performance improvements in both FCP and SI for both the fastest and slowest of the sites we tested. Some of this comes naturally from reducing the TTFB, since every millisecond you shave off of TTFB is a potential millisecond gain for other metrics. Caching additional third party fonts allows us to reduce the time it takes to fetch that content. Given fonts can often block paints due to text rendering, this improves the rate at which the page paints, and improves the Speed Index.</p>
-<p>We asked the folks at <a href="https://kinsta.com" target="_blank" rel="noopener noreferrer">Kinsta</a> to try out APO, given their expertise on WordPress, and tell us what they think. <a href="https://brianli.com" target="_blank" rel="noopener noreferrer">Brian Li</a>, a Website Content Manager at Kinsta, ran a set of tests from around the world on a website hosted in Tokyo. I’ll let him explain what they did and the results:</p>
-<blockquote>At Kinsta, <a href="https://kinsta.com/blog/fastest-wordpress-hosting" target="_blank" rel="noopener noreferrer">WordPress performance</a> is something that’s near and dear to our hearts. So, when Cloudflare reached out about testing their new Automatic Platform Optimization (APO) service for WordPress, we were all ears.<br> <br>This is what we did to test out the new service:</blockquote>
-<ol>
-	<li>We set up a test site in Tokyo, Japan – one of the 24 high-performance <a href="https://kinsta.com/knowledgebase/google-cloud-data-center-locations" target="_blank" rel="noopener noreferrer">data center locations</a> available for Kinsta customers.</li>
-	<li>We ran several speed tests from six different locations around the world with and without Cloudflare’s APO.</li>
-</ol>
-<blockquote>The results were incredible!<br> <br>By caching <a href="https://kinsta.com/blog/wordpress-vs-static-html" target="_blank" rel="noopener noreferrer">static HTML</a> on Cloudflare’s edge network, we saw a 70-300% performance increase. As expected, the testing locations furthest away from Tokyo saw the biggest reduction in <a href="https://kinsta.com/blog/ttfb" target="_blank" rel="noopener noreferrer">load time</a>.<br> <br>If your WordPress site uses a traditional <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> that only caches CSS, JS, and images, upgrading to Cloudflare’s WordPress APO is a no-brainer and will help you stay competitive with modern Jamstack and static sites that live on the edge by default.</blockquote>
-<p>Brian’s test results are summarized in this image:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6D84XC4ZZAHSV5P49WW.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1-7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: image1-7"></div>
-</figure>
-<p><span data-portabletext-unknown="mark">Page Load Speeds for loading a website hosted in Tokyo from 6 locations worldwide - comparing Kinsta, Kinsta with KeyCDN, and Kinsta with Cloudflare APO.</span></p>
-<p>One of the clear benefits, from Kinsta’s testing of APO, is the consistency of performance for serving your site no matter where your visitors are in the world. The consistent sub-second performance shown with APO versus two or three second load times in other setups makes it clear that if you have a global customer base, APO delivers an improved experience for all visitors.</p>
-<h3>How Automatic Platform Optimization Works</h3>
-<p>Automatic Platform Optimization is the result of being able to use the power of <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to intelligently cache dynamic content. By caching dynamic content, we can serve the entire website from our edge network. Think ‘static site’ but without any of the work of having to build or maintain a static site. Customers can keep managing and updating content on their website in the same way and leave the hard work for performance to us. Serving both static and dynamic content from our network results, generally, in no origin requests or origin processing time. This means all the communication occurs between the user’s device and our edge. Reducing the multitude of round trips typically required from our edge to the origin for dynamic content is what makes this service so effective. Let’s first see what it normally looks like to load a WordPress site for a visitor.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="596" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=715&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=640&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=715&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=750&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=828&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=1080&amp;h=900&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=1280&amp;h=1067&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HXJSDQ8BE8Q6VJNHS5DF.png&amp;w=1430&amp;h=1192&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3-3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="596" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: image3-3"></div>
-</figure>
-<p><span data-portabletext-unknown="mark">A sequence diagram for a typical user visiting a site‌‌</span></p>
-<p>In a regular request flow, Cloudflare is able to cache some of the content like images, CSS, or JS, while other requests go to either the origin or a third party service in order to fetch the content. Most importantly the first request to fetch the HTML for the site needs to go to the origin which is a typical cause of long TTFB, since no other requests get made until the client can receive the HTML and parse it to make subsequent requests.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="597" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=715&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=640&amp;h=534&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=715&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=750&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=828&amp;h=691&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=1080&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=1280&amp;h=1069&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KFVQC8YQGWJCSGZMQN4V.png&amp;w=1430&amp;h=1194&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="597" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: image2-2"></div>
-</figure>
-<p><span data-portabletext-unknown="mark">The same site visit but with APO enabled.</span></p>
-<p>Once APO is enabled, all those trips to the origin are removed. TTFB benefits greatly because the first hop starts and ends at Cloudflare’s network. This also means the browser starts working on fetching and painting the webpage sooner meaning each paint event occurs earlier. Last by caching third party fonts, we remove additional requests that would need to leave Cloudflare’s network and extend the time to display text to the user. Often, websites use fonts hosted on third-party domains. While this saves bandwidth costs that would be incurred from hosting it on the origin, depending on where those fonts are hosted, it can still be a costly operation to fetch them. By rehosting the fonts and serving them from our cache, we can reduce one of the remaining costly round trips.</p>
-<p>With APO for WordPress, you can say bye bye to database congestion or unwieldy plugins slowing down your customers’ experience. These benefits are stacked on top of our already fast <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer">TLS connection times</a> and industry leading protocol support like HTTP/2 that ensure we are using the most efficient and the fastest way to connect and deliver your website to your customers.</p>
-<p>For customers with WordPress sites that support authenticated sessions, you do not have to worry about us caching content from authenticated users and serving it to others. We bypass the cache on standard WordPress and WooCommerce cookies for authenticated users. This ensures customized content for a specific user is only visible to that user. While this has been available to customers with our Business-level service, it is now available for any WordPress customer that enables APO.</p>
-<p>You might be wondering: “This all sounds great, but what about when I change content on my site?” Because this service works in tandem with our <a href="https://www.cloudflare.com/integrations/wordpress" target="_blank" rel="noopener noreferrer">WordPress plugin</a>, we are able to understand when you make changes and ensure we quickly purge the content in Cloudflare’s edge and refresh it with the new content. With the plugin installed, we detect content changes and update our edge network worldwide with automatic cache purges. As part of this release, we have updated our WordPress plugin, so whether you use APO, you should upgrade to the latest version today. If you do not or cannot use our WordPress plugin, then APO will still provide the same performance benefits, but may serve stale content for up to 30 minutes and when the content is requested again.</p>
-<p>This service was built on the prototype work originally blogged about <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers" target="_blank" rel="noopener noreferrer">here</a>. For a more in depth look at the technical side of the service and how Cloudflare Workers allowed us to build the Automatic Platform Optimization service, see the <a href="https://blog.cloudflare.com/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers" target="_blank" rel="noopener noreferrer">accompanying blog post</a>.</p>
-<h3>WordPress Today, Other Platforms Coming Soon</h3>
-<p>While today’s announcement is focused on supporting WordPress, this is just the start. We plan to bring these same capabilities to other popular platforms used for web hosting. If you operate a platform and are interested in how we may be able to work together to improve things for all your customers, <a href="https://www.cloudflare.com/partners" target="_blank" rel="noopener noreferrer">please get in touch</a>. If you are running a website, let us know what platform you want to see us bring Automatic Platform Optimization to next.</p>

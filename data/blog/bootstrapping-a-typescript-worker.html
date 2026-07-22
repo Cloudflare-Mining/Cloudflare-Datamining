@@ -1,609 +1,673 @@
-<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm" target="_blank" rel="noopener noreferrer">Webstorm</a> and npm run upload your code straight to the edge.</p>
-<h3>Pre Requisites</h3>
-<p>My environment looks like this:</p>
-<ul>
-	<li>macOS High Sierra</li>
-	<li>node v8.11.3</li>
-	<li>npm v5.6.0</li>
-	<li>Webstorm v2018.1.3</li>
-</ul>
-<p>You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers" target="_blank" rel="noopener noreferrer">activate Workers</a> on it.</p>
-<p>I'll be using cryptoserviceworker.com</p>
-<p>I'll also use Yeoman to build our initial scaffolding. Install it with <code>npm install yo -g</code></p>
-<h2>Getting Started</h2>
-<p>Let's start with a minimal node app with a "hello world" class and a test.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> cryptoserviceworker</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> cryptoserviceworker</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> generator-node-typescript</span><span class="sk-005cc5-99ffe4"> -g</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">yo</span><span class="sk-032f62-99ffe4"> node-typescript</span></span></code></pre>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FXneXWxAlSjkmdEfZwK8V/2c2463ed0721ef17fc7105cbe8cbf026/bootstrapping-a-typescript-worker.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm" target="_blank" rel="noopener noreferrer">Webstorm</a> and npm run upload your code straight to the edge.</p>
+	<div class="flex anchor relative">
+		<h3 id="pre-requisites">Pre Requisites</h3>
+		<a href="https://blog.cloudflare.com/#pre-requisites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>My environment looks like this:</p>
+	<ul>
+		<li>
+			<p>macOS High Sierra</p>
+		</li>
+		<li>
+			<p>node v8.11.3</p>
+		</li>
+		<li>
+			<p>npm v5.6.0</p>
+		</li>
+		<li>
+			<p>Webstorm v2018.1.3</p>
+		</li>
+	</ul>
+	<p>You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers" target="_blank" rel="noopener noreferrer">activate Workers</a> on it.</p>
+	<p>I'll be using cryptoserviceworker.com</p>
+	<p>I'll also use Yeoman to build our initial scaffolding. Install it with <code>npm install yo -g</code></p>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting Started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let's start with a minimal node app with a "hello world" class and a test.</p>
+	<pre class="language-bash"><code class="language-bash">mkdir cryptoserviceworker &amp;&amp; cd cryptoserviceworker
+npm install generator-node-typescript -g
+yo node-typescript</code></pre>
+	<p>That generator creates the following directory structure:</p>
+	<pre class="language-bash"><code class="language-bash">drwxr-xr-x   16 steve  staff     512 Jun 18 20:40 .
+drwxr-xr-x   10 steve  staff     320 Jun 18 20:35 ..
+-rw-r--r--    1 steve  staff     197 Jun 18 20:40 .editorconfig
+-rw-r--r--    1 steve  staff      96 Jun 18 20:40 .gitignore
+-rw-r--r--    1 steve  staff     147 Jun 18 20:40 .npmignore
+-rw-r--r--    1 steve  staff     267 Jun 18 20:40 .travis.yml
+drwxr-xr-x    5 steve  staff     160 Jun 18 20:40 .vscode
+-rw-r--r--    1 steve  staff    1066 Jun 18 20:40 LICENSE
+-rw-r--r--    1 steve  staff    2071 Jun 18 20:40 README.md
+drwxr-xr-x    4 steve  staff     128 Jun 18 20:40 __tests__
+drwxr-xr-x  479 steve  staff   15328 Jun 18 20:40 node_modules
+-rw-r--r--    1 steve  staff  244624 Jun 18 20:40 package-lock.json
+-rw-r--r--    1 steve  staff    1506 Jun 18 20:40 package.json
+drwxr-xr-x    4 steve  staff     128 Jun 18 20:40 src
+-rw-r--r--    1 steve  staff     454 Jun 18 20:40 tsconfig.json
+-rw-r--r--    1 steve  staff      73 Jun 18 20:40 tslint.json</code></pre>
+	<p>It includes default settings, a task runner, an initial Typescript config and more. We won't use all of it, but it's a good starting point.</p>
+	<div class="flex anchor relative">
+		<h2 id="first-test">First Test</h2>
+		<a href="https://blog.cloudflare.com/#first-test" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If we take a look at the contents of <code>src/greeter.ts</code>, we'll see it's a very Typescript implementation of hello world.</p>
+	<pre class="language-bash"><code class="language-bash">$ cat greeter.ts 
+export class Greeter {
+  private greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  public greet(): string {
+    return `Bonjour, ${this.greeting}!`;
+  }
+}</code></pre>
+	<p>Because Yeoman has set up our test infrastructure, we should be able exercise the code using the greeter test in <code>__tests__/greeter-spec.ts</code></p>
+	<pre class="language-bash"><code class="language-bash">import { Greeter } from '../src/greeter';
+
+test('Should greet with message', () =&gt; {
+  const greeter = new Greeter('friend');
+  expect(greeter.greet()).toBe('Bonjour, friend!');
+});</code></pre>
+	<p>This generator uses jest. It's installed locally, but let's install it globally for convenience and run it!</p>
+	<pre class="language-bash"><code class="language-bash">npm install jest -g
+jest
+ PASS  __tests__/greeter-spec.ts
+ PASS  __tests__/index-spec.ts
+
+Test Suites: 2 passed, 2 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.867s
+Ran all test suites.
+</code></pre>
+	<p>OK, so we have a testable Typescript template. Let's fire up Webstorm and write some code!</p>
+	<div class="flex anchor relative">
+		<h3 id="hello-world-with-workers">Hello, World with Workers</h3>
+		<a href="https://blog.cloudflare.com/#hello-world-with-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A hello world implementation in Typescript might look something like this:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3iZzB5lable4vXw45e7HjV/7b56613bef3fa2565b776631cae4deda/typescript-hello-world.png" alt="Hello world first attempt" class="kg-image" width="383" height="139" loading="lazy">
+
+	</figure>
+	<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch" target="_blank" rel="noopener noreferrer">node-fetch</a> provides an implementation for node, so let’s install that.</p>
+	<pre class="language-bash"><code class="language-bash">npm install node-fetch
+npm install @types/node-fetch</code></pre>
+	<p>That made Webstorm happier. It’s been able to locate the type definitions.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79lrvSbwWcbZMWH2Q93vJk/bf5dd88ad97663d1be28c11f214916bb/typescript-hello-world2.png" alt="Hello world with type defs" class="kg-image" width="444" height="149" loading="lazy">
+
+	</figure>
+	<p>Now let's write a test. Create a new file <b>tests</b>/worker-spec.ts:</p>
+	<pre class="language-typescript"><code class="language-typescript">import { Request } from "node-fetch";
+import { Worker } from "../src/worker";
+
+test('Should say hello', () =&gt; {
+
+  const worker = new Worker();
+  const request = new Request("https://cryptoserviceworker.com/");
+  const response = worker.handle(request);
+  expect(response.status).toEqual(200);
+  expect(response.body).toEqual("Hello, world!");
+});</code></pre>
+	<p>And delete the other files and tests so we're just working worker.ts and worker-spect.ts</p>
+	<p>Run <code>jest</code></p>
+	<pre class="language-bash"><code class="language-bash"> PASS  __tests__/worker-spec.ts
+ PASS  __tests__/worker-spec.js
+
+Test Suites: 2 passed, 2 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.213s, estimated 2s</code></pre>
+	<p>OK, so our test passed, but notice it ran both the Typescript and the Javascript? Let's restrict to just Typescript. Go into package.json, locate jest and change</p>
+	<p><code>"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",</code> to<code>"testRegex": "(/__tests__/.*)\\-spec.ts$"</code></p>
+	<p>Run it again:</p>
+	<pre class="language-bash"><code class="language-bash">jest
+ PASS  __tests__/worker-spec.ts
+  ✓ Should say hello (8ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.123s, estimated 2s
+Ran all test suites.
+</code></pre>
+	<p>Better. OK, ship it!</p>
+	<div class="flex anchor relative">
+		<h3 id="from-local-typescript-to-worker-compatible-javascript">From Local Typescript to Worker Compatible Javascript.</h3>
+		<a href="https://blog.cloudflare.com/#from-local-typescript-to-worker-compatible-javascript" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let's take a look at <code>src/worker.js</code> to see how our Typescript transpiled.</p>
+	<pre class="language-javascript"><code class="language-javascript">"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const node_fetch_1 = require("node-fetch");
+class Worker {
+    handle(request) {
+        return new node_fetch_1.Response('Hello, world!');
+    }
+}
+exports.Worker = Worker;</code></pre>
+	<p>Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6H2ZEwr9QfXdCxE7Ai7kOs/a5d2edbd452afcc5898a3adcb2ba211f/workers-dashboard.png" alt="Workers Dashboard" class="kg-image" width="988" height="557" loading="lazy">
+
+	</figure>
+	<p>First things first, check the canonical Hello World implementation works.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YHeN0MBVI3oGNznabkxvl/53eb88bb32ed71bb81fdd47d5a973f83/hello-world-ide.png" alt="Hello world in IDE" class="kg-image" width="1033" height="210" loading="lazy">
+
+	</figure>
+	<p>Awesome, now let's replace it with our "transpiled from Typescript" version:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7lIHef0I92E8ZoIlza2hdT/6dfb9fb0677b08341719b38552795cfc/fail1.png" alt="Fail 1" class="kg-image" width="452" height="370" loading="lazy">
+
+	</figure>
+	<p>Fail. OK, so the out of the box "transpiled from typescript" is not going to work. Let's make the changes necessary to get it run manually, then incorporate that into the build process.</p>
+	<p><b>Error #1: Uncaught ReferenceError: exports is not defined at line 2</b>That's easy enough, let's add <code>var exports = {}</code>. Update Preview.</p>
+	<p><b>Error #2: Uncaught ReferenceError: require is not defined at line 4</b></p>
+	<p>True, we're running in V8 on the Cloudflare Edge and the only code is what we uploaded. There are no "node_modules" to include. Plus, that line was only for dev anyway. Remove it. Update Preview.</p>
+	<p><b>Error #3: No event handlers were registered. This script does nothing.</b></p>
+	<p>Right, we need to invoke the code. Let's add a snippet to the top of the file to actually invoke our worker.</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
+  let worker = new exports.Worker();
+  event.respondWith(worker.handle(event.request));
+})</code></pre>
+	<p><b>Error #4: Uncaught ReferenceError: </b><code><b>node_fetch_1</b></code><b> is not defined</b></p>
+	<p>Right, we removed that because <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank" rel="noopener noreferrer">Response</a> is a native object when it runs in the context of a worker. So remove the <code>node_fetch_1</code> prefix.</p>
+	<p><b>Error #5: exports.__esModule = true does nothing</b></p>
+	<p>So let's remove that.</p>
+	<p>Success!!</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HVd2qR7Uhmbrfnd1doTZN/6461c7eb9afbd15ca4e27e02ccbb8cd3/hello-world-success.png" alt="Success" class="kg-image" width="752" height="381" loading="lazy">
+
+	</figure>
+	<p>OK, so with some massaging, we got a Worker transpiled from Typescript to execute. We:</p>
+	<ul>
+		<li>
+			<p>Added a line to create an exports object</p>
+		</li>
+		<li>
+			<p>Removed the dev dependency on "node_fetch"</p>
+		</li>
+		<li>
+			<p>Removed the exports.__esModule = true line</p>
+		</li>
+	</ul>
+	<p>Let's add that to our build process so we can have "Worker-ready" Javascript every time we make a change to our Typescript.</p>
+	<div class="flex anchor relative">
+		<h3 id="grunt">Grunt</h3>
+		<a href="https://blog.cloudflare.com/#grunt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>I'm going to use Grunt to automate that. Here's my new <code>worker.ts</code></p>
+	<pre class="language-typescript"><code class="language-typescript">// --BEGIN PREAMBLE--
+/// //Invoke worker
+/// var exports = {};
+/// addEventListener('fetch', event =&gt; {
+///   event.respondWith(fetchAndApply(event.request))
+/// });
+///
+/// async function fetchAndApply(request) {
+///   let worker = new exports.Worker();
+///   return worker.handle(request);
+/// }
+// --END PREAMBLE--
+
+// --BEGIN COMMENT--
+// mock the methods and objects that will be available in the browser
+import { Request, Response } from 'node-fetch';
+// --END COMMENT--
+export class Worker {
+  public handle(request: Request) {
+    return new Response("Hello, world!")
+  }
+}</code></pre>
+	<p>I want to uncomment the preamble to invoke our script, comment out the dev dependencies and remove the __esmodule line. Let's install Grunt, a text-replace module and create a <code>Gruntfile.js</code></p>
+	<pre class="language-bash"><code class="language-bash">npm install grunt-cli -g
+npm install grunt --save-dev
+npm install grunt-replace --save-dev
+touch Gruntfile.js</code></pre>
+	<p>My <code>Gruntfile.js</code> looks like this</p>
+	<pre class="language-json"><code class="language-json">module.exports = function (grunt) {
+
+  grunt.loadNpmTasks('grunt-replace');
+  grunt.initConfig({
+    replace: {
+      comments: {
+        options: {
+          patterns: [
+            {
+              /* Comment imports for node during dev */
+              match: /--BEGIN COMMENT--[\s\S]*?--END COMMENT--/g,
+              replacement: 'Dev environment code block removed by build'
+            },
+            {
+              /* Uncomment preamble for production to process the request */
+              match: /\/\/\//mg,
+              replacement: ''
+            }
+          ]
+        },
+        files: [
+          { expand: true, flatten: true, src: ['src/worker.ts'], dest: 'build/' }
+        ]
+      },
+      exports: {
+        //remove the exports line that typescript includes without an option to
+        //suppress, but is not in the v8 env that workers run in.
+        options: {
+          patterns: [
+            {
+              match: /exports.__esModule = true;/g,
+              replacement: "// exports line commented by build"
+            }
+          ]
+        },
+        files: [
+          { expand: true, flatten: true, src: ['build/worker.js'], dest: 'build/' }
+        ]
+      }
+    }
+  });
+
+  grunt.registerTask('prepare-typescript', 'replace:comments');
+  grunt.registerTask('fix-export', 'replace:exports');
+};
+</code></pre>
+	<p>There are two tasks. The first is the comment/uncomment step that we want before our Typescript is transpiled.</p>
+	<p>The second is to remove the <code>exports.__esmodule = true</code> line</p>
+	<pre class="language-bash"><code class="language-bash">$ grunt prepare-typescript
+Running "replace:comments" (replace) task
+&gt;&gt; 11 replacements in 1 file.
+
+Done.</code></pre>
+	<p>If we open <code>build/worker.ts</code>, we see this:</p>
+	<pre class="language-typescript"><code class="language-typescript">// --BEGIN PREAMBLE--
+ //Invoke worker
+ var exports = {};
+ addEventListener('fetch', event =&gt; {
+   event.respondWith(fetchAndApply(event.request))
+ });
+
+ async function fetchAndApply(request) {
+   let worker = new exports.Worker();
+   return worker.handle(request);
+ }
+// --END PREAMBLE--
+
+// Dev environment code block removed by build
+export class Worker {
+  public handle(request: Request) {
+    return new Response("Hello, world!")
+  }
+}</code></pre>
+	<p>Opening <code>build/worker.js</code> you'll see a whole lot of code generated for handling async functions. That's because we're using the <code>async</code> keyword in the preamble.</p>
+	<pre class="language-bash"><code class="language-bash">"use strict";
+var __awaiter = (this &amp;&amp; this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this &amp;&amp; this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] &amp; 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" &amp;&amp; (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y &amp;&amp; (t = y[op[0] &amp; 2 ? "return" : op[0] ? "throw" : "next"]) &amp;&amp; !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length &gt; 0 &amp;&amp; t[t.length - 1]) &amp;&amp; (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 &amp;&amp; (!t || (op[1] &gt; t[0] &amp;&amp; op[1] &lt; t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 &amp;&amp; _.label &lt; t[1]) { _.label = t[1]; t = op; break; }
+                    if (t &amp;&amp; _.label &lt; t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] &amp; 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+exports.__esModule = true;
+// --BEGIN PREAMBLE--
+//Invoke worker
+var exports = {};
+addEventListener('fetch', function (event) {
+    event.respondWith(fetchAndApply(event.request));
+});
+function fetchAndApply(request) {
+    return __awaiter(this, void 0, void 0, function () {
+        var worker;
+        return __generator(this, function (_a) {
+            worker = new exports.Worker();
+            return [2 /*return*/, worker.handle(request)];
+        });
+    });
+}
+// --END PREAMBLE--
+// Dev environment code block removed by build
+var Worker = /** @class */ (function () {
+    function Worker() {
+    }
+    Worker.prototype.handle = function (request) {
+        return new Response("Hello, world!");
+    };
+    return Worker;
+}());
+exports.Worker = Worker;</code></pre>
+	<p>Now let's remove that <code>exports.__esModule = true</code> line.</p>
+	<p><code>grunt fix-export</code></p>
+	<p>and now we'll see instead in the worker.js <code>// exports line commented by build</code>.</p>
+	<div class="flex anchor relative">
+		<h3 id="put-it-together">Put it together</h3>
+		<a href="https://blog.cloudflare.com/#put-it-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>I just want to run <code>npm run build</code> and get Worker-friendly Javascript. Let's modify <code>package.json</code> to do just that. Change</p>
+	<p><code>"build": "tsc --pretty"</code> to <code>"build": "grunt prepare-typescript &amp;&amp; tsc build/*.ts --pretty --skipLibCheck; grunt fix-export",</code></p>
+	<p>And run it.</p>
+	<p><code>npm run build</code> will result in</p>
+	<pre class="language-bash"><code class="language-bash">"use strict";
+var __awaiter = (this &amp;&amp; this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this &amp;&amp; this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] &amp; 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" &amp;&amp; (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y &amp;&amp; (t = y[op[0] &amp; 2 ? "return" : op[0] ? "throw" : "next"]) &amp;&amp; !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length &gt; 0 &amp;&amp; t[t.length - 1]) &amp;&amp; (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 &amp;&amp; (!t || (op[1] &gt; t[0] &amp;&amp; op[1] &lt; t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 &amp;&amp; _.label &lt; t[1]) { _.label = t[1]; t = op; break; }
+                    if (t &amp;&amp; _.label &lt; t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] &amp; 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+// exports line commented by build
+// --BEGIN PREAMBLE--
+//Invoke worker
+var exports = {};
+addEventListener('fetch', function (event) {
+    event.respondWith(fetchAndApply(event.request));
+});
+function fetchAndApply(request) {
+    return __awaiter(this, void 0, void 0, function () {
+        var worker;
+        return __generator(this, function (_a) {
+            worker = new exports.Worker();
+            return [2 /*return*/, worker.handle(request)];
+        });
+    });
+}
+// --END PREAMBLE--
+// Dev environment code block removed by build
+var Worker = /** @class */ (function () {
+    function Worker() {
+    }
+    Worker.prototype.handle = function (request) {
+        return new Response('Hello, world!');
+    };
+    return Worker;
+}());
+exports.Worker = Worker;</code></pre>
+	<p>Paste that into the Workers IDE... works first time.</p>
+	<div class="flex anchor relative">
+		<h3 id="automated-upload">Automated upload</h3>
+		<a href="https://blog.cloudflare.com/#automated-upload" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
+	<p><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
+	<p>OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener noreferrer">dotenv</a> package to load config from a .env file or environment variables.</p>
+	<p>Create a <code>.env</code> file that looks like this:</p>
+	<pre class="language-bash"><code class="language-bash">CF_WORKER_ZONE_ID=xxxxxxxxxxxxxxxxxxx
+CF_WORKER_EMAIL=steve@example.com
+CF_WORKER_AUTH_KEY=xxxxxxxxxxxxxxxxxx
+CF_WORKER_PATH=build/worker.js</code></pre>
+	<p>To locate your zone ID and auth key, go to the dashboard, select your zone and click the "Overview" icon.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39GyjeFWomLYOQ1LUjNg5E/b1625fcce903fd56d053d034074f9d71/overview.png" alt="Overview" class="kg-image" width="484" height="219" loading="lazy">
+
+	</figure>
+	<p>The zone ID is right there, then click "Get API key" and choose the "Global API Key" to get the Auth Key.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3o5LTjxiyp74BEDsmNLt4p/a91ea533cff106348d4fafb4845cdbdc/api-key.png" alt="API key" class="kg-image" width="936" height="191" loading="lazy">
+
+	</figure>
+	<p>Fill out your .env with those values and then add the following to your Gruntfile which will:</p>
+	<ul>
+		<li>
+			<p>Read your config</p>
+		</li>
+		<li>
+			<p>Upload to Cloudflare</p>
+		</li>
+		<li>
+			<p>Parse any success or error messages.</p>
+		</li>
+	</ul>
+	<pre class="language-bash"><code class="language-bash">grunt.registerTask('upload-worker', 'Uploads workers to Cloudflare', function(path) {
+
+    require('dotenv').config();
+    const fs = require('fs');
+    const log = console;
+
+    const done = this.async();
+    const conf = readConfig();
+    path = path || grunt.option('path') || process.env.CF_WORKER_PATH;
+    if (!path) {
+      fail("path is required");
+    }
+    if (!fs.existsSync(path)) {
+      fail(`path not found ${path}`);
+    }
+
+    let script = fs.readFileSync(path);
+    log.info("Uploading...");
+    let url = `https://api.cloudflare.com/client/v4/zones/${conf.zoneId}/workers/script`;
+    let options = {
+      url: url,
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/javascript'
+      },
+      body: script
+    };
+    invokeApi(options, conf, done);
+  });
+
+  function invokeApi(options, conf, done) {
+
+    // Add authentication to the request
+    options.headers = options.headers || {};
+    Object.assign(options.headers, {
+      'X-Auth-Email': conf.email,
+      'X-Auth-Key': conf.apiKey,
+    });
+
+    request(options, function(error, response) {
+      try {
+        if (error) {
+          log.error(error);
+          fail(`API failure ${response.statusCode} error: ${error}`);
+          done();
+          return;
+        }
+        let body = JSON.parse(response.body);
+        if (body) {
+          logResult(body);
+        }
+        done();
+      } catch (e) {
+        fail(`Unhandled error. ${e}`);
+        done();
+      }
+    });
+  }
+
+  function logResult(body) {
+    body.success ? log.error("Status: Success") : log.error("Status: Failed");
+    let errors = body.errors || [];
+    if (errors) {
+      log.info(` Errors: ${errors.length}`);
+      for (let e of errors) {
+        log.error(` Code: ${e.code} Message: ${e.message}`);
+      }
+    }
+    let messages = body.messages || [];
+    if (messages) {
+      log.info(` Messages ${messages.length}`);
+      for (let msg of messages) {
+        log.info(` ${msg}`);
+      }
+    }
+    let result = body.result;
+    log.info(" Result");
+    log.info(` ${JSON.stringify(result, null, 2)}`);
+  }
+
+  function readConfig() {
+    let zoneId = grunt.option('zoneId') || process.env.CF_WORKER_ZONE_ID;
+    let email = grunt.option('email') || process.env.CF_WORKER_EMAIL;
+    let apiKey = grunt.option('apiKey') || process.env.CF_WORKER_AUTH_KEY;
+
+    log.debug("zoneID: " + zoneId);
+    log.debug("email: " + email);
+    log.debug("apiKey: " + "*".repeat(apiKey.length));
+
+    if (!zoneId || !email || !apiKey) {
+      fail("zone id, cloudflare email and api key are required");
+    }
+    return {
+      zoneId: zoneId,
+      email: email,
+      apiKey: apiKey
+    }
+  }
+
+  function fail(message) {
+    grunt.fail.fatal(message, TASK_FAILED);
+  }</code></pre>
+	<p>Finally, let's add a new task to <code>package.json</code> so we can just <code>npm run upload</code> any time we update our Worker.</p>
+	<p><code>"upload": "grunt upload-worker"</code></p>
+	<pre class="language-bash"><code class="language-bash">npm run upload-worker
+
+Running "upload-worker" task
+zoneID: **************
+email: steve@example.com
+apiKey: *************************************
+Uploading...
+Status: Success
+ Errors: 0
+ Messages 0
+ Result
+ {
+  "script"...
+ }</code></pre>
+	<p>Voila! Script uploaded. OK, so if it's uploaded, we can call call it remotely:</p>
+	<p><code>$ curl https://cryptoserviceworker.com/hello</code></p>
+	<p>Hmmm... nothing. Ah, we haven't actually configured Workers to route any requests to our Worker. You can do this via the API, but since it's a one off, I'll do it in the web IDE.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cOmAOF6ivdau7cpgr8VEF/6fd51e85e26d9d0e7309e599c677a78c/routes.png" alt="Add routes" class="kg-image" width="776" height="446" loading="lazy">
+
+	</figure>
+	<p>And try again:</p>
+	<pre class="language-bash"><code class="language-bash">$ curl https://cryptoserviceworker.com/hello
+Hello, world!</code></pre>
+	<p>Success! OK, so to recap:</p>
+	<ul>
+		<li>
+			<p>We've bootstrapped a Typescript project using NodeJS and Webstorm</p>
+		</li>
+		<li>
+			<p>Written a "Hello, World" worker in Typescript</p>
+		</li>
+		<li>
+			<p>Setup build tasks to modify the code for Workers</p>
+		</li>
+		<li>
+			<p>Automatically uploading to the Cloudflare edge with <code>npm run upload</code></p>
+		</li>
+		<li>
+			<p>...</p>
+		</li>
+		<li>
+			<p>Profit</p>
+		</li>
+	</ul>
+	<hr>
+	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer"><i>Cloudflare Community Forum</i></a><i>.</i></p>
 </div>
-<p>That generator creates the following directory structure:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">   16</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     512</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> .</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">   10</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     320</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:35</span><span class="sk-032f62-99ffe4"> ..</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     197</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> .editorconfig</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">      96</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> .gitignore</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     147</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> .npmignore</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     267</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> .travis.yml</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">    5</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     160</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> .vscode</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">    1066</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> LICENSE</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">    2071</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> README.md</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">    4</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     128</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> __tests__</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">  479</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">   15328</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> node_modules</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">  244624</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> package-lock.json</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">    1506</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> package.json</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">drwxr-xr-x</span><span class="sk-005cc5-ffc799">    4</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     128</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> src</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">     454</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> tsconfig.json</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> steve</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">      73</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 20:40</span><span class="sk-032f62-99ffe4"> tslint.json</span></span></code></pre>
-</div>
-<p>It includes default settings, a task runner, an initial Typescript config and more. We won't use all of it, but it's a good starting point.</p>
-<h2>First Test</h2>
-<p>If we take a look at the contents of <code>src/greeter.ts</code>, we'll see it's a very Typescript implementation of hello world.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> greeter.ts</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> class Greeter {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  private</span><span class="sk-032f62-99ffe4"> greeting:</span><span class="sk-032f62-99ffe4"> string</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  constructor(message:</span><span class="sk-032f62-99ffe4"> string</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    this.greeting</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  public</span><span class="sk-032f62-99ffe4"> greet</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> string</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">Bonjour,</span><span class="sk-032f62-99ffe4"> ${</span><span class="sk-24292e-fff">this</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">greeting</span><span class="sk-032f62-99ffe4">}!`</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>Because Yeoman has set up our test infrastructure, we should be able exercise the code using the greeter test in <code>__tests__/greeter-spec.ts</code></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> Greeter</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> '../src/greeter'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'Should greet with message'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> () =&gt; {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> greeter</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Greeter</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'friend'</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  expect(greeter.greet(</span><span class="sk-24292e-fff">)).toBe('Bonjour, friend!');</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
-</div>
-<p>This generator uses jest. It's installed locally, but let's install it globally for convenience and run it!</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> jest</span><span class="sk-005cc5-99ffe4"> -g</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">jest</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/greeter-spec.ts</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/index-spec.ts</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Test</span><span class="sk-032f62-99ffe4"> Suites:</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> passed,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Tests:</span><span class="sk-005cc5-ffc799">       2</span><span class="sk-032f62-99ffe4"> passed,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Snapshots:</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Time:</span><span class="sk-032f62-99ffe4">        1.867s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Ran</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> test</span><span class="sk-032f62-99ffe4"> suites.</span></span>
-<span class="line"></span></code></pre>
-</div>
-<p>OK, so we have a testable Typescript template. Let's fire up Webstorm and write some code!</p>
-<h3>Hello, World with Workers</h3>
-<p>A hello world implementation in Typescript might look something like this:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="383" height="139" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=383&amp;h=139&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=383&amp;h=139&amp;f=webp&amp;fit=cover&amp;position=center 383w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=640&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=750&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467H6HQP8BTFCMABN2529V.png&amp;w=766&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 766w" alt="Hello world first attempt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 383px) 383px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="383" height="139" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Hello world first attempt"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch" target="_blank" rel="noopener noreferrer">node-fetch</a> provides an implementation for node, so let’s install that.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> node-fetch</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @types/node-fetch</span></span></code></pre>
-</div>
-<p>That made Webstorm happier. It’s been able to locate the type definitions.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="444" height="149" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=444&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=444&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 444w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=640&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=750&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=828&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48N5WY6G92CD7N0WR6NGNF.png&amp;w=888&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 888w" alt="Hello world with type defs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 444px) 444px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="444" height="149" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Hello world with type defs"></div>
-</figure>
-<p>Now let's write a test. Create a new file <strong>tests</strong>/worker-spec.ts:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Request } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "node-fetch"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Worker } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "../src/worker"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">test</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Should say hello'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> worker</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Worker</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> request</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://cryptoserviceworker.com/"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> worker.</span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(request);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(response.status).</span><span class="sk-6f42c1-ffc799">toEqual</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(response.body).</span><span class="sk-6f42c1-ffc799">toEqual</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
-</div>
-<p>And delete the other files and tests so we're just working worker.ts and worker-spect.ts</p>
-<p>Run <code>jest</code></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/worker-spec.ts</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/worker-spec.js</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Test</span><span class="sk-032f62-99ffe4"> Suites:</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> passed,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Tests:</span><span class="sk-005cc5-ffc799">       2</span><span class="sk-032f62-99ffe4"> passed,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Snapshots:</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Time:</span><span class="sk-032f62-99ffe4">        1.213s,</span><span class="sk-032f62-99ffe4"> estimated</span><span class="sk-032f62-99ffe4"> 2s</span></span></code></pre>
-</div>
-<p>OK, so our test passed, but notice it ran both the Typescript and the Javascript? Let's restrict to just Typescript. Go into package.json, locate jest and change</p>
-<p><code>"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",</code> to<code>"testRegex": "(/__tests__/.*)\\-spec.ts$"</code></p>
-<p>Run it again:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">jest</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> PASS</span><span class="sk-032f62-99ffe4">  __tests__/worker-spec.ts</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  ✓</span><span class="sk-032f62-99ffe4"> Should</span><span class="sk-032f62-99ffe4"> say</span><span class="sk-032f62-99ffe4"> hello</span><span class="sk-24292e-fff"> (8ms)</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Test</span><span class="sk-032f62-99ffe4"> Suites:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> passed,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Tests:</span><span class="sk-005cc5-ffc799">       1</span><span class="sk-032f62-99ffe4"> passed,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Snapshots:</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-032f62-99ffe4"> total</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Time:</span><span class="sk-032f62-99ffe4">        1.123s,</span><span class="sk-032f62-99ffe4"> estimated</span><span class="sk-032f62-99ffe4"> 2s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Ran</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> test</span><span class="sk-032f62-99ffe4"> suites.</span></span>
-<span class="line"></span></code></pre>
-</div>
-<p>Better. OK, ship it!</p>
-<h3>From Local Typescript to Worker Compatible Javascript.</h3>
-<p>Let's take a look at <code>src/worker.js</code> to see how our Typescript transpiled.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"use strict"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">Object.</span><span class="sk-6f42c1-ffc799">defineProperty</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"__esModule"</span><span class="sk-24292e-fff">, { value: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> node_fetch_1</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"node-fetch"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Worker</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    handle</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-24292e-fff"> node_fetch_1.</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello, world!'</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">exports</span><span class="sk-24292e-fff">.Worker </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Worker;</span></span></code></pre>
-</div>
-<p>Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481MX1A7821XN8QHEV8NQA.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers Dashboard" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Workers Dashboard"></div>
-</figure>
-<p>First things first, check the canonical Hello World implementation works.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="145" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=715&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=640&amp;h=130&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=715&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=750&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=828&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=1080&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=1280&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MX2RSKDQWQTSFYT2FKFB.png&amp;w=1430&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Hello world in IDE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="145" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Hello world in IDE"></div>
-</figure>
-<p>Awesome, now let's replace it with our "transpiled from Typescript" version:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="452" height="370" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=452&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=452&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 452w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=640&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=750&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=828&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YCY7K8EPM34XG0HVDZ5G.png&amp;w=904&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 904w" alt="Fail 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 452px) 452px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="452" height="370" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Fail 1"></div>
-</figure>
-<p>Fail. OK, so the out of the box "transpiled from typescript" is not going to work. Let's make the changes necessary to get it run manually, then incorporate that into the build process.</p>
-<p><strong>Error #1: Uncaught ReferenceError: exports is not defined at line 2</strong>That's easy enough, let's add <code>var exports = {}</code>. Update Preview.</p>
-<p><strong>Error #2: Uncaught ReferenceError: require is not defined at line 4</strong></p>
-<p>True, we're running in V8 on the Cloudflare Edge and the only code is what we uploaded. There are no "node_modules" to include. Plus, that line was only for dev anyway. Remove it. Update Preview.</p>
-<p><strong>Error #3: No event handlers were registered. This script does nothing.</strong></p>
-<p>Right, we need to invoke the code. Let's add a snippet to the top of the file to actually invoke our worker.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> worker </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> exports</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Worker</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(worker.</span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(event.request));</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
-</div>
-<p><strong>Error #4: Uncaught ReferenceError: <code>node_fetch_1</code> is not defined</strong></p>
-<p>Right, we removed that because <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank" rel="noopener noreferrer">Response</a> is a native object when it runs in the context of a worker. So remove the <code>node_fetch_1</code> prefix.</p>
-<p><strong>Error #5: exports.__esModule = true does nothing</strong></p>
-<p>So let's remove that.</p>
-<p>Success!!</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="362" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=640&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=750&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=828&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=1080&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=1280&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481SFJXZDGBHKA49TR2DSN.png&amp;w=1430&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Success" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="362" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Success"></div>
-</figure>
-<p>OK, so with some massaging, we got a Worker transpiled from Typescript to execute. We:</p>
-<ul>
-	<li>Added a line to create an exports object</li>
-	<li>Removed the dev dependency on "node_fetch"</li>
-	<li>Removed the exports.__esModule = true line</li>
-</ul>
-<p>Let's add that to our build process so we can have "Worker-ready" Javascript every time we make a change to our Typescript.</p>
-<h3>Grunt</h3>
-<p>I'm going to use Grunt to automate that. Here's my new <code>worker.ts</code></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// --BEGIN PREAMBLE--</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">/// //Invoke worker</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">/// var exports = {};</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">/// addEventListener('fetch', event =&gt; {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">///   event.respondWith(fetchAndApply(event.request))</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">/// });</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">///</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">/// async function fetchAndApply(request) {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">///   let worker = new exports.Worker();</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">///   return worker.handle(request);</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">/// }</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// --END PREAMBLE--</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// --BEGIN COMMENT--</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// mock the methods and objects that will be available in the browser</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Request, Response } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node-fetch'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// --END COMMENT--</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Worker</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> handle</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>I want to uncomment the preamble to invoke our script, comment out the dev dependencies and remove the __esmodule line. Let's install Grunt, a text-replace module and create a <code>Gruntfile.js</code></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> grunt-cli</span><span class="sk-005cc5-99ffe4"> -g</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> grunt</span><span class="sk-005cc5-99ffe4"> --save-dev</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> grunt-replace</span><span class="sk-005cc5-99ffe4"> --save-dev</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">touch</span><span class="sk-032f62-99ffe4"> Gruntfile.js</span></span></code></pre>
-</div>
-<p>My <code>Gruntfile.js</code> looks like this</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">module.exports = function (grunt) {</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  grunt.loadNpmTasks('grunt-replace');</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  grunt.initConfig({</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    replace</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">      comments</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        options</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">          patterns</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">            {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">              /* Comment imports for node during dev */</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">              match</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">/--BEGIN</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> COMMENT--</span><span class="sk-24292e-fff">[</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">\s\S</span><span class="sk-24292e-fff">]</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">*?--END</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> COMMENT--/g</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">              replacement</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'Dev</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> environment</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> code</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> block</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> removed</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> by</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> build'</span></span>
-<span class="line"><span class="sk-24292e-fff">            },</span></span>
-<span class="line"><span class="sk-24292e-fff">            {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">              /* Uncomment preamble for production to process the request */</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">              match</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">/\/\/\</span><span class="sk-6a737d-8b8b8b94">//mg,</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">              replacement:</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> ''</span></span>
-<span class="line"><span class="sk-24292e-fff">            }</span></span>
-<span class="line"><span class="sk-24292e-fff">          ]</span></span>
-<span class="line"><span class="sk-24292e-fff">        },</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        files</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">          { </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">expand</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">flatten</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">src</span><span class="sk-24292e-fff">: [</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'src/worker.ts'</span><span class="sk-24292e-fff">], </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">dest</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'build/'</span><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">        ]</span></span>
-<span class="line"><span class="sk-24292e-fff">      },</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">      exports</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">        //remove the exports line that typescript includes without an option to</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">        //suppress, but is not in the v8 env that workers run in.</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        options</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">          patterns</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">            {</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">              match</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">/exports.__esModule</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> =</span><span class="sk-005cc5-fff"> true</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;/g</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">              replacement</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"// exports line commented by build"</span></span>
-<span class="line"><span class="sk-24292e-fff">            }</span></span>
-<span class="line"><span class="sk-24292e-fff">          ]</span></span>
-<span class="line"><span class="sk-24292e-fff">        },</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        files</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">          { </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">expand</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">flatten</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">src</span><span class="sk-24292e-fff">: [</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'build/worker.js'</span><span class="sk-24292e-fff">], </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">dest</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'build/'</span><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">        ]</span></span>
-<span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">  grunt.registerTask('prepare-typescript', 'replace:comments');</span></span>
-<span class="line"><span class="sk-24292e-fff">  grunt.registerTask('fix-export', 'replace:exports');</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
-</div>
-<p>There are two tasks. The first is the comment/uncomment step that we want before our Typescript is transpiled.</p>
-<p>The second is to remove the <code>exports.__esmodule = true</code> line</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> grunt</span><span class="sk-032f62-99ffe4"> prepare-typescript</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Running</span><span class="sk-032f62-99ffe4"> "replace:comments"</span><span class="sk-24292e-fff"> (replace) task</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff"> 11 replacements in 1 file.</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Done.</span></span></code></pre>
-</div>
-<p>If we open <code>build/worker.ts</code>, we see this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// --BEGIN PREAMBLE--</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"> //Invoke worker</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> var</span><span class="sk-24292e-fff"> exports </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {};</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-24292e-fff">   event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fetchAndApply</span><span class="sk-24292e-fff">(event.request))</span></span>
-<span class="line"><span class="sk-24292e-fff"> });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> fetchAndApply</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   let</span><span class="sk-24292e-fff"> worker </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> exports</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Worker</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-24292e-fff"> worker.</span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(request);</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// --END PREAMBLE--</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// Dev environment code block removed by build</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Worker</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> handle</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>Opening <code>build/worker.js</code> you'll see a whole lot of code generated for handling async functions. That's because we're using the <code>async</code> keyword in the preamble.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">"use strict"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> __awaiter</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (this &amp;&amp; </span><span class="sk-6f42c1-ffc799">this.__awaiter</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> function (</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _arguments,</span><span class="sk-032f62-99ffe4"> P,</span><span class="sk-032f62-99ffe4"> generator</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-24292e-fff"> (P </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">P</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Promise</span><span class="sk-24292e-fff">))(function (</span><span class="sk-6f42c1-ffc799">resolve,</span><span class="sk-032f62-99ffe4"> reject</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        function</span><span class="sk-6f42c1-ffc799"> fulfilled</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">generator.next(value</span><span class="sk-24292e-fff">)); } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">reject(e</span><span class="sk-24292e-fff">); } }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        function</span><span class="sk-6f42c1-ffc799"> rejected</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">generator[</span><span class="sk-6f42c1-ffc799">"throw"</span><span class="sk-6f42c1-ffc799">](value</span><span class="sk-24292e-fff">)); } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">reject(e</span><span class="sk-24292e-fff">); } }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        function</span><span class="sk-6f42c1-ffc799"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">result</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">result.done</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">result.value</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> P</span><span class="sk-24292e-fff">(function (</span><span class="sk-6f42c1-ffc799">resolve</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">result.value</span><span class="sk-24292e-fff">); }).then(</span><span class="sk-6f42c1-ffc799">fulfilled,</span><span class="sk-032f62-99ffe4"> rejected</span><span class="sk-24292e-fff">); }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        step((generator</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> generator.apply</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _arguments</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> []))</span><span class="sk-6f42c1-ffc799">.next</span><span class="sk-24292e-fff">());</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> __generator</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (this &amp;&amp; </span><span class="sk-6f42c1-ffc799">this.__generator</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> function (</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    var</span><span class="sk-032f62-99ffe4"> _</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> label:</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> sent:</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-24292e-fff"> (t[0] &amp; </span><span class="sk-6f42c1-ffc799">1</span><span class="sk-24292e-fff">) throw t[1]; </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> t[1]</span><span class="sk-24292e-fff">; }, trys: [], ops: [] }, f, y, t, g;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> g</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> next:</span><span class="sk-032f62-99ffe4"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">0</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> "throw":</span><span class="sk-032f62-99ffe4"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> "return":</span><span class="sk-032f62-99ffe4"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">},</span><span class="sk-032f62-99ffe4"> typeof</span><span class="sk-032f62-99ffe4"> Symbol</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> "function"</span><span class="sk-24292e-fff"> &amp;&amp; (</span><span class="sk-6f42c1-ffc799">g[Symbol.iterator]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> return</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-24292e-fff">; })</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> g</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (v) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff">([n, v]); }; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">op</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">f</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">throw</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> TypeError</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Generator is already executing."</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        while</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">_</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">try</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">f</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> y</span><span class="sk-24292e-fff"> &amp;&amp; (</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> y[op[0]</span><span class="sk-24292e-fff"> &amp; </span><span class="sk-6f42c1-ffc799">2</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> "return"</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> op[0]</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> "throw"</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> "next"]</span><span class="sk-24292e-fff">) &amp;&amp; </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t.call</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">y,</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">))</span><span class="sk-6f42c1-ffc799">.done</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">y</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [0, </span><span class="sk-032f62-99ffe4">t.value]</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            switch</span><span class="sk-24292e-fff"> (op[0]) {</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 0:</span><span class="sk-032f62-99ffe4"> case</span><span class="sk-032f62-99ffe4"> 1:</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 4:</span><span class="sk-032f62-99ffe4"> _.label++</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> op[1],</span><span class="sk-032f62-99ffe4"> done:</span><span class="sk-005cc5-99ffe4"> false</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 5:</span><span class="sk-032f62-99ffe4"> _.label++</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">y</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [0]; </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 7:</span><span class="sk-032f62-99ffe4"> op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _.ops.pop</span><span class="sk-24292e-fff">(); </span><span class="sk-6f42c1-ffc799">_.trys.pop</span><span class="sk-24292e-fff">(); </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">                default:</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _.trys,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t.length</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">t[t.length</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> 1]</span><span class="sk-24292e-fff">) &amp;&amp; (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">)) { </span><span class="sk-6f42c1-ffc799">_</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-24292e-fff"> &amp;&amp; (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[1]</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> t[0]</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">op[1]</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> t[3]</span><span class="sk-24292e-fff">))) { </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> t[1]</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t[1]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> t[2]</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t[2]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">_.ops.push(op</span><span class="sk-24292e-fff">); </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">t[2]</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">_.ops.pop</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">                    _.trys.pop</span><span class="sk-24292e-fff">(); </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">            }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> body.call</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">        } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [6, </span><span class="sk-032f62-99ffe4">e]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">y</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; } finally { </span><span class="sk-6f42c1-ffc799">f</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-24292e-fff"> &amp; </span><span class="sk-6f42c1-ffc799">5</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">throw</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> op[0]</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> void</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> done:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">exports.__esModule</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-005cc5-99ffe4"> --BEGIN</span><span class="sk-032f62-99ffe4"> PREAMBLE--</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//Invoke</span><span class="sk-032f62-99ffe4"> worker</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> exports</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {}</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (event) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    event.respondWith(fetchAndApply(event.request</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> fetchAndApply</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> __awaiter</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">this,</span><span class="sk-032f62-99ffe4"> void</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> void</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> () </span><span class="sk-032f62-99ffe4">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        var</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> __generator</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">this,</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (_a) </span><span class="sk-032f62-99ffe4">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            worker</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> exports.Worker</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> [2 </span><span class="sk-032f62-99ffe4">/</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">return</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">/,</span><span class="sk-032f62-99ffe4"> worker.handle</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">]</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">        });</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-005cc5-99ffe4"> --END</span><span class="sk-032f62-99ffe4"> PREAMBLE--</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Dev</span><span class="sk-032f62-99ffe4"> environment</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> block</span><span class="sk-032f62-99ffe4"> removed</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> build</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> Worker</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-a0a0a0">**</span><span class="sk-032f62-99ffe4"> @class</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span><span class="sk-24292e-fff"> (function () {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> Worker</span><span class="sk-24292e-fff">() {</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Worker.prototype.handle</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (request) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Hello, world!"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    };</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> Worker</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">());</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">exports.Worker</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Worker</span><span class="sk-24292e-fff">;</span></span></code></pre>
-</div>
-<p>Now let's remove that <code>exports.__esModule = true</code> line.</p>
-<p><code>grunt fix-export</code></p>
-<p>and now we'll see instead in the worker.js <code>// exports line commented by build</code>.</p>
-<h3>Put it together</h3>
-<p>I just want to run <code>npm run build</code> and get Worker-friendly Javascript. Let's modify <code>package.json</code> to do just that. Change</p>
-<p><code>"build": "tsc --pretty"</code> to <code>"build": "grunt prepare-typescript &amp;&amp; tsc build/*.ts --pretty --skipLibCheck; grunt fix-export",</code></p>
-<p>And run it.</p>
-<p><code>npm run build</code> will result in</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">"use strict"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> __awaiter</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (this &amp;&amp; </span><span class="sk-6f42c1-ffc799">this.__awaiter</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> function (</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _arguments,</span><span class="sk-032f62-99ffe4"> P,</span><span class="sk-032f62-99ffe4"> generator</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-24292e-fff"> (P </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">P</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Promise</span><span class="sk-24292e-fff">))(function (</span><span class="sk-6f42c1-ffc799">resolve,</span><span class="sk-032f62-99ffe4"> reject</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        function</span><span class="sk-6f42c1-ffc799"> fulfilled</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">generator.next(value</span><span class="sk-24292e-fff">)); } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">reject(e</span><span class="sk-24292e-fff">); } }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        function</span><span class="sk-6f42c1-ffc799"> rejected</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">generator[</span><span class="sk-6f42c1-ffc799">"throw"</span><span class="sk-6f42c1-ffc799">](value</span><span class="sk-24292e-fff">)); } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">reject(e</span><span class="sk-24292e-fff">); } }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        function</span><span class="sk-6f42c1-ffc799"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">result</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">result.done</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">result.value</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> P</span><span class="sk-24292e-fff">(function (</span><span class="sk-6f42c1-ffc799">resolve</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">result.value</span><span class="sk-24292e-fff">); }).then(</span><span class="sk-6f42c1-ffc799">fulfilled,</span><span class="sk-032f62-99ffe4"> rejected</span><span class="sk-24292e-fff">); }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        step((generator</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> generator.apply</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _arguments</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> []))</span><span class="sk-6f42c1-ffc799">.next</span><span class="sk-24292e-fff">());</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> __generator</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (this &amp;&amp; </span><span class="sk-6f42c1-ffc799">this.__generator</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> function (</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    var</span><span class="sk-032f62-99ffe4"> _</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> label:</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> sent:</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-24292e-fff"> (t[0] &amp; </span><span class="sk-6f42c1-ffc799">1</span><span class="sk-24292e-fff">) throw t[1]; </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> t[1]</span><span class="sk-24292e-fff">; }, trys: [], ops: [] }, f, y, t, g;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> g</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> next:</span><span class="sk-032f62-99ffe4"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">0</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> "throw":</span><span class="sk-032f62-99ffe4"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> "return":</span><span class="sk-032f62-99ffe4"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">},</span><span class="sk-032f62-99ffe4"> typeof</span><span class="sk-032f62-99ffe4"> Symbol</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> "function"</span><span class="sk-24292e-fff"> &amp;&amp; (</span><span class="sk-6f42c1-ffc799">g[Symbol.iterator]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> return</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-24292e-fff">; })</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> g</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> verb</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (v) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff">([n, v]); }; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> step</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">op</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">f</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">throw</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> TypeError</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Generator is already executing."</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        while</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">_</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">try</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">f</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> y</span><span class="sk-24292e-fff"> &amp;&amp; (</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> y[op[0]</span><span class="sk-24292e-fff"> &amp; </span><span class="sk-6f42c1-ffc799">2</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> "return"</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> op[0]</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> "throw"</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> "next"]</span><span class="sk-24292e-fff">) &amp;&amp; </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t.call</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">y,</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">))</span><span class="sk-6f42c1-ffc799">.done</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">y</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [0, </span><span class="sk-032f62-99ffe4">t.value]</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            switch</span><span class="sk-24292e-fff"> (op[0]) {</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 0:</span><span class="sk-032f62-99ffe4"> case</span><span class="sk-032f62-99ffe4"> 1:</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 4:</span><span class="sk-032f62-99ffe4"> _.label++</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> op[1],</span><span class="sk-032f62-99ffe4"> done:</span><span class="sk-005cc5-99ffe4"> false</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 5:</span><span class="sk-032f62-99ffe4"> _.label++</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">y</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [0]; </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> 7:</span><span class="sk-032f62-99ffe4"> op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _.ops.pop</span><span class="sk-24292e-fff">(); </span><span class="sk-6f42c1-ffc799">_.trys.pop</span><span class="sk-24292e-fff">(); </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">                default:</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> _.trys,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t.length</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">t[t.length</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> 1]</span><span class="sk-24292e-fff">) &amp;&amp; (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">)) { </span><span class="sk-6f42c1-ffc799">_</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-24292e-fff"> &amp;&amp; (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[1]</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> t[0]</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">op[1]</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> t[3]</span><span class="sk-24292e-fff">))) { </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> t[1]</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t[1]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> op</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> t[2]</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">_.label</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t[2]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">_.ops.push(op</span><span class="sk-24292e-fff">); </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">t[2]</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">_.ops.pop</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">                    _.trys.pop</span><span class="sk-24292e-fff">(); </span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">            }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> body.call</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">thisArg,</span><span class="sk-032f62-99ffe4"> _</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">        } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">op</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [6, </span><span class="sk-032f62-99ffe4">e]</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">y</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; } finally { </span><span class="sk-6f42c1-ffc799">f</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">op[0]</span><span class="sk-24292e-fff"> &amp; </span><span class="sk-6f42c1-ffc799">5</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">throw</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> op[0]</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> op[1]</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> void</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> done:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> exports</span><span class="sk-032f62-99ffe4"> line</span><span class="sk-032f62-99ffe4"> commented</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> build</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-005cc5-99ffe4"> --BEGIN</span><span class="sk-032f62-99ffe4"> PREAMBLE--</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//Invoke</span><span class="sk-032f62-99ffe4"> worker</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> exports</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {}</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (event) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    event.respondWith(fetchAndApply(event.request</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> fetchAndApply</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> __awaiter</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">this,</span><span class="sk-032f62-99ffe4"> void</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> void</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> () </span><span class="sk-032f62-99ffe4">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        var</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> __generator</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">this,</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (_a) </span><span class="sk-032f62-99ffe4">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            worker</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> exports.Worker</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> [2 </span><span class="sk-032f62-99ffe4">/</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">return</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">/,</span><span class="sk-032f62-99ffe4"> worker.handle</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">]</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">        });</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-005cc5-99ffe4"> --END</span><span class="sk-032f62-99ffe4"> PREAMBLE--</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Dev</span><span class="sk-032f62-99ffe4"> environment</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> block</span><span class="sk-032f62-99ffe4"> removed</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> build</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> Worker</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-a0a0a0">**</span><span class="sk-032f62-99ffe4"> @class</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span><span class="sk-24292e-fff"> (function () {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> Worker</span><span class="sk-24292e-fff">() {</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Worker.prototype.handle</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff"> (request) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'Hello, world!'</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    };</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> Worker</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">());</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">exports.Worker</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Worker</span><span class="sk-24292e-fff">;</span></span></code></pre>
-</div>
-<p>Paste that into the Workers IDE... works first time.</p>
-<h3>Automated upload</h3>
-<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
-<p><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
-<p>OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener noreferrer">dotenv</a> package to load config from a .env file or environment variables.</p>
-<p>Create a <code>.env</code> file that looks like this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">CF_WORKER_ZONE_ID</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">xxxxxxxxxxxxxxxxxxx</span></span>
-<span class="line"><span class="sk-24292e-fff">CF_WORKER_EMAIL</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">steve@example.com</span></span>
-<span class="line"><span class="sk-24292e-fff">CF_WORKER_AUTH_KEY</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">xxxxxxxxxxxxxxxxxx</span></span>
-<span class="line"><span class="sk-24292e-fff">CF_WORKER_PATH</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">build/worker.js</span></span></code></pre>
-</div>
-<p>To locate your zone ID and auth key, go to the dashboard, select your zone and click the "Overview" icon.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="484" height="219" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=484&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=484&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 484w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=750&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TD7N31DVDQH1CT9HY9NN.png&amp;w=968&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 968w" alt="Overview" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 484px) 484px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="484" height="219" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Overview"></div>
-</figure>
-<p>The zone ID is right there, then click "Get API key" and choose the "Global API Key" to get the Auth Key.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="146" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=715&amp;h=146&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=640&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=715&amp;h=146&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=750&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=828&amp;h=169&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=1080&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=1280&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469R4SYPSRF9PY7YT5WQ0E.png&amp;w=1430&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="API key" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="146" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: API key"></div>
-</figure>
-<p>Fill out your .env with those values and then add the following to your Gruntfile which will:</p>
-<ul>
-	<li>Read your config</li>
-	<li>Upload to Cloudflare</li>
-	<li>Parse any success or error messages.</li>
-</ul>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">grunt.registerTask(</span><span class="sk-6f42c1-ffc799">'upload-worker'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> 'Uploads workers to Cloudflare',</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">path</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    require(</span><span class="sk-6f42c1-ffc799">'dotenv'</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">.config</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> fs</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> require</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'fs'</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> console</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> done</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> this.async</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> conf</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> readConfig</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    path</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> path</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> grunt.option(</span><span class="sk-6f42c1-ffc799">'path'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-6f42c1-ffc799"> process.env.CF_WORKER_PATH</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">path</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      fail(</span><span class="sk-6f42c1-ffc799">"path is required"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">fs.existsSync(path</span><span class="sk-24292e-fff">)) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      fail(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">path</span><span class="sk-032f62-99ffe4"> not found ${</span><span class="sk-24292e-fff">path</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> script</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> fs.readFileSync</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">path</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    log.info(</span><span class="sk-6f42c1-ffc799">"Uploading..."</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> url</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">https://api.cloudflare.com/client/v4/zones/$</span><span class="sk-032f62-99ffe4">{conf.zoneId}</span><span class="sk-6f42c1-ffc799">/workers/script</span><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> options</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      url:</span><span class="sk-032f62-99ffe4"> url,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      method:</span><span class="sk-032f62-99ffe4"> 'PUT',</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      headers:</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        'Content-Type'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 'application/javascript'</span></span>
-<span class="line"><span class="sk-24292e-fff">      },</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      body:</span><span class="sk-032f62-99ffe4"> script</span></span>
-<span class="line"><span class="sk-24292e-fff">    };</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    invokeApi(options,</span><span class="sk-032f62-99ffe4"> conf,</span><span class="sk-032f62-99ffe4"> done</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">  });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  function</span><span class="sk-6f42c1-ffc799"> invokeApi</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">options,</span><span class="sk-032f62-99ffe4"> conf,</span><span class="sk-032f62-99ffe4"> done</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> Add</span><span class="sk-032f62-99ffe4"> authentication</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> request</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    options.headers</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> options.headers</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> {};</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Object.assign(options.headers,</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      'X-Auth-Email'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> conf.email,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      'X-Auth-Key'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> conf.apiKey,</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    request(options,</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">error,</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      try</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">error</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          log.error(error</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          fail(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">API</span><span class="sk-032f62-99ffe4"> failure ${</span><span class="sk-24292e-fff">response</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">statusCode</span><span class="sk-032f62-99ffe4">} error: ${</span><span class="sk-24292e-fff">error</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          done</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">          return</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">        let</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> JSON.parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">response.body</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">body</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          logResult(body</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        done</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">      } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        fail(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">Unhandled</span><span class="sk-032f62-99ffe4"> error. ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        done</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  function</span><span class="sk-6f42c1-ffc799"> logResult</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">body</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    body.success</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> log.error</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Status: Success"</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> log.error</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Status: Failed"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> errors</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> body.errors</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> [];</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">errors</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      log.info(</span><span class="sk-032f62-99ffe4">` </span><span class="sk-6f42c1-ffc799">Errors:</span><span class="sk-032f62-99ffe4"> ${</span><span class="sk-24292e-fff">errors</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">length</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      for</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4"> e</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> errors</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        log.error(</span><span class="sk-032f62-99ffe4">` </span><span class="sk-6f42c1-ffc799">Code:</span><span class="sk-032f62-99ffe4"> ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">code</span><span class="sk-032f62-99ffe4">} Message: ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">message</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> messages</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> body.messages</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> [];</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">messages</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      log.info(</span><span class="sk-032f62-99ffe4">` </span><span class="sk-6f42c1-ffc799">Messages</span><span class="sk-032f62-99ffe4"> ${</span><span class="sk-24292e-fff">messages</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">length</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      for</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4"> msg</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> messages</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        log.info(</span><span class="sk-032f62-99ffe4">` ${</span><span class="sk-24292e-fff">msg</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> result</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> body.result</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    log.info(</span><span class="sk-6f42c1-ffc799">" Result"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    log.info(</span><span class="sk-032f62-99ffe4">` ${</span><span class="sk-24292e-fff">JSON</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">stringify</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">result</span><span class="sk-032f62-99ffe4">, </span><span class="sk-24292e-fff">null</span><span class="sk-032f62-99ffe4">, </span><span class="sk-24292e-fff">2</span><span class="sk-032f62-99ffe4">)}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  function</span><span class="sk-6f42c1-ffc799"> readConfig</span><span class="sk-24292e-fff">() {</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> zoneId</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> grunt.option</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'zoneId'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-6f42c1-ffc799"> process.env.CF_WORKER_ZONE_ID</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> email</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> grunt.option</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'email'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-6f42c1-ffc799"> process.env.CF_WORKER_EMAIL</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> apiKey</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> grunt.option</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'apiKey'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-6f42c1-ffc799"> process.env.CF_WORKER_AUTH_KEY</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    log.debug(</span><span class="sk-6f42c1-ffc799">"zoneID: "</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> zoneId</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    log.debug(</span><span class="sk-6f42c1-ffc799">"email: "</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> email</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    log.debug(</span><span class="sk-6f42c1-ffc799">"apiKey: "</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> "*".repeat</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">apiKey.length</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">zoneId</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-6f42c1-ffc799">email</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-6f42c1-ffc799">apiKey</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      fail(</span><span class="sk-6f42c1-ffc799">"zone id, cloudflare email and api key are required"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      zoneId:</span><span class="sk-032f62-99ffe4"> zoneId,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      email:</span><span class="sk-032f62-99ffe4"> email,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      apiKey:</span><span class="sk-032f62-99ffe4"> apiKey</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  function</span><span class="sk-6f42c1-ffc799"> fail</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">message</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    grunt.fail.fatal(message,</span><span class="sk-032f62-99ffe4"> TASK_FAILED</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
-</div>
-<p>Finally, let's add a new task to <code>package.json</code> so we can just <code>npm run upload</code> any time we update our Worker.</p>
-<p><code>"upload": "grunt upload-worker"</code></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> upload-worker</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Running</span><span class="sk-032f62-99ffe4"> "upload-worker"</span><span class="sk-032f62-99ffe4"> task</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">zoneID:</span><span class="sk-005cc5-a0a0a0"> **************</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">email:</span><span class="sk-032f62-99ffe4"> steve@example.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">apiKey:</span><span class="sk-005cc5-a0a0a0"> *************************************</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Uploading...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Status:</span><span class="sk-032f62-99ffe4"> Success</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> Errors:</span><span class="sk-005cc5-ffc799"> 0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> Messages</span><span class="sk-005cc5-ffc799"> 0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> Result</span></span>
-<span class="line"><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "script"</span><span class="sk-005cc5-ffc799">...</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
-</div>
-<p>Voila! Script uploaded. OK, so if it's uploaded, we can call call it remotely:</p>
-<p><code>$ curl https://cryptoserviceworker.com/hello</code></p>
-<p>Hmmm... nothing. Ah, we haven't actually configured Workers to route any requests to our Worker. You can do this via the API, but since it's a one off, I'll do it in the web IDE.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="411" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=640&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=750&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=828&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=1080&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=1280&amp;h=736&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48V23BF21W5V9NAKBA4958.png&amp;w=1430&amp;h=822&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Add routes" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="411" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Add routes"></div>
-</figure>
-<p>And try again:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/hello</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
-</div>
-<p>Success! OK, so to recap:</p>
-<ul>
-	<li>We've bootstrapped a Typescript project using NodeJS and Webstorm</li>
-	<li>Written a "Hello, World" worker in Typescript</li>
-	<li>Setup build tasks to modify the code for Workers</li>
-	<li>Automatically uploading to the Cloudflare edge with <code>npm run upload</code></li>
-	<li>...</li>
-	<li>Profit</li>
-</ul>
-<hr class="emdash-break emdash-break-line" data-astro-cid-lr3aoosn="">
-<p><em>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Cloudflare Community Forum</a>.</em></p>

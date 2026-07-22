@@ -1,150 +1,183 @@
-<p>The Internet is an amazing place. It’s a communication superhighway, allowing people and machines to exchange exabytes of information every day. But it's not without its share of issues: whether it’s <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">DDoS attacks</a>, <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">route leaks</a>, <a href="https://blog.cloudflare.com/not-one-not-two-but-three-undersea-cables-cut-in-jersey">cable cuts</a>, or <a href="https://blog.cloudflare.com/a-post-mortem-on-this-mornings-incident">packet loss</a>, the components of the Internet do not always work as intended.</p>
-<p>The reason Cloudflare exists is to help solve these problems. As we continue to grow our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">rapidly expanding global network</a> in more than 250 cities, while directly connecting with more than 9,800 networks, it’s important that our network continues to help bring improved performance and resiliency to the Internet. To accomplish this, we built our own backbone. Other than improving redundancy, the immediate advantage to you as a Cloudflare user? It can reduce your website loading times by up to 45% — and you don’t have to do a thing.</p>
-<h3>The Cloudflare Backbone</h3>
-<p>We began building out our global backbone in 2018. It comprises a network of long-distance fiber optic cables connecting various Cloudflare data centers across North America, South America, Europe, and Asia. This also includes Cloudflare’s metro fiber network, directly connecting data centers within a metropolitan area.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="389" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=715&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=640&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=715&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=750&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=828&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=1080&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=1280&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GR8NMEKWKASW5ATSMXN3.png&amp;w=1430&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A map of Cloudflare’s global long-haul fiber backbone." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="389" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: A map of Cloudflare’s global long-haul fiber backbone."></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Our backbone is a dedicated network, providing guaranteed network capacity and consistent latency between various locations. It gives us the ability to securely, reliably, and quickly route packets between our data centers, without having to rely on other networks.</p>
-<p>This dedicated network can be thought of as a fast lane on a busy highway. When traffic in the normal lanes of the highway encounter slowdowns from congestion and accidents, vehicles can make use of a fast lane to bypass the traffic and get to their destination on time.</p>
-<p>Our <a href="https://www.cloudflare.com/learning/network-layer/what-is-sdn" target="_blank" rel="noopener noreferrer">software-defined network</a> is like a smart GPS device, as we’re always calculating the performance of routes between various networks. If a route on the public Internet becomes congested or unavailable, our network automatically adjusts routing preferences in real-time to make use of all routes we have available, including our dedicated backbone, helping to deliver your network packets to the destination as fast as we can.</p>
-<h3>Measuring backbone improvements</h3>
-<p>As we grow our global infrastructure, it’s important that we analyze our network to quantify the impact we’re having on performance.</p>
-<p>Here’s a simple, real-world test we’ve used to validate that our backbone helps speed up our global network. We deployed a simple API service hosted on a public cloud provider, located in Chicago, Illinois. Once placed behind Cloudflare, we performed benchmarks from various geographic locations with the backbone disabled and enabled to measure the change in performance.</p>
-<p>Instead of comparing the difference in latency our backbone creates, it is important that our experiment captures a real-world performance gain that an API service or website would experience. To validate this, our primary metric is measuring the average request time when accessing an API service from Miami, Seattle, San Jose, São Paulo, and Tokyo. To capture the response of the network itself, we disabled caching on the Cloudflare dashboard and sent 100 requests from each testing location, both while forcing traffic through our backbone, and through the public Internet.</p>
-<p>Now, before we claim our backbone solves all Internet problems, you can probably notice that for some tests (Seattle, WA and San Jose, CA), there was actually an increase in response time when we forced traffic through the backbone. Since latency is directly proportional to the distance of fiber optic cables, and since we have over 9,800 direct connections with other Internet networks, there is a possibility that an uncongested path on the public Internet might be geographically shorter, causing this speed up compared to our backbone.</p>
-<p>Luckily for us, we have technologies like <a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">Argo Smart Routing</a>, <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Argo Tiered Caching</a>, <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">WARP+</a>, and most recently announced <a href="https://blog.cloudflare.com/orpheus">Orpheus</a>, which dynamically calculates the performance of each route at our data centers, choosing the fastest healthy route at that time. What might be the fastest path during this test may not be the fastest at the time you are reading this.</p>
-<p>With that disclaimer out of the way, now onto the test.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="275" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=715&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=640&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=715&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=750&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=828&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=1080&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=1280&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EQ8J5B9BKNFEM6CWCKGD.png&amp;w=1430&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A bar chart showing an overall decrease in average response times when using the Cloudflare backbone, compared to the public Internet." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="275" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: A bar chart showing an overall decrease in average response times when using the Cloudflare backbone, compared to the public Internet."></div>
-</figure>
-<p>With the backbone disabled, if a visitor from São Paulo performed a request to our service, they would be routed to our São Paulo data center via <a href="https://blog.cloudflare.com/a-brief-anycast-primer">BGP Anycast</a>. With caching disabled, our São Paulo data center forwarded the request over the public Internet to the origin server in Chicago. On average, the entire process to fetch data from the origin server and return to the response to the requesting user took 335.8 milliseconds.</p>
-<p>Once the backbone was enabled and requests were created, our software performed tests to determine the fastest healthy route to the origin, whether it was a route on the public Internet or through our private backbone. For this test the backbone was faster, resulting in an average total request time of 230.2 milliseconds. Just by routing the request through our private backbone, we <strong>improved the average response time by 31%</strong>.</p>
-<p>We saw even better improvement when testing from Tokyo. When routing the request over the public Internet, the request took an average of 424 milliseconds. By enabling our backbone which created a faster path, the request took an average of 234 milliseconds, creating an <strong>average response time improvement of 44%</strong>.</p>
-<div class="emdash-table-wrapper" data-astro-cid-ohylgzgj="">
-	<table class="emdash-table" data-astro-cid-ohylgzgj="">
-		<thead data-astro-cid-ohylgzgj="">
-			<tr data-astro-cid-ohylgzgj="">
-				<th data-astro-cid-ohylgzgj="">
-					<p>Visitor Location</p>
-				</th>
-				<th data-astro-cid-ohylgzgj="">
-					<p>Distance to Chicago</p>
-				</th>
-				<th data-astro-cid-ohylgzgj="">
-					<p>Avg. response time using public Internet (ms)</p>
-				</th>
-				<th data-astro-cid-ohylgzgj="">
-					<p>Avg. response using backbone (ms)</p>
-				</th>
-				<th data-astro-cid-ohylgzgj="">
-					<p>Change in response time</p>
-				</th>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2puQoR9fJ0Eorj5WEmQtiZ/ba1ff294abc82886bd5922a1f9dc9517/cloudflare-backbone-internet-fast-lane.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>The Internet is an amazing place. It’s a communication superhighway, allowing people and machines to exchange exabytes of information every day. But it's not without its share of issues: whether it’s <a href="https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported">DDoS attacks</a>, <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">route leaks</a>, <a href="https://blog.cloudflare.com/not-one-not-two-but-three-undersea-cables-cut-in-jersey">cable cuts</a>, or <a href="https://blog.cloudflare.com/a-post-mortem-on-this-mornings-incident">packet loss</a>, the components of the Internet do not always work as intended.</p>
+	<p>The reason Cloudflare exists is to help solve these problems. As we continue to grow our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">rapidly expanding global network</a> in more than 250 cities, while directly connecting with more than 9,800 networks, it’s important that our network continues to help bring improved performance and resiliency to the Internet. To accomplish this, we built our own backbone. Other than improving redundancy, the immediate advantage to you as a Cloudflare user? It can reduce your website loading times by up to 45% — and you don’t have to do a thing.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-cloudflare-backbone">The Cloudflare Backbone</h3>
+		<a href="https://blog.cloudflare.com/#the-cloudflare-backbone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We began building out our global backbone in 2018. It comprises a network of long-distance fiber optic cables connecting various Cloudflare data centers across North America, South America, Europe, and Asia. This also includes Cloudflare’s metro fiber network, directly connecting data centers within a metropolitan area.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jn1eE7h9w0TMITPDwbsHF/c9131d2d2fe23d34051312c7b9fd23a7/Untitled.png" alt="A map of Cloudflare’s global long-haul fiber backbone." class="kg-image" width="1704" height="926" loading="lazy">
+
+	</figure>
+	<p>Our backbone is a dedicated network, providing guaranteed network capacity and consistent latency between various locations. It gives us the ability to securely, reliably, and quickly route packets between our data centers, without having to rely on other networks.</p>
+	<p>This dedicated network can be thought of as a fast lane on a busy highway. When traffic in the normal lanes of the highway encounter slowdowns from congestion and accidents, vehicles can make use of a fast lane to bypass the traffic and get to their destination on time.</p>
+	<p>Our <a href="https://www.cloudflare.com/learning/network-layer/what-is-sdn" target="_blank" rel="noopener noreferrer">software-defined network</a> is like a smart GPS device, as we’re always calculating the performance of routes between various networks. If a route on the public Internet becomes congested or unavailable, our network automatically adjusts routing preferences in real-time to make use of all routes we have available, including our dedicated backbone, helping to deliver your network packets to the destination as fast as we can.</p>
+	<div class="flex anchor relative">
+		<h3 id="measuring-backbone-improvements">Measuring backbone improvements</h3>
+		<a href="https://blog.cloudflare.com/#measuring-backbone-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As we grow our global infrastructure, it’s important that we analyze our network to quantify the impact we’re having on performance.</p>
+	<p>Here’s a simple, real-world test we’ve used to validate that our backbone helps speed up our global network. We deployed a simple API service hosted on a public cloud provider, located in Chicago, Illinois. Once placed behind Cloudflare, we performed benchmarks from various geographic locations with the backbone disabled and enabled to measure the change in performance.</p>
+	<p>Instead of comparing the difference in latency our backbone creates, it is important that our experiment captures a real-world performance gain that an API service or website would experience. To validate this, our primary metric is measuring the average request time when accessing an API service from Miami, Seattle, San Jose, São Paulo, and Tokyo. To capture the response of the network itself, we disabled caching on the Cloudflare dashboard and sent 100 requests from each testing location, both while forcing traffic through our backbone, and through the public Internet.</p>
+	<p>Now, before we claim our backbone solves all Internet problems, you can probably notice that for some tests (Seattle, WA and San Jose, CA), there was actually an increase in response time when we forced traffic through the backbone. Since latency is directly proportional to the distance of fiber optic cables, and since we have over 9,800 direct connections with other Internet networks, there is a possibility that an uncongested path on the public Internet might be geographically shorter, causing this speed up compared to our backbone.</p>
+	<p>Luckily for us, we have technologies like <a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">Argo Smart Routing</a>, <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Argo Tiered Caching</a>, <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">WARP+</a>, and most recently announced <a href="https://blog.cloudflare.com/orpheus">Orpheus</a>, which dynamically calculates the performance of each route at our data centers, choosing the fastest healthy route at that time. What might be the fastest path during this test may not be the fastest at the time you are reading this.</p>
+	<p>With that disclaimer out of the way, now onto the test.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1J6FgOCk20reULhsoVF8BE/0c2e430b5ca8ddf670aad16d4d825449/averages.png" alt="A bar chart showing an overall decrease in average response times when using the Cloudflare backbone, compared to the public Internet." class="kg-image" width="2000" height="770" loading="lazy">
+
+	</figure>
+	<p>With the backbone disabled, if a visitor from São Paulo performed a request to our service, they would be routed to our São Paulo data center via <a href="https://blog.cloudflare.com/a-brief-anycast-primer">BGP Anycast</a>. With caching disabled, our São Paulo data center forwarded the request over the public Internet to the origin server in Chicago. On average, the entire process to fetch data from the origin server and return to the response to the requesting user took 335.8 milliseconds.</p>
+	<p>Once the backbone was enabled and requests were created, our software performed tests to determine the fastest healthy route to the origin, whether it was a route on the public Internet or through our private backbone. For this test the backbone was faster, resulting in an average total request time of 230.2 milliseconds. Just by routing the request through our private backbone, we <b>improved the average response time by 31%</b>.</p>
+	<p>We saw even better improvement when testing from Tokyo. When routing the request over the public Internet, the request took an average of 424 milliseconds. By enabling our backbone which created a faster path, the request took an average of 234 milliseconds, creating an <b>average response time improvement of 44%</b>.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Visitor Location</b></p>
+				</td>
+				<td>
+					<p><b>Distance to Chicago</b></p>
+				</td>
+				<td>
+					<p><b>Avg. response time using public Internet (ms)</b></p>
+				</td>
+				<td>
+					<p><b>Avg. response using backbone (ms)</b></p>
+				</td>
+				<td>
+					<p><b>Change in response time</b></p>
+				</td>
 			</tr>
-		</thead>
-		<tbody data-astro-cid-ohylgzgj="">
-			<tr data-astro-cid-ohylgzgj="">
-				<td data-astro-cid-ohylgzgj="true">
+			<tr>
+				<td>
 					<p>Miami, FL, US</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>1917 km</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>84</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>75</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
-					<p>10.7% decrease</p>
+				<td>
+					<p><b>10.7% decrease</b></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-ohylgzgj="">
-				<td data-astro-cid-ohylgzgj="true">
+			<tr>
+				<td>
 					<p>Seattle, WA, US</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>2785 km</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>118</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>124</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>5.1% increase</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-ohylgzgj="">
-				<td data-astro-cid-ohylgzgj="true">
+			<tr>
+				<td>
 					<p>San Jose, CA, US</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>2856 km</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>122</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>132</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>8.2% increase</p>
 				</td>
 			</tr>
-			<tr data-astro-cid-ohylgzgj="">
-				<td data-astro-cid-ohylgzgj="true">
+			<tr>
+				<td>
 					<p>São Paulo, BR</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>8403 km</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>336</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>230</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
-					<p>31.5% decrease</p>
+				<td>
+					<p><b>31.5% decrease</b></p>
 				</td>
 			</tr>
-			<tr data-astro-cid-ohylgzgj="">
-				<td data-astro-cid-ohylgzgj="true">
+			<tr>
+				<td>
 					<p>Tokyo, JP</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>10129 km</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>424</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
+				<td>
 					<p>234</p>
 				</td>
-				<td data-astro-cid-ohylgzgj="true">
-					<p>44.8% decrease</p>
+				<td>
+					<p><b>44.8% decrease</b></p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-</div>
-<p>We also observed a smaller deviation in the response time of packets routed through our backbone over larger distances.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="275" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=715&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=640&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=715&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=750&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=828&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=1080&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=1280&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Z792B1V2QPAM0KVDYZ6V.png&amp;w=1430&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A line chart showing an overall decrease in latency and jitter when using the Cloudflare backbone, compared to the public Internet." loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="275" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: A line chart showing an overall decrease in latency and jitter when using the Cloudflare backbone, compared to the public Internet."></div>
-</figure>
-<h3>Our next generation network</h3>
-<p>Cloudflare is built on top of lossy, unreliable networks that we do not have control over. It’s our software that turns these traditional tubes of the Internet into a smart, high performing, and reliable network Cloudflare customers get to use today. Coupled with our new, but rapidly expanding backbone, it is this software that produces significant performance gains over traditional Internet networks.</p>
-<p>Whether you visit a website powered by Cloudflare’s Argo Smart Routing, Argo Tiered Caching, Orpheus, or use our 1.1.1.1 service with WARP+ to access the Internet, you get direct access to the Internet fast lane we call the Cloudflare backbone.</p>
-<p>For Cloudflare, a better Internet means improving Internet security, reliability, and performance. The backbone gives us the ability to build out our network in areas that have typically lacked infrastructure investments by other networks. Even with issues on the public Internet, these initiatives allow us to be located within 50 milliseconds of 95% of the Internet connected population.</p>
-<p>In addition to our growing global infrastructure providing 1.1.1.1, WARP, <a href="https://developers.cloudflare.com/time-services/roughtime/usage" target="_blank" rel="noopener noreferrer">Roughtime</a>, <a href="https://developers.cloudflare.com/time-services/ntp/usage" target="_blank" rel="noopener noreferrer">NTP</a>, <a href="https://developers.cloudflare.com/distributed-web/ipfs-gateway" target="_blank" rel="noopener noreferrer">IPFS Gateway</a>, and <a href="https://developers.cloudflare.com/randomness-beacon/about" target="_blank" rel="noopener noreferrer">Drand</a> to the greater Internet, it’s important that we extend our services to those who are most vulnerable. This is why we extend all our infrastructure benefits directly to the community, through projects like <a href="https://www.cloudflare.com/galileo" target="_blank" rel="noopener noreferrer">Galileo</a>, <a href="https://www.cloudflare.com/athenian" target="_blank" rel="noopener noreferrer">Athenian</a>, <a href="https://www.cloudflare.com/fair-shot" target="_blank" rel="noopener noreferrer">Fair Shot</a>, and <a href="https://www.cloudflare.com/pangea" target="_blank" rel="noopener noreferrer">Pangea</a>.</p>
-<p>And while these thousands of fiber optic connections are already fixing today’s Internet issues, we truly are just getting started.</p>
-<p>Want to help build the future Internet? Networks that are faster, safer, and more reliable than they are today? The Cloudflare Infrastructure team is <a href="https://www.cloudflare.com/careers/jobs/?department=Infrastructure&amp;location=default" target="_blank" rel="noopener noreferrer">currently hiring</a>!</p>
-<p>If you operate an ISP or transit network and would like to bring your users faster and more reliable access to websites and services powered by Cloudflare’s rapidly expanding network, please reach out to our Edge Partnerships team at <a href="mailto:epp@cloudflare.com">epp@cloudflare.com</a>.</p>
-<h3>Watch on Cloudflare TV</h3>
-<div id="html-block-k3o" class="html-block">
-	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/5ccf48ad5a519abd91543a6f3cfe482f?preload=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+	<p>We also observed a smaller deviation in the response time of packets routed through our backbone over larger distances.</p>
+	<figure class="kg-card kg-image-card kg-width-wide">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4l7WB7dKR0zXUM7yjyoBwv/031ff75e5b3da67b7f1be69d509b3dd6/timeseries.png" alt="A line chart showing an overall decrease in latency and jitter when using the Cloudflare backbone, compared to the public Internet." class="kg-image" width="2000" height="770" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="our-next-generation-network">Our next generation network</h3>
+		<a href="https://blog.cloudflare.com/#our-next-generation-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare is built on top of lossy, unreliable networks that we do not have control over. It’s our software that turns these traditional tubes of the Internet into a smart, high performing, and reliable network Cloudflare customers get to use today. Coupled with our new, but rapidly expanding backbone, it is this software that produces significant performance gains over traditional Internet networks.</p>
+	<p>Whether you visit a website powered by Cloudflare’s Argo Smart Routing, Argo Tiered Caching, Orpheus, or use our 1.1.1.1 service with WARP+ to access the Internet, you get direct access to the Internet fast lane we call the Cloudflare backbone.</p>
+	<p>For Cloudflare, a better Internet means improving Internet security, reliability, and performance. The backbone gives us the ability to build out our network in areas that have typically lacked infrastructure investments by other networks. Even with issues on the public Internet, these initiatives allow us to be located within 50 milliseconds of 95% of the Internet connected population.</p>
+	<p>In addition to our growing global infrastructure providing 1.1.1.1, WARP, <a href="https://developers.cloudflare.com/time-services/roughtime/usage" target="_blank" rel="noopener noreferrer">Roughtime</a>, <a href="https://developers.cloudflare.com/time-services/ntp/usage" target="_blank" rel="noopener noreferrer">NTP</a>, <a href="https://developers.cloudflare.com/distributed-web/ipfs-gateway" target="_blank" rel="noopener noreferrer">IPFS Gateway</a>, and <a href="https://developers.cloudflare.com/randomness-beacon/about" target="_blank" rel="noopener noreferrer">Drand</a> to the greater Internet, it’s important that we extend our services to those who are most vulnerable. This is why we extend all our infrastructure benefits directly to the community, through projects like <a href="https://www.cloudflare.com/galileo" target="_blank" rel="noopener noreferrer">Galileo</a>, <a href="https://www.cloudflare.com/athenian" target="_blank" rel="noopener noreferrer">Athenian</a>, <a href="https://www.cloudflare.com/fair-shot" target="_blank" rel="noopener noreferrer">Fair Shot</a>, and <a href="https://www.cloudflare.com/pangea" target="_blank" rel="noopener noreferrer">Pangea</a>.</p>
+	<p>And while these thousands of fiber optic connections are already fixing today’s Internet issues, we truly are just getting started.</p>
+	<p>Want to help build the future Internet? Networks that are faster, safer, and more reliable than they are today? The Cloudflare Infrastructure team is <a href="https://www.cloudflare.com/careers/jobs/?department=Infrastructure&amp;location=default" target="_blank" rel="noopener noreferrer">currently hiring</a>!</p>
+	<p>If you operate an ISP or transit network and would like to bring your users faster and more reliable access to websites and services powered by Cloudflare’s rapidly expanding network, please reach out to our Edge Partnerships team at <a href="https://blog.cloudflare.com/#">epp@cloudflare.com</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/5ccf48ad5a519abd91543a6f3cfe482f?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p></p>
 </div>

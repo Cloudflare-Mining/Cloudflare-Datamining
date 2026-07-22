@@ -1,176 +1,390 @@
-<p>To help developers build better web applications we researched and devised a fragments architecture to build <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener noreferrer">micro-frontends</a> using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> that is lightning fast, cost-effective to develop and operate, and scales to the needs of the largest enterprise teams without compromising release velocity or user experience.</p>
-<p>Here we share a technical overview and a proof of concept of this architecture.</p>
-<h2>Why micro-frontends?</h2>
-<p>One of the challenges of modern frontend web development is that applications are getting bigger and more complex. This is especially true for enterprise web applications supporting <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">e-commerce</a>, banking, insurance, travel, and other industries, where a unified user interface provides access to a large amount of functionality. In such projects it is common for many teams to collaborate to build a single web application. These monolithic web applications, usually built with JavaScript technologies like React, Angular, or Vue, span thousands, or even millions of lines of code.</p>
-<p>When a monolithic JavaScript architecture is used with applications of this scale, the result is a slow and fragile user experience with low <a href="https://web.dev/measure" target="_blank" rel="noopener noreferrer">Lighthouse scores</a>. Furthermore, collaborating development teams often struggle to <a href="https://www.youtube.com/watch?v=pU1gXA0rfwc" target="_blank" rel="noopener noreferrer">maintain and evolve</a> their parts of the application, as their <a href="https://igor.dev/posts/fate-sharing-and-micro-frontends" target="_blank" rel="noopener noreferrer">fates are tied</a> with fates of all the other teams, so the mistakes and tech debt of one team often impacts all.</p>
-<p>Drawing on ideas from <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank" rel="noopener noreferrer">microservices</a>, the frontend community has started to advocate for <a href="https://micro-frontends.org" target="_blank" rel="noopener noreferrer">micro-frontends</a> to enable teams to develop and deploy their features independently of other teams. Each micro-frontend is a self-contained mini-application, that can be developed and released independently, and is responsible for rendering a “fragment” of the page. The application then combines these fragments together so that from the user's perspective it feels like a single application.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="706" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=715&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=640&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=715&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=750&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=828&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=1080&amp;h=1066&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=1280&amp;h=1264&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MPCZ2THX3ZZJBHM29WCF.jpg&amp;w=1430&amp;h=1412&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - GHnSBZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="706" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - GHnSBZ"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>An application consisting of multiple micro-frontends</p>
-<p>Fragments could represent vertical application features, like “account management” or “checkout”, or horizontal features, like “header” or “navigation bar”.</p>
-<h3>Client-side micro-frontends</h3>
-<p>A common approach to micro-frontends is to rely upon client-side code to lazy load and stitch fragments together (e.g. via <a href="https://webpack.js.org/concepts/module-federation" target="_blank" rel="noopener noreferrer">Module Federation</a>). Client-side micro-frontend applications suffer from a number of problems.</p>
-<p>Common code must either be duplicated or published as a shared library. Shared libraries are problematic themselves. It is not possible to <a href="https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking" target="_blank" rel="noopener noreferrer">tree-shake</a> unused library code at build time resulting in more code than necessary being downloaded to the browser and coordinating between teams when shared libraries need to be updated can be complex and awkward.</p>
-<p>Also, the top-level container application must bootstrap before the micro-frontends can even be requested, and they also need to boot before they become interactive. If they are nested, then you may end up getting a <a href="https://javascript.plainenglish.io/react-official-answer-the-right-way-of-requesting-data-in-react18-other-frameworks-also-apply-50d907c1f6c4" target="_blank" rel="noopener noreferrer">waterfall of requests</a> to get micro-frontends leading to further runtime delays.</p>
-<p>These problems can result in a sluggish application startup experience for the user.</p>
-<p>Server-side rendering could be used with client-side micro-frontends to improve how quickly a browser displays the application but implementing this can significantly increase the complexity of development, deployment and operation. Furthermore, most server-side rendering approaches still suffer from a <a href="https://dev.to/this-is-learning/why-efficient-hydration-in-javascript-frameworks-is-so-challenging-1ca3" target="_blank" rel="noopener noreferrer">hydration delay</a> before the user can fully interact with the application.</p>
-<p>Addressing these challenges was the main motivation for exploring an alternative solution, which relies on the distributed, low latency properties provided by Cloudflare Workers.</p>
-<h2>Micro-frontends on Cloudflare Workers</h2>
-<p><a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is a compute platform that offers a highly scalable, low latency JavaScript execution environment that is available in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">over 275 locations</a> around the globe. In our exploration we used Cloudflare Workers to host and render micro-frontends from anywhere on our global network.</p>
-<h3>Fragments architecture</h3>
-<p>In this architecture the application consists of a tree of “fragments” each deployed to Cloudflare Workers that collaborate to server-side render the overall response. The browser makes a request to a “root fragment”, which will communicate with “child fragments” to generate the final response. Since Cloudflare Workers can communicate with each other <a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings" target="_blank" rel="noopener noreferrer">with almost no overhead</a>, applications can be server-side rendered quickly by child fragments, all working in parallel to render their own HTML, streaming their results to the parent fragment, which combines them into the final response stream delivered to the browser.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="398" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=715&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=640&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=715&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=750&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=828&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=1080&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=1280&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EYTQQ8ZG29TXWK4M2G2R.png&amp;w=1430&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - WrCUV6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="398" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - WrCUV6"></div>
-</figure>
-<p>A high-level overview of a fragments architecture</p>
-<h2>Visit the “Cloud Gallery”</h2>
-<p>We have built an example of a “Cloud Gallery” application to show how this can work in practice. It is deployed to Cloudflare Workers at &nbsp;<a href="https://cloud-gallery.web-experiments.workers.dev" target="_blank" rel="noopener noreferrer">https://cloud-gallery.web-experiments.workers.dev/</a></p>
-<p>The demo application is a simple filtered gallery of cloud images built using our fragments architecture. Try selecting a tag in the type-ahead to filter the images listed in the gallery. Then change the delay on the stream of cloud images to see how the type-ahead filtering can be interactive before the page finishes loading.</p>
-<h3>Multiple Cloudflare Workers</h3>
-<p>The application is composed of a tree of six collaborating but independently deployable Cloudflare Workers, each rendering their own fragment of the screen and providing their own client-side logic, and assets such as CSS stylesheets and images.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="301" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=715&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=640&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=715&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=750&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=828&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=1080&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=1280&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P1GH1BV9NXD8JZHAE0YE.png&amp;w=1430&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - IIqYFo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="301" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - IIqYFo"></div>
-</figure>
-<p>Architectural overview of the Cloud Gallery app</p>
-<p>The “main” fragment acts as the root of the application. The “header” fragment has a slider to configure an artificial delay to the display of gallery images. The “body” fragment contains the “filter” fragment and “gallery” fragments. Finally, the “footer” fragment just shows some static content.</p>
-<p>The full source code of the demo app is available on <a href="https://github.com/cloudflare/workers-web-experiments/tree/main/cloud-gallery" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
-<h2>Benefits and features</h2>
-<p>This architecture of multiple collaborating server-side rendered fragments, deployed to Cloudflare Workers has some interesting features.</p>
-<h3>Encapsulation</h3>
-<p>Fragments are entirely encapsulated, so they can control what they own and what they make available to other fragments.</p>
-<h4><em>Fragments can be developed and deployed independently</em></h4>
-<p>Updating one of the fragments is as simple as redeploying that fragment. The next request to the main application will use the new fragment. Also, fragments can host their own assets (client-side JavaScript, images, etc.), which are streamed through their parent fragment to the browser.</p>
-<h4><em>Server-only code is not sent to the browser</em></h4>
-<p>As well as reducing the cost of downloading unnecessary code to the browser, security sensitive code that is only needed for server-side rendering the fragment is never exposed to other fragments and is not downloaded to the browser. Also, features can be safely hidden behind feature flags in a fragment, allowing more flexibility with rolling out new behavior safely.</p>
-<h3>Composability</h3>
-<p>Fragments are fully composable - any fragment can contain other fragments. The resulting tree structure gives you more flexibility in how you architect and deploy your application. This helps larger projects to scale their development and deployment. Also, fine-grain control over how fragments are composed, could allow fragments that are expensive to server-side render to be cached individually.</p>
-<h3>Fantastic Lighthouse scores</h3>
-<p>Streaming server-rendered HTML results in great user experiences and <a href="https://developer.chrome.com/docs/lighthouse/overview" target="_blank" rel="noopener noreferrer">Lighthouse</a> scores, which in practice means happier users and higher chance of conversions for your business.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="152" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=715&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=640&amp;h=136&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=715&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=750&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=828&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=1080&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=1280&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KP47DRK3CP56VCAXWTB5.png&amp;w=1430&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - wSFV4L" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="152" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - wSFV4L"></div>
-</figure>
-<p>Lighthouse scores for the Cloud Gallery app</p>
-<p>Each fragment can parallelize requests to its child fragments and pipe the resulting HTML streams into its own single streamed server-side rendered response. Not only can this reduce the time to render the whole page but streaming each fragment through to the browser reduces the time to the first byte of each fragment.</p>
-<h3>Eager interactivity</h3>
-<p>One of the powers of a fragments architecture is that fragments can become interactive even while the rest of the application (including other fragments) is still being streamed down to the browser.</p>
-<p>In our demo, the “filter” fragment is immediately interactive as soon as it is rendered, even if the image HTML for the “gallery” fragment is still loading.</p>
-<p>To make it easier to see this, we added a slider to the top of the “header” that can simulate a network or database delay that slows down the HTML stream which renders the “gallery” images. Even when the “gallery” fragment is still loading, the type-ahead input, in the “filter” fragment, is already fully interactive.</p>
-<p>Just think of all the frustration that this eager interactivity could avoid for web application users with unreliable Internet connection.</p>
-<h2>Under the hood</h2>
-<p>As discussed already this architecture relies upon deploying this application as many cooperating Cloudflare Workers. Let’s look into some details of how this works in practice.</p>
-<p>We experimented with various technologies, and while this approach can be used with many frontend libraries and frameworks, we found the <a href="https://qwik.builder.io" target="_blank" rel="noopener noreferrer">Qwik framework</a> to be a particularly good fit, because of its HTML-first focus and low JavaScript overhead, which avoids any hydration problems.</p>
-<h3>Implementing a fragment</h3>
-<p>Each fragment is a server-side rendered Qwik application deployed to its own Cloudflare Worker. This means that you can even browse to these fragments directly. For example, the “header” fragment is deployed to <a href="https://cloud-gallery-header.web-experiments.workers.dev" target="_blank" rel="noopener noreferrer">https://cloud-gallery-header.web-experiments.workers.dev/</a>.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="131" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=715&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=640&amp;h=117&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=715&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=750&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=828&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=1080&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=1280&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450VNYXFQC0Q21NRRSCDCG.png&amp;w=1430&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - zcERKL" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="131" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - zcERKL"></div>
-</figure>
-<p>A screenshot of the self-hosted “header” fragment</p>
-<p>The header fragment is defined as a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank" rel="noopener noreferrer"><code>Header</code></a> component using Qwik. This component is rendered in a Cloudflare Worker via a <code>fetch()</code> handler:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Record</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">string</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">unknown</span><span class="sk-24292e-fff">&gt;)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> renderResponse</span><span class="sk-24292e-fff">(request, env, </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Header</span><span class="sk-24292e-a0a0a0"> /&gt;</span><span class="sk-24292e-fff">, manifest, </span><span class="sk-032f62-99ffe4">"header"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<div class="mb2 gray5">9 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/better-micro-frontends">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6dPHHzMPJqeW0UcKQi6DMo/5586560322add26b921a31d0810b47d2/better-micro-frontends.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>To help developers build better web applications we researched and devised a fragments architecture to build <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener noreferrer">micro-frontends</a> using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> that is lightning fast, cost-effective to develop and operate, and scales to the needs of the largest enterprise teams without compromising release velocity or user experience.</p>
+	<p>Here we share a technical overview and a proof of concept of this architecture.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-micro-frontends">Why micro-frontends?</h2>
+		<a href="https://blog.cloudflare.com/#why-micro-frontends" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One of the challenges of modern frontend web development is that applications are getting bigger and more complex. This is especially true for enterprise web applications supporting <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">e-commerce</a>, banking, insurance, travel, and other industries, where a unified user interface provides access to a large amount of functionality. In such projects it is common for many teams to collaborate to build a single web application. These monolithic web applications, usually built with JavaScript technologies like React, Angular, or Vue, span thousands, or even millions of lines of code.</p>
+	<p>When a monolithic JavaScript architecture is used with applications of this scale, the result is a slow and fragile user experience with low <a href="https://web.dev/measure" target="_blank" rel="noopener noreferrer">Lighthouse scores</a>. Furthermore, collaborating development teams often struggle to <a href="https://www.youtube.com/watch?v=pU1gXA0rfwc" target="_blank" rel="noopener noreferrer">maintain and evolve</a> their parts of the application, as their <a href="https://igor.dev/posts/fate-sharing-and-micro-frontends" target="_blank" rel="noopener noreferrer">fates are tied</a> with fates of all the other teams, so the mistakes and tech debt of one team often impacts all.</p>
+	<p>Drawing on ideas from <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank" rel="noopener noreferrer">microservices</a>, the frontend community has started to advocate for <a href="https://micro-frontends.org" target="_blank" rel="noopener noreferrer">micro-frontends</a> to enable teams to develop and deploy their features independently of other teams. Each micro-frontend is a self-contained mini-application, that can be developed and released independently, and is responsible for rendering a “fragment” of the page. The application then combines these fragments together so that from the user's perspective it feels like a single application.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78VTFfttaimJC7Son9VcYZ/652e6f47dd6354864fd99102307659ba/image3.jpg" alt="" class="kg-image" width="1999" height="1975" loading="lazy">
+
+	</figure>
+	<p>An application consisting of multiple micro-frontends</p>
+	<p>Fragments could represent vertical application features, like “account management” or “checkout”, or horizontal features, like “header” or “navigation bar”.</p>
+	<div class="flex anchor relative">
+		<h3 id="client-side-micro-frontends">Client-side micro-frontends</h3>
+		<a href="https://blog.cloudflare.com/#client-side-micro-frontends" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A common approach to micro-frontends is to rely upon client-side code to lazy load and stitch fragments together (e.g. via <a href="https://webpack.js.org/concepts/module-federation" target="_blank" rel="noopener noreferrer">Module Federation</a>). Client-side micro-frontend applications suffer from a number of problems.</p>
+	<p>Common code must either be duplicated or published as a shared library. Shared libraries are problematic themselves. It is not possible to <a href="https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking" target="_blank" rel="noopener noreferrer">tree-shake</a> unused library code at build time resulting in more code than necessary being downloaded to the browser and coordinating between teams when shared libraries need to be updated can be complex and awkward.</p>
+	<p>Also, the top-level container application must bootstrap before the micro-frontends can even be requested, and they also need to boot before they become interactive. If they are nested, then you may end up getting a <a href="https://javascript.plainenglish.io/react-official-answer-the-right-way-of-requesting-data-in-react18-other-frameworks-also-apply-50d907c1f6c4" target="_blank" rel="noopener noreferrer">waterfall of requests</a> to get micro-frontends leading to further runtime delays.</p>
+	<p>These problems can result in a sluggish application startup experience for the user.</p>
+	<p>Server-side rendering could be used with client-side micro-frontends to improve how quickly a browser displays the application but implementing this can significantly increase the complexity of development, deployment and operation. Furthermore, most server-side rendering approaches still suffer from a <a href="https://dev.to/this-is-learning/why-efficient-hydration-in-javascript-frameworks-is-so-challenging-1ca3" target="_blank" rel="noopener noreferrer">hydration delay</a> before the user can fully interact with the application.</p>
+	<p>Addressing these challenges was the main motivation for exploring an alternative solution, which relies on the distributed, low latency properties provided by Cloudflare Workers.</p>
+	<div class="flex anchor relative">
+		<h2 id="micro-frontends-on-cloudflare-workers">Micro-frontends on Cloudflare Workers</h2>
+		<a href="https://blog.cloudflare.com/#micro-frontends-on-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is a compute platform that offers a highly scalable, low latency JavaScript execution environment that is available in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">over 275 locations</a> around the globe. In our exploration we used Cloudflare Workers to host and render micro-frontends from anywhere on our global network.</p>
+	<div class="flex anchor relative">
+		<h3 id="fragments-architecture">Fragments architecture</h3>
+		<a href="https://blog.cloudflare.com/#fragments-architecture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In this architecture the application consists of a tree of “fragments” each deployed to Cloudflare Workers that collaborate to server-side render the overall response. The browser makes a request to a “root fragment”, which will communicate with “child fragments” to generate the final response. Since Cloudflare Workers can communicate with each other <a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings" target="_blank" rel="noopener noreferrer">with almost no overhead</a>, applications can be server-side rendered quickly by child fragments, all working in parallel to render their own HTML, streaming their results to the parent fragment, which combines them into the final response stream delivered to the browser.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43AlwyalVCD1CfOm31lNiX/f740b01c554b0f574267cf8c4dfe245c/blog-1447.png" alt="" class="kg-image" width="1644" height="916" loading="lazy">
+
+	</figure>
+	<p>A high-level overview of a fragments architecture</p>
+	<div class="flex anchor relative">
+		<h2 id="visit-the-cloud-gallery">Visit the “Cloud Gallery”</h2>
+		<a href="https://blog.cloudflare.com/#visit-the-cloud-gallery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We have built an example of a “Cloud Gallery” application to show how this can work in practice. It is deployed to Cloudflare Workers at &nbsp;<a href="https://cloud-gallery.web-experiments.workers.dev" target="_blank" rel="noopener noreferrer">https://cloud-gallery.web-experiments.workers.dev/</a></p>
+	<p>The demo application is a simple filtered gallery of cloud images built using our fragments architecture. Try selecting a tag in the type-ahead to filter the images listed in the gallery. Then change the delay on the stream of cloud images to see how the type-ahead filtering can be interactive before the page finishes loading.</p>
+	<div class="flex anchor relative">
+		<h3 id="multiple-cloudflare-workers">Multiple Cloudflare Workers</h3>
+		<a href="https://blog.cloudflare.com/#multiple-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The application is composed of a tree of six collaborating but independently deployable Cloudflare Workers, each rendering their own fragment of the screen and providing their own client-side logic, and assets such as CSS stylesheets and images.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xfKbBmdC16pAkNbdCjOz7/0a3e7eebadd5272421fe10dbbb594d76/image6-4.png" alt="" class="kg-image" width="990" height="417" loading="lazy">
+
+	</figure>
+	<p>Architectural overview of the Cloud Gallery app</p>
+	<p>The “main” fragment acts as the root of the application. The “header” fragment has a slider to configure an artificial delay to the display of gallery images. The “body” fragment contains the “filter” fragment and “gallery” fragments. Finally, the “footer” fragment just shows some static content.</p>
+	<p>The full source code of the demo app is available on <a href="https://github.com/cloudflare/workers-web-experiments/tree/main/cloud-gallery" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="benefits-and-features">Benefits and features</h2>
+		<a href="https://blog.cloudflare.com/#benefits-and-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This architecture of multiple collaborating server-side rendered fragments, deployed to Cloudflare Workers has some interesting features.</p>
+	<div class="flex anchor relative">
+		<h3 id="encapsulation">Encapsulation</h3>
+		<a href="https://blog.cloudflare.com/#encapsulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fragments are entirely encapsulated, so they can control what they own and what they make available to other fragments.</p>
+	<div class="flex anchor relative">
+		<h4 id="fragments-can-be-developed-and-deployed-independently"><i>Fragments can be developed and deployed independently</i></h4>
+		<a href="https://blog.cloudflare.com/#fragments-can-be-developed-and-deployed-independently" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Updating one of the fragments is as simple as redeploying that fragment. The next request to the main application will use the new fragment. Also, fragments can host their own assets (client-side JavaScript, images, etc.), which are streamed through their parent fragment to the browser.</p>
+	<div class="flex anchor relative">
+		<h4 id="server-only-code-is-not-sent-to-the-browser"><i>Server-only code is not sent to the browser</i></h4>
+		<a href="https://blog.cloudflare.com/#server-only-code-is-not-sent-to-the-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As well as reducing the cost of downloading unnecessary code to the browser, security sensitive code that is only needed for server-side rendering the fragment is never exposed to other fragments and is not downloaded to the browser. Also, features can be safely hidden behind feature flags in a fragment, allowing more flexibility with rolling out new behavior safely.</p>
+	<div class="flex anchor relative">
+		<h3 id="composability">Composability</h3>
+		<a href="https://blog.cloudflare.com/#composability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fragments are fully composable - any fragment can contain other fragments. The resulting tree structure gives you more flexibility in how you architect and deploy your application. This helps larger projects to scale their development and deployment. Also, fine-grain control over how fragments are composed, could allow fragments that are expensive to server-side render to be cached individually.</p>
+	<div class="flex anchor relative">
+		<h3 id="fantastic-lighthouse-scores">Fantastic Lighthouse scores</h3>
+		<a href="https://blog.cloudflare.com/#fantastic-lighthouse-scores" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Streaming server-rendered HTML results in great user experiences and <a href="https://developer.chrome.com/docs/lighthouse/overview" target="_blank" rel="noopener noreferrer">Lighthouse</a> scores, which in practice means happier users and higher chance of conversions for your business.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GNNIIhE13dbX7EwfTUoQ8/47168493eec000d1df7eb71db56bf271/image7-2.png" alt="" class="kg-image" width="1552" height="330" loading="lazy">
+
+	</figure>
+	<p>Lighthouse scores for the Cloud Gallery app</p>
+	<p>Each fragment can parallelize requests to its child fragments and pipe the resulting HTML streams into its own single streamed server-side rendered response. Not only can this reduce the time to render the whole page but streaming each fragment through to the browser reduces the time to the first byte of each fragment.</p>
+	<div class="flex anchor relative">
+		<h3 id="eager-interactivity">Eager interactivity</h3>
+		<a href="https://blog.cloudflare.com/#eager-interactivity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One of the powers of a fragments architecture is that fragments can become interactive even while the rest of the application (including other fragments) is still being streamed down to the browser.</p>
+	<p>In our demo, the “filter” fragment is immediately interactive as soon as it is rendered, even if the image HTML for the “gallery” fragment is still loading.</p>
+	<p>To make it easier to see this, we added a slider to the top of the “header” that can simulate a network or database delay that slows down the HTML stream which renders the “gallery” images. Even when the “gallery” fragment is still loading, the type-ahead input, in the “filter” fragment, is already fully interactive.</p>
+	<p>Just think of all the frustration that this eager interactivity could avoid for web application users with unreliable Internet connection.</p>
+	<div class="flex anchor relative">
+		<h2 id="under-the-hood">Under the hood</h2>
+		<a href="https://blog.cloudflare.com/#under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As discussed already this architecture relies upon deploying this application as many cooperating Cloudflare Workers. Let’s look into some details of how this works in practice.</p>
+	<p>We experimented with various technologies, and while this approach can be used with many frontend libraries and frameworks, we found the <a href="https://qwik.builder.io" target="_blank" rel="noopener noreferrer">Qwik framework</a> to be a particularly good fit, because of its HTML-first focus and low JavaScript overhead, which avoids any hydration problems.</p>
+	<div class="flex anchor relative">
+		<h3 id="implementing-a-fragment">Implementing a fragment</h3>
+		<a href="https://blog.cloudflare.com/#implementing-a-fragment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Each fragment is a server-side rendered Qwik application deployed to its own Cloudflare Worker. This means that you can even browse to these fragments directly. For example, the “header” fragment is deployed to <a href="https://cloud-gallery-header.web-experiments.workers.dev" target="_blank" rel="noopener noreferrer">https://cloud-gallery-header.web-experiments.workers.dev/</a>.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24SSUszIf2fbUphL5lsfr9/756d04fc6bc455f3845b45bf1ff592c0/image8-2.png" alt="" class="kg-image" width="1732" height="318" loading="lazy">
+
+	</figure>
+	<p>A screenshot of the self-hosted “header” fragment</p>
+	<p>The header fragment is defined as a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank" rel="noopener noreferrer"><code>Header</code></a> component using Qwik. This component is rendered in a Cloudflare Worker via a <code>fetch()</code> handler:</p>
+	<pre class="language-tsx"><code class="language-tsx">export default {
+  fetch(request: Request, env: Record&lt;string, unknown&gt;): Promise&lt;Response&gt; {
+    return renderResponse(request, env, &lt;Header /&gt;, manifest, "header");
+  },
+};</code></pre>
+	<!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/entry.ssr.tsx"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center><!--kg-card-end: html--><br>
+	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank" rel="noopener noreferrer"><code><u>renderResponse</u></code></a><code>()</code> function is a helper we wrote that server-side renders the fragment and streams it into the body of a <code>Response</code> that we return from the <code>fetch()</code> handler.</p>
+	<p>The header fragment serves its own JavaScript and image assets from its Cloudflare Worker. We configure <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> to upload these assets to Cloudflare and serve them from our network.</p>
+	<div class="flex anchor relative">
+		<h2 id="implementing-fragment-composition">Implementing fragment composition</h2>
+		<a href="https://blog.cloudflare.com/#implementing-fragment-composition" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Fragments that contain child fragments have additional responsibilities:</p>
+	<ul>
+		<li>
+			<p>Request and inject child fragments when rendering their own HTML.</p>
+		</li>
+		<li>
+			<p>Proxy requests for child fragment assets through to the appropriate fragment.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="injecting-child-fragments">Injecting child fragments</h3>
+		<a href="https://blog.cloudflare.com/#injecting-child-fragments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The position of a child fragment inside its parent can be specified by a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank" rel="noopener noreferrer"><code>FragmentPlaceholder</code></a> helper component that we have developed. For example, the “body” fragment has the “filter” and “gallery” fragments.</p>
+	<pre class="language-tsx"><code class="language-tsx">&lt;div class="content"&gt;
+  &lt;FragmentPlaceholder name="filter" /&gt;
+  &lt;FragmentPlaceholder name="gallery" /&gt;
+&lt;/div&gt;</code></pre>
+	<!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/root.tsx"><b>cloud-gallery/body/src/root.tsx</b></a></small></center><!--kg-card-end: html--><br>
+	<p>The <code>FragmentPlaceholder</code> component is responsible for making a request for the fragment and piping the fragment stream into the output stream.</p>
+	<div class="flex anchor relative">
+		<h3 id="proxying-asset-requests">Proxying asset requests</h3>
+		<a href="https://blog.cloudflare.com/#proxying-asset-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As mentioned earlier, fragments can host their own assets, especially client-side JavaScript files. When a request for an asset arrives at the parent fragment, it needs to know which child fragment should receive the request.</p>
+	<p>In our demo we use a convention that such asset paths will be prefixed with <code>/_fragment/&lt;fragment-name&gt;</code>. For example, the header logo image path is <code>/_fragment/header/cf-logo.png</code>. We developed a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx#L28" target="_blank" rel="noopener noreferrer"><code><u>tryGetFragmentAsset</u></code></a><code>()</code> helper which can be added to the parent fragment’s <code>fetch()</code> handler to deal with this:</p>
+	<pre class="language-tsx"><code class="language-tsx">export default {
+  async fetch(
+    request: Request,
+    env: Record&lt;string, unknown&gt;
+  ): Promise&lt;Response&gt; {
+    // Proxy requests for assets hosted by a fragment.
+    const asset = await tryGetFragmentAsset(env, request);
+    if (asset !== null) {
+      return asset;
+    }
+    // Otherwise server-side render the template injecting child fragments.
+    return renderResponse(request, env, &lt;Root /&gt;, manifest, "div");
+  },
+};</code></pre>
+	<!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small></center><!--kg-card-end: html--><br>
+	<div class="flex anchor relative">
+		<h3 id="fragment-asset-paths">Fragment asset paths</h3>
+		<a href="https://blog.cloudflare.com/#fragment-asset-paths" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If a fragment hosts its own assets, then we need to ensure that any HTML it renders uses the special <code>_fragment/&lt;fragment-name&gt;</code> path prefix mentioned above when referring to these assets. We have implemented a strategy for this in the helpers we developed.</p>
+	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank" rel="noopener noreferrer"><code><u>FragmentPlaceholder</u></code></a> component adds a `base` searchParam to the fragment request to tell it what this prefix should be. The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank" rel="noopener noreferrer"><code><u>renderResponse</u></code></a><code>()</code> helper extracts this prefix and provides it to the Qwik server-side renderer. This ensures that any request for client-side JavaScript has the correct prefix. Fragments can apply a hook that we developed called <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L22" target="_blank" rel="noopener noreferrer"><code><u>useFragmentRoot</u></code></a><code>()</code>. This allows components to gather the prefix from a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L12" target="_blank" rel="noopener noreferrer"><code><u>FragmentContext</u></code></a> <a href="https://qwik.builder.io/docs/components/context" target="_blank" rel="noopener noreferrer"><u>context</u></a>.</p>
+	<p>For example, since the “header” fragment hosts the Cloudflare and Github logos as assets, it must call the <code>useFragmentRoot()</code> hook:</p>
+	<pre class="language-tsx"><code class="language-tsx">export const Header = component$(() =&gt; {
+  useStylesScoped$(HeaderCSS);
+  useFragmentRoot();
+
+  return (...);
+});</code></pre>
+	<!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx"><strong>cloud-gallery/header/src/root.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<p>The <code>FragmentContext</code> value can then be accessed in components that need to apply the prefix. For example, the <code>Image</code> component:</p>
+	<pre class="language-tsx"><code class="language-tsx">export const Image = component$((props: Record&lt;string, string | number&gt;) =&gt; {
+  const { base } = useContext(FragmentContext);
+  return &lt;img {...props} src={base + props.src} /&gt;;
+});</code></pre>
+	<!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/image/image.tsx"><strong>cloud-gallery/helpers/src/image/image.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<div class="flex anchor relative">
+		<h3 id="service-binding-fragments">Service-binding fragments</h3>
+		<a href="https://blog.cloudflare.com/#service-binding-fragments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workers provide a mechanism called <a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings" target="_blank" rel="noopener noreferrer">service bindings</a> to make requests between Cloudflare Workers efficiently that avoids network requests. In the demo we use this mechanism to make the requests from parent fragments to their child fragments with almost no performance overhead, while still allowing the fragments to be independently deployed.</p>
+	<div class="flex anchor relative">
+		<h2 id="comparison-to-current-solutions">Comparison to current solutions</h2>
+		<a href="https://blog.cloudflare.com/#comparison-to-current-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This fragments architecture has three properties that distinguish it from other current solutions.</p>
+	<p>Unlike monoliths, or client-side micro-frontends, fragments are developed and deployed as independent server-side rendered applications that are composed together on the server-side. This significantly improves rendering speed, and lowers interaction latency in the browser.</p>
+	<p>Unlike server-side rendered micro-frontends with Node.js or cloud functions, Cloudflare Workers is a globally distributed compute platform with a region-less deployment model. It has incredibly low latency, and a near-zero communication overhead between fragments.</p>
+	<p>Unlike solutions based on <a href="https://webpack.js.org/concepts/module-federation" target="_blank" rel="noopener noreferrer">module federation</a>, a fragment's client-side JavaScript is very specific to the fragment it is supporting. This means that it is small enough that we don’t need to have shared library code, eliminating the version skew issues and coordination problems when updating shared libraries.</p>
+	<div class="flex anchor relative">
+		<h2 id="future-possibilities">Future possibilities</h2>
+		<a href="https://blog.cloudflare.com/#future-possibilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This demo is just a proof of concept, so there are still areas to investigate. Here are some of the features we’d like to explore in the future.</p>
+	<div class="flex anchor relative">
+		<h3 id="caching">Caching</h3>
+		<a href="https://blog.cloudflare.com/#caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Each micro-frontend fragment can be cached independently of the others based on how static its content is. When requesting the full page, the fragments only need to run server-side rendering for micro-frontends that have changed.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PxpkF17fG0fMqBX0nhT6n/1789385a464d8908f7646a1570c6314d/image2.jpg" alt="" class="kg-image" width="1548" height="661" loading="lazy">
+
+	</figure>
+	<p>An application where the output of some fragments are cached</p>
+	<p>With per-fragment caching you can return the HTML response to the browser faster, and avoid incurring compute costs in re-rendering content unnecessarily.</p>
+	<div class="flex anchor relative">
+		<h3 id="fragment-routing-and-client-side-navigation">Fragment routing and client-side navigation</h3>
+		<a href="https://blog.cloudflare.com/#fragment-routing-and-client-side-navigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our demo application used micro-frontend fragments to compose a single page. We could however use this approach to implement page routing as well. When server-side rendering, the main fragment could insert the appropriate “page” fragment based on the visited URL. When navigating, client-side, within the app, the main fragment would remain the same while the displayed “page” fragment would change.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31uGNgOqJccEZXHRfrK7Fw/a69dd9152b184802d07c437347560251/image5-1.jpg" alt="" class="kg-image" width="1685" height="690" loading="lazy">
+
+	</figure>
+	<p>An application where each route is delegated to a different fragment</p>
+	<p>This approach combines the best of server-side and client-side routing with the power of fragments.</p>
+	<div class="flex anchor relative">
+		<h3 id="using-other-frontend-frameworks">Using other frontend frameworks</h3>
+		<a href="https://blog.cloudflare.com/#using-other-frontend-frameworks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Although the Cloud Gallery application uses Qwik to implement all fragments, it is possible to use other frameworks as well. If really necessary, it’s even possible to mix and match frameworks.</p>
+	<p>To achieve good results, the framework of choice should be capable of server-side rendering, and should have a small client-side JavaScript footprint. HTML streaming capabilities, while not required, can significantly improve performance of large applications.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AkgbhioqHBaKtvZxVTIsp/6a818eeb06c4ad842886e81f9d0f477a/image1-15.png" alt="" class="kg-image" width="1685" height="690" loading="lazy">
+
+	</figure>
+	<p>An application using different frontend frameworks</p>
+	<div class="flex anchor relative">
+		<h3 id="incremental-migration-strategies">Incremental migration strategies</h3>
+		<a href="https://blog.cloudflare.com/#incremental-migration-strategies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Adopting a new architecture, compute platform, and deployment model is a lot to take in all at once, and for existing large applications is prohibitively risky and expensive. To make this &nbsp;fragment-based architecture available to legacy projects, an incremental adoption strategy is a key.</p>
+	<p>Developers could test the waters by migrating just a single piece of the user-interface within their legacy application to a fragment, integrating with minimal changes to the legacy application. Over time, more of the application could then be moved over, one fragment at a time.</p>
+	<div class="flex anchor relative">
+		<h3 id="convention-over-configuration">Convention over configuration</h3>
+		<a href="https://blog.cloudflare.com/#convention-over-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As you can see in the Cloud Gallery demo application, setting up a fragment-based micro-frontend requires quite a bit of configuration. A lot of this configuration is very mechanical and could be abstracted away via conventions and better tooling. Following productivity-focused precedence found in Ruby on Rails, and filesystem based routing meta-frameworks, we could make a lot of this configuration disappear.</p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-yourself">Try it yourself!</h2>
+		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>There is still so much to dig into! Web applications have come a long way in recent years and their growth is hard to overstate. Traditional implementations of micro-frontends have had only mixed success in helping developers scale development and deployment of large applications. Cloudflare Workers, however, unlock new possibilities which can help us tackle many of the existing challenges and help us build better web applications.</p>
+	<p>Thanks to the <a href="https://workers.cloudflare.com/#plans" target="_blank" rel="noopener noreferrer">generous free plan</a> offered by Cloudflare Workers, you can <a href="https://github.com/cloudflare/workers-web-experiments/tree/main/cloud-gallery" target="_blank" rel="noopener noreferrer">check out the Gallery Demo code</a> and deploy it yourself.</p>
+	<p>If all of these sounds interesting to you, and you would like to work with us on improving the developer experience for Cloudflare Workers, we are also happy to share that <a href="https://boards.greenhouse.io/cloudflare/jobs/4619341" target="_blank" rel="noopener noreferrer">we are hiring</a>!</p>
 </div>
-<div id="html-block-k4z" class="html-block"><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/entry.ssr.tsx"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small><br></div>
-<p>The <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank" rel="noopener noreferrer"><u>renderResponse</u></a>()</code> function is a helper we wrote that server-side renders the fragment and streams it into the body of a <code>Response</code> that we return from the <code>fetch()</code> handler.</p>
-<p>The header fragment serves its own JavaScript and image assets from its Cloudflare Worker. We configure <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> to upload these assets to Cloudflare and serve them from our network.</p>
-<h2>Implementing fragment composition</h2>
-<p>Fragments that contain child fragments have additional responsibilities:</p>
-<ul>
-	<li>Request and inject child fragments when rendering their own HTML.</li>
-	<li>Proxy requests for child fragment assets through to the appropriate fragment.</li>
-</ul>
-<h3>Injecting child fragments</h3>
-<p>The position of a child fragment inside its parent can be specified by a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank" rel="noopener noreferrer"><code>FragmentPlaceholder</code></a> helper component that we have developed. For example, the “body” fragment has the “filter” and “gallery” fragments.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-a0a0a0"> class</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"content"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-005cc5-ffc799">FragmentPlaceholder</span><span class="sk-6f42c1-a0a0a0"> name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"filter"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-005cc5-ffc799">FragmentPlaceholder</span><span class="sk-6f42c1-a0a0a0"> name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"gallery"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
-</div>
-<div id="html-block-k5v" class="html-block"><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/root.tsx"><b>cloud-gallery/body/src/root.tsx</b></a></small><br></div>
-<p>The <code>FragmentPlaceholder</code> component is responsible for making a request for the fragment and piping the fragment stream into the output stream.</p>
-<h3>Proxying asset requests</h3>
-<p>As mentioned earlier, fragments can host their own assets, especially client-side JavaScript files. When a request for an asset arrives at the parent fragment, it needs to know which child fragment should receive the request.</p>
-<p>In our demo we use a convention that such asset paths will be prefixed with <code>/_fragment/&lt;fragment-name&gt;</code>. For example, the header logo image path is <code>/_fragment/header/cf-logo.png</code>. We developed a <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx#L28" target="_blank" rel="noopener noreferrer"><u>tryGetFragmentAsset</u></a>()</code> helper which can be added to the parent fragment’s <code>fetch()</code> handler to deal with this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
-<span class="line"><span class="sk-e36209-fff">    request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-e36209-fff">    env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Record</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">string</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">unknown</span><span class="sk-24292e-fff">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">  )</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // Proxy requests for assets hosted by a fragment.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> asset</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> tryGetFragmentAsset</span><span class="sk-24292e-fff">(env, request);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (asset </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> asset;</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // Otherwise server-side render the template injecting child fragments.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> renderResponse</span><span class="sk-24292e-fff">(request, env, </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Root</span><span class="sk-24292e-a0a0a0"> /&gt;</span><span class="sk-24292e-fff">, manifest, </span><span class="sk-032f62-99ffe4">"div"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
-</div>
-<div id="html-block-k6h" class="html-block"><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small><br></div>
-<h3>Fragment asset paths</h3>
-<p>If a fragment hosts its own assets, then we need to ensure that any HTML it renders uses the special <code>_fragment/&lt;fragment-name&gt;</code> path prefix mentioned above when referring to these assets. We have implemented a strategy for this in the helpers we developed.</p>
-<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank" rel="noopener noreferrer"><code><u>FragmentPlaceholder</u></code></a> component adds a `base` searchParam to the fragment request to tell it what this prefix should be. The <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank" rel="noopener noreferrer"><u>renderResponse</u></a>()</code> helper extracts this prefix and provides it to the Qwik server-side renderer. This ensures that any request for client-side JavaScript has the correct prefix. Fragments can apply a hook that we developed called <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L22" target="_blank" rel="noopener noreferrer"><u>useFragmentRoot</u></a>()</code>. This allows components to gather the prefix from a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L12" target="_blank" rel="noopener noreferrer"><code><u>FragmentContext</u></code></a> <a href="https://qwik.builder.io/docs/components/context" target="_blank" rel="noopener noreferrer"><u>context</u></a>.</p>
-<p>For example, since the “header” fragment hosts the Cloudflare and Github logos as assets, it must call the <code>useFragmentRoot()</code> hook:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> Header</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> component$</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  useStylesScoped$</span><span class="sk-24292e-fff">(HeaderCSS);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  useFragmentRoot</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
-</div>
-<div id="html-block-k7c" class="html-block"><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx"><strong>cloud-gallery/header/src/root.tsx</strong></a></small></div>
-<p>The <code>FragmentContext</code> value can then be accessed in components that need to apply the prefix. For example, the <code>Image</code> component:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> Image</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> component$</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">props</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Record</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">string</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">string</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">&gt;) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">base</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> useContext</span><span class="sk-24292e-fff">(FragmentContext);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-a0a0a0"> &lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-24292e-a0a0a0"> {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">props</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-6f42c1-a0a0a0"> src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> props.src</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-a0a0a0"> /&gt;</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
-</div>
-<div id="html-block-k7k" class="html-block"><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/image/image.tsx"><strong>cloud-gallery/helpers/src/image/image.tsx</strong></a></small></div>
-<h3>Service-binding fragments</h3>
-<p>Cloudflare Workers provide a mechanism called <a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings" target="_blank" rel="noopener noreferrer">service bindings</a> to make requests between Cloudflare Workers efficiently that avoids network requests. In the demo we use this mechanism to make the requests from parent fragments to their child fragments with almost no performance overhead, while still allowing the fragments to be independently deployed.</p>
-<h2>Comparison to current solutions</h2>
-<p>This fragments architecture has three properties that distinguish it from other current solutions.</p>
-<p>Unlike monoliths, or client-side micro-frontends, fragments are developed and deployed as independent server-side rendered applications that are composed together on the server-side. This significantly improves rendering speed, and lowers interaction latency in the browser.</p>
-<p>Unlike server-side rendered micro-frontends with Node.js or cloud functions, Cloudflare Workers is a globally distributed compute platform with a region-less deployment model. It has incredibly low latency, and a near-zero communication overhead between fragments.</p>
-<p>Unlike solutions based on <a href="https://webpack.js.org/concepts/module-federation" target="_blank" rel="noopener noreferrer">module federation</a>, a fragment's client-side JavaScript is very specific to the fragment it is supporting. This means that it is small enough that we don’t need to have shared library code, eliminating the version skew issues and coordination problems when updating shared libraries.</p>
-<h2>Future possibilities</h2>
-<p>This demo is just a proof of concept, so there are still areas to investigate. Here are some of the features we’d like to explore in the future.</p>
-<h3>Caching</h3>
-<p>Each micro-frontend fragment can be cached independently of the others based on how static its content is. When requesting the full page, the fragments only need to run server-side rendering for micro-frontends that have changed.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="305" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=640&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=750&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=828&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=1080&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=1280&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460ENNQGJWGVEC1B83NB8H.jpg&amp;w=1430&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - cgEREQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="305" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - cgEREQ"></div>
-</figure>
-<p>An application where the output of some fragments are cached</p>
-<p>With per-fragment caching you can return the HTML response to the browser faster, and avoid incurring compute costs in re-rendering content unnecessarily.</p>
-<h3>Fragment routing and client-side navigation</h3>
-<p>Our demo application used micro-frontend fragments to compose a single page. We could however use this approach to implement page routing as well. When server-side rendering, the main fragment could insert the appropriate “page” fragment based on the visited URL. When navigating, client-side, within the app, the main fragment would remain the same while the displayed “page” fragment would change.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="293" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=715&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=640&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=715&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=750&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=828&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=1080&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=1280&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QPM3VEHF4D9DKC0CY941.jpg&amp;w=1430&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - eSEn7K" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="293" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - eSEn7K"></div>
-</figure>
-<p>An application where each route is delegated to a different fragment</p>
-<p>This approach combines the best of server-side and client-side routing with the power of fragments.</p>
-<h3>Using other frontend frameworks</h3>
-<p>Although the Cloud Gallery application uses Qwik to implement all fragments, it is possible to use other frameworks as well. If really necessary, it’s even possible to mix and match frameworks.</p>
-<p>To achieve good results, the framework of choice should be capable of server-side rendering, and should have a small client-side JavaScript footprint. HTML streaming capabilities, while not required, can significantly improve performance of large applications.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="293" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=715&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=640&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=715&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=750&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=828&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=1080&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=1280&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BHF4N6WJBM1GCX2MKHFP.png&amp;w=1430&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1445 Embedded Image - FarCOu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="293" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1445 Embedded Image - FarCOu"></div>
-</figure>
-<p>An application using different frontend frameworks</p>
-<h3>Incremental migration strategies</h3>
-<p>Adopting a new architecture, compute platform, and deployment model is a lot to take in all at once, and for existing large applications is prohibitively risky and expensive. To make this &nbsp;fragment-based architecture available to legacy projects, an incremental adoption strategy is a key.</p>
-<p>Developers could test the waters by migrating just a single piece of the user-interface within their legacy application to a fragment, integrating with minimal changes to the legacy application. Over time, more of the application could then be moved over, one fragment at a time.</p>
-<h3>Convention over configuration</h3>
-<p>As you can see in the Cloud Gallery demo application, setting up a fragment-based micro-frontend requires quite a bit of configuration. A lot of this configuration is very mechanical and could be abstracted away via conventions and better tooling. Following productivity-focused precedence found in Ruby on Rails, and filesystem based routing meta-frameworks, we could make a lot of this configuration disappear.</p>
-<h2>Try it yourself!</h2>
-<p>There is still so much to dig into! Web applications have come a long way in recent years and their growth is hard to overstate. Traditional implementations of micro-frontends have had only mixed success in helping developers scale development and deployment of large applications. Cloudflare Workers, however, unlock new possibilities which can help us tackle many of the existing challenges and help us build better web applications.</p>
-<p>Thanks to the <a href="https://workers.cloudflare.com/#plans" target="_blank" rel="noopener noreferrer">generous free plan</a> offered by Cloudflare Workers, you can <a href="https://github.com/cloudflare/workers-web-experiments/tree/main/cloud-gallery" target="_blank" rel="noopener noreferrer">check out the Gallery Demo code</a> and deploy it yourself.</p>
-<p>If all of these sounds interesting to you, and you would like to work with us on improving the developer experience for Cloudflare Workers, we are also happy to share that <a href="https://boards.greenhouse.io/cloudflare/jobs/4619341" target="_blank" rel="noopener noreferrer">we are hiring</a>!</p>

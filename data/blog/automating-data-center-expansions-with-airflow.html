@@ -1,113 +1,181 @@
-<p>Cloudflare’s network keeps growing, and that growth doesn’t just come from building new data centers in new cities. We’re also upgrading the capacity of existing data centers by adding newer generations of servers — a process that makes our network safer, faster, and more reliable for our users.</p>
-<p>Connecting new Cloudflare servers to our network has always been complex, in large part because of the amount of manual effort that used to be required. Members of our Data Center and Infrastructure Operations, Network Operations, and Site Reliability Engineering teams had to carefully follow steps in an extremely detailed standard operating procedure (SOP) document, often copying command-line snippets directly from the document and pasting them into terminal windows.</p>
-<p>But such a manual process can only scale so far, and we knew must be a way to automate the installation of new servers.</p>
-<p>Here’s how we tackled that challenge by building our own Provisioning-as-a-Service (PraaS) platform and cut by 90% the amount of time our team spent on mundane operational tasks.</p>
-<h3>Choosing and using an automation framework</h3>
-<p>When we began our automation efforts, we quickly realized it made sense to replace each of these manual SOP steps with an API-call equivalent and to present them in a self-service web-based portal.</p>
-<p>To organize these new automatic steps, we chose <a href="https://airflow.apache.org" target="_blank" rel="noopener noreferrer">Apache Airflow</a>, an open-source workflow management platform. Airflow is built around directed acyclic graphs, or DAGs, which are collections of all the tasks you want to run, organized in a way that reflects their relationships and dependencies.</p>
-<p>In this new system, each SOP step is implemented as a task in the DAG. The majority of these tasks are API calls to Salt — software which automates the management and configuration of any infrastructure or application, and which we use to manage our servers, switches, and routers. Other DAG tasks are calls to query Prometheus (systems monitoring and alerting toolkit), Thanos (a highly available Prometheus setup with long-term storage capabilities), Google Chat webhooks, JIRA, and other internal systems.</p>
-<p>Here is an example of one of these tasks. In the original SOP, SREs were given the following instructions to enable anycast:</p>
-<ol>
-	<li><strong><em>Login to a remote system.</em></strong></li>
-	<li><strong><em>Copy and Paste the command in the terminal.</em></strong></li>
-	<li><strong><em>Replace the router placeholder in the command snippet with the actual value.</em></strong></li>
-	<li><strong><em>Execute the command.</em></strong></li>
-</ol>
-<p>In our new workflow, this step becomes a single task in the DAG named “enable_anycast”:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">enable_anycast</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> builder.wrap_class</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AsyncSaltAPIOperator</span><span class="sk-24292e-fff">)(</span></span>
-<span class="line"><span class="sk-24292e-fff">             task_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'enable_anycast',</span></span>
-<span class="line"><span class="sk-24292e-fff">             target</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'{{ params.netops }}',</span></span>
-<span class="line"><span class="sk-24292e-fff">             function</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'cmd.run',</span></span>
-<span class="line"><span class="sk-24292e-fff">             fun_kwargs</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">'cmd'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 'salt {{ get_router(params.colo_name) }} '</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">                         'anycast.enable --out=json --out-indent=-1'</span><span class="sk-6f42c1-ffc799">},</span></span>
-<span class="line"><span class="sk-24292e-fff">             salt_conn_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'salt_api',</span></span>
-<span class="line"><span class="sk-24292e-fff">             trigger_rule</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'one_success'</span><span class="sk-24292e-fff">)</span></span></code></pre>
-</div>
-<p>As you can see, automation eliminates the need for a human operator to login to a remote system, and to figure out the router that will be used to replace the placeholder in the command to be executed.</p>
-<p>In Airflow, a task is an implementation of an Operator. The Operator in the automated step is the “AsyncSaltAPIOperator”, a custom operator built in-house. This extensibility is one of the many reasons that made us decide to use Apache Airflow. It allowed us to extend its functionality by writing custom operators that suit our needs.</p>
-<p>SREs from various teams have written quite a lot of custom Airflow Operators that integrate with Salt, Prometheus, Bitbucket, Google Chat, JIRA, PagerDuty, among others.</p>
-<h3>Manual SOP steps transformed into a feature-packed automation</h3>
-<p>The tasks that replaced steps in the SOP are marvelously feature-packed. Here are some highlights of what they are capable of, on top of just executing a command:</p>
-<p><strong>Failure Handling</strong>When a task fails for whatever reason, it automatically retries until it exhausts its maximum retry limit that we set for the task. We employ various retry strategies, including instructing tasks to not retry at all, especially when it’s impractical to retry, or when we deliberately do not want it to retry at all regardless of whether there are any retry attempts remaining, such as when an exception is encountered or a condition that is unlikely to change for the better.</p>
-<p><strong>Logging</strong>Each task provides a comprehensive log during executions. We’ve written our tasks to ensure that we log as much information as possible that would help us audit and troubleshoot issues.</p>
-<p><strong>Notifications</strong>We’ve written our tasks to send a notification with information such as the name of the DAG, the name of the task, its task state, the number of attempts it took to reach a certain state, and a link to view the task logs.</p>
-<p>When a task fails, we definitely want to be notified, so we also set tasks to additionally provide information such as the number of retry attempts and links to view relevant wiki pages or Grafana dashboards.</p>
-<p>Depending on the criticality of the failure, we can also instruct it to page the relevant on-call person on the provisioning shift, should it require immediate attention.</p>
-<p><strong>Jinja Templating</strong>Jinja templating allows providing dynamic content using code to otherwise static objects such as strings. We use this in combination with macros wherein we provide parameters that can change during the execution, since macros are evaluated while the task gets run.</p>
-<p><strong>Macros</strong>Macros are used to pass dynamic information into task instances at runtime. Macros are a way to expose objects to templates. In other words, macros are functions that take input, modify that input, and give the modified output.</p>
-<h3>Adapting tasks for preconditions and human intervention</h3>
-<p>There are a few steps in the SOP that require certain preconditions to be met. We use sensors to set dependencies between these tasks, and even between different DAGs, so that one does not run until the dependency has been met.</p>
-<p>Below is an example of a sensor that waits until all nodes resolve to their assigned DNS records:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">verify_node_dns</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> builder.wrap_class</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">DNSSensor</span><span class="sk-24292e-fff">)(</span></span>
-<span class="line"><span class="sk-24292e-fff">            task_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'verify_node_dns',</span></span>
-<span class="line"><span class="sk-24292e-fff">            zone</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">domain,</span></span>
-<span class="line"><span class="sk-24292e-fff">            nodes_from</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'{{ to_json(run_ctx.globals.import_nodes_via_mpl) }}',</span></span>
-<span class="line"><span class="sk-24292e-fff">            timeout</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">60</span><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> 30,</span></span>
-<span class="line"><span class="sk-24292e-fff">            poke_interval</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">60</span><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> 10,</span></span>
-<span class="line"><span class="sk-24292e-fff">	mode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'reschedule'</span><span class="sk-24292e-fff">)</span></span></code></pre>
-</div>
-<p>In addition, some of our tasks still require input from a &nbsp;human operator. In these circumstances, we use sensors as blocking tasks that prevent work from starting until certain preconditions are met. We use these to set dependencies between tasks and even DAGs so that one does not run until the dependency has finished successfully.</p>
-<p>The code below is a simple example of a task that will send notifications to get the attention of a human operator, and waits until a Change Request ticket has been provided and verified:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">verify_jira_input</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> builder.wrap_class</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">InputSensor</span><span class="sk-24292e-fff">)(</span></span>
-<span class="line"><span class="sk-24292e-fff">            task_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'verify_jira_input',</span></span>
-<span class="line"><span class="sk-24292e-fff">            var_key</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'jira',</span></span>
-<span class="line"><span class="sk-24292e-fff">            prompt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'Please provide the Change Request ticket.',</span></span>
-<span class="line"><span class="sk-24292e-fff">            notify</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">True,</span></span>
-<span class="line"><span class="sk-24292e-fff">            require_human</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">True</span><span class="sk-24292e-fff">)</span></span></code></pre>
-</div>
-<p>Another sensor task example is waiting until a zone has been deployed by a Cloudflare engineer as described in <a href="https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone">https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone/</a>.</p>
-<p>In order for PraaS to be able to accept human inputs, we’ve written a separate DAG we call our DAG Manager. Whenever we need to submit input back to a running expansion DAG, we simply trigger the DAG Manager and pass in our input as a JSON configuration, which will then be processed accordingly and submit the input back to the expansion DAG.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="662" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=715&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=640&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=715&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=750&amp;h=694&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=828&amp;h=767&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=1080&amp;h=1000&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=1280&amp;h=1185&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YECVNA8TPG0Q7XKYCXY1.png&amp;w=1430&amp;h=1324&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Automating data center expansions with Airflow Embedded Image - 9pd2OX" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="662" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Automating data center expansions with Airflow Embedded Image - 9pd2OX"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3>Managing Dependencies Between Tasks</h3>
-<p>Replacing SOP steps with DAG tasks was only the first part of our journey towards greater automation. We also had to define the dependencies between these tasks and construct the workflow accordingly.</p>
-<p>Here’s an example of what this looks like in code:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">verify_cr</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> parse_cr</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-24292e-fff"> [execute_offline, </span><span class="sk-032f62-99ffe4">execute_online]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        execute_online</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> silence_highstate_runner</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> silence_metals</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">            disable_highstate_runner</span></span></code></pre>
-</div>
-<p>The code simply uses bit shift operators to chain the operations. A list of tasks can also be set as dependencies:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">change_metal_status</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-24292e-fff">  [wait_for_change_metal_status, </span><span class="sk-032f62-99ffe4">verify_zone_update]</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-24292e-fff">evaluate_ecmp_management</span></span></code></pre>
-</div>
-<p>With the bit shift operator, chaining multiple dependencies becomes concise.</p>
-<p>By default, a downstream task will only run if its upstream has succeeded. For a more complex dependency setup, we set a trigger_rule which defines the rule by which the generated task gets triggered.</p>
-<p>All operators have a trigger_rule argument. The Airflow scheduler decides whether to run the task or not depending on what rule was specified in the task. An example rule that we use a lot in PraaS is “one_success” — it fires as soon as at least one parent succeeds, and it does not wait for all parents to be done.</p>
-<h3>Solving Complex Workflows with Branching and Multi-DAGs</h3>
-<p>Having complex workflows means that we need a workflow to branch, or only go down a certain path, based on an arbitrary condition, which is typically related to something that happened in an upstream task. Branching is used to perform conditional logic, that is, execute a set of tasks based on a condition. We use BranchPythonOperator to achieve this.</p>
-<p>At some point in the workflow, our data center expansion DAGs trigger various external DAGs to accomplish complex tasks. This is why we have written our DAGs to be fully reusable. We did not try to incorporate all the logic into a single DAG; instead, we created other separable DAGs that are fully reusable and can be triggered on-demand manually by hand or programmatically — our DAG Manager and the “helper” DAG is an example of this.</p>
-<p>The Helper DAG comprises logic that allows us to mimic a “for loop” by having the DAG respawn itself if needed, technically doing cycles. If you recall, a DAG is acyclic, but we have some tasks in our workflow that require us to do complex loops and are solved by using a helper DAG.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="597" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=715&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=640&amp;h=534&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=715&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=750&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=828&amp;h=691&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=1080&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=1280&amp;h=1069&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MN1XQWTJV74RDJ836G6P.png&amp;w=1430&amp;h=1194&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Automating data center expansions with Airflow Embedded Image - cPu4vi" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="597" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Automating data center expansions with Airflow Embedded Image - cPu4vi"></div>
-</figure>
-<p>We designed reusable DAGs early on, which allowed us to build complex automation workflows from separable DAGs, each of which handles distinct and well-defined tasks. Each data center DAG could easily reuse other DAGs by triggering them programmatically.</p>
-<p>Having separate DAGs that run independently, that are triggered by other DAGs, and that keep inter-dependencies between them, is a pattern we use a lot. It has allowed us to execute very complex workflows.</p>
-<h3>Creating DAGs that Scale and Executing Tasks at Scale</h3>
-<p>Data center expansions are done in two phases:</p>
-<p><strong>Phase 1</strong> - this is the phase in which servers are powered on. It boots our custom Linux kernel, and begins the provisioning process.</p>
-<p><strong>Phase 2</strong> - this is the phase in which newly provisioned servers are enabled in the cluster to receive production traffic.</p>
-<p>To reflect these phases in the automation workflow, we also wrote two separate DAGs, one for each phase. However, we have over 200 data centers, so if we were to write a pair of DAGs for each, we would end up writing and maintaining 400 files!</p>
-<p>A viable option could be to parameterize our DAGs. At first glance, this approach sounds reasonable. However, it poses one major challenge: tracking the progress of DAG runs will be too difficult and confusing for the human operator using PraaS.</p>
-<p>Following the software design principle called DRY (Don’t Repeat Yourself), and inspired by the Factory Method design pattern in programming, we’ve instead written both phase 1 and phase 2 DAGs in a way that allow them to dynamically create multiple different DAGs with exactly the same tasks, and to fully reuse the exact same code. As a result, we only maintain one code base, and as we add new data centers, we are also able to generate a DAG for each new data center instantly, without writing a single line of code.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="594" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=715&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=640&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=715&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=750&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=828&amp;h=688&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=1080&amp;h=897&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=1280&amp;h=1063&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R0HSWYBYYZ8KDRF4NB1K.png&amp;w=1430&amp;h=1188&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Automating data center expansions with Airflow Embedded Image - vNj9CF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="594" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Automating data center expansions with Airflow Embedded Image - vNj9CF"></div>
-</figure>
-<p>And Airflow even made it easy to put a simple customized web UI on top of the process, which made it simple to use by more employees who didn’t have to understand all the details.</p>
-<h3>The death of SOPs?</h3>
-<p>We would like to think that all of this automation removes the need for our original SOP document. But this is not really the case. &nbsp;Automation can fail, the components in it can fail, and &nbsp; a particular task in the DAG may fail. When this happens, our SOPs will be used again to prevent provisioning and expansion activities from stopping completely.</p>
-<p>Introducing automation paved the way for what we call an SOP-as-Code practice. We made sure that every task in the DAG had an equivalent manual step in the SOP that SREs can execute by hand, should the need arise, and that every change in the SOP has a corresponding pull request (PR) in the code.</p>
-<h3>What’s next for PraaS</h3>
-<p>Onboarding of the other provisioning activities into PraaS, such as decommissioning, is already ongoing.</p>
-<p>For expansions, our ultimate goal is a fully autonomous system that monitors whether new servers have been racked in our edge data centers — and automatically triggers expansions — with no human intervention.</p>
-<h3>Watch it on Cloudflare TV</h3>
-<div id="html-block-k3z" class="html-block">
-	<div style="padding-top:62.5%"><iframe src="https://iframe.videodelivery.net/46b03ce3929263a54c073d14a343df16?preload=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
-	<p></p>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IFNa9W7ikcSbNe9onlqVD/4758a38358bf918aa366283a60c17d7b/automating-data-center-expansions-with-airflow.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare’s network keeps growing, and that growth doesn’t just come from building new data centers in new cities. We’re also upgrading the capacity of existing data centers by adding newer generations of servers — a process that makes our network safer, faster, and more reliable for our users.</p>
+	<p>Connecting new Cloudflare servers to our network has always been complex, in large part because of the amount of manual effort that used to be required. Members of our Data Center and Infrastructure Operations, Network Operations, and Site Reliability Engineering teams had to carefully follow steps in an extremely detailed standard operating procedure (SOP) document, often copying command-line snippets directly from the document and pasting them into terminal windows.</p>
+	<p>But such a manual process can only scale so far, and we knew must be a way to automate the installation of new servers.</p>
+	<p>Here’s how we tackled that challenge by building our own Provisioning-as-a-Service (PraaS) platform and cut by 90% the amount of time our team spent on mundane operational tasks.</p>
+	<div class="flex anchor relative">
+		<h3 id="choosing-and-using-an-automation-framework">Choosing and using an automation framework</h3>
+		<a href="https://blog.cloudflare.com/#choosing-and-using-an-automation-framework" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When we began our automation efforts, we quickly realized it made sense to replace each of these manual SOP steps with an API-call equivalent and to present them in a self-service web-based portal.</p>
+	<p>To organize these new automatic steps, we chose <a href="https://airflow.apache.org" target="_blank" rel="noopener noreferrer">Apache Airflow</a>, an open-source workflow management platform. Airflow is built around directed acyclic graphs, or DAGs, which are collections of all the tasks you want to run, organized in a way that reflects their relationships and dependencies.</p>
+	<p>In this new system, each SOP step is implemented as a task in the DAG. The majority of these tasks are API calls to Salt — software which automates the management and configuration of any infrastructure or application, and which we use to manage our servers, switches, and routers. Other DAG tasks are calls to query Prometheus (systems monitoring and alerting toolkit), Thanos (a highly available Prometheus setup with long-term storage capabilities), Google Chat webhooks, JIRA, and other internal systems.</p>
+	<p>Here is an example of one of these tasks. In the original SOP, SREs were given the following instructions to enable anycast:</p>
+	<ol>
+		<li>
+			<p><b><i>Login to a remote system.</i></b></p>
+		</li>
+		<li>
+			<p><b><i>Copy and Paste the command in the terminal.</i></b></p>
+		</li>
+		<li>
+			<p><b><i>Replace the router placeholder in the command snippet with the actual value.</i></b></p>
+		</li>
+		<li>
+			<p><b><i>Execute the command.</i></b></p>
+		</li>
+	</ol>
+	<p>In our new workflow, this step becomes a single task in the DAG named “enable_anycast”:</p>
+	<pre class="language-bash"><code class="language-bash">enable_anycast = builder.wrap_class(AsyncSaltAPIOperator)(
+             task_id='enable_anycast',
+             target='{{ params.netops }}',
+             function='cmd.run',
+             fun_kwargs={'cmd': 'salt {{ get_router(params.colo_name) }} '
+                         'anycast.enable --out=json --out-indent=-1'},
+             salt_conn_id='salt_api',
+             trigger_rule='one_success')</code></pre>
+	<p>As you can see, automation eliminates the need for a human operator to login to a remote system, and to figure out the router that will be used to replace the placeholder in the command to be executed.</p>
+	<p>In Airflow, a task is an implementation of an Operator. The Operator in the automated step is the “AsyncSaltAPIOperator”, a custom operator built in-house. This extensibility is one of the many reasons that made us decide to use Apache Airflow. It allowed us to extend its functionality by writing custom operators that suit our needs.</p>
+	<p>SREs from various teams have written quite a lot of custom Airflow Operators that integrate with Salt, Prometheus, Bitbucket, Google Chat, JIRA, PagerDuty, among others.</p>
+	<div class="flex anchor relative">
+		<h3 id="manual-sop-steps-transformed-into-a-feature-packed-automation">Manual SOP steps transformed into a feature-packed automation</h3>
+		<a href="https://blog.cloudflare.com/#manual-sop-steps-transformed-into-a-feature-packed-automation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The tasks that replaced steps in the SOP are marvelously feature-packed. Here are some highlights of what they are capable of, on top of just executing a command:</p>
+	<p><b>Failure Handling</b>When a task fails for whatever reason, it automatically retries until it exhausts its maximum retry limit that we set for the task. We employ various retry strategies, including instructing tasks to not retry at all, especially when it’s impractical to retry, or when we deliberately do not want it to retry at all regardless of whether there are any retry attempts remaining, such as when an exception is encountered or a condition that is unlikely to change for the better.</p>
+	<p><b>Logging</b>Each task provides a comprehensive log during executions. We’ve written our tasks to ensure that we log as much information as possible that would help us audit and troubleshoot issues.</p>
+	<p><b>Notifications</b>We’ve written our tasks to send a notification with information such as the name of the DAG, the name of the task, its task state, the number of attempts it took to reach a certain state, and a link to view the task logs.</p>
+	<p>When a task fails, we definitely want to be notified, so we also set tasks to additionally provide information such as the number of retry attempts and links to view relevant wiki pages or Grafana dashboards.</p>
+	<p>Depending on the criticality of the failure, we can also instruct it to page the relevant on-call person on the provisioning shift, should it require immediate attention.</p>
+	<p><b>Jinja Templating</b>Jinja templating allows providing dynamic content using code to otherwise static objects such as strings. We use this in combination with macros wherein we provide parameters that can change during the execution, since macros are evaluated while the task gets run.</p>
+	<p><b>Macros</b>Macros are used to pass dynamic information into task instances at runtime. Macros are a way to expose objects to templates. In other words, macros are functions that take input, modify that input, and give the modified output.</p>
+	<div class="flex anchor relative">
+		<h3 id="adapting-tasks-for-preconditions-and-human-intervention">Adapting tasks for preconditions and human intervention</h3>
+		<a href="https://blog.cloudflare.com/#adapting-tasks-for-preconditions-and-human-intervention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>There are a few steps in the SOP that require certain preconditions to be met. We use sensors to set dependencies between these tasks, and even between different DAGs, so that one does not run until the dependency has been met.</p>
+	<p>Below is an example of a sensor that waits until all nodes resolve to their assigned DNS records:</p>
+	<pre class="language-bash"><code class="language-bash">verify_node_dns = builder.wrap_class(DNSSensor)(
+            task_id='verify_node_dns',
+            zone=domain,
+            nodes_from='{{ to_json(run_ctx.globals.import_nodes_via_mpl) }}',
+            timeout=60 * 30,
+            poke_interval=60 * 10,
+	mode='reschedule')</code></pre>
+	<p>In addition, some of our tasks still require input from a &nbsp;human operator. In these circumstances, we use sensors as blocking tasks that prevent work from starting until certain preconditions are met. We use these to set dependencies between tasks and even DAGs so that one does not run until the dependency has finished successfully.</p>
+	<p>The code below is a simple example of a task that will send notifications to get the attention of a human operator, and waits until a Change Request ticket has been provided and verified:</p>
+	<pre class="language-bash"><code class="language-bash">verify_jira_input = builder.wrap_class(InputSensor)(
+            task_id='verify_jira_input',
+            var_key='jira',
+            prompt='Please provide the Change Request ticket.',
+            notify=True,
+            require_human=True)</code></pre>
+	<p>Another sensor task example is waiting until a zone has been deployed by a Cloudflare engineer as described in <a href="https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone">https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone/</a>.</p>
+	<p>In order for PraaS to be able to accept human inputs, we’ve written a separate DAG we call our DAG Manager. Whenever we need to submit input back to a running expansion DAG, we simply trigger the DAG Manager and pass in our input as a JSON configuration, which will then be processed accordingly and submit the input back to the expansion DAG.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1y5JUysuUMGAzvWpiPEb4G/162771c50b9be51d4a496cc0aa019c4c/image2-20.png" alt="" class="kg-image" width="1116" height="1034" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="managing-dependencies-between-tasks">Managing Dependencies Between Tasks</h3>
+		<a href="https://blog.cloudflare.com/#managing-dependencies-between-tasks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Replacing SOP steps with DAG tasks was only the first part of our journey towards greater automation. We also had to define the dependencies between these tasks and construct the workflow accordingly.</p>
+	<p>Here’s an example of what this looks like in code:</p>
+	<pre class="language-bash"><code class="language-bash">verify_cr &gt;&gt; parse_cr &gt;&gt; [execute_offline, execute_online]
+        execute_online &gt;&gt; silence_highstate_runner &gt;&gt; silence_metals &gt;&gt; \
+            disable_highstate_runner</code></pre>
+	<p>The code simply uses bit shift operators to chain the operations. A list of tasks can also be set as dependencies:</p>
+	<pre class="language-bash"><code class="language-bash">change_metal_status &gt;&gt;  [wait_for_change_metal_status, verify_zone_update] &gt;&gt; \
+evaluate_ecmp_management</code></pre>
+	<p>With the bit shift operator, chaining multiple dependencies becomes concise.</p>
+	<p>By default, a downstream task will only run if its upstream has succeeded. For a more complex dependency setup, we set a trigger_rule which defines the rule by which the generated task gets triggered.</p>
+	<p>All operators have a trigger_rule argument. The Airflow scheduler decides whether to run the task or not depending on what rule was specified in the task. An example rule that we use a lot in PraaS is “one_success” — it fires as soon as at least one parent succeeds, and it does not wait for all parents to be done.</p>
+	<div class="flex anchor relative">
+		<h3 id="solving-complex-workflows-with-branching-and-multi-dags">Solving Complex Workflows with Branching and Multi-DAGs</h3>
+		<a href="https://blog.cloudflare.com/#solving-complex-workflows-with-branching-and-multi-dags" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Having complex workflows means that we need a workflow to branch, or only go down a certain path, based on an arbitrary condition, which is typically related to something that happened in an upstream task. Branching is used to perform conditional logic, that is, execute a set of tasks based on a condition. We use BranchPythonOperator to achieve this.</p>
+	<p>At some point in the workflow, our data center expansion DAGs trigger various external DAGs to accomplish complex tasks. This is why we have written our DAGs to be fully reusable. We did not try to incorporate all the logic into a single DAG; instead, we created other separable DAGs that are fully reusable and can be triggered on-demand manually by hand or programmatically — our DAG Manager and the “helper” DAG is an example of this.</p>
+	<p>The Helper DAG comprises logic that allows us to mimic a “for loop” by having the DAG respawn itself if needed, technically doing cycles. If you recall, a DAG is acyclic, but we have some tasks in our workflow that require us to do complex loops and are solved by using a helper DAG.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JEhMEgEZswPJWxkgSAtck/11453cefd2e4c6543181bdf241c9d2ea/image3-31.png" alt="" class="kg-image" width="1117" height="932" loading="lazy">
+
+	</figure>
+	<p>We designed reusable DAGs early on, which allowed us to build complex automation workflows from separable DAGs, each of which handles distinct and well-defined tasks. Each data center DAG could easily reuse other DAGs by triggering them programmatically.</p>
+	<p>Having separate DAGs that run independently, that are triggered by other DAGs, and that keep inter-dependencies between them, is a pattern we use a lot. It has allowed us to execute very complex workflows.</p>
+	<div class="flex anchor relative">
+		<h3 id="creating-dags-that-scale-and-executing-tasks-at-scale">Creating DAGs that Scale and Executing Tasks at Scale</h3>
+		<a href="https://blog.cloudflare.com/#creating-dags-that-scale-and-executing-tasks-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Data center expansions are done in two phases:</p>
+	<p><b>Phase 1</b> - this is the phase in which servers are powered on. It boots our custom Linux kernel, and begins the provisioning process.</p>
+	<p><b>Phase 2</b> - this is the phase in which newly provisioned servers are enabled in the cluster to receive production traffic.</p>
+	<p>To reflect these phases in the automation workflow, we also wrote two separate DAGs, one for each phase. However, we have over 200 data centers, so if we were to write a pair of DAGs for each, we would end up writing and maintaining 400 files!</p>
+	<p>A viable option could be to parameterize our DAGs. At first glance, this approach sounds reasonable. However, it poses one major challenge: tracking the progress of DAG runs will be too difficult and confusing for the human operator using PraaS.</p>
+	<p>Following the software design principle called DRY (Don’t Repeat Yourself), and inspired by the Factory Method design pattern in programming, we’ve instead written both phase 1 and phase 2 DAGs in a way that allow them to dynamically create multiple different DAGs with exactly the same tasks, and to fully reuse the exact same code. As a result, we only maintain one code base, and as we add new data centers, we are also able to generate a DAG for each new data center instantly, without writing a single line of code.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32tu5HSvTbXRo6yrRAqlq9/dff87e0fd133a1b8ce83b49ef616e0c3/image1-37.png" alt="" class="kg-image" width="1116" height="927" loading="lazy">
+
+	</figure>
+	<p>And Airflow even made it easy to put a simple customized web UI on top of the process, which made it simple to use by more employees who didn’t have to understand all the details.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-death-of-sops">The death of SOPs?</h3>
+		<a href="https://blog.cloudflare.com/#the-death-of-sops" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We would like to think that all of this automation removes the need for our original SOP document. But this is not really the case. &nbsp;Automation can fail, the components in it can fail, and &nbsp; a particular task in the DAG may fail. When this happens, our SOPs will be used again to prevent provisioning and expansion activities from stopping completely.</p>
+	<p>Introducing automation paved the way for what we call an SOP-as-Code practice. We made sure that every task in the DAG had an equivalent manual step in the SOP that SREs can execute by hand, should the need arise, and that every change in the SOP has a corresponding pull request (PR) in the code.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-for-praas">What’s next for PraaS</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-for-praas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Onboarding of the other provisioning activities into PraaS, such as decommissioning, is already ongoing.</p>
+	<p>For expansions, our ultimate goal is a fully autonomous system that monitors whether new servers have been racked in our edge data centers — and automatically triggers expansions — with no human intervention.</p>
+	<div class="flex anchor relative">
+		<h3 id="watch-it-on-cloudflare-tv">Watch it on Cloudflare TV</h3>
+		<a href="https://blog.cloudflare.com/#watch-it-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/46b03ce3929263a54c073d14a343df16?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
 </div>

@@ -1,163 +1,214 @@
-<p>Your Workers now have access to a low-latency key-value data store which lives inside our network all around the world!</p>
-<p>For those who don’t know, Cloudflare Workers is a new type of compute platform, built on top of our global network of 152+ data centers around the world. It allows you to write serverless code which runs in the fabric of the Internet itself, allowing you to engage with your users faster than other platforms can even get a packet to where your code is running. It’s built on a new architecture which eliminates cold starts and dramatically reduces the memory overhead of keeping your code running when compared to a platform like Amazon Lambda.</p>
-<p>As powerful as this is, compute is just one component of what you need to build an application, you also need the ability to store data. We evaluated many of the available open source data stores on the market, but ultimately nothing was designed for a world with quite as many distributed nodes as our network. Instead, we have begun releasing our own vision for distributed storage, beginning today.</p>
-<p>The Workers KV is a highly distributed, eventually-consistent, key value store. It will allow you to store up to a billion keys and values, and read them with ultra low latency anywhere in the world. It makes it possible to build entire applications with the performance traditionally associated with static content cached by a CDN.</p>
-<h3>What can I do with Workers KV?</h3>
-<p>First and foremost, you can build the same types of applications you build today, but in a more fault tolerant and performant way. Reading values from Workers KV is designed to have the same reliability as reading static files, making it much less likely to become unavailable than a traditional database. It’s designed to have the same performance as reading a file cached within our network, close to your users, giving it the speed of serving a static file as well.</p>
-<p>That said, we do have some applications which we commonly see as a good entry point into writing code on the network itself. These use-cases combine a serious need for speed with a clean separation from the legacy components of your application which are stuck in a central location (for now!).</p>
-<p>Here are just a few of those examples:</p>
-<h3>API Gateway and Access Tokens</h3>
-<p>An <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">API Gateway</a> sits between your visitors and your API. It commonly handles tasks which would be redundant, time consuming, or slow to implement in each and every service in your system. This includes tasks like rate limiting, access token validation, and routing. They work together to deliver only authenticated requests directly to the appropriate components of your system. It’s also the perfect entry point to developing code which runs everywhere. When you use Cloudflare Workers as an API Gateway, your access tokens get validated at the Cloudflare data center closest to the customer before the request is securely forwarded to your origin.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="389" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=715&amp;h=389&amp;f=svg&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=640&amp;h=348&amp;f=svg&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=715&amp;h=389&amp;f=svg&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=750&amp;h=408&amp;f=svg&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=828&amp;h=450&amp;f=svg&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=1080&amp;h=588&amp;f=svg&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=1280&amp;h=696&amp;f=svg&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45C8PX5JKE230EB65604JY.svg&amp;w=1430&amp;h=778&amp;f=svg&amp;fit=cover&amp;position=center 1430w" alt="Building With Workers KV, a Fast Distributed Key-Value Store Embedded Image - 1RDSpa" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="389" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building With Workers KV, a Fast Distributed Key-Value Store Embedded Image - 1RDSpa"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>In this example your authentication system will store a token when a user logs in. I'm using <code>curl</code>, but the backend code for your system is more likely to use whatever interface it has for making HTTPS requests. This request stores a blob of JSON identifying this token in a Worker KV namespace <code>$NAMESPACE_ID</code> with a key of <code>$TOKEN_ID</code>:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/storage/kv/namespaces/</span><span class="sk-24292e-fff">$NAMESPACE_ID</span><span class="sk-032f62-99ffe4">/values/</span><span class="sk-24292e-fff">$TOKEN_ID </span><span class="sk-005cc5-a0a0a0">\</span></span>
-<span class="line"><span class="sk-24292e-fff">-X </span><span class="sk-032f62-99ffe4">PUT</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"X-Auth-Key: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_KEY</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"X-Auth-Email: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_EMAIL</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-24292e-fff">-d </span><span class="sk-032f62-99ffe4">'{</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "userId": "bob",</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "expires": "2018-07-11T03:44:12Z"</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gDhVgiDCTKSaol5tuuItG/020985ec9a2b01ab5522f18f41a6fe0a/building-with-workers-kv.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Your Workers now have access to a low-latency key-value data store which lives inside our network all around the world!</p>
+	<p>For those who don’t know, Cloudflare Workers is a new type of compute platform, built on top of our global network of 152+ data centers around the world. It allows you to write serverless code which runs in the fabric of the Internet itself, allowing you to engage with your users faster than other platforms can even get a packet to where your code is running. It’s built on a new architecture which eliminates cold starts and dramatically reduces the memory overhead of keeping your code running when compared to a platform like Amazon Lambda.</p>
+	<p>As powerful as this is, compute is just one component of what you need to build an application, you also need the ability to store data. We evaluated many of the available open source data stores on the market, but ultimately nothing was designed for a world with quite as many distributed nodes as our network. Instead, we have begun releasing our own vision for distributed storage, beginning today.</p>
+	<p>The Workers KV is a highly distributed, eventually-consistent, key value store. It will allow you to store up to a billion keys and values, and read them with ultra low latency anywhere in the world. It makes it possible to build entire applications with the performance traditionally associated with static content cached by a CDN.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-can-i-do-with-workers-kv">What can I do with Workers KV?</h3>
+		<a href="https://blog.cloudflare.com/#what-can-i-do-with-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>First and foremost, you can build the same types of applications you build today, but in a more fault tolerant and performant way. Reading values from Workers KV is designed to have the same reliability as reading static files, making it much less likely to become unavailable than a traditional database. It’s designed to have the same performance as reading a file cached within our network, close to your users, giving it the speed of serving a static file as well.</p>
+	<p>That said, we do have some applications which we commonly see as a good entry point into writing code on the network itself. These use-cases combine a serious need for speed with a clean separation from the legacy components of your application which are stuck in a central location (for now!).</p>
+	<p>Here are just a few of those examples:</p>
+	<div class="flex anchor relative">
+		<h3 id="api-gateway-and-access-tokens">API Gateway and Access Tokens</h3>
+		<a href="https://blog.cloudflare.com/#api-gateway-and-access-tokens" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>An <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">API Gateway</a> sits between your visitors and your API. It commonly handles tasks which would be redundant, time consuming, or slow to implement in each and every service in your system. This includes tasks like rate limiting, access token validation, and routing. They work together to deliver only authenticated requests directly to the appropriate components of your system. It’s also the perfect entry point to developing code which runs everywhere. When you use Cloudflare Workers as an API Gateway, your access tokens get validated at the Cloudflare data center closest to the customer before the request is securely forwarded to your origin.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XMwDVaHAC8SOvemALp3sw/969de9a7bfa632e3ee15c584f7e9f5d9/Workers-KV-Blog.svg" alt="" class="kg-image" width="804" height="437" loading="lazy">
+
+	</figure>
+	<p>In this example your authentication system will store a token when a user logs in. I'm using <code>curl</code>, but the backend code for your system is more likely to use whatever interface it has for making HTTPS requests. This request stores a blob of JSON identifying this token in a Worker KV namespace <code>$NAMESPACE_ID</code> with a key of <code>$TOKEN_ID</code>:</p>
+	<pre class="language-bash"><code class="language-bash">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$TOKEN_ID \
+-X PUT \
+-H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+-H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+-d '{
+  "userId": "bob",
+  "expires": "2018-07-11T03:44:12Z"
+}'</code></pre>
+	<p>Your Worker code, which runs on every request, will check if the token the user provides matches one you have stored. A single line of code (<code>TOKEN_STORE.get()</code>) pulls the JSON stored above from the Worker KV</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
+ event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+ const token = request.headers.get('Authorization')
+ if (!token)
+   return new Response("An Authorization header is required", {status: 401})
+
+ const tokenInfo = await TOKEN_STORE.get(token, "json")
+ if (!tokenInfo)
+   return new Response("Invalid token", {status: 403})
+ 
+ if (Date.parse(tokenInfo.expires) &lt; Date.now())
+   return new Response(“Token expired”, {status: 403}) 
+
+ request = new Request(request)
+ request.headers.set("User-Id", tokenInfo.userId)
+ return fetch(request)
+}</code></pre>
+	<p>A secure authentication system which adds virtually no latency at 1/7th the cost of Amazon API Gateway (with so much more flexibility and power)!</p>
+	<div class="flex anchor relative">
+		<h3 id="dynamic-data">Dynamic Data</h3>
+		<a href="https://blog.cloudflare.com/#dynamic-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Traditionally you’ve had to decide between showing a super fast static site to your visitors, or being able to include dynamic data customizing your site for each visitor. That customization could be showing different products based on the customer’s profile, A/B testing site variants, or even including the customer’s current shopping cart and account information. Rather than waiting for this information to be served from a central database, it’s now possible to store it close to every visitor, delivering a custom page as quickly as you could a static resource.</p>
+	<p>For example, let’s say we have translations of our site stored as JSON in the KV store. We can dynamically insert this translation data as Javascript into the HTML of our site. In this example our site has a block which looks like this:</p>
+	<pre class="language-html"><code class="language-html">&lt;html&gt;
+ &lt;head&gt;
+   &lt;script&gt;
+     var TRANSLATION_DATA = TRANSLATION DATA HERE
+   &lt;/script&gt;
+ &lt;/head&gt;
+
+ ...
+&lt;/html&gt;</code></pre>
+	<p>Our worker replaces that text with the content of our translations. You could alternatively use a Javascript templating engine or parse the content of the page to do something like Server-Side Includes.</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const token = request.headers.get('Authorization')
+
+
+  const translationsPromise = TRANSLATION_DATA.get(country)
+  const response = await fetch(request)
+  const translations = await translationsPromise
+
+  let newBody = await response.text()
+  const ct = response.headers.get('content-type')
+  if (ct.startsWith('text/html') &amp;&amp; response.status === 200){
+    newBody = newBody.replace('TRANSLATION DATA HERE', translations)
+  }
+
+  return new Response(newBody, response)
+}</code></pre>
+	<p>Workers is a full programming environment, meaning this is just the beginning. We have customers rendering their entire React App inside Workers, fully bootstrapping the data required to render their site.</p>
+	<div class="flex anchor relative">
+		<h3 id="configuration">Configuration</h3>
+		<a href="https://blog.cloudflare.com/#configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Workers KV store creates a powerful way to configure your running Workers without having to redeploy them. You might want to implement feature flags to enable or disable features at will, or to dynamically update the data your code uses to make decisions. Workers deploy in under 30 seconds, but it’s common to have more data than can easily fit in Worker code. For example, we have customers interested in using Workers KV to block messages from lost or stolen IoT devices before they ever reach their origin:</p>
+	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
+ event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+ const deviceId = request.headers.get('device-id')
+ const bannedEntry = await BANNED_DEVICES.get(deviceId)
+ if (bannedEntry !== null){
+   return new Response("This device has been banned", {status: 403})
+ }
+
+ return fetch(request)
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="cloud-functions">Cloud Functions</h3>
+		<a href="https://blog.cloudflare.com/#cloud-functions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One thing we’re excited about when we think about the Workers KV store is the potential for building beyond web applications. There are many situations where developers are looking for an easy way to execute code without worrying about provisioning or maintaining infrastructure. One of the most common cases we see is joining systems together.</p>
+	<p>For example, one of our customers is planning on using Workers KV to connect their Point of Sale system with their Delivery Service’s API:</p>
+	<pre class="language-javascript"><code class="language-javascript">// The endpoint we have bound this to is polled periodically
+addEventListener('fetch', event =&gt; {
+ event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+ const orderResp = await fetch(`https://api.pos-system.com/orders/active`, {
+   headers: {
+     'Authorization': 'POS_API_KEY'
+   }
+ })
+
+ const orders = await orderResp.json()
+
+ for (var i=0; i &lt; orders.length; i++){
+   let order = orders[i]
+
+   const syncedData = await SYNCED_ORDERS.get(order.id, "json")
+
+   // If the order data is newer than the last data we sent to the delivery company,
+   // update it.
+   if (syncedData.modifiedAt &lt; order.modifiedAt) {
+     await fetch(`https://api.delivery-system.com/orders/${ order.id }`, {
+       method: 'POST',
+       body: JSON.stringify(order),
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization': 'DELIVERY_API_KEY'
+       }
+     })
+
+     await SYNCED_ORDERS.put(order.id, JSON.stringify(order))
+   }
+ }
+
+ return new Response("?")
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="limits-and-pricing">Limits and Pricing</h3>
+		<a href="https://blog.cloudflare.com/#limits-and-pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Workers KV is launching today in a limited beta. As we get feedback and operational experience we will be relaxing our storage limits and granting access to more users. While we may have more restrictive limits during beta, you can design your applications around the following characteristics:</p>
+	<ul>
+		<li>
+			<p>Up to 1 billion keys per namespace</p>
+		</li>
+		<li>
+			<p>Keys of up to 2 kB</p>
+		</li>
+		<li>
+			<p>Values of up to 64 kB</p>
+		</li>
+		<li>
+			<p>Eventually consistent, global consistency within 10 seconds</p>
+		</li>
+		<li>
+			<p>100k+ reads per second per key</p>
+		</li>
+		<li>
+			<p>Up to one write per second per key</p>
+		</li>
+	</ul>
+	<p>We worked hard to make the pricing of Workers KV easy to understand and affordable for virtually any use case. Your $5 monthly Workers compute minimum includes 1 GB of KV storage and up to 10 million KV reads. If you use less than the 10 million included Worker requests now, you can use KV without paying a single cent more.</p>
+	<p>Beyond the minimums, Workers KV is billed at $0.50 per GB-month of additional storage and $0.50 per million additional KV reads.</p>
+	<p>To get beta access <a href="https://goo.gl/forms/1xd57PdiR9DdhxZs1" target="_blank" rel="noopener noreferrer">sign up here</a>, we can’t wait to see what you build!</p>
+	<p><a href="https://blog.cloudflare.com/subscribe"><i>Subscribe to the blog</i></a><i> for daily updates on all of our announcements.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13ojPczyOItZyN4of0hmQB/096b0f32c5fffc9b10bf01a5aeb47885/Cloudflare-Birthday-Week-8.png" alt="" class="kg-image" width="1200" height="600" loading="lazy">
+
+	</figure>
 </div>
-<p>Your Worker code, which runs on every request, will check if the token the user provides matches one you have stored. A single line of code (<code>TOKEN_STORE.get()</code>) pulls the JSON stored above from the Worker KV</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> token</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Authorization'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">token)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"An Authorization header is required"</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">401</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> tokenInfo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> TOKEN_STORE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(token, </span><span class="sk-032f62-99ffe4">"json"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">tokenInfo)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Invalid token"</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (Date.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(tokenInfo.expires) </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(“Token expired”, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">}) </span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-24292e-fff"> request </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"User-Id"</span><span class="sk-24292e-fff">, tokenInfo.userId)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>A secure authentication system which adds virtually no latency at 1/7th the cost of Amazon API Gateway (with so much more flexibility and power)!</p>
-<h3>Dynamic Data</h3>
-<p>Traditionally you’ve had to decide between showing a super fast static site to your visitors, or being able to include dynamic data customizing your site for each visitor. That customization could be showing different products based on the customer’s profile, A/B testing site variants, or even including the customer’s current shopping cart and account information. Rather than waiting for this information to be served from a central database, it’s now possible to store it close to every visitor, delivering a custom page as quickly as you could a static resource.</p>
-<p>For example, let’s say we have translations of our site stored as JSON in the KV store. We can dynamically insert this translation data as Javascript into the HTML of our site. In this example our site has a block which looks like this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0"> &lt;</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">   &lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">     var</span><span class="sk-005cc5-fff"> TRANSLATION_DATA</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> TRANSLATION</span><span class="sk-005cc5-fff"> DATA</span><span class="sk-005cc5-fff"> HERE</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">   &lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0"> &lt;/</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-24292e-fff"> ...</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
-</div>
-<p>Our worker replaces that text with the content of our translations. You could alternatively use a Javascript templating engine or parse the content of the page to do something like Server-Side Includes.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> token</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Authorization'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> translationsPromise</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> TRANSLATION_DATA</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(country)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> translations</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> translationsPromise</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> newBody </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> ct</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> response.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'content-type'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (ct.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> response.status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-24292e-fff">){</span></span>
-<span class="line"><span class="sk-24292e-fff">    newBody </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> newBody.</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'TRANSLATION DATA HERE'</span><span class="sk-24292e-fff">, translations)</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(newBody, response)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>Workers is a full programming environment, meaning this is just the beginning. We have customers rendering their entire React App inside Workers, fully bootstrapping the data required to render their site.</p>
-<h3>Configuration</h3>
-<p>The Workers KV store creates a powerful way to configure your running Workers without having to redeploy them. You might want to implement feature flags to enable or disable features at will, or to dynamically update the data your code uses to make decisions. Workers deploy in under 30 seconds, but it’s common to have more data than can easily fit in Worker code. For example, we have customers interested in using Workers KV to block messages from lost or stolen IoT devices before they ever reach their origin:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> deviceId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'device-id'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> bannedEntry</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> BANNED_DEVICES</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(deviceId)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (bannedEntry </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">){</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"This device has been banned"</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<h3>Cloud Functions</h3>
-<p>One thing we’re excited about when we think about the Workers KV store is the potential for building beyond web applications. There are many situations where developers are looking for an easy way to execute code without worrying about provisioning or maintaining infrastructure. One of the most common cases we see is joining systems together.</p>
-<p>For example, one of our customers is planning on using Workers KV to connect their Point of Sale system with their Delivery Service’s API:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// The endpoint we have bound this to is polled periodically</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> orderResp</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`https://api.pos-system.com/orders/active`</span><span class="sk-24292e-fff">, {</span></span>
-<span class="line"><span class="sk-24292e-fff">   headers: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">     'Authorization'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'POS_API_KEY'</span></span>
-<span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff"> })</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> orders</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> orderResp.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> i</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> orders.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">){</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   let</span><span class="sk-24292e-fff"> order </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> orders[i]</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> syncedData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> SYNCED_ORDERS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(order.id, </span><span class="sk-032f62-99ffe4">"json"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">   // If the order data is newer than the last data we sent to the delivery company,</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">   // update it.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> (syncedData.modifiedAt </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> order.modifiedAt) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">     await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`https://api.delivery-system.com/orders/${</span><span class="sk-24292e-fff"> order</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">id</span><span class="sk-032f62-99ffe4"> }`</span><span class="sk-24292e-fff">, {</span></span>
-<span class="line"><span class="sk-24292e-fff">       method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">       body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(order),</span></span>
-<span class="line"><span class="sk-24292e-fff">       headers: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">         'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'application/json'</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">         'Authorization'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'DELIVERY_API_KEY'</span></span>
-<span class="line"><span class="sk-24292e-fff">       }</span></span>
-<span class="line"><span class="sk-24292e-fff">     })</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">     await</span><span class="sk-005cc5-fff"> SYNCED_ORDERS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(order.id, </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(order))</span></span>
-<span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"?"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<h3>Limits and Pricing</h3>
-<p>Workers KV is launching today in a limited beta. As we get feedback and operational experience we will be relaxing our storage limits and granting access to more users. While we may have more restrictive limits during beta, you can design your applications around the following characteristics:</p>
-<ul>
-	<li>Up to 1 billion keys per namespace</li>
-	<li>Keys of up to 2 kB</li>
-	<li>Values of up to 64 kB</li>
-	<li>Eventually consistent, global consistency within 10 seconds</li>
-	<li>100k+ reads per second per key</li>
-	<li>Up to one write per second per key</li>
-</ul>
-<p>We worked hard to make the pricing of Workers KV easy to understand and affordable for virtually any use case. Your $5 monthly Workers compute minimum includes 1 GB of KV storage and up to 10 million KV reads. If you use less than the 10 million included Worker requests now, you can use KV without paying a single cent more.</p>
-<p>Beyond the minimums, Workers KV is billed at $0.50 per GB-month of additional storage and $0.50 per million additional KV reads.</p>
-<p>To get beta access <a href="https://goo.gl/forms/1xd57PdiR9DdhxZs1" target="_blank" rel="noopener noreferrer">sign up here</a>, we can’t wait to see what you build!</p>
-<p><em><a href="https://blog.cloudflare.com/subscribe">Subscribe to the blog</a> for daily updates on all of our announcements.</em></p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="358" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=640&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=750&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=828&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=1080&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=1280&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448MYYP7BVZ5CDS9N73BV9.png&amp;w=1430&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building With Workers KV, a Fast Distributed Key-Value Store Embedded Image - S1F0Sx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="358" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Building With Workers KV, a Fast Distributed Key-Value Store Embedded Image - S1F0Sx"></div>
-</figure>

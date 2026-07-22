@@ -1,72 +1,134 @@
-<p>We’ve enabled higher usage limits, faster performance, and better reliability for Browser Run by rebuilding on top of Cloudflare’s <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>.</p>
-<p>You can now spin up 60 browsers per minute via the Workers binding and run up to 120 concurrently — 4x the previous limit. Also, <a href="https://developers.cloudflare.com/browser-run/quick-actions" target="_blank" rel="noopener noreferrer"><u>Quick Action</u></a> response times dropped more than 50%. You don't need to change anything: these improvements are live today. On top of that, we’re shipping fixes and new features faster than before. Read on to learn how we did it and see the data.</p>
-<h3>Remind me: what is Browser Run?</h3>
-<p><a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>Browser Run</u></a> enables developers to programmatically control and interact with headless browser instances running on Cloudflare’s global network. That’s useful for end-to-end testing of web applications, securely investigating suspicious URLs, and leveraging how browsers can easily render PDF documents, amongst other quick actions like capturing screenshots and extracting content. More recently, it’s become a critical enabler of AI agents to interact with the web. We’re building Browser Run to be the go-to platform to responsibly utilize automated browsers securely at massive scale.</p>
-<h3>Outgrowing our bunk bed</h3>
-<p>Before adopting Cloudflare Containers, we shared infrastructure with <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer"><u>Browser Isolation</u></a> (BISO). While technically similar, BISO’s larger container images slowed startup and development. Crucially, BISO browsers lacked optimal global distribution, compromising resiliency and latency. Additionally, typical BISO users’ long, steady sessions clashed with Browser Run’s short, spiky usage, creating scaling bottlenecks and availability delays.</p>
-<p>Thankfully, after much internal development, Cloudflare released <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025" target="_blank" rel="noopener noreferrer"><u>Durable Object (DO)-enabled Containers&nbsp; open beta last year</u></a>, meaning we were ready for a tentative adoption that ultimately benefited both product platforms. Like most successful product platforms, we’re committed to building on our own platform wherever feasible so that we can feel and fix any pain points ahead of any external customers.</p>
-<h3>The migration: Containers</h3>
-<p>We started a gradual migration by inserting a Worker in our incoming request paths to provide some Container-powered browsers to a handful of users alongside those from BISO. This dual support during development was key: it allowed us to compare performance, isolate implementation bugs and ultimately gain confidence in the benefits of the Container-driven approach.</p>
-<p>Ramping up adoption, we first used the Container browsers for all of our Quick Actions endpoints, then for connections via the Workers browser binding on free accounts, followed by pay-as-you-go accounts in order to validate stability before we rolled it out to all remaining contract customers, ensuring a transition that required no action or existing worker redeployments from our customers.</p>
-<h3>Challenges: performance and scale bottlenecks</h3>
-<p>On our end, though, we faced a fresh set of challenges getting familiar with a novel, unstable early-stage Containers platform interface that was light on documentation, light on observability, and light on colleagues in an overlapping timezone. However, our feedback to our own teams as <a href="https://www.cloudflare.com/en-gb/the-net/top-of-mind-security/customer-zero" target="_blank" rel="noopener noreferrer"><u>Customer Zero</u></a> meant that we could provide a tight feedback loop leading to substantial upgrades that benefit our external customers too. Nevertheless, there was a lot of friction to overcome initially, most of which were to be expected for a closed beta in active development. Other hurdles to overcome were intrinsic to the new technical environment.</p>
-<p>For example, once our browsers could run globally, our architecture had to adapt. DO-enabled Containers create a Durable Object as close to the incoming request as possible, but the connected Container may spin up on the other side of the world. This works fine for one-shot messages like "start my app," but when you're establishing a WebSocket between them and exchanging dozens of messages for a screenshot request, those extra milliseconds crossing the globe start adding up.</p>
-<p>Our solution? Create regional pools of pre-warmed DO-backed browser containers to constrain the max distance (and hence max latency) between DOs and containers. When a request comes in, we pick a DO-container pair closest to the user within that region. This keeps latency low on both hops: user to DO, and DO to container. It adds a few more moving parts to our overall architecture, but we figured that was worthwhile so long as we had observability into the global state of each browser so that we could allocate and re-allocate capacity according to changing demand. A perfect use case for <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>…to a point.</p>
-<p>Demand for our headless browsers has been ramping up since the beginning of last year. In short, AI agent builders discovered Browser Run and quickly brought request volumes outpacing our existing capacity. We quickly hit the limits of how quickly we could adjust our pool capacity to serve this new demand with a scalable approach. KV’s <em>eventual</em> consistency of around 30 seconds was becoming a bottleneck on our critical request path. You might check KV, see a container as "available," but by the time you route to it (30 seconds later), it's already claimed. That lag creates race conditions and overallocation of browsers, severely limiting how fast we could scale to meet demand spikes.</p>
-<h3>Migrating from KV to D1 + Queues</h3>
-<p>We previously stored each container state in KV. This meant that we could keep getting a minute old state due to cache TTL (recently <a href="https://developers.cloudflare.com/changelog/post/2026-01-30-kv-reduced-minimum-cachettl" target="_blank" rel="noopener noreferrer"><u>KV changed the minimum cache TTL to 30 seconds</u></a>, but even so that value is still too high).</p>
-<p>We decided to migrate the container state into <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> instances instead. D1's transactional nature is a good fit here. Once we assign a browser to a user, it's exclusively theirs. Browsers are not shared resources. SQLite transactions ensure atomic assignment and prevent race conditions where two requests might claim the same browser simultaneously.</p>
-<p>Here’s a simplified version of our browser acquisition query:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">WITH</span><span class="sk-24292e-fff"> candidate_pool </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> (</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    -- candidate pool logic to pick based on latency and other rules</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">UPDATE</span><span class="sk-24292e-fff"> containers</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">SET</span><span class="sk-d73a49-ffc799"> status</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'picked'</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-24292e-fff"> sessionId </span><span class="sk-d73a49-ffc799">IN</span><span class="sk-24292e-fff"> (</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">    SELECT</span><span class="sk-24292e-fff"> sessionId</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">    FROM</span><span class="sk-24292e-fff"> candidate_pool</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">    ORDER BY</span><span class="sk-24292e-fff"> RANDOM()</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">    LIMIT</span><span class="sk-24292e-fff"> ?</span><span class="sk-005cc5-ffc799">5</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">RETURNING </span><span class="sk-d73a49-ffc799">data</span></span></code></pre>
+<div class="mb2 gray5">6 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/browser-run-containers">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/browser-run-containers">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/browser-run-containers">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/browser-run-containers">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74vj8KeJSVGkqJVr0tsxEm/a5ade4d2b83e011e3b71e0be91e94ac6/image2.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>We’ve enabled higher usage limits, faster performance, and better reliability for Browser Run by rebuilding on top of Cloudflare’s <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>.</p>
+	<p>You can now spin up 60 browsers per minute via the Workers binding and run up to 120 concurrently — 4x the previous limit. Also, <a href="https://developers.cloudflare.com/browser-run/quick-actions" target="_blank" rel="noopener noreferrer"><u>Quick Action</u></a> response times dropped more than 50%. You don't need to change anything: these improvements are live today. On top of that, we’re shipping fixes and new features faster than before. Read on to learn how we did it and see the data.</p>
+	<div class="flex anchor relative">
+		<h3 id="remind-me-what-is-browser-run">Remind me: what is Browser Run?</h3>
+		<a href="https://blog.cloudflare.com/#remind-me-what-is-browser-run" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>Browser Run</u></a> enables developers to programmatically control and interact with headless browser instances running on Cloudflare’s global network. That’s useful for end-to-end testing of web applications, securely investigating suspicious URLs, and leveraging how browsers can easily render PDF documents, amongst other quick actions like capturing screenshots and extracting content. More recently, it’s become a critical enabler of AI agents to interact with the web. We’re building Browser Run to be the go-to platform to responsibly utilize automated browsers securely at massive scale.</p>
+	<div class="flex anchor relative">
+		<h3 id="outgrowing-our-bunk-bed">Outgrowing our bunk bed</h3>
+		<a href="https://blog.cloudflare.com/#outgrowing-our-bunk-bed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Before adopting Cloudflare Containers, we shared infrastructure with <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer"><u>Browser Isolation</u></a> (BISO). While technically similar, BISO’s larger container images slowed startup and development. Crucially, BISO browsers lacked optimal global distribution, compromising resiliency and latency. Additionally, typical BISO users’ long, steady sessions clashed with Browser Run’s short, spiky usage, creating scaling bottlenecks and availability delays.</p>
+	<p>Thankfully, after much internal development, Cloudflare released <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Durable Object (DO)-enabled Containers&nbsp; open beta last year</u></a>, meaning we were ready for a tentative adoption that ultimately benefited both product platforms. Like most successful product platforms, we’re committed to building on our own platform wherever feasible so that we can feel and fix any pain points ahead of any external customers.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-migration-containers">The migration: Containers</h3>
+		<a href="https://blog.cloudflare.com/#the-migration-containers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We started a gradual migration by inserting a Worker in our incoming request paths to provide some Container-powered browsers to a handful of users alongside those from BISO. This dual support during development was key: it allowed us to compare performance, isolate implementation bugs and ultimately gain confidence in the benefits of the Container-driven approach.</p>
+	<p>Ramping up adoption, we first used the Container browsers for all of our Quick Actions endpoints, then for connections via the Workers browser binding on free accounts, followed by pay-as-you-go accounts in order to validate stability before we rolled it out to all remaining contract customers, ensuring a transition that required no action or existing worker redeployments from our customers.</p>
+	<div class="flex anchor relative">
+		<h3 id="challenges-performance-and-scale-bottlenecks">Challenges: performance and scale bottlenecks</h3>
+		<a href="https://blog.cloudflare.com/#challenges-performance-and-scale-bottlenecks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>On our end, though, we faced a fresh set of challenges getting familiar with a novel, unstable early-stage Containers platform interface that was light on documentation, light on observability, and light on colleagues in an overlapping timezone. However, our feedback to our own teams as <a href="https://www.cloudflare.com/en-gb/the-net/top-of-mind-security/customer-zero" target="_blank" rel="noopener noreferrer"><u>Customer Zero</u></a> meant that we could provide a tight feedback loop leading to substantial upgrades that benefit our external customers too. Nevertheless, there was a lot of friction to overcome initially, most of which were to be expected for a closed beta in active development. Other hurdles to overcome were intrinsic to the new technical environment.</p>
+	<p>For example, once our browsers could run globally, our architecture had to adapt. DO-enabled Containers create a Durable Object as close to the incoming request as possible, but the connected Container may spin up on the other side of the world. This works fine for one-shot messages like "start my app," but when you're establishing a WebSocket between them and exchanging dozens of messages for a screenshot request, those extra milliseconds crossing the globe start adding up.</p>
+	<p>Our solution? Create regional pools of pre-warmed DO-backed browser containers to constrain the max distance (and hence max latency) between DOs and containers. When a request comes in, we pick a DO-container pair closest to the user within that region. This keeps latency low on both hops: user to DO, and DO to container. It adds a few more moving parts to our overall architecture, but we figured that was worthwhile so long as we had observability into the global state of each browser so that we could allocate and re-allocate capacity according to changing demand. A perfect use case for <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>…to a point.</p>
+	<p>Demand for our headless browsers has been ramping up since the beginning of last year. In short, AI agent builders discovered Browser Run and quickly brought request volumes outpacing our existing capacity. We quickly hit the limits of how quickly we could adjust our pool capacity to serve this new demand with a scalable approach. KV’s <i>eventual</i> consistency of around 30 seconds was becoming a bottleneck on our critical request path. You might check KV, see a container as "available," but by the time you route to it (30 seconds later), it's already claimed. That lag creates race conditions and overallocation of browsers, severely limiting how fast we could scale to meet demand spikes.</p>
+	<div class="flex anchor relative">
+		<h3 id="migrating-from-kv-to-d1-queues">Migrating from KV to D1 + Queues</h3>
+		<a href="https://blog.cloudflare.com/#migrating-from-kv-to-d1-queues" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We previously stored each container state in KV. This meant that we could keep getting a minute old state due to cache TTL (recently <a href="https://developers.cloudflare.com/changelog/post/2026-01-30-kv-reduced-minimum-cachettl" target="_blank" rel="noopener noreferrer"><u>KV changed the minimum cache TTL to 30 seconds</u></a>, but even so that value is still too high).</p>
+	<p>We decided to migrate the container state into <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> instances instead. D1's transactional nature is a good fit here. Once we assign a browser to a user, it's exclusively theirs. Browsers are not shared resources. SQLite transactions ensure atomic assignment and prevent race conditions where two requests might claim the same browser simultaneously.</p>
+	<p>Here’s a simplified version of our browser acquisition query:</p>
+	<pre class="language-SQL"><code class="language-SQL">WITH candidate_pool AS (
+    -- candidate pool logic to pick based on latency and other rules
+)
+UPDATE containers
+SET status = 'picked'
+WHERE sessionId IN (
+    SELECT sessionId
+    FROM candidate_pool
+    ORDER BY RANDOM()
+    LIMIT ?5
+)
+RETURNING data</code></pre>
+	<p>We keep D1 shards <a href="https://developers.cloudflare.com/d1/configuration/data-location/#available-location-hints" target="_blank" rel="noopener noreferrer"><u>per location</u></a> and given that we may have several thousand containers running, and that each container needs to update its state every 5 seconds, we kept running into a problem: we would <a href="https://developers.cloudflare.com/d1/platform/limits/#concurrency-and-throughput" target="_blank" rel="noopener noreferrer"><u>overload the database</u></a>. For instance, if each write takes 1ms we can only write at most 1,000 times, which at one row per write would mean that we could only have 5,000 containers before overloading the database.</p>
+	<p>However, if we batch those writes, we can get much higher values, because batch writes are not significantly longer than individual ones, so we can increase the throughput in orders of magnitude. In our case, we use 100 row batches, which means we can now update a maximum of 500,000 containers per location. This headroom means capacity planning is no longer a bottleneck.</p>
+	<p>Currently, our P95 for batch write is 0.1ms!</p>
+	<p>To batch writes, we use <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>: every 5 seconds, each container computes its own state and adds it to its location queue. We then <a href="https://developers.cloudflare.com/queues/configuration/batching-retries/#batching" target="_blank" rel="noopener noreferrer"><u>configure a worker consumer</u></a> with 100 batch size and 1 second batch timeout:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+    ...
+    "queues": {
+        "consumers": [
+            {
+                "queue": "production-core-containers-queue-weur",
+                "max_batch_size": 100,
+                "max_batch_timeout": 1,
+                "max_retries": 1,
+            },
+            ...
+        ]
+        ...
+    }
+}</code></pre>
+	<p>With this configuration, we achieve acceptable lag times well below 2 seconds. That said, queue backlogs can still cause stale state. When this happens, each region falls back to a designated backup region until the primary queue catches up.</p>
+	<div class="flex anchor relative">
+		<h3 id="additional-perks-for-quick-actions">Additional perks for quick actions</h3>
+		<a href="https://blog.cloudflare.com/#additional-perks-for-quick-actions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>With dedicated infrastructure, we could now make upgrades to the browser container image without unwanted side effects or bloat for other products like BISO. This opened the door to optimize quick actions like screenshots and content extraction. Previously, our workers established a WebSocket to the remote browser and sent instructions one at a time: open a page, navigate to the URL, wait for it to load and take the screenshot. Each step had to be completed before the next could begin.&nbsp;</p>
+	<p>However, now we send all parameters in a single HTTP request directly to the container, and the entire flow executes internally without any back-and-forth between the worker and browser.</p>
+	<div class="flex anchor relative">
+		<h3 id="results-massive-performance-boost-and-increased-limits">Results: massive performance boost and increased limits</h3>
+		<a href="https://blog.cloudflare.com/#results-massive-performance-boost-and-increased-limits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve seen a sharp decrease in average quick-action response time, as users are able to get what they need from a browser session in less time: less time waiting for browsers to be ready and faster processing of their <a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>DevTools Protocol</u></a> messages.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eIJK055QLIl3ay12TIhfQ/9d988169efadb16cb5b18b539b62aa55/image3.png" alt="" class="kg-image" width="1999" height="767" loading="lazy">
+	</figure>
+	<p>Overcoming our real-time state management at this new scale meant we could spend more time in the playground, discovering and cooking up new features such as our recently launched <a href="https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl endpoint.</u></a>&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="better-browser-flexibility">Better browser flexibility</h3>
+		<a href="https://blog.cloudflare.com/#better-browser-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We also benefitted from another important perk by leaving behind shared Browser Isolation containers: faster upgrades.</p>
+	<p>When our browsers ran on shared product infrastructure, upgrading Chrome meant coordinating across multiple teams and products, each with their own roadmap and priorities. However, now that we run our own container image, we can upgrade at a faster tempo. For example, WebGL, a much-requested feature, is now available for browser-based rendering along with WebMCP (Model Context Protocol for the web) which enables new agentic interaction patterns. Both are made possible because we can control the browser version and flags without unwanted side effects in other Cloudflare products.</p>
+	<p>In a nutshell, we’re just getting started with unleashing the power of browsers at scale, especially for agentic development. We hope you’re diving in too — check out our <a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>docs</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Browser Run is available on all Workers plans. Start with the <a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer"><u>quick start guide</u></a>, explore the <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Actions</u></a>, or try the <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl endpoint</u></a> to deeply extract data from any webpage, following links across the site.</p>
+	<p>Building AI agents? Check out our <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> with built-in Browser Run support.</p>
 </div>
-<p>We keep D1 shards <a href="https://developers.cloudflare.com/d1/configuration/data-location/#available-location-hints" target="_blank" rel="noopener noreferrer"><u>per location</u></a> and given that we may have several thousand containers running, and that each container needs to update its state every 5 seconds, we kept running into a problem: we would <a href="https://developers.cloudflare.com/d1/platform/limits/#concurrency-and-throughput" target="_blank" rel="noopener noreferrer"><u>overload the database</u></a>. For instance, if each write takes 1ms we can only write at most 1,000 times, which at one row per write would mean that we could only have 5,000 containers before overloading the database.</p>
-<p>However, if we batch those writes, we can get much higher values, because batch writes are not significantly longer than individual ones, so we can increase the throughput in orders of magnitude. In our case, we use 100 row batches, which means we can now update a maximum of 500,000 containers per location. This headroom means capacity planning is no longer a bottleneck.</p>
-<p>Currently, our P95 for batch write is 0.1ms!</p>
-<p>To batch writes, we use <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>: every 5 seconds, each container computes its own state and adds it to its location queue. We then <a href="https://developers.cloudflare.com/queues/configuration/batching-retries/#batching" target="_blank" rel="noopener noreferrer"><u>configure a worker consumer</u></a> with 100 batch size and 1 second batch timeout:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    ...</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    "queues"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">        "consumers"</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">            {</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">                "queue"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"production-core-containers-queue-weur"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">                "max_batch_size"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">                "max_batch_timeout"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">                "max_retries"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">            },</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">            ...</span></span>
-<span class="line"><span class="sk-24292e-fff">        ]</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        ...</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>With this configuration, we achieve acceptable lag times well below 2 seconds. That said, queue backlogs can still cause stale state. When this happens, each region falls back to a designated backup region until the primary queue catches up.</p>
-<h3>Additional perks for quick actions</h3>
-<p>With dedicated infrastructure, we could now make upgrades to the browser container image without unwanted side effects or bloat for other products like BISO. This opened the door to optimize quick actions like screenshots and content extraction. Previously, our workers established a WebSocket to the remote browser and sent instructions one at a time: open a page, navigate to the URL, wait for it to load and take the screenshot. Each step had to be completed before the next could begin.&nbsp;</p>
-<p>However, now we send all parameters in a single HTTP request directly to the container, and the entire flow executes internally without any back-and-forth between the worker and browser.</p>
-<h3>Results: massive performance boost and increased limits</h3>
-<p>We’ve seen a sharp decrease in average quick-action response time, as users are able to get what they need from a browser session in less time: less time waiting for browsers to be ready and faster processing of their <a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>DevTools Protocol</u></a> messages.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="274" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=715&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=640&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=715&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=750&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=828&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=1080&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=1280&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=1430&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3042 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="274" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-3042 image 1"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Overcoming our real-time state management at this new scale meant we could spend more time in the playground, discovering and cooking up new features such as our recently launched <a href="https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl endpoint.</u></a>&nbsp;</p>
-<h3>Better browser flexibility</h3>
-<p>We also benefitted from another important perk by leaving behind shared Browser Isolation containers: faster upgrades.</p>
-<p>When our browsers ran on shared product infrastructure, upgrading Chrome meant coordinating across multiple teams and products, each with their own roadmap and priorities. However, now that we run our own container image, we can upgrade at a faster tempo. For example, WebGL, a much-requested feature, is now available for browser-based rendering along with WebMCP (Model Context Protocol for the web) which enables new agentic interaction patterns. Both are made possible because we can control the browser version and flags without unwanted side effects in other Cloudflare products.</p>
-<p>In a nutshell, we’re just getting started with unleashing the power of browsers at scale, especially for agentic development. We hope you’re diving in too — check out our <a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>docs</u></a>.</p>
-<h3>Get started</h3>
-<p>Browser Run is available on all Workers plans. Start with the <a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer"><u>quick start guide</u></a>, explore the <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Actions</u></a>, or try the <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl endpoint</u></a> to deeply extract data from any webpage, following links across the site.</p>
-<p>Building AI agents? Check out our <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> with built-in Browser Run support.</p>

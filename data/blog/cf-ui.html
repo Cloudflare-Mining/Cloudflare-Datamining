@@ -1,169 +1,207 @@
-<p>Late last year, the CloudFlare UI team made a huge decision: to change JavaScript frameworks from Backbone &amp; Marionette to React &amp; Redux.</p>
-<p>We’ve been one of the single biggest Backbone+Marionette apps on the web for a while now, and the decision to move was not taken lightly. On our team we have a former core team member of the Marionette team (<a href="https://github.com/thejameskyle" target="_blank" rel="noopener noreferrer">myself</a>), and the <a href="https://github.com/wyuenho" target="_blank" rel="noopener noreferrer">author</a> of several popular Backbone projects: Backgrid and Backbone Paginator.</p>
-<p>In the spirit of the open web, we want to share more about what we’re doing. This starts by open sourcing the UI framework that we have spent the last few months building.</p>
-<h3>Introducing cf-ui</h3>
-<p>While moving to React, we’ve taken our existing Backbone UI framework and rebuilt it from scratch on top of React. This includes over 50 packages that include dozens of components, utilities, test helpers, and more.</p>
-<p>Examples: <a href="https://cloudflare.github.io/cf-ui" target="_blank" rel="noopener noreferrer">https://cloudflare.github.io/cf-ui</a>GitHub: <a href="https://github.com/cloudflare/cf-ui" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/cf-ui</a></p>
-<p>We’re not open sourcing cf-ui because we think our buttons are any better than anyone else’s buttons, but because it’s an opportunity to share some of the technical decisions that we’ve made while building out a massive React application. The hope is that this will be an awesome technical resource for many other devs.</p>
-<p>We’ve made some interesting design decisions in cf-ui that we would like to talk about more, starting with the multi-package repo structure.</p>
-<h3>Improving the development experience with <a href="https://lernajs.io" target="_blank" rel="noopener noreferrer">Lerna</a></h3>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="647" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=715&amp;h=647&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=640&amp;h=579&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=715&amp;h=647&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=750&amp;h=679&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=828&amp;h=749&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=1080&amp;h=977&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=1280&amp;h=1158&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4957AJQ6NX2K5FJ92HYYQY.png&amp;w=1430&amp;h=1294&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Lerna logo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="647" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Lerna logo"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>We have several different applications under development at CloudFlare: there’s our primary dashboard that the majority of our customers are familiar with, but also a number of internal and external applications that we build.</p>
-<p>For us, being able to share code between repositories is a must have. We could just dump all the shared code into a single repository, but our applications are developed at different speeds and we want to be able to version our shared code using <a href="http://semver.org" target="_blank" rel="noopener noreferrer">semver</a>. So we use <a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">npm</a> to build tons of separate packages.</p>
-<p>However, maintaining dozens of packages across all of their repositories is a development nightmare. Making changes across packages is a difficult workflow, and it’s tough to test changes across all the packages.</p>
-<p>Using <a href="https://lernajs.io" target="_blank" rel="noopener noreferrer">Lerna</a>, we’re able to put all of the packages into a single repository and have our ideal workflow while also versioning packages independently.</p>
-<p>The basic idea here is that our cf-ui repository looks like this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">packages/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  cf-builder-card/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  cf-builder-form/</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">  ...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  cf-util-route-handler/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  cf-util-text/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">lerna.json</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">package.json</span></span></code></pre>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gq3EUgxPpJJ3WemARVYq8/678e93f1da38dce831453aeec115afe0/cf-ui.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Late last year, the CloudFlare UI team made a huge decision: to change JavaScript frameworks from Backbone &amp; Marionette to React &amp; Redux.</p>
+	<p>We’ve been one of the single biggest Backbone+Marionette apps on the web for a while now, and the decision to move was not taken lightly. On our team we have a former core team member of the Marionette team (<a href="https://github.com/thejameskyle" target="_blank" rel="noopener noreferrer">myself</a>), and the <a href="https://github.com/wyuenho" target="_blank" rel="noopener noreferrer">author</a> of several popular Backbone projects: Backgrid and Backbone Paginator.</p>
+	<p>In the spirit of the open web, we want to share more about what we’re doing. This starts by open sourcing the UI framework that we have spent the last few months building.</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-cf-ui">Introducing cf-ui</h3>
+		<a href="https://blog.cloudflare.com/#introducing-cf-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While moving to React, we’ve taken our existing Backbone UI framework and rebuilt it from scratch on top of React. This includes over 50 packages that include dozens of components, utilities, test helpers, and more.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47iGxQG4YM33CfzYhiBdv4/350bfae9e9b97c83ae7e3c9cc3e45ca3/cf-ui-turned-ghost.png" alt="cf-ui logo" class="kg-image" width="1328" height="822" loading="lazy">
+
+	</figure>
+	<p>Examples: <a href="https://cloudflare.github.io/cf-ui" target="_blank" rel="noopener noreferrer">https://cloudflare.github.io/cf-ui</a>GitHub: <a href="https://github.com/cloudflare/cf-ui" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/cf-ui</a></p>
+	<p>We’re not open sourcing cf-ui because we think our buttons are any better than anyone else’s buttons, but because it’s an opportunity to share some of the technical decisions that we’ve made while building out a massive React application. The hope is that this will be an awesome technical resource for many other devs.</p>
+	<p>We’ve made some interesting design decisions in cf-ui that we would like to talk about more, starting with the multi-package repo structure.</p>
+	<div class="flex anchor relative">
+		<h3 id="improving-the-development-experience-with">Improving the development experience with <a href="https://lernajs.io">Lerna</a></h3>
+		<a href="https://blog.cloudflare.com/#improving-the-development-experience-with" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/C0zbR4UUrSDX4qmuimEIA/8ebae7814aace6e757ce6c3762bb27db/lerna-text-ghost.png" alt="Lerna logo" class="kg-image" width="1290" height="1168" loading="lazy">
+
+	</figure>
+	<p>We have several different applications under development at CloudFlare: there’s our primary dashboard that the majority of our customers are familiar with, but also a number of internal and external applications that we build.</p>
+	<p>For us, being able to share code between repositories is a must have. We could just dump all the shared code into a single repository, but our applications are developed at different speeds and we want to be able to version our shared code using <a href="http://semver.org" target="_blank" rel="noopener noreferrer">semver</a>. So we use <a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">npm</a> to build tons of separate packages.</p>
+	<p>However, maintaining dozens of packages across all of their repositories is a development nightmare. Making changes across packages is a difficult workflow, and it’s tough to test changes across all the packages.</p>
+	<p>Using <a href="https://lernajs.io" target="_blank" rel="noopener noreferrer">Lerna</a>, we’re able to put all of the packages into a single repository and have our ideal workflow while also versioning packages independently.</p>
+	<p>The basic idea here is that our cf-ui repository looks like this:</p>
+	<pre class="language-bash"><code class="language-bash">packages/
+  cf-builder-card/
+  cf-builder-form/
+  ...
+  cf-util-route-handler/
+  cf-util-text/
+lerna.json
+package.json</code></pre>
+	<p>Then each of the directories inside <code>packages/</code> looks like this:</p>
+	<pre class="language-bash"><code class="language-bash">packages/cf-builder-card/
+  src/
+  test/
+  package.json
+  README.md</code></pre>
+	<p>Each of these get built into a separate npm package and gets published whenever they have changed.</p>
+	<p>The other interesting part of Lerna is that it “links” cross-dependencies within the same repo so that you can test changes made in one package across all of the packages</p>
+	<p>For example, <code>cf-util-http-poll</code> depends on <code>cf-util-http</code>. If I make a change to <code>cf-util-http</code>, I want to be able to test that it didn’t break <code>cf-util-http-poll</code> and if it did I want to make sure that both packages get updated and versioned properly. Lerna allows us to do exactly that.</p>
+	<p>There are many more benefits to using this multi-package style repository which is why many other projects choose to use a similar structure. Projects like Babel, React, Ember, Angular, Jest, Meteor, PouchDB, and many many more all do the same thing.</p>
+	<p>Read more on the <a href="https://lernajs.io" target="_blank" rel="noopener noreferrer">Lerna website</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="builder-components">Builder Components</h3>
+		<a href="https://blog.cloudflare.com/#builder-components" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/CPslpvsUgqR9UVGp9WJ7X/acc7ebe5b4236414984aa4fdec70ba12/feedback-form-ghost.png" alt="Form Builder Component example" class="kg-image" width="1290" height="614" loading="lazy">
+
+	</figure>
+	<p>When we built the UI framework initially, we built each component package out to expose multiple components that you compose together like so:</p>
+	<pre class="language-js"><code class="language-js">import React from 'react';
+import {
+  Table,
+  TableHead,
+  TableHeadCell,
+  TableBody,
+  TableRow,
+  TableCell
+} from 'cf-component-table';
+
+export default class MyTableComponent extends React.Component {
+  render() {
+    return (
+      &lt;Table&gt;
+        &lt;TableHead&gt;
+          &lt;TableRow&gt;
+            &lt;TableHeadCell&gt;Name&lt;/TableHeadCell&gt;
+            &lt;TableHeadCell&gt;Value&lt;/TableHeadCell&gt;
+          &lt;/TableRow&gt;
+        &lt;/TableHead&gt;
+        &lt;TableBody&gt;
+          {this.props.data.map(row =&gt;
+            &lt;TableRow key={row.id}&gt;
+              &lt;TableCell&gt;{row.name}&lt;/TableCell&gt;
+              &lt;TableCell&gt;{row.value}&lt;/TableCell&gt;
+            &lt;/TableRow&gt;
+          }
+        &lt;/TableBody&gt;
+      &lt;/Table&gt;
+    );
+  }
+}</code></pre>
+	<p>This was obviously a lot of repetition, so we wanted some kind of “factory” components that would set it up for us. Something like:</p>
+	<pre class="language-js"><code class="language-js">const data = [
+  { id: 1, name: 'Foo', value: 'foo' },
+  { id: 2, name: 'Bar', value: 'bar' }
+];
+
+&lt;TableBuilder
+  rows={data.map(item =&gt; {
+    return { id: item.id, data: item }
+  }}
+  columns={[{
+    label: 'Name',
+    cell: (data) =&gt; {
+      return &lt;TableCell&gt;{data.name}&lt;/TableCell&gt;
+    }
+  }, {
+    label: 'Value',
+    cell: (data) =&gt; {
+      return &lt;TableCell&gt;{data.value}&lt;/TableCell&gt;
+    }
+  }]}/&gt;</code></pre>
+	<p>In addition to that, one of the frustrating things with base components in Redux is hooking them into the state tree all the time. Setting up handlers for every event that dispatches actions and get reduced into state is a tiresome process.</p>
+	<p>Instead we have defined that these “builder” components can be tied directly to Redux and have their own reducers and actions.</p>
+	<p>All you have to do is set up the reducer before using the builder component.</p>
+	<pre class="language-js"><code class="language-js">import {combineReducers, applyMiddleware, createStore} from 'redux';
+import thunk from 'redux-thunk';
+import {tableReducer} from 'cf-builder-table';
+
+const reducer = combineReducers({
+  tables: tableReducer
+});
+
+const store = createStore(reducer, {}, applyMiddleware(thunk));</code></pre>
+	<p>Then you can use builder components like they were any other component. They each just need a unique ID, which you can store in a <code>ComponentNames.js</code> constants file.</p>
+	<pre class="language-js"><code class="language-js">&lt;TableBuilder tableName={ComponentNames.EXAMPLE_TABLE} .../&gt;</code></pre>
+	<p>You can also dispatch actions that do various things to the builders.</p>
+	<pre class="language-js"><code class="language-js">import {tableActions} from 'cf-builder-table';
+
+// ...
+
+dispatch(tableActions.flashRow(
+  ComponentNames.EXAMPLE_TABLE,
+  'rowId',
+  'success'
+));</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="integrated-test-utilities">Integrated Test Utilities</h3>
+		<a href="https://blog.cloudflare.com/#integrated-test-utilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>cf-ui also includes a number of test utilites that integrate with Mocha, Sinon, and Redux in order to prevent various mistakes while writing tests.</p>
+	<p>For example using sinon you could stub out a method inside a test:</p>
+	<pre class="language-js"><code class="language-js">it('should stub a method', () =&gt; {
+  sinon.stub(obj, 'methodName');
+  // ...
+});</code></pre>
+	<p>But if you forget to restore that stub or maybe an error causes the stub to stick around through the rest of your tests you might run into some problems.</p>
+	<p>Instead there is a <code>cf-test-stub</code> package that includes a <code>stubMethod()</code> util that is automatically sandboxed and reset in between tests, preventing you from ever making a mistake and making it even easier to use.</p>
+	<p>There’s a handful of other useful test utils that do similar things.</p>
+	<div class="flex anchor relative">
+		<h3 id="wrapping-apis-for-the-sake-of-it">Wrapping APIs for the sake of it</h3>
+		<a href="https://blog.cloudflare.com/#wrapping-apis-for-the-sake-of-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you’re browsing the cf-ui packages you might notice there are some packages like <code>cf-util-logger</code> that wrap external APIs like this:</p>
+	<pre class="language-js"><code class="language-js">const debug = require(‘debug’);
+
+function createLogger(name) {
+  const logger = debug(name);
+
+  return function(message) {
+    logger(message);
+  };
+}
+
+module.exports = createLogger;</code></pre>
+	<p>This might seem unnecessary, however it forces us to expose a minimal API surface area that allows us to make changes to them confidently, even swapping out the underlying modules without having to update our application code.</p>
+	<p>For example, if we decided to stop using <code>marked</code> in favor of <code>remarkable</code> or some other markdown engine we could do that in a single pull request in one codebase.</p>
+	<div class="flex anchor relative">
+		<h3 id="improving-the-accessibility-of-our-components">Improving the accessibility of our components</h3>
+		<a href="https://blog.cloudflare.com/#improving-the-accessibility-of-our-components" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rewriting all of our components from the ground up was an excellent opportunity to evaluate how well we’ve been following accessibility best practices.</p>
+	<p>As we rewrote the components, we found a number of improvements that we could make and we took the time to make sure that our components were as accessible as possible.</p>
+	<p>For example, we greatly improved keyboard navigation across all of our components, even open sourcing some of the libraries we built to do it: <a href="https://github.com/cloudflare/react-modal2" target="_blank" rel="noopener noreferrer">react-modal2</a>, <a href="https://github.com/cloudflare/a11y-focus-store" target="_blank" rel="noopener noreferrer">a11y-focus-store</a>, <a href="https://github.com/cloudflare/a11y-focus-scope" target="_blank" rel="noopener noreferrer">a11y-focus-scope</a>.</p>
+	<hr>
+	<p>In closing, we’re really really excited to be open sourcing our UI framework today. A lot of work went into this and it’s great to finally be putting it out there, so please give us a star on <a href="https://github.com/cloudflare/cf-ui" target="_blank" rel="noopener noreferrer">GitHub</a> (we love stars).</p>
+	<p>Also, if this work interests you then you should come <a href="https://careers.jobscore.com/careers/cloudflare/jobs/ui-engineer-cI9kn86-ir4z5yiGakhP3Q?sid=68" target="_blank" rel="noopener noreferrer">join our team</a>!</p>
 </div>
-<p>Then each of the directories inside <code>packages/</code> looks like this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">packages/cf-builder-card/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  src/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  test/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  package.json</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  README.md</span></span></code></pre>
-</div>
-<p>Each of these get built into a separate npm package and gets published whenever they have changed.</p>
-<p>The other interesting part of Lerna is that it “links” cross-dependencies within the same repo so that you can test changes made in one package across all of the packages</p>
-<p>For example, <code>cf-util-http-poll</code> depends on <code>cf-util-http</code>. If I make a change to <code>cf-util-http</code>, I want to be able to test that it didn’t break <code>cf-util-http-poll</code> and if it did I want to make sure that both packages get updated and versioned properly. Lerna allows us to do exactly that.</p>
-<p>There are many more benefits to using this multi-package style repository which is why many other projects choose to use a similar structure. Projects like Babel, React, Ember, Angular, Jest, Meteor, PouchDB, and many many more all do the same thing.</p>
-<p>Read more on the <a href="https://lernajs.io" target="_blank" rel="noopener noreferrer">Lerna website</a>.</p>
-<h3>Builder Components</h3>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495C6AS9QHXWCMGXX630HZ.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Form Builder Component example" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Form Builder Component example"></div>
-</figure>
-<p>When we built the UI framework initially, we built each component package out to expose multiple components that you compose together like so:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> React </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'react'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-24292e-fff">  Table,</span></span>
-<span class="line"><span class="sk-24292e-fff">  TableHead,</span></span>
-<span class="line"><span class="sk-24292e-fff">  TableHeadCell,</span></span>
-<span class="line"><span class="sk-24292e-fff">  TableBody,</span></span>
-<span class="line"><span class="sk-24292e-fff">  TableRow,</span></span>
-<span class="line"><span class="sk-24292e-fff">  TableCell</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cf-component-table'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyTableComponent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-ffc799"> React</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-fff">Component</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  render</span><span class="sk-24292e-fff">() {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> (</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">      &lt;</span><span class="sk-005cc5-ffc799">Table</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">        &lt;</span><span class="sk-005cc5-ffc799">TableHead</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">          &lt;</span><span class="sk-005cc5-ffc799">TableRow</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">            &lt;</span><span class="sk-005cc5-ffc799">TableHeadCell</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Name</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">TableHeadCell</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">            &lt;</span><span class="sk-005cc5-ffc799">TableHeadCell</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Value</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">TableHeadCell</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">          &lt;/</span><span class="sk-005cc5-ffc799">TableRow</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">        &lt;/</span><span class="sk-005cc5-ffc799">TableHead</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">        &lt;</span><span class="sk-005cc5-ffc799">TableBody</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">          {</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.props.data.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">row</span><span class="sk-d73a49-a0a0a0"> =&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">            &lt;</span><span class="sk-005cc5-ffc799">TableRow</span><span class="sk-6f42c1-a0a0a0"> key</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">row.id</span><span class="sk-24292e-a0a0a0">}&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">              &lt;</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;{</span><span class="sk-24292e-fff">row.name</span><span class="sk-24292e-a0a0a0">}&lt;/</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">              &lt;</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;{</span><span class="sk-24292e-fff">row.value</span><span class="sk-24292e-a0a0a0">}&lt;/</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">            &lt;/</span><span class="sk-005cc5-ffc799">TableRow</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">          }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        &lt;/</span><span class="sk-24292e-fff">TableBody</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      &lt;/</span><span class="sk-24292e-fff">Table</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">    );</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>This was obviously a lot of repetition, so we wanted some kind of “factory” components that would set it up for us. Something like:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span></span>
-<span class="line"><span class="sk-24292e-fff">  { id: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, name: </span><span class="sk-032f62-99ffe4">'Foo'</span><span class="sk-24292e-fff">, value: </span><span class="sk-032f62-99ffe4">'foo'</span><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">  { id: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, name: </span><span class="sk-032f62-99ffe4">'Bar'</span><span class="sk-24292e-fff">, value: </span><span class="sk-032f62-99ffe4">'bar'</span><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">];</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">TableBuilder</span></span>
-<span class="line"><span class="sk-6f42c1-a0a0a0">  rows</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">data.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">item</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> { id: item.id, data: item }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }}</span></span>
-<span class="line"><span class="sk-24292e-fff">  columns</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{[{</span></span>
-<span class="line"><span class="sk-24292e-fff">    label: </span><span class="sk-032f62-99ffe4">'Name'</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    cell</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">data</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-a0a0a0"> &lt;</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;{</span><span class="sk-24292e-fff">data.name</span><span class="sk-24292e-a0a0a0">}&lt;/</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }, {</span></span>
-<span class="line"><span class="sk-24292e-fff">    label: </span><span class="sk-032f62-99ffe4">'Value'</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    cell</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">data</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-a0a0a0"> &lt;</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;{</span><span class="sk-24292e-fff">data.value</span><span class="sk-24292e-a0a0a0">}&lt;/</span><span class="sk-005cc5-ffc799">TableCell</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }]}/&gt;</span></span></code></pre>
-</div>
-<p>In addition to that, one of the frustrating things with base components in Redux is hooking them into the state tree all the time. Setting up handlers for every event that dispatches actions and get reduced into state is a tiresome process.</p>
-<p>Instead we have defined that these “builder” components can be tied directly to Redux and have their own reducers and actions.</p>
-<p>All you have to do is set up the reducer before using the builder component.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {combineReducers, applyMiddleware, createStore} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'redux'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> thunk </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'redux-thunk'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {tableReducer} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cf-builder-table'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> reducer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> combineReducers</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-24292e-fff">  tables: tableReducer</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> store</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createStore</span><span class="sk-24292e-fff">(reducer, {}, </span><span class="sk-6f42c1-ffc799">applyMiddleware</span><span class="sk-24292e-fff">(thunk));</span></span></code></pre>
-</div>
-<p>Then you can use builder components like they were any other component. They each just need a unique ID, which you can store in a <code>ComponentNames.js</code> constants file.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">TableBuilder</span><span class="sk-6f42c1-a0a0a0"> tableName</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">ComponentNames.</span><span class="sk-005cc5-fff">EXAMPLE_TABLE</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> .../&gt;</span></span></code></pre>
-</div>
-<p>You can also dispatch actions that do various things to the builders.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {tableActions} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cf-builder-table'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// ...</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">dispatch</span><span class="sk-24292e-fff">(tableActions.</span><span class="sk-6f42c1-ffc799">flashRow</span><span class="sk-24292e-fff">(</span></span>
-<span class="line"><span class="sk-24292e-fff">  ComponentNames.</span><span class="sk-005cc5-fff">EXAMPLE_TABLE</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  'rowId'</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  'success'</span></span>
-<span class="line"><span class="sk-24292e-fff">));</span></span></code></pre>
-</div>
-<h3>Integrated Test Utilities</h3>
-<p>cf-ui also includes a number of test utilites that integrate with Mocha, Sinon, and Redux in order to prevent various mistakes while writing tests.</p>
-<p>For example using sinon you could stub out a method inside a test:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'should stub a method'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-24292e-fff">  sinon.</span><span class="sk-6f42c1-ffc799">stub</span><span class="sk-24292e-fff">(obj, </span><span class="sk-032f62-99ffe4">'methodName'</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
-</div>
-<p>But if you forget to restore that stub or maybe an error causes the stub to stick around through the rest of your tests you might run into some problems.</p>
-<p>Instead there is a <code>cf-test-stub</code> package that includes a <code>stubMethod()</code> util that is automatically sandboxed and reset in between tests, preventing you from ever making a mistake and making it even easier to use.</p>
-<p>There’s a handful of other useful test utils that do similar things.</p>
-<h3>Wrapping APIs for the sake of it</h3>
-<p>If you’re browsing the cf-ui packages you might notice there are some packages like <code>cf-util-logger</code> that wrap external APIs like this:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> debug</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(‘debug’);</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> createLogger</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">name</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> logger</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> debug</span><span class="sk-24292e-fff">(name);</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">message</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    logger</span><span class="sk-24292e-fff">(message);</span></span>
-<span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> createLogger;</span></span></code></pre>
-</div>
-<p>This might seem unnecessary, however it forces us to expose a minimal API surface area that allows us to make changes to them confidently, even swapping out the underlying modules without having to update our application code.</p>
-<p>For example, if we decided to stop using <code>marked</code> in favor of <code>remarkable</code> or some other markdown engine we could do that in a single pull request in one codebase.</p>
-<h3>Improving the accessibility of our components</h3>
-<p>Rewriting all of our components from the ground up was an excellent opportunity to evaluate how well we’ve been following accessibility best practices.</p>
-<p>As we rewrote the components, we found a number of improvements that we could make and we took the time to make sure that our components were as accessible as possible.</p>
-<p>For example, we greatly improved keyboard navigation across all of our components, even open sourcing some of the libraries we built to do it: <a href="https://github.com/cloudflare/react-modal2" target="_blank" rel="noopener noreferrer">react-modal2</a>, <a href="https://github.com/cloudflare/a11y-focus-store" target="_blank" rel="noopener noreferrer">a11y-focus-store</a>, <a href="https://github.com/cloudflare/a11y-focus-scope" target="_blank" rel="noopener noreferrer">a11y-focus-scope</a>.</p>
-<hr class="emdash-break emdash-break-line" data-astro-cid-lr3aoosn="">
-<p>In closing, we’re really really excited to be open sourcing our UI framework today. A lot of work went into this and it’s great to finally be putting it out there, so please give us a star on <a href="https://github.com/cloudflare/cf-ui" target="_blank" rel="noopener noreferrer">GitHub</a> (we love stars).</p>
-<p>Also, if this work interests you then you should come <a href="https://careers.jobscore.com/careers/cloudflare/jobs/ui-engineer-cI9kn86-ir4z5yiGakhP3Q?sid=68" target="_blank" rel="noopener noreferrer">join our team</a>!</p>

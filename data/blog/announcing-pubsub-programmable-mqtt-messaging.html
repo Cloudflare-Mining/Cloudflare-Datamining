@@ -1,116 +1,175 @@
-<p><em>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-pubsub-programmable-mqtt-messaging-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/announcing-pubsub-programmable-mqtt-messaging-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/es-es/announcing-pubsub-programmable-mqtt-messaging-es-es">Español</a>.</em></p>
-<p>One of the underlying questions that drives Platform Week is “how do we enable developers to build full stack applications on Cloudflare?”. With Workers as a serverless environment for easily deploying distributed-by-default applications, <a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">KV</a> and <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> for caching and coordination, and <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2</a> as our zero-egress cost <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object store</a>, we’ve continued to discuss what else we need to build to help developers both build new apps and/or bring existing ones over to Cloudflare’s Developer Platform.</p>
-<p>With that in mind, we’re excited to announce the private beta of Cloudflare Pub/Sub, a <em>programmable</em> message bus built on the ubiquitous and industry-standard MQTT protocol supported by tens of millions of existing devices today.</p>
-<p>In a nutshell, Pub/Sub allows you to:</p>
-<ul>
-	<li>Publish event, telemetry or sensor data from any MQTT capable client (and in the future, other client-facing protocols)</li>
-	<li>Write code that can filter, aggregate and/or modify messages <em>as they’re published to the broker</em> using Cloudflare Workers, and before they’re distributed to subscribers, without the need to ferry messages to a single “cloud region”</li>
-	<li>Push events from applications in other clouds, or from on-prem, with Pub/Sub acting as a programmable event router or a hook into persistent data storage (such as R2 or KV)</li>
-	<li>Move logic out of the client, where it can be hard (or risky!) to push updates, or where running code on devices raises the materials cost (CPU, memory), while still keeping latency as low as possible (your code runs in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">every location</a>).</li>
-</ul>
-<p>And there’s likely a long list of things we haven’t even predicted yet. We’ve seen developers <a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">build incredible things</a> on top of Cloudflare Workers, and we’re excited to see what they build with the power of a programmable message bus like Pub/Sub, too.</p>
-<h3>Why, and what is, MQTT?</h3>
-<p>If you haven’t heard of <a href="https://mqtt.org" target="_blank" rel="noopener noreferrer">MQTT</a> before, you might be surprised to know that it’s one of the most pervasive “messaging protocols” deployed today. There are tens of millions (at least!) of devices that speak MQTT today, from connected payment terminals through to autonomous vehicles, cell phones, and even video games. Sensor readings, telemetry, financial transactions and/or mobile notifications &amp; messages are all common use-cases for MQTT, and the flexibility of the protocol allows developers to make trade-offs around reliability, topic hierarchy and persistence specific to their use-case.</p>
-<p>We chose MQTT as the foundation for Cloudflare Pub/Sub as we believe in building on top of open, accessible standards, as we did when we chose the Service Worker API as the foundation for Workers, and with our recently announced participation in the <a href="https://blog.cloudflare.com/introducing-the-wintercg">Winter Community Group around server-side runtime APIs.</a> We also wanted to enable existing clients an easy path to benefit from Cloudflare’s scale and programmability, and ensure that developers have a rich ecosystem of client libraries in languages they’re familiar with today.</p>
-<p>Beyond that, however, we also think MQTT meets the needs of a modern “publish-subscribe” messaging service. It has flexible delivery guarantees, TLS for transport encryption (no bespoke crypto!), a scalable topic creation and subscription model, extensible per-message metadata, and importantly, it provides a well-defined specification with clear error messages.</p>
-<p>With that in mind, we expect to support many more “on-ramps” to Pub/Sub: a lot of the best parts of MQTT can be abstracted away from clients who might want to talk to us over HTTP or WebSockets.</p>
-<h3>Building Blocks</h3>
-<p>Given the ability to write code that acts on every message published to a Pub/Sub Broker, what does it look like in practice?</p>
-<p>Here’s a simple-but-illustrative example of handling Pub/Sub messages directly in a Worker. We have clients (in this case, payment terminals) reporting back transaction data, and we want to capture the number of transactions processed in each region, so we can track transaction volumes over time.</p>
-<p>Specifically, we:</p>
-<ol>
-	<li>Filter on a specific topic prefix for messages we care about</li>
-	<li>Parse the message for a specific key:value pair as a metric</li>
-	<li>Write that metric directly into <a href="https://blog.cloudflare.com/workers-analytics-engine">Workers Analytics Engine</a>, our new serverless time-series analytics service, so we can directly query it with GraphQL.</li>
-</ol>
-<p>This saves us having to stand up and maintain an external metrics service, configure another cloud service, or think about how it will scale: we can do it all directly on Cloudflare.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> pubsub</span><span class="sk-24292e-fff">(</span></span>
-<span class="line"><span class="sk-e36209-fff">  messages</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">PubSubMessage</span><span class="sk-24292e-fff">&gt;,</span></span>
-<span class="line"><span class="sk-e36209-fff">  env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-e36209-fff">  ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Array</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">PubSubMessage</span><span class="sk-24292e-fff">&gt;&gt; {</span></span>
-<span class="line"><span class="sk-24292e-fff">  </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> msg </span><span class="sk-d73a49-a0a0a0">of</span><span class="sk-24292e-fff"> messages) {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // Extract a value from the payload and write it to Analytics Engine</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // In this example, a transactionsProcessed counter that our clients are sending</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // back to us.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (msg.topic.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(“</span><span class="sk-032f62-a0a0a0">/transactions/</span><span class="sk-24292e-fff">”)) {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // This is non-blocking, and doesn’t hold up our message</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // processing.</span></span>
-<span class="line"><span class="sk-24292e-fff">      env.</span><span class="sk-005cc5-fff">TELEMETRY</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">writeDataPoint</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">        // We label this metric so that we can query against these labels</span></span>
-<span class="line"><span class="sk-24292e-fff">        labels: [</span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">msg</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">broker</span><span class="sk-032f62-99ffe4">}.${</span><span class="sk-24292e-fff">msg</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">namespace</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, msg.payload.region, msg.payload.merchantId],</span></span>
-<span class="line"><span class="sk-24292e-fff">        metrics: [msg.payload.transactionsProcessed </span><span class="sk-d73a49-a0a0a0">??</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">]</span></span>
-<span class="line"><span class="sk-24292e-fff">      });</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">  // Return our messages back to the Broker</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> messages;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> worker</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // Critical: you must validate the incoming request is from your Broker</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // In the future, Workers will be able to do this on your behalf for Workers</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // in the same account as your Pub/Sub Broker.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> isValidBrokerRequest</span><span class="sk-24292e-fff">(req)) {</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // Parse the incoming PubSub messages</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> incomingMessages</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">PubSubMessage</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> req.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">      </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // Pass the message to our pubsub handler, and capture the returned</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // messages</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> outgoingMessages </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> pubsub</span><span class="sk-24292e-fff">(incomingMessages, env, ctx);</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // Re-serialize the messages and return a HTTP 200 so our Broker</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // knows we’ve successfully handled them</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(outgoingMessages), { status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"not a valid Broker request"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> worker;</span></span></code></pre>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/announcing-pubsub-programmable-mqtt-messaging">简体中文</a>, <a href="https://blog.cloudflare.com/es-es/announcing-pubsub-programmable-mqtt-messaging">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/announcing-pubsub-programmable-mqtt-messaging">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39cdBeceFzHD5BjEvZ6r0I/c4dd673d91f88a5f63b21bbb249bdc48/announcing-pubsub-programmable-mqtt-messaging.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p><i>This post is also available in </i><a href="https://blog.cloudflare.com/zh-cn/announcing-pubsub-programmable-mqtt-messaging-zh-cn"><i>简体中文</i></a><i>, </i><a href="https://blog.cloudflare.com/ja-jp/announcing-pubsub-programmable-mqtt-messaging-ja-jp"><i>日本語</i></a><i>, </i><a href="https://blog.cloudflare.com/es-es/announcing-pubsub-programmable-mqtt-messaging-es-es"><i>Español</i></a><i>.</i></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55VlABQ44OeATPuW7eZIzQ/abbe5df4ecea8e7cf8aaf70ee6221f8e/image1-26.png" alt="Announcing Pub/Sub: Programmable MQTT-based Messaging" class="kg-image" width="1920" height="1013" loading="lazy">
+
+	</figure>
+	<p>One of the underlying questions that drives Platform Week is “how do we enable developers to build full stack applications on Cloudflare?”. With Workers as a serverless environment for easily deploying distributed-by-default applications, <a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">KV</a> and <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> for caching and coordination, and <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2</a> as our zero-egress cost <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object store</a>, we’ve continued to discuss what else we need to build to help developers both build new apps and/or bring existing ones over to Cloudflare’s Developer Platform.</p>
+	<p>With that in mind, we’re excited to announce the private beta of Cloudflare Pub/Sub, a <i>programmable</i> message bus built on the ubiquitous and industry-standard MQTT protocol supported by tens of millions of existing devices today.</p>
+	<p>In a nutshell, Pub/Sub allows you to:</p>
+	<ul>
+		<li>
+			<p>Publish event, telemetry or sensor data from any MQTT capable client (and in the future, other client-facing protocols)</p>
+		</li>
+		<li>
+			<p>Write code that can filter, aggregate and/or modify messages <i>as they’re published to the broker</i> using Cloudflare Workers, and before they’re distributed to subscribers, without the need to ferry messages to a single “cloud region”</p>
+		</li>
+		<li>
+			<p>Push events from applications in other clouds, or from on-prem, with Pub/Sub acting as a programmable event router or a hook into persistent data storage (such as R2 or KV)</p>
+		</li>
+		<li>
+			<p>Move logic out of the client, where it can be hard (or risky!) to push updates, or where running code on devices raises the materials cost (CPU, memory), while still keeping latency as low as possible (your code runs in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">every location</a>).</p>
+		</li>
+	</ul>
+	<p>And there’s likely a long list of things we haven’t even predicted yet. We’ve seen developers <a href="https://workers.cloudflare.com/built-with" target="_blank" rel="noopener noreferrer">build incredible things</a> on top of Cloudflare Workers, and we’re excited to see what they build with the power of a programmable message bus like Pub/Sub, too.</p>
+	<div class="flex anchor relative">
+		<h3 id="why-and-what-is-mqtt">Why, and what is, MQTT?</h3>
+		<a href="https://blog.cloudflare.com/#why-and-what-is-mqtt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you haven’t heard of <a href="https://mqtt.org" target="_blank" rel="noopener noreferrer">MQTT</a> before, you might be surprised to know that it’s one of the most pervasive “messaging protocols” deployed today. There are tens of millions (at least!) of devices that speak MQTT today, from connected payment terminals through to autonomous vehicles, cell phones, and even video games. Sensor readings, telemetry, financial transactions and/or mobile notifications &amp; messages are all common use-cases for MQTT, and the flexibility of the protocol allows developers to make trade-offs around reliability, topic hierarchy and persistence specific to their use-case.</p>
+	<p>We chose MQTT as the foundation for Cloudflare Pub/Sub as we believe in building on top of open, accessible standards, as we did when we chose the Service Worker API as the foundation for Workers, and with our recently announced participation in the <a href="https://blog.cloudflare.com/introducing-the-wintercg">Winter Community Group around server-side runtime APIs.</a> We also wanted to enable existing clients an easy path to benefit from Cloudflare’s scale and programmability, and ensure that developers have a rich ecosystem of client libraries in languages they’re familiar with today.</p>
+	<p>Beyond that, however, we also think MQTT meets the needs of a modern “publish-subscribe” messaging service. It has flexible delivery guarantees, TLS for transport encryption (no bespoke crypto!), a scalable topic creation and subscription model, extensible per-message metadata, and importantly, it provides a well-defined specification with clear error messages.</p>
+	<p>With that in mind, we expect to support many more “on-ramps” to Pub/Sub: a lot of the best parts of MQTT can be abstracted away from clients who might want to talk to us over HTTP or WebSockets.</p>
+	<div class="flex anchor relative">
+		<h3 id="building-blocks">Building Blocks</h3>
+		<a href="https://blog.cloudflare.com/#building-blocks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Given the ability to write code that acts on every message published to a Pub/Sub Broker, what does it look like in practice?</p>
+	<p>Here’s a simple-but-illustrative example of handling Pub/Sub messages directly in a Worker. We have clients (in this case, payment terminals) reporting back transaction data, and we want to capture the number of transactions processed in each region, so we can track transaction volumes over time.</p>
+	<p>Specifically, we:</p>
+	<ol>
+		<li>
+			<p>Filter on a specific topic prefix for messages we care about</p>
+		</li>
+		<li>
+			<p>Parse the message for a specific key:value pair as a metric</p>
+		</li>
+		<li>
+			<p>Write that metric directly into <a href="https://blog.cloudflare.com/workers-analytics-engine">Workers Analytics Engine</a>, our new serverless time-series analytics service, so we can directly query it with GraphQL.</p>
+		</li>
+	</ol>
+	<p>This saves us having to stand up and maintain an external metrics service, configure another cloud service, or think about how it will scale: we can do it all directly on Cloudflare.</p>
+	<pre class="language-typescript"><code class="language-typescript">
+async function pubsub(
+  messages: Array&lt;PubSubMessage&gt;,
+  env: any,
+  ctx: ExecutionContext
+): Promise&lt;Array&lt;PubSubMessage&gt;&gt; {
+  
+  for (let msg of messages) {
+    // Extract a value from the payload and write it to Analytics Engine
+    // In this example, a transactionsProcessed counter that our clients are sending
+    // back to us.
+    if (msg.topic.startsWith(“/transactions/”)) {
+      // This is non-blocking, and doesn’t hold up our message
+      // processing.
+      env.TELEMETRY.writeDataPoint({
+        // We label this metric so that we can query against these labels
+        labels: [`${msg.broker}.${msg.namespace}`, msg.payload.region, msg.payload.merchantId],
+        metrics: [msg.payload.transactionsProcessed ?? 0]
+      });
+    }
+  }
+
+  // Return our messages back to the Broker
+  return messages;
+}
+
+const worker = {
+  async fetch(req: Request, env: any, ctx: ExecutionContext) {
+    // Critical: you must validate the incoming request is from your Broker
+    // In the future, Workers will be able to do this on your behalf for Workers
+    // in the same account as your Pub/Sub Broker.
+    if (await isValidBrokerRequest(req)) {
+
+      // Parse the incoming PubSub messages
+      let incomingMessages: Array&lt;PubSubMessage&gt; = await req.json();
+      
+      // Pass the message to our pubsub handler, and capture the returned
+      // messages
+      let outgoingMessages = await pubsub(incomingMessages, env, ctx);
+
+      // Re-serialize the messages and return a HTTP 200 so our Broker
+      // knows we’ve successfully handled them
+      return new Response(JSON.stringify(outgoingMessages), { status: 200 });
+    }
+
+    return new Response("not a valid Broker request", { status: 403 });
+  },
+};
+
+export default worker;</code></pre>
+	<p>We can then query these metrics directly using a familiar language: SQL. Our query takes the metrics we’ve written and gives us a breakdown of transactions processed by our payment devices, grouped by merchant (and again, all on Cloudflare):</p>
+	<pre class="language-bash"><code class="language-bash">SELECT
+  label_2 as region,
+  label_3 as merchantId,
+  sum(metric_1) as total_transactions
+FROM TELEMETRY
+WHERE
+  metric_1 &gt; 0
+  AND timestamp &gt;= now() - 604800
+GROUP BY
+  region,
+  merchantId
+ORDER BY
+  total_transactions DESC
+LIMIT 10</code></pre>
+	<p>You could replace or augment the calls to Analytics Engine with any number of examples:</p>
+	<ul>
+		<li>
+			<p>Asynchronously writing messages (using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank" rel="noopener noreferrer">ctx.waitUntil</a>) on specific topics to our R2 <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> without blocking message delivery</p>
+		</li>
+		<li>
+			<p>Rewriting messages on-the-fly with data <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">populated from KV</a>, before the message is pushed to subscribers</p>
+		</li>
+		<li>
+			<p>Aggregate messages based on their payload and HTTP POST them to legacy infrastructure hosted outside of Cloudflare</p>
+		</li>
+	</ul>
+	<p>Pub/Sub gives you a way to get data into Cloudflare’s network, filter, aggregate and/or mutate it, and push it back out to subscribers — whether there’s 10, 1,000 or 10,000 of them listening on that topic.</p>
+	<div class="flex anchor relative">
+		<h3 id="where-are-we-headed">Where are we headed?</h3>
+		<a href="https://blog.cloudflare.com/#where-are-we-headed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As we often like to say: we’re just getting started. The private beta for Pub/Sub is just the beginning of our journey, and we have a long list of capabilities we’re already working on.</p>
+	<p>Critically, one of our priorities is to cover as much of the MQTT v5.0 specification as we can, so that customers can migrate existing deployments and have it “just work”. Useful capabilities like <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250" target="_blank" rel="noopener noreferrer">shared subscriptions</a> that allow you to load-balance messages across many subscribers; <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242" target="_blank" rel="noopener noreferrer">wildcard subscriptions</a> (both single- and multi-tier) for aggregation use cases, stronger delivery guarantees (<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234" target="_blank" rel="noopener noreferrer">QoS</a>), and support for additional authentication modes (specifically, Mutual TLS) are just a few of the things we’re working on.</p>
+	<p>Beyond that, we’re focused on making sure Pub/Sub’s developer experience is the best it &nbsp;can be, and during the beta we’ll be:</p>
+	<ul>
+		<li>
+			<p>Supporting a new set of “pubsub” sub-commands in <a href="https://www.npmjs.com/package/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a>, our developer CLI, so that getting started is as low-friction as possible</p>
+		</li>
+		<li>
+			<p>Building ‘native’ bindings (similar to how <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">Workers KV</a> operates) that allow you to publish messages and subscribe to topics directly from Worker code, regardless of whether the message originates from (or is destined for) a client beyond Cloudflare</p>
+		</li>
+		<li>
+			<p>Exploring more ways to publish &amp; subscribe from non-MQTT based clients, including HTTP requests and WebSockets, so that integrating existing code is even easier.</p>
+		</li>
+	</ul>
+	<p>Our <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">developer documentation</a> will cover these capabilities as we land them.</p>
+	<p>We’re also aware that pricing is a huge part of developer experience, and are committed to ensuring that there is an accessible and flexible free tier. We want to enable developers to experiment, prototype and solve problems we haven’t thought of yet. We’ll be sharing more on pricing during the course of the beta.</p>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting Started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you want to start using Pub/Sub, <a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta" target="_blank" rel="noopener noreferrer">sign up for the private beta</a>: we plan to start enabling access within the next month. We’re looking forward to collecting feedback from developers and seeing what folks start to build.</p>
+	<p>In the meantime, review the <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">brand-new Pub/Sub developer documentation</a> to understand how Pub/Sub works under the hood, the MQTT protocol, and how it integrates with Cloudflare Workers.</p>
 </div>
-<p>We can then query these metrics directly using a familiar language: SQL. Our query takes the metrics we’ve written and gives us a breakdown of transactions processed by our payment devices, grouped by merchant (and again, all on Cloudflare):</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  label_2</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> region,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  label_3</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> merchantId,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  sum(metric_1</span><span class="sk-24292e-fff">) as total_transactions</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">FROM</span><span class="sk-032f62-99ffe4"> TELEMETRY</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">WHERE</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  metric_1</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  AND</span><span class="sk-032f62-99ffe4"> timestamp</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> now</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">-</span><span class="sk-005cc5-ffc799"> 604800</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">GROUP</span><span class="sk-032f62-99ffe4"> BY</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  region,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  merchantId</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ORDER</span><span class="sk-032f62-99ffe4"> BY</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  total_transactions</span><span class="sk-032f62-99ffe4"> DESC</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
-</div>
-<p>You could replace or augment the calls to Analytics Engine with any number of examples:</p>
-<ul>
-	<li>Asynchronously writing messages (using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank" rel="noopener noreferrer">ctx.waitUntil</a>) on specific topics to our R2 <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> without blocking message delivery</li>
-	<li>Rewriting messages on-the-fly with data <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">populated from KV</a>, before the message is pushed to subscribers</li>
-	<li>Aggregate messages based on their payload and HTTP POST them to legacy infrastructure hosted outside of Cloudflare</li>
-</ul>
-<p>Pub/Sub gives you a way to get data into Cloudflare’s network, filter, aggregate and/or mutate it, and push it back out to subscribers — whether there’s 10, 1,000 or 10,000 of them listening on that topic.</p>
-<h3>Where are we headed?</h3>
-<p>As we often like to say: we’re just getting started. The private beta for Pub/Sub is just the beginning of our journey, and we have a long list of capabilities we’re already working on.</p>
-<p>Critically, one of our priorities is to cover as much of the MQTT v5.0 specification as we can, so that customers can migrate existing deployments and have it “just work”. Useful capabilities like <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250" target="_blank" rel="noopener noreferrer">shared subscriptions</a> that allow you to load-balance messages across many subscribers; <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901242" target="_blank" rel="noopener noreferrer">wildcard subscriptions</a> (both single- and multi-tier) for aggregation use cases, stronger delivery guarantees (<a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901234" target="_blank" rel="noopener noreferrer">QoS</a>), and support for additional authentication modes (specifically, Mutual TLS) are just a few of the things we’re working on.</p>
-<p>Beyond that, we’re focused on making sure Pub/Sub’s developer experience is the best it &nbsp;can be, and during the beta we’ll be:</p>
-<ul>
-	<li>Supporting a new set of “pubsub” sub-commands in <a href="https://www.npmjs.com/package/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a>, our developer CLI, so that getting started is as low-friction as possible</li>
-	<li>Building ‘native’ bindings (similar to how <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">Workers KV</a> operates) that allow you to publish messages and subscribe to topics directly from Worker code, regardless of whether the message originates from (or is destined for) a client beyond Cloudflare</li>
-	<li>Exploring more ways to publish &amp; subscribe from non-MQTT based clients, including HTTP requests and WebSockets, so that integrating existing code is even easier.</li>
-</ul>
-<p>Our <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">developer documentation</a> will cover these capabilities as we land them.</p>
-<p>We’re also aware that pricing is a huge part of developer experience, and are committed to ensuring that there is an accessible and flexible free tier. We want to enable developers to experiment, prototype and solve problems we haven’t thought of yet. We’ll be sharing more on pricing during the course of the beta.</p>
-<h3>Getting Started</h3>
-<p>If you want to start using Pub/Sub, <a href="https://www.cloudflare.com/cloudflare-pub-sub-lightweight-messaging-private-beta" target="_blank" rel="noopener noreferrer">sign up for the private beta</a>: we plan to start enabling access within the next month. We’re looking forward to collecting feedback from developers and seeing what folks start to build.</p>
-<p>In the meantime, review the <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer">brand-new Pub/Sub developer documentation</a> to understand how Pub/Sub works under the hood, the MQTT protocol, and how it integrates with Cloudflare Workers.</p>

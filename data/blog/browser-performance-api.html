@@ -1,42 +1,98 @@
-<p>Building a beautiful, feature-rich website is easier than ever before. Not long ago, you’d have to fire up a text editor and hand-craft a lot of HTML, CSS, and JavaScript. Today, you can use WYSIWYG tools and third-party libraries that make development much simpler. The flip side of this is that it can be hard to see everything that’s going into your website — and the performance can suffer.</p>
-<p>The good news is that modern web browsers expose lots of performance data that can help you understand how your web page performs. With the launch of Browser Insights today, we can analyze the performance from the perspective of the web browser and what the end user actually experiences. In this post, we’ll dive into how we think about performance and utilize the timing APIs in the web browser.</p>
-<h3>How web browsers measure performance</h3>
-<p>In the old days, the only way for a developer to profile performance was to intercept requests and measure the time from the beginning of the page load until the end of the load event.</p>
-<p>Today, we can use Web APIs that are supported by modern browsers. This is part of the web standard called the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank" rel="noopener noreferrer">Performance API</a>. The Performance API consists of a collection of individual APIs that include:</p>
-<ul>
-	<li>Navigation Timing (for timing information related to the page and navigation)</li>
-	<li>Resource Timing (for timing data regarding the loading of an application's resources)</li>
-	<li>Paint Timing (that provides timing information about paint operation during the page construction)</li>
-</ul>
-<p>In this blog post, we will primarily focus on the Navigation Timing API.</p>
-<h3>Inside the Performance API</h3>
-<p>To see what’s collected with the Performance API, you can open the Developer Tools in Chrome browser and type ‘performance’ in the console tab (or type in <code>performance.timing</code> to get direct access to the PerformanceTiming attribute).</p>
-<p>Try expanding the Performance object by clicking on the arrow before the label and again expand the ‘timing’. This is called PerformanceTiming, which includes all the timings that relate to the current page load as UNIX epoch timestamp (milliseconds). The timing attributes shown are not in the order of the load. So for better understanding, let’s look at the illustration provided by the W3C.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="427" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=640&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=750&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=828&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=1080&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=1280&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JN7V200G27Q230D44NQF.png&amp;w=1430&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the Web Browser’s Performance API Embedded Image - nnHDyJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="427" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Inside the Web Browser’s Performance API Embedded Image - nnHDyJ"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Image from <a href="https://www.w3.org/TR/navigation-timing" target="_blank" rel="noopener noreferrer">https://www.w3.org/TR/navigation-timing/</a></p>
-<p>As we can see from the diagram shown, each element (represented as a box above) in the order from left-to-right, represents the navigation flow of the page load. Each element has an attribute from the starting point to the end (and some have multiple attributes!) so that we can measure the elapsed time for each element. For example, to get the Request Time, you could type in the command like shown below in the console which appears to be 60 milliseconds.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="94" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=715&amp;h=94&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=640&amp;h=84&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=715&amp;h=94&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=750&amp;h=99&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=828&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=1080&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=1280&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MTJ7Z3P68P90VY9Q611P.png&amp;w=1430&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the Web Browser’s Performance API Embedded Image - U8llY1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="94" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Inside the Web Browser’s Performance API Embedded Image - U8llY1"></div>
-</figure>
-<h3>How Cloudflare uses performance data</h3>
-<p>Once your website is proxied through Cloudflare and Browser Insights is enabled, we write and inject a JavaScript beacon into the web page. Our beacon collects metrics from the Performance API to send to our edge, where it can be used to understand where your website is slowing down or having any network problems. The reported data is shown in the Cloudflare dashboard on the Speed Page showing as averages of each timing metric:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="697" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=715&amp;h=697&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=640&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=715&amp;h=697&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=750&amp;h=731&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=828&amp;h=807&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=1080&amp;h=1053&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=1280&amp;h=1248&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JWQVXV0BKW98X609ZR2R.png&amp;w=1430&amp;h=1394&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the Web Browser’s Performance API Embedded Image - jT0xxz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="697" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Inside the Web Browser’s Performance API Embedded Image - jT0xxz"></div>
-</figure>
-<p>The metrics we surface are:</p>
-<ul>
-	<li><strong>DNS (domainLookupEnd - domainLookupStart)</strong>: How long the DNS query takes. This could appear as zero if the connection is reused or the content was stored in the local cache (memory or disk).</li>
-	<li><strong>TCP (connectEnd - connectStart)</strong>: How long it takes to establish a TCP connection to the server. If HTTPS, this process includes TLS negotiation time.</li>
-	<li><strong>Request (responseStart - requestStart)</strong>: The time elapsed between making an HTTP request and receiving the first byte of the response.</li>
-	<li><strong>Response (responseEnd - responseStart)</strong>: The time elapsed between the first byte and the last byte of the response received. You can think of this as a resource download time.</li>
-	<li><strong>Processing (domComplete - domLoading)</strong>: How long it took to render the page. If this number is big, you can optimize your document architecture, resource size, or configure settings under the Speed page such as Auto Minify the source code. This document process can be drilled down more with domInteractive, domContentLoadedEventStart, domContentLoadedEventEnd, and domComplete. We plan to provide more detailed analytics on this later on.</li>
-	<li><strong>Load Event (loadEventEnd - loadEventStart)</strong>: When the browser finishes loading its document and resources, it triggers a `load` event. This duration may be helpful to you if you have additional functions or any logic for the load event.</li>
-	<li><strong>Total Time</strong>: Sum of each timing metrics shown on the graph.</li>
-</ul>
-<p>If you are seeing any spikes or unusual form of a line in the stacked line chart, you could start investigating on each element to see what is causing the problem.</p>
-<p>For more about how to use Browser Insights, see our <a href="https://blog.cloudflare.com/introducing-browser-insights">announcement blog post</a>.</p>
-<h3>What’s next</h3>
-<p>In this blog post, we’ve focused on the Navigation Timing API, because it’s at the heart of our first version of Browser Insights. In the near future, we plan to incorporate metrics from some of the other APIs. For example, we can break down some of the longer timings by looking at individual resource loads, and pointing out what’s taking longer. In addition to that, we plan to track JavaScript errors, provide a way to measure A/B performance, set up monitoring/alerting based on the metrics, and so on. So stay tuned!</p>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4X2mv6pmDT872tF6tBXAq0/6f6d9f7f31886d67fd5e44c3f58c423c/browser-performance-api.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Building a beautiful, feature-rich website is easier than ever before. Not long ago, you’d have to fire up a text editor and hand-craft a lot of HTML, CSS, and JavaScript. Today, you can use WYSIWYG tools and third-party libraries that make development much simpler. The flip side of this is that it can be hard to see everything that’s going into your website — and the performance can suffer.</p>
+	<p>The good news is that modern web browsers expose lots of performance data that can help you understand how your web page performs. With the launch of Browser Insights today, we can analyze the performance from the perspective of the web browser and what the end user actually experiences. In this post, we’ll dive into how we think about performance and utilize the timing APIs in the web browser.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-web-browsers-measure-performance">How web browsers measure performance</h3>
+		<a href="https://blog.cloudflare.com/#how-web-browsers-measure-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the old days, the only way for a developer to profile performance was to intercept requests and measure the time from the beginning of the page load until the end of the load event.</p>
+	<p>Today, we can use Web APIs that are supported by modern browsers. This is part of the web standard called the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank" rel="noopener noreferrer">Performance API</a>. The Performance API consists of a collection of individual APIs that include:</p>
+	<ul>
+		<li>
+			<p>Navigation Timing (for timing information related to the page and navigation)</p>
+		</li>
+		<li>
+			<p>Resource Timing (for timing data regarding the loading of an application's resources)</p>
+		</li>
+		<li>
+			<p>Paint Timing (that provides timing information about paint operation during the page construction)</p>
+		</li>
+	</ul>
+	<p>In this blog post, we will primarily focus on the Navigation Timing API.</p>
+	<div class="flex anchor relative">
+		<h3 id="inside-the-performance-api">Inside the Performance API</h3>
+		<a href="https://blog.cloudflare.com/#inside-the-performance-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To see what’s collected with the Performance API, you can open the Developer Tools in Chrome browser and type ‘performance’ in the console tab (or type in <code>performance.timing</code> to get direct access to the PerformanceTiming attribute).</p>
+	<p>Try expanding the Performance object by clicking on the arrow before the label and again expand the ‘timing’. This is called PerformanceTiming, which includes all the timings that relate to the current page load as UNIX epoch timestamp (milliseconds). The timing attributes shown are not in the order of the load. So for better understanding, let’s look at the illustration provided by the W3C.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SxJcGlceESK5UT2nX0U5V/0ed2588c98bdf4aa3c87db723243e380/pasted-image-0--4-.png" alt="" class="kg-image" width="1473" height="879" loading="lazy">
+
+	</figure>
+	<p>Image from <a href="https://www.w3.org/TR/navigation-timing" target="_blank" rel="noopener noreferrer">https://www.w3.org/TR/navigation-timing/</a></p>
+	<p>As we can see from the diagram shown, each element (represented as a box above) in the order from left-to-right, represents the navigation flow of the page load. Each element has an attribute from the starting point to the end (and some have multiple attributes!) so that we can measure the elapsed time for each element. For example, to get the Request Time, you could type in the command like shown below in the console which appears to be 60 milliseconds.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78quzSc6wQq5sPuMzvaIS1/8bab59c4ec25aecd37e5e4291cf26c30/pasted-image-0--5-.png" alt="" class="kg-image" width="894" height="118" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-cloudflare-uses-performance-data">How Cloudflare uses performance data</h3>
+		<a href="https://blog.cloudflare.com/#how-cloudflare-uses-performance-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Once your website is proxied through Cloudflare and Browser Insights is enabled, we write and inject a JavaScript beacon into the web page. Our beacon collects metrics from the Performance API to send to our edge, where it can be used to understand where your website is slowing down or having any network problems. The reported data is shown in the Cloudflare dashboard on the Speed Page showing as averages of each timing metric:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pm9xxGJkm9EfsuszWBOzv/79ca3b20f20398a17fa59676c54f9185/pasted-image-0--6-.png" alt="" class="kg-image" width="983" height="958" loading="lazy">
+
+	</figure>
+	<p>The metrics we surface are:</p>
+	<ul>
+		<li>
+			<p><b>DNS (domainLookupEnd - domainLookupStart)</b>: How long the DNS query takes. This could appear as zero if the connection is reused or the content was stored in the local cache (memory or disk).</p>
+		</li>
+		<li>
+			<p><b>TCP (connectEnd - connectStart)</b>: How long it takes to establish a TCP connection to the server. If HTTPS, this process includes TLS negotiation time.</p>
+		</li>
+		<li>
+			<p><b>Request (responseStart - requestStart)</b>: The time elapsed between making an HTTP request and receiving the first byte of the response.</p>
+		</li>
+		<li>
+			<p><b>Response (responseEnd - responseStart)</b>: The time elapsed between the first byte and the last byte of the response received. You can think of this as a resource download time.</p>
+		</li>
+		<li>
+			<p><b>Processing (domComplete - domLoading)</b>: How long it took to render the page. If this number is big, you can optimize your document architecture, resource size, or configure settings under the Speed page such as Auto Minify the source code. This document process can be drilled down more with domInteractive, domContentLoadedEventStart, domContentLoadedEventEnd, and domComplete. We plan to provide more detailed analytics on this later on.</p>
+		</li>
+		<li>
+			<p><b>Load Event (loadEventEnd - loadEventStart)</b>: When the browser finishes loading its document and resources, it triggers a `load` event. This duration may be helpful to you if you have additional functions or any logic for the load event.</p>
+		</li>
+		<li>
+			<p><b>Total Time</b>: Sum of each timing metrics shown on the graph.</p>
+		</li>
+	</ul>
+	<p>If you are seeing any spikes or unusual form of a line in the stacked line chart, you could start investigating on each element to see what is causing the problem.</p>
+	<p>For more about how to use Browser Insights, see our <a href="https://blog.cloudflare.com/introducing-browser-insights">announcement blog post</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In this blog post, we’ve focused on the Navigation Timing API, because it’s at the heart of our first version of Browser Insights. In the near future, we plan to incorporate metrics from some of the other APIs. For example, we can break down some of the longer timings by looking at individual resource loads, and pointing out what’s taking longer. In addition to that, we plan to track JavaScript errors, provide a way to measure A/B performance, set up monitoring/alerting based on the metrics, and so on. So stay tuned!</p>
+</div>

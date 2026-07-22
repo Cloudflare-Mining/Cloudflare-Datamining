@@ -1,150 +1,218 @@
-<p>Since our last newsletter, dozens of developers like you have reached out with ideas for new kinds of apps that weren’t yet possible. These are some of my favorite conversations because they help us find out which features should be prioritized. With your guidance, we’ve spent this month meticulously converting our supply of Halloween candy into those ideas. Let’s dive in and see what’s new!</p>
-<h3>? Paid App Product Enhancements</h3>
-<p>We’ve made it easier to upsell premium features with product specific options. Customers can try out exclusive features before making a purchase, on any site, even without Cloudflare account! Here’s an example of Lead Box using <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#limiting-radio-options-to-a-set-of-products" target="_blank" rel="noopener noreferrer">product specific radio buttons</a>:</p>
-<p>Previewing premium features in <a href="https://www.cloudflare.com/apps/lead-box/install" target="_blank" rel="noopener noreferrer">Lead Box</a></p>
-<p>In this example, a customer can choose to see the newsletter option after choosing&nbsp;the "Pro" plan.&nbsp;Developers can now update the <a href="https://www.cloudflare.com/apps/developer/docs/install-json/preview" target="_blank" rel="noopener noreferrer">Live Preview</a> in response to this choice. We’ve added new <code>"_product"</code> keyword for this event.&nbsp;Here’s a snippet on how Lead Box handles a customer <a href="https://github.com/cloudflare-apps/lead-box/blob/68a914ab58e526aa62572e2e16b9cb631f4cdfff/install.json#L14-L29" target="_blank" rel="noopener noreferrer">changing products</a> without refreshing the page:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "preview"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    "handlers"</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">      {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "options"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"_default"</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "execute"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"</span></span>
-<span class="line"><span class="sk-24292e-fff">      },</span></span>
-<span class="line"><span class="sk-24292e-fff">      {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "options"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"_product"</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "execute"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)"</span></span>
-<span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    ]</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2m7ailpiw5PzvdgNs7u8jX/733c28148db1003918f5a22f01c75be1/cloudflare-apps-platform-update-november-edition.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Since our last newsletter, dozens of developers like you have reached out with ideas for new kinds of apps that weren’t yet possible. These are some of my favorite conversations because they help us find out which features should be prioritized. With your guidance, we’ve spent this month meticulously converting our supply of Halloween candy into those ideas. Let’s dive in and see what’s new!</p>
+	<div class="flex anchor relative">
+		<h3 id="paid-app-product-enhancements">? Paid App Product Enhancements</h3>
+		<a href="https://blog.cloudflare.com/#paid-app-product-enhancements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve made it easier to upsell premium features with product specific options. Customers can try out exclusive features before making a purchase, on any site, even without Cloudflare account! Here’s an example of Lead Box using <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#limiting-radio-options-to-a-set-of-products" target="_blank" rel="noopener noreferrer">product specific radio buttons</a>:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RJXwYv56e20NI57m2ZR5d/ce05000817f1d7ebc1e688d77d6ecc99/Screen-Shot-2017-11-22-at-5.31.19-AM.png" alt="" class="kg-image" width="924" height="628" loading="lazy">
+
+	</figure>
+	<p>Previewing premium features in <a href="https://www.cloudflare.com/apps/lead-box/install" target="_blank" rel="noopener noreferrer">Lead Box</a></p>
+	<p>In this example, a customer can choose to see the newsletter option after choosing&nbsp;the "Pro" plan.&nbsp;Developers can now update the <a href="https://www.cloudflare.com/apps/developer/docs/install-json/preview" target="_blank" rel="noopener noreferrer">Live Preview</a> in response to this choice. We’ve added new <code>"_product"</code> keyword for this event.&nbsp;Here’s a snippet on how Lead Box handles a customer <a href="https://github.com/cloudflare-apps/lead-box/blob/68a914ab58e526aa62572e2e16b9cb631f4cdfff/install.json#L14-L29" target="_blank" rel="noopener noreferrer">changing products</a> without refreshing the page:</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "preview": {
+    "handlers": [
+      {
+        "options": ["_default"],
+        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+      },
+      {
+        "options": ["_product"],
+        "execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)"
+      }
+    ]
+  }
+}</code></pre>
+
+	<pre class="language-javascript"><code class="language-javascript">let options = INSTALL_OPTIONS
+let product = INSTALL_PRODUCT
+
+function renderApp () {/*...*/}
+
+window.INSTALL_SCOPE = {
+  setOptions (nextOptions) {
+    options = nextOptions
+    renderApp()
+  },
+  setProduct (nextProduct) {
+    product = nextProduct
+    renderApp()
+  }
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="comments-ratings">? Comments &amp; Ratings</h3>
+		<a href="https://blog.cloudflare.com/#comments-ratings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our previous newsletter included two of our most requested features: customer feedback, and install metrics. Together these features have helped developers reach out to their customers and track down issues. Customers can now share their feedback publically with comments and ratings:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RcAjLum5hUPeNquIAxxyt/c5ea9a22dd11eb02647f4959af02d4ab/previous-comments-1.png" alt="" class="kg-image" width="1062" height="898" loading="lazy">
+
+	</figure>
+	<p>Revealing older comments.</p>
+	<p>Comments for previous releases are initially hidden to emphasize the most recent feedback. As customers send in new feedback, previous ratings will have less of an impact on your app’s sentiment. Apps that score well with customers will gradually increase your visibility in the public listing as well!</p>
+	<div class="flex anchor relative">
+		<h3 id="mananging-dns-via-apps">? Mananging DNS via Apps</h3>
+		<a href="https://blog.cloudflare.com/#mananging-dns-via-apps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve saved the best for last! App developers can now manage a customer’s DNS records. The simplest way to define a DNS record is directly in your app’s <code>install.json</code> file. This for example, would allow a customer to create a CNAME to send traffic to your domain, and insert a <code>A</code> record on their root domain:</p>
+	<pre class="language-javascript"><code class="language-javascript">{
+  "resources": [/*...*/],
+  "hooks": [/*...*/],
+  "options": {
+    "properties": {
+      "subdomain": {
+        "type": "string"
+      }
+    }
+  },
+  "dns": [
+    {
+      "type": "CNAME",
+      "name": "{{subdomain}}",
+      "content": "shops.myservice.com"
+    },
+    {
+      "type": "A",
+      "content": "1.2.3.4",
+      "ttl": 60,
+      "proxied": true
+    }
+  ]
+}</code></pre>
+	<p>The customer can then confirm your changes after before completing their installation.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZzXNIl4h8JiMvf8Bxqoqo/56ceadab6ec4fa446b4673cec76d08b2/DNS.png" alt="" class="kg-image" width="1196" height="856" loading="lazy">
+
+	</figure>
+	<p>Requesting permission to access a customer’s email address and DNS entries.</p>
+	<p>DNS records make it possible to add new records to a customer’s account for your email services, blogging platforms, customer management systems, <a href="https://www.cloudflare.com/apps/developer/docs/dns" target="_blank" rel="noopener noreferrer">and much, much more</a>!</p>
+	<div class="flex anchor relative">
+		<h4 id="other-platform-improvements">⚙ Other Platform Improvements</h4>
+		<a href="https://blog.cloudflare.com/#other-platform-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve made hundreds of changes since our last newsletter, some more visible than others. Here’s a quick recap of some our favorites:</p>
+	<ul>
+		<li>
+			<p>New Cloudflare customers are onboarded with apps after registration</p>
+		</li>
+		<li>
+			<p>Updated docs on <a href="https://www.cloudflare.com/apps/developer/docs/webhooks#item-add-event" target="_blank" rel="noopener noreferrer">“item add” event</a></p>
+		</li>
+		<li>
+			<p>Developers can now optionally link to their public GitHub repository</p>
+		</li>
+		<li>
+			<p>A new input type: Numbers <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#number-with-unit" target="_blank" rel="noopener noreferrer">with units</a>!</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="thank-you">Thank you ?</h2>
+		<a href="https://blog.cloudflare.com/#thank-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the spirit of Thanksgiving, we raise a gravy boat to everyone who made this winter a little warmer. To the all the Cloudflarians and developers who sent in feedback, we say <b>thank you!</b></p>
+	<p>Reach out at <a href="https://twitter.com/CloudflareApps" target="_blank" rel="noopener noreferrer">@CloudflareApps</a> and let us know what you’d like to see next!!!</p>
+	<p>Until next time! ⛄️️</p>
+	<p>— Teffen</p>
+	<p>Powerful tools built by world-class developers, delivered by Cloudflare, easily added to your website.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IAzPTMTwhimAtCSIAY7SJ/2379d80b1dedcc9afcfe0ab00dbdb0b5/gcp-logo-2.png" alt="" class="kg-image" width="468" height="290" loading="lazy">
+
+	</figure>
+	<p>Up to $100k in Cloud Credits</p>
+	<p>Cloudflare Apps makes it easy to get what you build installed, but building a great app also requires great infrastructure. We’ve partnered with Google to offer app developers like you up to $100,000 in free Google Cloud credits to support the apps you build.</p>
+	<p><a href="https://www.cloudflare.com/apps/developer/offers/google" target="_blank" rel="noopener noreferrer">Check it out ›</a></p>
+	<p>.content-box { margin: 1em auto; max-width: 100%; box-sizing: border-box; } .content-box img { padding: .5em; border: 1px solid #ddd; border-radius: 3px; max-height: 100%; box-sizing: border-box; } .content-box[data-image="1"] img { background-color: #f3f3f3; padding: 0; } .content-box[data-image="2"] img { background-color: #fff; padding: 0; } .content-box[data-image="3"] img { background-color: #eee; padding: 0; } @media (min-width: 768px) { .content-box[data-image="1"] img { height: 314px; } .content-box[data-image="2"] img { height: 449px; } .content-box[data-image="3"] img { height: 428px; } } .content-footer { display: flex; align-items: center; justify-content: center; flex-flow: column; padding: 1em .5em; background: #272727; color: #f1f1f1; line-height: 1.533; position: absolute; left: 0; right: 0; } .content-footer .email-pitch { text-align: center; } .content-footer #mc-embedded-subscribe-form { display: flex; align-items: center; } .content-footer #mce-responses { margin-left: .5em; } .content-footer #mce-EMAIL { flex: 0 1 auto !important; width: 245px; margin: 0; } .content-footer #mce-EMAIL, .content-footer #mc-embedded-subscribe { height: 2.4em; font-size: 1.2em; line-height: 1; } .content-footer #mc-embedded-subscribe { padding: .55em 1em; font-weight: 500; } .content-footer #mc-embedded-subscribe-form, .content-footer #mc-embedded-subscribe-form &gt; * { flex: 0 0 auto; } .content-footer .email-container { display: flex; } .content-footer .playbook-container { display: flex; align-items: center; } .content-footer .content-accent { flex: 0 0 auto; } .content-footer .content-accent img { height: 145px; margin-right: 2em; } .content-footer .content-headline { font-size: 2.1em; font-weight: bold; } .content-footer .content-description { font-size: .9em; max-width: 600px; margin-bottom: 1em; } @media (max-width: 768px) { .content-footer .email-container { flex: 1 1 auto; width: 100%; } .content-footer .playbook-container { flex-flow: column; } } /* Floating Sidebar */ body.floating-sidebar .primary-content, body.floating-sidebar .post-content { width: 100% !important; } body.floating-sidebar aside.sidebar { float: right !important; margin-bottom: 0.5em; } .post-content, .post-header { max-width: 36em; } body.floating-sidebar .post-content, body.floating-sidebar .post-header { max-width: none; } body.floating-sidebar .footer-nav { width: 100% !important; } /* Social */ .social { display: flex; align-items: center; } /*.fb_iframe_widget { padding-top: 3px; padding-right: 1px; }*/ .social &gt; * + * { margin-right: 0 !important; margin-left: 7px !important; } .social &gt; .IN-widget { margin-bottom: -2px !important; margin-left: 9px !important; } /* Hide period after author */ .post-header .meta a { border-right: 5px solid white; margin-right: -5px; position: relative; } /* Post */ body { background-color: white; } .post-header, .post-content p, .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content pre, .post-content ul, .post-content figcaption { display: block; margin-left: auto; margin-right: auto; width: 75%; } .post-content pre { width: 55%; font-size: .7em; margin-bottom: 1.9em; } .post-content figcaption { text-align: center; font-style: italic; opacity: .8; margin-top: 0.2em; margin-bottom: 1.9em; font-size: .9em; } pre, code { font-size: inherit; line-height: inherit; } section.primary-content { font-size: 16px; line-height: 1.6; color: black; } blockquote { padding-bottom: 1.5em; padding-top: 1em; font-style: italic; font-size: 1.2rem; } blockquote.pull-quote-centered { font-size: 1.2em; text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; } blockquote blockquote { margin-left: 1em; padding-left: 1em; border-left: 5px solid rgba(0, 0, 0, 0.2); padding-bottom: 0.5em; padding-top: 0.5em; margin-bottom: 0.5em; margin-top: 0.5em; } p.attribution { color: #666; font-size: 0.8em; padding-bottom: 1em; } a code.year { text-decoration: underline; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0.75em 0; } .closing-cards #mc_embed_signup input { font-size: 1.5em; height: auto; } .closing-cards #mc_embed_signup input[type="email"] { border: 1px solid #bcbcbc; border-radius: 2px; margin-bottom: 0; } .closing-cards #mc_embed_signup input[type="submit"] { background: #f38020; color: #fff; padding: .8em 1em .8em 1em; white-space: nowrap; line-height: 1.2; text-align: center; border-radius: 2px; border: 0; display: inline-block; text-rendering: optimizeLegibility; -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: subpixel-antialiased; user-select: none; -webkit-appearance: none; appearance: none; letter-spacing: .04em; text-indent: .04em; cursor: pointer; } .closing-cards #mc_embed_signup div.mce_inline_error { background-color: transparent; color: #C33; padding: 0; display: inline-block; font-size: 0.9em; } .closing-cards #mc_embed_signup p:not(:empty) { line-height: 1.5; margin-bottom: 2em; } .closing-cards #mc_embed_signup input[type="email"] { font-size: 20px !important; width: 100% !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0 !important; } .closing-cards #mc_embed_signup input[type="submit"] { font-size: 20px !important; margin-top: .5em !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup div.mce_inline_error { padding: 0; margin: 0; color: #F38020 !important; } aside.section.learn-more { display: none; } .closing-cards { background: #eee; width: 100%; list-style-type: none; margin-left: 0; } .closing-card { width: calc(50% - 10px) !important; font-size: 20px; padding: 1.5em; display: inline-block; box-sizing: border-box; vertical-align: top; } #mc_embed_signup { max-width: 400px; margin: 1em auto; } @media (min-width: 768px) { #mc_embed_signup { margin-left: 1em; } } @media (max-width: 788px){ .closing-card { width: 100% !important; } .closing-card + .closing-card { border-top: 10px solid white; } }</p>
+	<p>(function () {
+		'use strict'</p>
+	<p>document.body.style.visibility = 'hidden'</p>
+	<p>function fakeReady (fn) {
+		if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', fn)
+		} else {
+		fn()
+		}
+		}</p>
+	<p>window.$ = window.jQuery = function fakejQuery () {
+		return {
+		ready: fakeReady,
+		fitVids: function () {
+		// if (window.$.fn.fitVids) {
+		// window.$.fn.fitVids.apply(window.$.fn, arguments)
+		// }
+		}
+		}
+		}</p>
+	<p>window.$.fn = window.$.fn || {}</p>
+	<p>function restyleBlog () {
+		'use strict'</p>
+	<pre class="language-bash"><code class="language-bash">if (window.innerWidth &gt;= 800) {
+  var sidebar = document.querySelector('aside.sidebar')
+  var header = document.querySelector('header.post-header')
+  var post = document.querySelector('article.post')
+
+  try {
+    post.insertBefore(sidebar, header)
+    document.body.className += ' floating-sidebar'
+  } catch (e) { console.log('Style Error', e)}
+}
+
+try {
+  document.querySelector('body &gt; .wrapper .sidebar').style.display = 'none'
+} catch (e) { console.log('Style Error', e)}
+
+try {
+  var tagFooter = document.querySelector('.post-content + footer')
+  tagFooter.appendChild(document.querySelector('.post-header .social'))
+} catch (e) { console.log('Style Error', e)}
+
+function resizeFooter () {
+  post.style.paddingBottom = footer.clientHeight + 'px'
+}
+
+try {
+  var signup = document.querySelector('#mc\_embed\_signup')
+  signup.querySelector('#mce-EMAIL').placeholder = 'email@example.com'
+  signup.querySelector('#mc-embedded-subscribe').textContent = 'Get Updates'
+  signup.querySelector('#mc-embedded-subscribe').className += ' btn-warning'
+
+  var post = document.querySelector('.post-content')
+  var footer = post.querySelector('.content-footer')
+  footer.querySelector('.email-container').appendChild(signup)
+
+  window.addEventListener('resize', resizeFooter)
+  resizeFooter()
+} catch (e) { console.log('Style Error', e)}
+
+document.body.style.visibility = ''</code></pre>
+	<p>}</p>
+	<p>fakeReady(restyleBlog)
+		})()</p>
 </div>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> options </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> INSTALL_OPTIONS</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> product </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> INSTALL_PRODUCT</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> renderApp</span><span class="sk-24292e-fff"> () {</span><span class="sk-6a737d-8b8b8b94">/*...*/</span><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">window.</span><span class="sk-005cc5-fff">INSTALL_SCOPE</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  setOptions</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">nextOptions</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-24292e-fff">    options </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> nextOptions</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    renderApp</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  setProduct</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">nextProduct</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-24292e-fff">    product </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> nextProduct</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    renderApp</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<h3>? Comments &amp; Ratings</h3>
-<p>Our previous newsletter included two of our most requested features: customer feedback, and install metrics. Together these features have helped developers reach out to their customers and track down issues. Customers can now share their feedback publically with comments and ratings:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="605" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=715&amp;h=605&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=640&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=715&amp;h=605&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=750&amp;h=635&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=828&amp;h=701&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=1080&amp;h=914&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=1280&amp;h=1083&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QT03RXKR7QMRDDECVD2T.png&amp;w=1430&amp;h=1210&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Apps Platform Update: November Edition Embedded Image - PVqWYQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="605" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Cloudflare Apps Platform Update: November Edition Embedded Image - PVqWYQ"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p>Revealing older comments.</p>
-<p>Comments for previous releases are initially hidden to emphasize the most recent feedback. As customers send in new feedback, previous ratings will have less of an impact on your app’s sentiment. Apps that score well with customers will gradually increase your visibility in the public listing as well!</p>
-<h3>? Mananging DNS via Apps</h3>
-<p>We’ve saved the best for last! App developers can now manage a customer’s DNS records. The simplest way to define a DNS record is directly in your app’s <code>install.json</code> file. This for example, would allow a customer to create a CNAME to send traffic to your domain, and insert a <code>A</code> record on their root domain:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "resources"</span><span class="sk-24292e-fff">: [</span><span class="sk-6a737d-8b8b8b94">/*...*/</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "hooks"</span><span class="sk-24292e-fff">: [</span><span class="sk-6a737d-8b8b8b94">/*...*/</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "options"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    "properties"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "subdomain"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"string"</span></span>
-<span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "dns"</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">    {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"CNAME"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"{{subdomain}}"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"shops.myservice.com"</span></span>
-<span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">    {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"A"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"1.2.3.4"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "ttl"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "proxied"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>The customer can then confirm your changes after before completing their installation.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="512" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=715&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=640&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=715&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=750&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=828&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=1080&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=1280&amp;h=917&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HZ1DFE852KED40QEDBES.png&amp;w=1430&amp;h=1024&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Apps Platform Update: November Edition Embedded Image - xJZWet" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="512" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Cloudflare Apps Platform Update: November Edition Embedded Image - xJZWet"></div>
-</figure>
-<p>Requesting permission to access a customer’s email address and DNS entries.</p>
-<p>DNS records make it possible to add new records to a customer’s account for your email services, blogging platforms, customer management systems, <a href="https://www.cloudflare.com/apps/developer/docs/dns" target="_blank" rel="noopener noreferrer">and much, much more</a>!</p>
-<h4>⚙ Other Platform Improvements</h4>
-<p>We’ve made hundreds of changes since our last newsletter, some more visible than others. Here’s a quick recap of some our favorites:</p>
-<ul>
-	<li>New Cloudflare customers are onboarded with apps after registration</li>
-	<li>Updated docs on <a href="https://www.cloudflare.com/apps/developer/docs/webhooks#item-add-event" target="_blank" rel="noopener noreferrer">“item add” event</a></li>
-	<li>Developers can now optionally link to their public GitHub repository</li>
-	<li>A new input type: Numbers <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#number-with-unit" target="_blank" rel="noopener noreferrer">with units</a>!</li>
-</ul>
-<h2>Thank you ?</h2>
-<p>In the spirit of Thanksgiving, we raise a gravy boat to everyone who made this winter a little warmer. To the all the Cloudflarians and developers who sent in feedback, we say <strong>thank you!</strong></p>
-<p>Reach out at <a href="https://twitter.com/CloudflareApps" target="_blank" rel="noopener noreferrer">@CloudflareApps</a> and let us know what you’d like to see next!!!</p>
-<p>Until next time! ⛄️️</p>
-<p>— Teffen</p>
-<p>Powerful tools built by world-class developers, delivered by Cloudflare, easily added to your website.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="468" height="290" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4568S3SYJX45CYH6Z7KT8E.png&amp;w=468&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4568S3SYJX45CYH6Z7KT8E.png&amp;w=468&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 468w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4568S3SYJX45CYH6Z7KT8E.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4568S3SYJX45CYH6Z7KT8E.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4568S3SYJX45CYH6Z7KT8E.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4568S3SYJX45CYH6Z7KT8E.png&amp;w=936&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 936w" alt="Cloudflare Apps Platform Update: November Edition Embedded Image - tUDrmH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 468px) 468px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="468" height="290" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: Cloudflare Apps Platform Update: November Edition Embedded Image - tUDrmH"></div>
-</figure>
-<p>Up to $100k in Cloud Credits</p>
-<p>Cloudflare Apps makes it easy to get what you build installed, but building a great app also requires great infrastructure. We’ve partnered with Google to offer app developers like you up to $100,000 in free Google Cloud credits to support the apps you build.</p>
-<p><a href="https://www.cloudflare.com/apps/developer/offers/google" target="_blank" rel="noopener noreferrer">Check it out ›</a></p>
-<p>.content-box { margin: 1em auto; max-width: 100%; box-sizing: border-box; } .content-box img { padding: .5em; border: 1px solid #ddd; border-radius: 3px; max-height: 100%; box-sizing: border-box; } .content-box[data-image="1"] img { background-color: #f3f3f3; padding: 0; } .content-box[data-image="2"] img { background-color: #fff; padding: 0; } .content-box[data-image="3"] img { background-color: #eee; padding: 0; } @media (min-width: 768px) { .content-box[data-image="1"] img { height: 314px; } .content-box[data-image="2"] img { height: 449px; } .content-box[data-image="3"] img { height: 428px; } } .content-footer { display: flex; align-items: center; justify-content: center; flex-flow: column; padding: 1em .5em; background: #272727; color: #f1f1f1; line-height: 1.533; position: absolute; left: 0; right: 0; } .content-footer .email-pitch { text-align: center; } .content-footer #mc-embedded-subscribe-form { display: flex; align-items: center; } .content-footer #mce-responses { margin-left: .5em; } .content-footer #mce-EMAIL { flex: 0 1 auto !important; width: 245px; margin: 0; } .content-footer #mce-EMAIL, .content-footer #mc-embedded-subscribe { height: 2.4em; font-size: 1.2em; line-height: 1; } .content-footer #mc-embedded-subscribe { padding: .55em 1em; font-weight: 500; } .content-footer #mc-embedded-subscribe-form, .content-footer #mc-embedded-subscribe-form &gt; * { flex: 0 0 auto; } .content-footer .email-container { display: flex; } .content-footer .playbook-container { display: flex; align-items: center; } .content-footer .content-accent { flex: 0 0 auto; } .content-footer .content-accent img { height: 145px; margin-right: 2em; } .content-footer .content-headline { font-size: 2.1em; font-weight: bold; } .content-footer .content-description { font-size: .9em; max-width: 600px; margin-bottom: 1em; } @media (max-width: 768px) { .content-footer .email-container { flex: 1 1 auto; width: 100%; } .content-footer .playbook-container { flex-flow: column; } } /* Floating Sidebar */ body.floating-sidebar .primary-content, body.floating-sidebar .post-content { width: 100% !important; } body.floating-sidebar aside.sidebar { float: right !important; margin-bottom: 0.5em; } .post-content, .post-header { max-width: 36em; } body.floating-sidebar .post-content, body.floating-sidebar .post-header { max-width: none; } body.floating-sidebar .footer-nav { width: 100% !important; } /* Social */ .social { display: flex; align-items: center; } /*.fb_iframe_widget { padding-top: 3px; padding-right: 1px; }*/ .social &gt; * + * { margin-right: 0 !important; margin-left: 7px !important; } .social &gt; .IN-widget { margin-bottom: -2px !important; margin-left: 9px !important; } /* Hide period after author */ .post-header .meta a { border-right: 5px solid white; margin-right: -5px; position: relative; } /* Post */ body { background-color: white; } .post-header, .post-content p, .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content pre, .post-content ul, .post-content figcaption { display: block; margin-left: auto; margin-right: auto; width: 75%; } .post-content pre { width: 55%; font-size: .7em; margin-bottom: 1.9em; } .post-content figcaption { text-align: center; font-style: italic; opacity: .8; margin-top: 0.2em; margin-bottom: 1.9em; font-size: .9em; } pre, code { font-size: inherit; line-height: inherit; } section.primary-content { font-size: 16px; line-height: 1.6; color: black; } blockquote { padding-bottom: 1.5em; padding-top: 1em; font-style: italic; font-size: 1.2rem; } blockquote.pull-quote-centered { font-size: 1.2em; text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; } blockquote blockquote { margin-left: 1em; padding-left: 1em; border-left: 5px solid rgba(0, 0, 0, 0.2); padding-bottom: 0.5em; padding-top: 0.5em; margin-bottom: 0.5em; margin-top: 0.5em; } p.attribution { color: #666; font-size: 0.8em; padding-bottom: 1em; } a code.year { text-decoration: underline; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0.75em 0; } .closing-cards #mc_embed_signup input { font-size: 1.5em; height: auto; } .closing-cards #mc_embed_signup input[type="email"] { border: 1px solid #bcbcbc; border-radius: 2px; margin-bottom: 0; } .closing-cards #mc_embed_signup input[type="submit"] { background: #f38020; color: #fff; padding: .8em 1em .8em 1em; white-space: nowrap; line-height: 1.2; text-align: center; border-radius: 2px; border: 0; display: inline-block; text-rendering: optimizeLegibility; -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: subpixel-antialiased; user-select: none; -webkit-appearance: none; appearance: none; letter-spacing: .04em; text-indent: .04em; cursor: pointer; } .closing-cards #mc_embed_signup div.mce_inline_error { background-color: transparent; color: #C33; padding: 0; display: inline-block; font-size: 0.9em; } .closing-cards #mc_embed_signup p:not(:empty) { line-height: 1.5; margin-bottom: 2em; } .closing-cards #mc_embed_signup input[type="email"] { font-size: 20px !important; width: 100% !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0 !important; } .closing-cards #mc_embed_signup input[type="submit"] { font-size: 20px !important; margin-top: .5em !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup div.mce_inline_error { padding: 0; margin: 0; color: #F38020 !important; } aside.section.learn-more { display: none; } .closing-cards { background: #eee; width: 100%; list-style-type: none; margin-left: 0; } .closing-card { width: calc(50% - 10px) !important; font-size: 20px; padding: 1.5em; display: inline-block; box-sizing: border-box; vertical-align: top; } #mc_embed_signup { max-width: 400px; margin: 1em auto; } @media (min-width: 768px) { #mc_embed_signup { margin-left: 1em; } } @media (max-width: 788px){ .closing-card { width: 100% !important; } .closing-card + .closing-card { border-top: 10px solid white; } }</p>
-<p>(function () {<br>'use strict'</p>
-<p>document.body.style.visibility = 'hidden'</p>
-<p>function fakeReady (fn) {<br>if (document.readyState === 'loading') {<br>document.addEventListener('DOMContentLoaded', fn)<br>} else {<br>fn()<br>}<br>}</p>
-<p>window.$ = window.jQuery = function fakejQuery () {<br>return {<br>ready: fakeReady,<br>fitVids: function () {<br>// if (window.$.fn.fitVids) {<br>// window.$.fn.fitVids.apply(window.$.fn, arguments)<br>// }<br>}<br>}<br>}</p>
-<p>window.$.fn = window.$.fn || {}</p>
-<p>function restyleBlog () {<br>'use strict'</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">window.innerWidth</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 800</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> sidebar</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> document.querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'aside.sidebar'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> header</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> document.querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'header.post-header'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> post</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> document.querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'article.post'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  try</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    post.insertBefore(sidebar,</span><span class="sk-032f62-99ffe4"> header</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    document.body.className</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-032f62-99ffe4"> ' floating-sidebar'</span></span>
-<span class="line"><span class="sk-24292e-fff">  } catch (</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">) { </span><span class="sk-6f42c1-ffc799">console.log(</span><span class="sk-6f42c1-ffc799">'Style Error'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> e</span><span class="sk-24292e-fff">)}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  document.querySelector(</span><span class="sk-6f42c1-ffc799">'body &gt; .wrapper .sidebar'</span><span class="sk-24292e-fff">).style.display = </span><span class="sk-032f62-99ffe4">'none'</span></span>
-<span class="line"><span class="sk-24292e-fff">} catch (e) { console.log('Style Error', e)}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> tagFooter</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> document.querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'.post-content + footer'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  tagFooter.appendChild(document.querySelector(</span><span class="sk-6f42c1-ffc799">'.post-header .social'</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-24292e-fff">} catch (e) { console.log('Style Error', e)}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> resizeFooter</span><span class="sk-24292e-fff"> () {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  post.style.paddingBottom</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> footer.clientHeight</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> 'px'</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> signup</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> document.querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'#mc\_embed\_signup'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  signup.querySelector(</span><span class="sk-6f42c1-ffc799">'#mce-EMAIL'</span><span class="sk-24292e-fff">).placeholder = </span><span class="sk-032f62-99ffe4">'email@example.com'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  signup.querySelector(</span><span class="sk-6f42c1-ffc799">'#mc-embedded-subscribe'</span><span class="sk-24292e-fff">).textContent = </span><span class="sk-032f62-99ffe4">'Get Updates'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  signup.querySelector(</span><span class="sk-6f42c1-ffc799">'#mc-embedded-subscribe'</span><span class="sk-24292e-fff">).className += </span><span class="sk-032f62-99ffe4">' btn-warning'</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> post</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> document.querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'.post-content'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> footer</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> post.querySelector</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'.content-footer'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  footer.querySelector(</span><span class="sk-6f42c1-ffc799">'.email-container'</span><span class="sk-24292e-fff">).appendChild(</span><span class="sk-6f42c1-ffc799">signup</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  window.addEventListener(</span><span class="sk-6f42c1-ffc799">'resize'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> resizeFooter</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  resizeFooter</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">} catch (e) { console.log('Style Error', e)}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">document.body.style.visibility</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ''</span></span></code></pre>
-</div>
-<p>}</p>
-<p>fakeReady(restyleBlog)<br>})()</p>

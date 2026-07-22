@@ -1,192 +1,276 @@
-<p>We rely on technology to help us on a daily basis – if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening.</p>
-<p>However, who tells the application when it's the right time to send you a notification? For this, we generally rely on scheduled events. And when you are relying on them, you really want to make sure that they occur. Turns out, this can get difficult. The scheduler and storage backend need to be designed with scale in mind - otherwise you may hit limitations quickly.</p>
-<p>Workers, Durable Objects, and Alarms are actually a perfect match for this type of workload. Thanks to the distributed architecture of Durable Objects and their storage, they are a reliable and scalable option. Each Durable Object has access to its own isolated storage and alarm scheduler, both being automatically replicated and failover in case of failures.</p>
-<p>There are many use cases where having a reliable scheduler can come in handy: running a webhook service, sending emails to your customers a week after they sign up to keep them engaged, sending invoices reminders, and more!</p>
-<p>Today, we're going to show you how to build a scalable service that will schedule HTTP requests on a specific schedule or as one-off at a specific time as a way to guide you through any use case that requires scheduled events.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="407" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=715&amp;h=407&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=640&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=715&amp;h=407&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=750&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=828&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=1080&amp;h=615&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=1280&amp;h=729&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ESKEY7BRGGHDEAEK6KJK.png&amp;w=1430&amp;h=814&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1285 Embedded Image - vXJC8S" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="407" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1285 Embedded Image - vXJC8S"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h3>Quick intro into the application stack</h3>
-<p>Before we dive in, here are some of the tools we’re going to be using today:</p>
-<ul>
-	<li><a href="https://developers.cloudflare.com/workers/wrangler/get-started/#install" target="_blank" rel="noopener noreferrer">Wrangler</a> - CLI tool to develop and publish Workers</li>
-	<li><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> - runtime</li>
-	<li><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Cloudflare Durable Objects</a> - storage for HTTP requests and <a href="https://blog.cloudflare.com/durable-objects-alarms">Alarms</a> to schedule them</li>
-</ul>
-<p>The application is going to have the following components:</p>
-<ul>
-	<li>Scheduling system API to accept scheduled requests and manage Durable Objects</li>
-	<li>Unique Durable Object per scheduled request, each with</li>
-	<li>Storage - keeping the request metadata, such as URL, body, or headers.</li>
-	<li>Alarm - a timer (trigger) to wake Durable Object up.</li>
-</ul>
-<p>While we will focus on building the application, the Cloudflare global network will take care of the rest – storing and replicating our data, and making sure to wake our Durable Objects up when the time's right. Let’s build it!</p>
-<h3>Initialize new Workers project</h3>
-<p>Get started by generating a completely new Workers project using the <code>wrangler init</code> command, which makes creating new projects quick &amp; easy.</p>
-<p><strong>wrangler init -y durable-objects-requests-scheduler</strong></p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="251" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=715&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=640&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=715&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=750&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=828&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=1080&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=1280&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FTZXWT9B82HANT7ET4MB.png&amp;w=1430&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1285 Embedded Image - FMhl6d" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="251" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1285 Embedded Image - FMhl6d"></div>
-</figure>
-<p>For more information on how to install, authenticate, or update Wrangler, check out <a href="https://developers.cloudflare.com/workers/wrangler/get-started" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/wrangler/get-started</a></p>
-<h3>Preparing TypeScript types</h3>
-<p>From my personal experience, at least a draft of TypeScript types significantly helps to be more productive down the road, so let's prepare and describe our scheduled request in advance. Create a file types.ts in src directory and paste the following TypeScript definitions.</p>
-<p><strong>src/types.ts</strong></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-e36209-fff">    DO_REQUEST</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectNamespace</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> ScheduledRequest</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-e36209-fff">  url</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-6a737d-8b8b8b94"> // URL of the request</span></span>
-<span class="line"><span class="sk-e36209-fff">  triggerAt</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-6a737d-8b8b8b94"> // optional, unix timestamp in milliseconds, defaults to `new Date()`</span></span>
-<span class="line"><span class="sk-e36209-fff">  requestInit</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-6f42c1-ffc799"> RequestInit</span><span class="sk-6a737d-8b8b8b94"> // optional, includes method, headers, body</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1C6waWfup8WNAxRhRzJENn/9261d6f38b5106a6e244dec46776fc44/building-scheduling-system-with-workers-and-durable-objects.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>We rely on technology to help us on a daily basis – if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening.</p>
+	<p>However, who tells the application when it's the right time to send you a notification? For this, we generally rely on scheduled events. And when you are relying on them, you really want to make sure that they occur. Turns out, this can get difficult. The scheduler and storage backend need to be designed with scale in mind - otherwise you may hit limitations quickly.</p>
+	<p>Workers, Durable Objects, and Alarms are actually a perfect match for this type of workload. Thanks to the distributed architecture of Durable Objects and their storage, they are a reliable and scalable option. Each Durable Object has access to its own isolated storage and alarm scheduler, both being automatically replicated and failover in case of failures.</p>
+	<p>There are many use cases where having a reliable scheduler can come in handy: running a webhook service, sending emails to your customers a week after they sign up to keep them engaged, sending invoices reminders, and more!</p>
+	<p>Today, we're going to show you how to build a scalable service that will schedule HTTP requests on a specific schedule or as one-off at a specific time as a way to guide you through any use case that requires scheduled events.</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QsLhy4QmfImRWULDDCpRx/07a879528b6632d850fda9c141ba8707/Scheduling-system-with-Workers-and-Durable-Objects---Diagram.png" alt="" class="kg-image" width="1531" height="871" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="quick-intro-into-the-application-stack">Quick intro into the application stack</h3>
+		<a href="https://blog.cloudflare.com/#quick-intro-into-the-application-stack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Before we dive in, here are some of the tools we’re going to be using today:</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/wrangler/get-started/#install" target="_blank" rel="noopener noreferrer">Wrangler</a> - CLI tool to develop and publish Workers</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> - runtime</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Cloudflare Durable Objects</a> - storage for HTTP requests and <a href="https://blog.cloudflare.com/durable-objects-alarms">Alarms</a> to schedule them</p>
+		</li>
+	</ul>
+	<p>The application is going to have the following components:</p>
+	<ul>
+		<li>
+			<p>Scheduling system API to accept scheduled requests and manage Durable Objects</p>
+		</li>
+		<li>
+			<p>Unique Durable Object per scheduled request, each with</p>
+		</li>
+		<li>
+			<p>Storage - keeping the request metadata, such as URL, body, or headers.</p>
+		</li>
+		<li>
+			<p>Alarm - a timer (trigger) to wake Durable Object up.</p>
+		</li>
+	</ul>
+	<p>While we will focus on building the application, the Cloudflare global network will take care of the rest – storing and replicating our data, and making sure to wake our Durable Objects up when the time's right. Let’s build it!</p>
+	<div class="flex anchor relative">
+		<h3 id="initialize-new-workers-project">Initialize new Workers project</h3>
+		<a href="https://blog.cloudflare.com/#initialize-new-workers-project" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Get started by generating a completely new Workers project using the <code>wrangler init</code> command, which makes creating new projects quick &amp; easy.</p>
+	<p><b>wrangler init -y durable-objects-requests-scheduler</b></p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vgw0sXTG850ifbluBAbEy/57b6965270f884980aa64ebd4d90a914/pasted-image-0.png" alt="" class="kg-image" width="1600" height="562" loading="lazy">
+
+	</figure>
+	<p>For more information on how to install, authenticate, or update Wrangler, check out <a href="https://developers.cloudflare.com/workers/wrangler/get-started" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/wrangler/get-started</a></p>
+	<div class="flex anchor relative">
+		<h3 id="preparing-typescript-types">Preparing TypeScript types</h3>
+		<a href="https://blog.cloudflare.com/#preparing-typescript-types" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>From my personal experience, at least a draft of TypeScript types significantly helps to be more productive down the road, so let's prepare and describe our scheduled request in advance. Create a file types.ts in src directory and paste the following TypeScript definitions.</p>
+	<p><b>src/types.ts</b></p>
+	<pre class="language-typescript"><code class="language-typescript">export interface Env {
+    DO_REQUEST: DurableObjectNamespace
+}
+ 
+export interface ScheduledRequest {
+  url: string // URL of the request
+  triggerAt?: number // optional, unix timestamp in milliseconds, defaults to `new Date()`
+  requestInit?: RequestInit // optional, includes method, headers, body
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="a-scheduled-request-durable-object-class-alarm">A scheduled request Durable Object class &amp; alarm</h3>
+		<a href="https://blog.cloudflare.com/#a-scheduled-request-durable-object-class-alarm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Based on our architecture design, each scheduled request will be saved into its own Durable Object, effectively separating storage and alarms from each other and allowing our scheduling system to scale horizontally - there is no limit to the number of Durable Objects we create.</p>
+	<p>In the end, the Durable Object class is a matter of a couple of lines. The code snippet below accepts and saves the request body to a persistent storage and sets the alarm timer. Workers runtime will wake up the Durable Object and call the <code>alarm()</code> method to process the request.</p>
+	<p>The alarm method reads the scheduled request data from the storage, then processes the request, and in the end reschedules itself in case it's configured to be executed on a recurring schedule.</p>
+	<p><b>src/request-durable-object.ts</b></p>
+	<pre class="language-js"><code class="language-js">import { ScheduledRequest } from "./types";
+ 
+export class RequestDurableObject {
+  id: string|DurableObjectId
+  storage: DurableObjectStorage
+ 
+  constructor(state:DurableObjectState) {
+    this.storage = state.storage
+    this.id = state.id
+  }
+ 
+    async fetch(request:Request) {
+    // read scheduled request from request body
+    const scheduledRequest:ScheduledRequest = await request.json()
+     
+    // save scheduled request data to Durable Object storage, set the alarm, and return Durable Object id
+    this.storage.put("request", scheduledRequest)
+    this.storage.setAlarm(scheduledRequest.triggerAt || new Date())
+    return new Response(JSON.stringify({
+      id: this.id.toString()
+    }), {
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+  }
+ 
+  async alarm() {
+    // read the scheduled request from Durable Object storage
+    const scheduledRequest:ScheduledRequest|undefined = await this.storage.get("request")
+ 
+    // call fetch on scheduled request URL with optional requestInit
+    if (scheduledRequest) {
+      await fetch(scheduledRequest.url, scheduledRequest.requestInit ? webhook.requestInit : undefined)
+ 
+      // cleanup scheduled request once done
+      this.storage.deleteAll()
+    }
+  }
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="wrangler-configuration">Wrangler configuration</h3>
+		<a href="https://blog.cloudflare.com/#wrangler-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Once we have the Durable Object class, we need to create a Durable Object binding by instructing Wrangler where to find it and what the exported class name is.</p>
+	<p><b>wrangler.toml</b></p>
+	<pre class="language-toml"><code class="language-toml">name = "durable-objects-request-scheduler"
+main = "src/index.ts"
+compatibility_date = "2022-08-02"
+ 
+# added Durable Objects configuration
+[durable_objects]
+bindings = [
+  { name = "DO_REQUEST", class_name = "RequestDurableObject" },
+]
+ 
+[[migrations]]
+tag = "v1"
+new_classes = ["RequestDurableObject"]</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="scheduling-system-api">Scheduling system API</h3>
+		<a href="https://blog.cloudflare.com/#scheduling-system-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The API Worker will accept POST HTTP methods only, and is expecting a JSON body with scheduled request data - what URL to call, optionally what method, headers, or body to send. Any other method than POST will return 405 - Method Not Allowed HTTP error.</p>
+	<p>HTTP <code>POST /:scheduledRequestId?</code> will create or override a scheduled request, where :scheduledRequestId is optional Durable Object ID returned from a scheduling system API before.</p>
+	<p><b>src/index.ts</b></p>
+	<pre class="language-js"><code class="language-js">import { Env } from "./types"
+export { RequestDurableObject } from "./request-durable-object"
+ 
+export default {
+    async fetch(
+        request: Request,
+        env: Env
+    ): Promise&lt;Response&gt; {
+        if (request.method !== "POST") {
+            return new Response("Method Not Allowed", {status: 405})
+        }
+ 
+        // parse the URL and get Durable Object ID from the URL
+        const url = new URL(request.url)
+        const idFromUrl = url.pathname.slice(1)
+ 
+        // construct the Durable Object ID, use the ID from pathname or create a new unique id
+        const doId = idFromUrl ? env.DO_REQUEST.idFromString(idFromUrl) : env.DO_REQUEST.newUniqueId()
+ 
+        // get the Durable Object stub for our Durable Object instance
+        const stub = env.DO_REQUEST.get(doId)
+ 
+        // pass the request to Durable Object instance
+        return stub.fetch(request)
+    },
+}</code></pre>
+	<p>It's good to mention that the script above does not implement any listing of scheduled or processed webhooks. Depending on how the scheduling system would be integrated, you can save each created Durable Object ID to your existing backend, or write your own registry – using one of the <a href="https://developers.cloudflare.com/workers/get-started/storage-objects" target="_blank" rel="noopener noreferrer">Workers storage options</a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="starting-a-local-development-server-and-testing-our-application">Starting a local development server and testing our application</h3>
+		<a href="https://blog.cloudflare.com/#starting-a-local-development-server-and-testing-our-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are almost done! Before we publish our scheduler system to the Cloudflare edge, let's start Wrangler in a completely local mode to run a couple of tests against it and to see it in action – which will work even without an Internet connection!</p>
+	<pre class="language-bash"><code class="language-bash">wrangler dev --local</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2O2DcPjirepk7sgbtlMpbn/7cef2cc7d230dc4c0010ceb08c84da06/pasted-image-0--1-.png" alt="" class="kg-image" width="1600" height="614" loading="lazy">
+
+	</figure>
+	<p>The development server is listening on localhost:8787, which we will use for scheduling our first request. The JSON request payload should match the TypeScript schema we defined in the beginning – required URL, and optional <code>triggerEverySeconds</code> number or <code>triggerAt</code> unix timestamp. When only the required URL is passed, the request will be dispatched right away.</p>
+	<p>An example of request payload that will send a GET request to <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a> every 30 seconds.</p>
+	<pre class="language-json"><code class="language-json">{
+	"url":  "https://example.com",
+	"triggerEverySeconds": 30,
+}</code></pre>
+
+	<pre class="language-bash"><code class="language-bash">&gt; curl -X POST -d '{"url": "https://example.com", "triggerEverySeconds": 30}' http://localhost:8787
+{"id":"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"}</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/74kGUzg7MYccSbLySud2e5/a7cdb2781a32c2b95953d25109f3bcce/pasted-image-0--2-.png" alt="" class="kg-image" width="1600" height="998" loading="lazy">
+
+	</figure>
+	<p>From the wrangler logs we can see the scheduled request ID <code>000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f</code> is being triggered in 30s intervals.</p>
+	<p>Need to double the interval? No problem, just send a new POST request and pass the request ID as a pathname.</p>
+	<pre class="language-bash"><code class="language-bash">&gt; curl -X POST -d '{"url": "https://example.com", "triggerEverySeconds": 60}' http://localhost:8787/000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f
+{"id":"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"}</code></pre>
+	<p>Every scheduled request gets a unique Durable Object ID with its own storage and alarm. As we demonstrated, the ID becomes handy when you need to change the settings of the scheduled request, or to deschedule them completely.</p>
+	<div class="flex anchor relative">
+		<h3 id="publishing-to-the-network">Publishing to the network</h3>
+		<a href="https://blog.cloudflare.com/#publishing-to-the-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Following command will bundle our Workers application, export and bind Durable Objects, and deploy it to our workers.dev subdomain.</p>
+	<pre class="language-bash"><code class="language-bash">wrangler publish</code></pre>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3p4tcXHgshwEhYihU8blKm/2dd1a3d76fcb72e056e94540228c2c3a/pasted-image-0--3-.png" alt="" class="kg-image" width="1190" height="500" loading="lazy">
+
+	</figure>
+	<p>That's it, we are live! ? The URL of your deployment is shown in the Workers logs. In a reasonably short period of time we managed to write our own scheduling system that is ready to handle requests at scale.</p>
+	<p>You can check full source code in <a href="https://github.com/cloudflare/templates/tree/main/worker-example-request-scheduler" target="_blank" rel="noopener noreferrer">Workers templates repository</a>, or experiment from your browser without installing any dependencies locally using the <a href="https://workers.new/example-request-scheduler" target="_blank" rel="noopener noreferrer">StackBlitz template</a>.</p>
+	<p><b>What to see or build next</b></p>
+	<ul>
+		<li>
+			<p>New to Workers? Check our Get started guide.</p>
+		</li>
+		<li>
+			<p>Use <a href="https://www.cloudflare.com/products/zero-trust/access" target="_blank" rel="noopener noreferrer">Access</a> or <a href="https://developers.cloudflare.com/workers/runtime-apis/service-bindings" target="_blank" rel="noopener noreferrer">service bindings</a> if you want to protect your API from unauthorized access.</p>
+		</li>
+		<li>
+			<p>Got an idea for a Worker, get started in seconds =&gt; <a href="https://workers.new/typescript" target="_blank" rel="noopener noreferrer">https://workers.new/typescript</a> (<a href="https://workers.new/list" target="_blank" rel="noopener noreferrer">full list of StackBlitz supported templates</a>)</p>
+		</li>
+		<li>
+			<p>Dive into more Workers examples</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers/examples" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/examples/</a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/templates" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/templates</a></p>
+		</li>
+	</ul>
 </div>
-<h3>A scheduled request Durable Object class &amp; alarm</h3>
-<p>Based on our architecture design, each scheduled request will be saved into its own Durable Object, effectively separating storage and alarms from each other and allowing our scheduling system to scale horizontally - there is no limit to the number of Durable Objects we create.</p>
-<p>In the end, the Durable Object class is a matter of a couple of lines. The code snippet below accepts and saves the request body to a persistent storage and sets the alarm timer. Workers runtime will wake up the Durable Object and call the <code>alarm()</code> method to process the request.</p>
-<p>The alarm method reads the scheduled request data from the storage, then processes the request, and in the end reschedules itself in case it's configured to be executed on a recurring schedule.</p>
-<p><strong>src/request-durable-object.ts</strong></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { ScheduledRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./types"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> RequestDurableObject</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-e36209-fff">  id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">DurableObjectId</span></span>
-<span class="line"><span class="sk-e36209-fff">  storage</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectStorage</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">state</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">DurableObjectState</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.storage </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state.storage</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state.id</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">Request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // read scheduled request from request body</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> scheduledRequest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">ScheduledRequest</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">     </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // save scheduled request data to Durable Object storage, set the alarm, and return Durable Object id</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"request"</span><span class="sk-24292e-fff">, scheduledRequest)</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">setAlarm</span><span class="sk-24292e-fff">(scheduledRequest.triggerAt </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-24292e-fff">      id: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.id.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">    }), {</span></span>
-<span class="line"><span class="sk-24292e-fff">      headers: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span></span>
-<span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    })</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> alarm</span><span class="sk-24292e-fff">() {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // read the scheduled request from Durable Object storage</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> scheduledRequest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">ScheduledRequest</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-005cc5-ffc799">undefined</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"request"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // call fetch on scheduled request URL with optional requestInit</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (scheduledRequest) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(scheduledRequest.url, scheduledRequest.requestInit </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> webhook.requestInit </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // cleanup scheduled request once done</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">deleteAll</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<h3>Wrangler configuration</h3>
-<p>Once we have the Durable Object class, we need to create a Durable Object binding by instructing Wrangler where to find it and what the exported class name is.</p>
-<p><strong>wrangler.toml</strong></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name = "durable-objects-request-scheduler"</span></span>
-<span class="line"><span>main = "src/index.ts"</span></span>
-<span class="line"><span>compatibility_date = "2022-08-02"</span></span>
-<span class="line"><span> </span></span>
-<span class="line"><span># added Durable Objects configuration</span></span>
-<span class="line"><span>[durable_objects]</span></span>
-<span class="line"><span>bindings = [</span></span>
-<span class="line"><span>  { name = "DO_REQUEST", class_name = "RequestDurableObject" },</span></span>
-<span class="line"><span>]</span></span>
-<span class="line"><span> </span></span>
-<span class="line"><span>[[migrations]]</span></span>
-<span class="line"><span>tag = "v1"</span></span>
-<span class="line"><span>new_classes = ["RequestDurableObject"]</span></span></code></pre>
-</div>
-<h3>Scheduling system API</h3>
-<p>The API Worker will accept POST HTTP methods only, and is expecting a JSON body with scheduled request data - what URL to call, optionally what method, headers, or body to send. Any other method than POST will return 405 - Method Not Allowed HTTP error.</p>
-<p>HTTP <code>POST /:scheduledRequestId?</code> will create or override a scheduled request, where :scheduledRequestId is optional Durable Object ID returned from a scheduling system API before.</p>
-<p><strong>src/index.ts</strong></p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Env } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./types"</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { RequestDurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./request-durable-object"</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
-<span class="line"><span class="sk-e36209-fff">        request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-e36209-fff">        env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span></span>
-<span class="line"><span class="sk-24292e-fff">    )</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (request.method </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> "POST"</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Method Not Allowed"</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">405</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">        // parse the URL and get Durable Object ID from the URL</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> idFromUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> url.pathname.</span><span class="sk-6f42c1-ffc799">slice</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">        // construct the Durable Object ID, use the ID from pathname or create a new unique id</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> doId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> idFromUrl </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DO_REQUEST</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">idFromString</span><span class="sk-24292e-fff">(idFromUrl) </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DO_REQUEST</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">newUniqueId</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">        // get the Durable Object stub for our Durable Object instance</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> stub</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DO_REQUEST</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(doId)</span></span>
-<span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">        // pass the request to Durable Object instance</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>It's good to mention that the script above does not implement any listing of scheduled or processed webhooks. Depending on how the scheduling system would be integrated, you can save each created Durable Object ID to your existing backend, or write your own registry – using one of the <a href="https://developers.cloudflare.com/workers/get-started/storage-objects" target="_blank" rel="noopener noreferrer">Workers storage options</a>.</p>
-<h3>Starting a local development server and testing our application</h3>
-<p>We are almost done! Before we publish our scheduler system to the Cloudflare edge, let's start Wrangler in a completely local mode to run a couple of tests against it and to see it in action – which will work even without an Internet connection!</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-005cc5-99ffe4"> --local</span></span></code></pre>
-</div>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="274" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=715&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=640&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=715&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=750&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=828&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=1080&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=1280&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458N4XDR9NP59FHXPASCN1.png&amp;w=1430&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1285 Embedded Image - 5iu1b4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="274" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1285 Embedded Image - 5iu1b4"></div>
-</figure>
-<p>The development server is listening on localhost:8787, which we will use for scheduling our first request. The JSON request payload should match the TypeScript schema we defined in the beginning – required URL, and optional <code>triggerEverySeconds</code> number or <code>triggerAt</code> unix timestamp. When only the required URL is passed, the request will be dispatched right away.</p>
-<p>An example of request payload that will send a GET request to <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a> every 30 seconds.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">	"url"</span><span class="sk-24292e-fff">:  </span><span class="sk-032f62-99ffe4">"https://example.com"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">	"triggerEverySeconds"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">30</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> curl -X POST -d </span><span class="sk-032f62-99ffe4">'{"url": "https://example.com", "triggerEverySeconds": 30}'</span><span class="sk-24292e-fff"> http://localhost:8787</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"</span><span class="sk-6f42c1-ffc799">}</span></span></code></pre>
-</div>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="446" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=715&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=640&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=715&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=750&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=828&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=1080&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=1280&amp;h=798&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7MZEE190CAHFFKKNKKF.png&amp;w=1430&amp;h=892&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1285 Embedded Image - i4TUqE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="446" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1285 Embedded Image - i4TUqE"></div>
-</figure>
-<p>From the wrangler logs we can see the scheduled request ID <code>000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f</code> is being triggered in 30s intervals.</p>
-<p>Need to double the interval? No problem, just send a new POST request and pass the request ID as a pathname.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> curl -X POST -d </span><span class="sk-032f62-99ffe4">'{"url": "https://example.com", "triggerEverySeconds": 60}'</span><span class="sk-24292e-fff"> http://localhost:8787/000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"000000018265a5ecaa5d3c0ab6a6997bf5638fdcb1a8364b269bd2169f022b0f"</span><span class="sk-6f42c1-ffc799">}</span></span></code></pre>
-</div>
-<p>Every scheduled request gets a unique Durable Object ID with its own storage and alarm. As we demonstrated, the ID becomes handy when you need to change the settings of the scheduled request, or to deschedule them completely.</p>
-<h3>Publishing to the network</h3>
-<p>Following command will bundle our Workers application, export and bind Durable Objects, and deploy it to our workers.dev subdomain.</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> publish</span></span></code></pre>
-</div>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="300" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=715&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=640&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=715&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=750&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=828&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=1080&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=1280&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A3J48WCA4Y8CN2T29Z39.png&amp;w=1430&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1285 Embedded Image - dmHuZP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="300" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-1285 Embedded Image - dmHuZP"></div>
-</figure>
-<p>That's it, we are live! ? The URL of your deployment is shown in the Workers logs. In a reasonably short period of time we managed to write our own scheduling system that is ready to handle requests at scale.</p>
-<p>You can check full source code in <a href="https://github.com/cloudflare/templates/tree/main/worker-example-request-scheduler" target="_blank" rel="noopener noreferrer">Workers templates repository</a>, or experiment from your browser without installing any dependencies locally using the <a href="https://workers.new/example-request-scheduler" target="_blank" rel="noopener noreferrer">StackBlitz template</a>.</p>
-<p><strong>What to see or build next</strong></p>
-<ul>
-	<li>New to Workers? Check our Get started guide.</li>
-	<li>Use <a href="https://www.cloudflare.com/products/zero-trust/access" target="_blank" rel="noopener noreferrer">Access</a> or <a href="https://developers.cloudflare.com/workers/runtime-apis/service-bindings" target="_blank" rel="noopener noreferrer">service bindings</a> if you want to protect your API from unauthorized access.</li>
-	<li>Got an idea for a Worker, get started in seconds =&gt; <a href="https://workers.new/typescript" target="_blank" rel="noopener noreferrer">https://workers.new/typescript</a> (<a href="https://workers.new/list" target="_blank" rel="noopener noreferrer">full list of StackBlitz supported templates</a>)</li>
-	<li>Dive into more Workers examples</li>
-	<li><a href="https://developers.cloudflare.com/workers/examples" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/examples/</a></li>
-	<li><a href="https://github.com/cloudflare/templates" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/templates</a></li>
-</ul>

@@ -1,216 +1,321 @@
-<p>We use <a href="https://kubernetes.io" target="_blank" rel="noopener noreferrer">Kubernetes</a> to run many of the diverse services that help us control Cloudflare’s edge. We have five geographically diverse clusters, with hundreds of nodes in our largest cluster. These clusters are self-managed on bare-metal machines which gives us a good amount of power and flexibility in the software and integrations with Kubernetes. However, it also means we don’t have a cloud provider to rely on for virtualizing or managing the nodes. This distinction becomes even more prominent when considering all the different reasons that nodes degrade. With self-managed bare-metal machines, the list of reasons that cause a node to become unhealthy include:</p>
-<ul>
-	<li>Hardware failures</li>
-	<li>Kernel-level software failures</li>
-	<li>Kubernetes cluster-level software failures</li>
-	<li>Degraded network communication</li>
-	<li>Software updates are required</li>
-	<li>Resource exhaustion<span data-portabletext-unknown="mark">1</span></li>
-</ul>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="424" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=715&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=640&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=715&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=750&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=828&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=1080&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=1280&amp;h=759&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4785P4SEVW6YBJ56PM7GVH.png&amp;w=1430&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-504 Embedded Image - S7BflW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="424" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-504 Embedded Image - S7BflW"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<h2>Unhappy Nodes</h2>
-<p>We have plenty of examples of failures in the aforementioned categories, but one example has been particularly tedious to deal with. It starts with the following log line from the kernel:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">unregister_netdevice:</span><span class="sk-032f62-99ffe4"> waiting</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> become</span><span class="sk-032f62-99ffe4"> free.</span><span class="sk-032f62-99ffe4"> Usage</span><span class="sk-032f62-99ffe4"> count</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bDeGboXLXEelFgcecLQw1/e289bb59823fd588fbba923d2a511dd2/automatic-remediation-of-kubernetes-nodes.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>We use <a href="https://kubernetes.io" target="_blank" rel="noopener noreferrer">Kubernetes</a> to run many of the diverse services that help us control Cloudflare’s edge. We have five geographically diverse clusters, with hundreds of nodes in our largest cluster. These clusters are self-managed on bare-metal machines which gives us a good amount of power and flexibility in the software and integrations with Kubernetes. However, it also means we don’t have a cloud provider to rely on for virtualizing or managing the nodes. This distinction becomes even more prominent when considering all the different reasons that nodes degrade. With self-managed bare-metal machines, the list of reasons that cause a node to become unhealthy include:</p>
+	<ul>
+		<li>
+			<p>Hardware failures</p>
+		</li>
+		<li>
+			<p>Kernel-level software failures</p>
+		</li>
+		<li>
+			<p>Kubernetes cluster-level software failures</p>
+		</li>
+		<li>
+			<p>Degraded network communication</p>
+		</li>
+		<li>
+			<p>Software updates are required</p>
+		</li>
+		<li>
+			<p>Resource exhaustion<sup>1</sup></p>
+		</li>
+	</ul>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59IDEspjCRavbrtH1Rtu4r/a5f057aa79b2aae10fc0073b8f3b5573/image2-5.png" alt="" class="kg-image" width="1482" height="879" loading="lazy">
+
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="unhappy-nodes">Unhappy Nodes</h2>
+		<a href="https://blog.cloudflare.com/#unhappy-nodes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We have plenty of examples of failures in the aforementioned categories, but one example has been particularly tedious to deal with. It starts with the following log line from the kernel:</p>
+	<pre class="language-bash"><code class="language-bash">unregister_netdevice: waiting for lo to become free. Usage count = 1</code></pre>
+	<p>The issue is further observed with the number of network interfaces on the node owned by the Container Network Interface (CNI) plugin getting out of proportion with the number of running pods:</p>
+	<pre class="language-bash"><code class="language-bash">$ ip link | grep cali | wc -l
+1088</code></pre>
+	<p>This is unexpected as it shouldn't exceed the maximum number of pods allowed on a node (we use the default limit of 110). While this issue is interesting and perhaps worthy of a whole separate blog, the short of it is that the Linux network interfaces owned by the CNI are not getting cleaned up after a pod terminates.</p>
+	<p>Some history on this can be read in a <a href="https://github.com/moby/moby/issues/5618" target="_blank" rel="noopener noreferrer">Docker GitHub issue</a>. We found this seems to plague nodes with a longer uptime, and after rebooting the node it would be fine for about a month. However, with a significant number of nodes, this was happening multiple times per day. Each instance would need rebooting, which means going through our worker reboot procedure which looked like this:</p>
+	<ol>
+		<li>
+			<p>Cordon off the affected node to prevent new workloads from scheduling on it.</p>
+		</li>
+		<li>
+			<p>Collect any diagnostic information for later investigation.</p>
+		</li>
+		<li>
+			<p>Drain the node of current workloads.</p>
+		</li>
+		<li>
+			<p>Reboot and wait for the node to come back.</p>
+		</li>
+		<li>
+			<p>Verify the node is healthy.</p>
+		</li>
+		<li>
+			<p>Re-enable scheduling of new workloads to the node.</p>
+		</li>
+	</ol>
+	<p>While solving the underlying issue would be ideal, we needed a mitigation to avoid toil in the meantime — an automated node remediation process.</p>
+	<div class="flex anchor relative">
+		<h2 id="existing-detection-and-remediation-solutions">Existing Detection and Remediation Solutions</h2>
+		<a href="https://blog.cloudflare.com/#existing-detection-and-remediation-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While not complicated, the manual remediation process outlined previously became tedious and distracting, as we had to reboot nodes multiple times a day. Some manual intervention is unavoidable, but for cases matching the following, we wanted automation:</p>
+	<ul>
+		<li>
+			<p>Generic worker nodes</p>
+		</li>
+		<li>
+			<p>Software issues confined to a given node</p>
+		</li>
+		<li>
+			<p>Already researched and diagnosed issues</p>
+		</li>
+	</ul>
+	<p>Limiting automatic remediation to generic worker nodes is important as there are other node types in our clusters where more care is required. For example, for control-plane nodes the process has to be augmented to check <a href="https://etcd.io" target="_blank" rel="noopener noreferrer">etcd</a> cluster health and ensure proper redundancy for components servicing the Kubernetes API. We are also going to limit the problem space to known software issues confined to a node where we expect automatic remediation to be the right answer (as in our ballooning network interface problem). With that in mind, we took a look at existing solutions that we could use.</p>
+	<div class="flex anchor relative">
+		<h3 id="node-problem-detector">Node Problem Detector</h3>
+		<a href="https://blog.cloudflare.com/#node-problem-detector" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/kubernetes/node-problem-detector" target="_blank" rel="noopener noreferrer">Node problem detector</a> is a daemon that runs on each node that detects problems and reports them to the Kubernetes API. It has a pluggable problem daemon system such that one can add their own logic for detecting issues with a node. Node problems are distinguished between temporary and permanent problems, with the latter being persisted as status conditions on the Kubernetes node resources.<sup>2</sup></p>
+	<div class="flex anchor relative">
+		<h3 id="draino-and-cluster-autoscaler">Draino and Cluster-Autoscaler</h3>
+		<a href="https://blog.cloudflare.com/#draino-and-cluster-autoscaler" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/planetlabs/draino" target="_blank" rel="noopener noreferrer">Draino</a> as its name implies, drains nodes but does so based on Kubernetes node conditions. It is meant to be used with <a href="https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler" target="_blank" rel="noopener noreferrer">cluster-autoscaler</a> which then can add or remove nodes via the cluster plugins to scale node groups.</p>
+	<div class="flex anchor relative">
+		<h3 id="kured">Kured</h3>
+		<a href="https://blog.cloudflare.com/#kured" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://github.com/weaveworks/kured" target="_blank" rel="noopener noreferrer">Kured</a> is a daemon that looks at the presence of a file on the node to initiate a drain, reboot and uncordon of the given node. It uses a locking mechanism via the Kubernetes API to ensure only a single node is acted upon at a time.</p>
+	<div class="flex anchor relative">
+		<h3 id="cluster-api">Cluster-API</h3>
+		<a href="https://blog.cloudflare.com/#cluster-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The <a href="https://github.com/kubernetes/community/tree/master/sig-cluster-lifecycle" target="_blank" rel="noopener noreferrer">Kubernetes cluster-lifecycle SIG</a> has been working on the <a href="https://github.com/kubernetes-sigs/cluster-api" target="_blank" rel="noopener noreferrer">cluster-api</a> project to enable declaratively defining clusters to simplify provisioning, upgrading, and operating multiple Kubernetes clusters. It has a concept of machine resources which back Kubernetes node resources and furthermore has a concept of <a href="https://cluster-api.sigs.k8s.io/tasks/healthcheck.html" target="_blank" rel="noopener noreferrer">machine health checks</a>. Machine health checks use node conditions to determine unhealthy nodes and then the cluster-api provider is then delegated to replace that machine via create and delete operations.</p>
+	<div class="flex anchor relative">
+		<h2 id="proof-of-concept">Proof of Concept</h2>
+		<a href="https://blog.cloudflare.com/#proof-of-concept" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Interestingly, with all the above except for Kured, there is a theme of pluggable components centered around Kubernetes node conditions. We wanted to see if we could build a proof of concept using the existing theme and solutions. For the existing solutions, draino with cluster-autoscaler didn’t make sense in a non-cloud environment like our bare-metal set up. The cluster-api health checks are interesting, however they require a more complete investment into the cluster-api project to really make sense. That left us with node-problem-detector and kured. Deploying node-problem-detector was simple, and we ended up testing a <a href="https://github.com/kubernetes/node-problem-detector/blob/master/docs/custom_plugin_monitor.md" target="_blank" rel="noopener noreferrer">custom-plugin-monitor</a> like the following:</p>
+	<pre class="language-bash"><code class="language-bash">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-problem-detector-config
+data:
+  check_calico_interfaces.sh: |
+    #!/bin/bash
+    set -euo pipefail
+    
+    count=$(nsenter -n/proc/1/ns/net ip link | grep cali | wc -l)
+    
+    if (( $count &gt; 150 )); then
+      echo "Too many calico interfaces ($count)"
+      exit 1
+    else
+      exit 0
+    fi
+  cali-monitor.json: |
+    {
+      "plugin": "custom",
+      "pluginConfig": {
+        "invoke_interval": "30s",
+        "timeout": "5s",
+        "max_output_length": 80,
+        "concurrency": 3,
+        "enable_message_change_based_condition_update": false
+      },
+      "source": "calico-custom-plugin-monitor",
+      "metricsReporting": false,
+      "conditions": [
+        {
+          "type": "NPDCalicoUnhealthy",
+          "reason": "CalicoInterfaceCountOkay",
+          "message": "Normal amount of interfaces"
+        }
+      ],
+      "rules": [
+        {
+          "type": "permanent",
+          "condition": "NPDCalicoUnhealthy",
+          "reason": "TooManyCalicoInterfaces",
+          "path": "/bin/bash",
+          "args": [
+            "/config/check_calico_interfaces.sh"
+          ],
+          "timeout": "3s"
+        }
+      ]
+    }</code></pre>
+	<p>Testing showed that when the condition became true, a condition would be updated on the associated Kubernetes node like so:</p>
+	<pre class="language-bash"><code class="language-bash">kubectl get node -o json worker1a | jq '.status.conditions[] | select(.type | test("^NPD"))'
+{
+  "lastHeartbeatTime": "2020-03-20T17:05:17Z",
+  "lastTransitionTime": "2020-03-20T17:05:16Z",
+  "message": "Too many calico interfaces (154)",
+  "reason": "TooManyCalicoInterfaces",
+  "status": "True",
+  "type": "NPDCalicoUnhealthy"
+}</code></pre>
+	<p>With that in place, the actual remediation needed to happen. Kured seemed to do most everything we needed, except that it was looking at a file instead of Kubernetes node conditions. We hacked together a patch to change that and tested it successfully end to end — we had a working proof of concept!</p>
+	<div class="flex anchor relative">
+		<h2 id="revisiting-problem-detection">Revisiting Problem Detection</h2>
+		<a href="https://blog.cloudflare.com/#revisiting-problem-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While the above worked, we found that node-problem-detector was unwieldy because we were replicating our existing monitoring into shell scripts and node-problem-detector configuration. A <a href="https://www.infoq.com/news/2017/10/monitoring-cloudflare-prometheus" target="_blank" rel="noopener noreferrer">2017 blog post</a> describes Cloudflare’s monitoring stack, although some things have changed since then. What hasn’t changed is our extensive usage of <a href="https://prometheus.io" target="_blank" rel="noopener noreferrer">Prometheus</a> and <a href="https://github.com/prometheus/alertmanager" target="_blank" rel="noopener noreferrer">Alertmanager</a>.</p>
+	<p>For the network interface issue and other issues we wanted to address, we already had the necessary exported metrics and alerting to go with them. Here is what our already existing alert looked like<sup>3</sup>:</p>
+	<pre class="language-bash"><code class="language-bash">- alert: CalicoTooManyInterfaces
+  expr: sum(node_network_info{device=~"cali.*"}) by (node) &gt;= 200
+  for: 1h
+  labels:
+    priority: "5"
+    notify: chat-sre-core chat-k8s</code></pre>
+	<p>Note that we use a “notify” label to drive the routing logic in Alertmanager. However, that got us asking, could we just route this to a Kubernetes node condition instead?</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-sciuro">Introducing Sciuro</h2>
+		<a href="https://blog.cloudflare.com/#introducing-sciuro" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Hx2xX6FXjjTsCdZZFmn7O/1e8be40972f81d59b9be18a1e60c68c4/image1-6.png" alt="" class="kg-image" width="805" height="253" loading="lazy">
+
+	</figure>
+	<p>Sciuro is our open-source replacement of node-problem-detector that has one simple job: synchronize Kubernetes node conditions with currently firing alerts in Alertmanager. Node problems can be defined with a more holistic view and using already existing exporters such as <a href="https://github.com/prometheus/node_exporter" target="_blank" rel="noopener noreferrer">node exporter</a>, <a href="https://github.com/google/cadvisor" target="_blank" rel="noopener noreferrer">cadvisor</a> or <a href="https://github.com/google/mtail" target="_blank" rel="noopener noreferrer">mtail</a>. It also doesn’t run on affected nodes which allows us to rely on out-of-band remediation techniques. Here is a high level diagram of how Sciuro works:</p>
+	<figure class="kg-card kg-image-card ">
+
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2TF20JXIsXxWApKN9yyEcy/fe4d2244e860fe8e0c1477e06ae24c30/image4-3.png" alt="" class="kg-image" width="1554" height="1983" loading="lazy">
+
+	</figure>
+	<p>Starting from the top, nodes are scraped by Prometheus, which collects those metrics and fires relevant alerts to Alertmanager. Sciuro polls Alertmanager for alerts with a matching receiver, matches them with a corresponding node resource in the Kubernetes API and updates that node’s conditions accordingly.</p>
+	<p>In more detail, we can start by defining an alert in Prometheus like the following:</p>
+	<pre class="language-bash"><code class="language-bash">- alert: CalicoTooManyInterfacesEarly
+  expr: sum(node_network_info{device=~"cali.*"}) by (node) &gt;= 150
+  labels:
+    priority: "6"
+    notify: node-condition-k8s</code></pre>
+	<p>Note the two differences from the previous alert. First, we use a new name with a more sensitive trigger. The idea is that we want automatic node remediation to try fixing the node first as soon as possible, but if the problem worsens or automatic remediation is failing, humans will still get notified to act. The second difference is that instead of notifying chat rooms, we route to a target called “node-condition-k8s”.</p>
+	<p>Sciuro then comes into play, polling the Altertmanager API for alerts matching the “node-condition-k8s” receiver. The following shows the equivalent using <a href="https://github.com/prometheus/alertmanager/tree/master/cmd/amtool" target="_blank" rel="noopener noreferrer">amtool</a>:</p>
+	<pre class="language-bash"><code class="language-bash">$ amtool alert query -r node-condition-k8s
+Alertname                 	Starts At            	Summary                                                               	 
+CalicoTooManyInterfacesEarly  2021-05-11 03:25:21 UTC  Kubernetes node worker1a has too many Calico interfaces  </code></pre>
+	<p>We can also check the labels for this alert:</p>
+	<pre class="language-bash"><code class="language-bash">$ amtool alert query -r node-condition-k8s -o json | jq '.[] | .labels'
+{
+  "alertname": "CalicoTooManyInterfacesEarly",
+  "cluster": "a.k8s",
+  "instance": "worker1a",
+  "node": "worker1a",
+  "notify": "node-condition-k8s",
+  "priority": "6",
+  "prometheus": "k8s-a"
+}</code></pre>
+	<p>Note the node and instance labels which Sciuro will use for matching with the corresponding Kubernetes node. Sciuro uses the excellent <a href="https://github.com/kubernetes-sigs/controller-runtime" target="_blank" rel="noopener noreferrer">controller-runtime</a> to keep track of and update node sources in the Kubernetes API. We can observe the updated node condition on the status field via kubectl:</p>
+	<pre class="language-bash"><code class="language-bash">$ kubectl get node worker1a -o json | jq '.status.conditions[] | select(.type | test("^AlertManager"))'
+{
+  "lastHeartbeatTime": "2021-05-11T03:31:20Z",
+  "lastTransitionTime": "2021-05-11T03:26:53Z",
+  "message": "[P6] Kubernetes node worker1a has too many Calico interfaces",
+  "reason": "AlertIsFiring",
+  "status": "True",
+  "type": "AlertManager_CalicoTooManyInterfacesEarly"
+}</code></pre>
+	<p>One important note is Sciuro added the AlertManager_ prefix to the node condition type to prevent conflicts with other node condition types. For example, DiskPressure, a kubelet managed condition, could also be an alert name. Sciuro will also properly update heartbeat and transition times to reflect when it first saw the alert and its last update. With node conditions synchronized by Sciuro, remediation can take place via one of the existing tools. As mentioned previously we are using a modified version of Kured for now.</p>
+	<p>We’re happy to announce that we’ve open sourced Sciuro, and it can be found on <a href="https://github.com/cloudflare/sciuro" target="_blank" rel="noopener noreferrer">GitHub</a> where you can read the code, find the deployment instructions, or open a Pull Request for changes.</p>
+	<div class="flex anchor relative">
+		<h2 id="managing-node-uptime">Managing Node Uptime</h2>
+		<a href="https://blog.cloudflare.com/#managing-node-uptime" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While we began using automatic node remediation for obvious problems, we’ve expanded its purpose to additionally keep node uptime low. Low node uptime is desirable to further reduce drift on nodes, keep the node initialization process well-oiled, and encourage the best deployment practices on the Kubernetes clusters. To expand on the last point, services that are deployed with best practices and in a high availability fashion should see negligible impact when a single node leaves the cluster. However, services that are not deployed with best practices will most likely have problems especially if they rely on singleton pods. By draining nodes more frequently, it introduces regular chaos that encourages best practices. To enable this with automatic node remediation the following alert was defined:</p>
+	<pre class="language-bash"><code class="language-bash">- alert: WorkerUptimeTooHigh
+  expr: |
+    (
+      (
+        (
+              max by(node) (kube_node_role{role="worker"})
+            - on(node) group_left()
+              (max by(node) (kube_node_role{role!="worker"}))
+          or on(node)
+            max by(node) (kube_node_role{role="worker"})
+        ) == 1
+      )
+    * on(node) group_left()
+      (
+        (time() - node_boot_time_seconds) &gt; (60 * 60 * 24 * 7)
+      )
+    )
+  labels:
+    priority: "9"
+    notify: node-condition-k8s</code></pre>
+	<p>There is a bit of juggling with the kube_node_roles metric in the above to isolate the alert to generic worker nodes, but at a high level it looks at node_boot_time_seconds, a metric from <a href="https://github.com/prometheus/node_exporter" target="_blank" rel="noopener noreferrer">prometheus node_exporter</a>. Again the notify label is configured to send to node conditions which kicks off the automatic node remediation. One further detail is the priority here is set to “9” which is of lower precedence than our other alerts. Note that the message field of the node condition is prefixed with the alert priority in brackets. This allows the remediation process to take priority into account when choosing which node to remediate first, which is important because Kured uses a lock to act on a single node at a time.</p>
+	<div class="flex anchor relative">
+		<h2 id="wrapping-up">Wrapping Up</h2>
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the past 30 days, we’ve used the above automatic node remediation process to action 571 nodes. That has saved our humans a considerable amount of time. We’ve also been able to reduce the time to repair for some issues as automatic remediation can act at all times of the day and with a faster response time.</p>
+	<p>As mentioned before, we’re open sourcing Sciuro and its code can be found on <a href="https://github.com/cloudflare/sciuro" target="_blank" rel="noopener noreferrer">GitHub</a>. We’re open to issues, suggestions, and pull requests. We do have some ideas for future improvements. For Sciuro, we may look to reduce latency which is mainly due to polling and potentially add a push model from Altermanager although this isn’t a need we’ve had yet. &nbsp;For the larger node remediation story, we hope to do an overhaul of the remediating component. As mentioned previously, we are currently using a fork of kured, but a future replacement component should include the following:</p>
+	<ul>
+		<li>
+			<p>Use out-of-band management interfaces to be able to shut down and power on nodes without a functional operating system.</p>
+		</li>
+		<li>
+			<p>Move from decentralized architecture to a centralized one that can integrate more complicated logic. This might include being able to act on entire failure domains in parallel.</p>
+		</li>
+		<li>
+			<p>Handle specialized nodes such as masters or storage nodes.</p>
+		</li>
+	</ul>
+	<p>Finally, we’re looking for more people passionate about Kubernetes to <a href="https://boards.greenhouse.io/cloudflare/jobs/816059?gh_jid=816059" target="_blank" rel="noopener noreferrer">join our team</a>. Come help us push Kubernetes to the next level to serve Cloudflare’s many needs!</p>
+	<hr>
+	<p><sup>1</sup>Exhaustion can be applied to hardware resources, kernel resources, or logical resources like the amount of logging being produced.</p>
+	<p><sup>2</sup>Nearly all Kubernetes objects have <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects" target="_blank" rel="noopener noreferrer">spec and status fields</a>. The status field is used to describe the current state of an object. For node resources, typically the kubelet manages a conditions field under the status field for reporting things like if the node is ready for servicing pods.
+		<sup>3</sup>The format of the following alert is documented on <a href="https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules" target="_blank" rel="noopener noreferrer">Prometheus Alerting Rules</a>.
+	</p>
 </div>
-<p>The issue is further observed with the number of network interfaces on the node owned by the Container Network Interface (CNI) plugin getting out of proportion with the number of running pods:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> cali</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">1088</span></span></code></pre>
-</div>
-<p>This is unexpected as it shouldn't exceed the maximum number of pods allowed on a node (we use the default limit of 110). While this issue is interesting and perhaps worthy of a whole separate blog, the short of it is that the Linux network interfaces owned by the CNI are not getting cleaned up after a pod terminates.</p>
-<p>Some history on this can be read in a <a href="https://github.com/moby/moby/issues/5618" target="_blank" rel="noopener noreferrer">Docker GitHub issue</a>. We found this seems to plague nodes with a longer uptime, and after rebooting the node it would be fine for about a month. However, with a significant number of nodes, this was happening multiple times per day. Each instance would need rebooting, which means going through our worker reboot procedure which looked like this:</p>
-<ol>
-	<li>Cordon off the affected node to prevent new workloads from scheduling on it.</li>
-	<li>Collect any diagnostic information for later investigation.</li>
-	<li>Drain the node of current workloads.</li>
-	<li>Reboot and wait for the node to come back.</li>
-	<li>Verify the node is healthy.</li>
-	<li>Re-enable scheduling of new workloads to the node.</li>
-</ol>
-<p>While solving the underlying issue would be ideal, we needed a mitigation to avoid toil in the meantime — an automated node remediation process.</p>
-<h2>Existing Detection and Remediation Solutions</h2>
-<p>While not complicated, the manual remediation process outlined previously became tedious and distracting, as we had to reboot nodes multiple times a day. Some manual intervention is unavoidable, but for cases matching the following, we wanted automation:</p>
-<ul>
-	<li>Generic worker nodes</li>
-	<li>Software issues confined to a given node</li>
-	<li>Already researched and diagnosed issues</li>
-</ul>
-<p>Limiting automatic remediation to generic worker nodes is important as there are other node types in our clusters where more care is required. For example, for control-plane nodes the process has to be augmented to check <a href="https://etcd.io" target="_blank" rel="noopener noreferrer">etcd</a> cluster health and ensure proper redundancy for components servicing the Kubernetes API. We are also going to limit the problem space to known software issues confined to a node where we expect automatic remediation to be the right answer (as in our ballooning network interface problem). With that in mind, we took a look at existing solutions that we could use.</p>
-<h3>Node Problem Detector</h3>
-<p><a href="https://github.com/kubernetes/node-problem-detector" target="_blank" rel="noopener noreferrer">Node problem detector</a> is a daemon that runs on each node that detects problems and reports them to the Kubernetes API. It has a pluggable problem daemon system such that one can add their own logic for detecting issues with a node. Node problems are distinguished between temporary and permanent problems, with the latter being persisted as status conditions on the Kubernetes node resources.<span data-portabletext-unknown="mark">2</span></p>
-<h3>Draino and Cluster-Autoscaler</h3>
-<p><a href="https://github.com/planetlabs/draino" target="_blank" rel="noopener noreferrer">Draino</a> as its name implies, drains nodes but does so based on Kubernetes node conditions. It is meant to be used with <a href="https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler" target="_blank" rel="noopener noreferrer">cluster-autoscaler</a> which then can add or remove nodes via the cluster plugins to scale node groups.</p>
-<h3>Kured</h3>
-<p><a href="https://github.com/weaveworks/kured" target="_blank" rel="noopener noreferrer">Kured</a> is a daemon that looks at the presence of a file on the node to initiate a drain, reboot and uncordon of the given node. It uses a locking mechanism via the Kubernetes API to ensure only a single node is acted upon at a time.</p>
-<h3>Cluster-API</h3>
-<p>The <a href="https://github.com/kubernetes/community/tree/master/sig-cluster-lifecycle" target="_blank" rel="noopener noreferrer">Kubernetes cluster-lifecycle SIG</a> has been working on the <a href="https://github.com/kubernetes-sigs/cluster-api" target="_blank" rel="noopener noreferrer">cluster-api</a> project to enable declaratively defining clusters to simplify provisioning, upgrading, and operating multiple Kubernetes clusters. It has a concept of machine resources which back Kubernetes node resources and furthermore has a concept of <a href="https://cluster-api.sigs.k8s.io/tasks/healthcheck.html" target="_blank" rel="noopener noreferrer">machine health checks</a>. Machine health checks use node conditions to determine unhealthy nodes and then the cluster-api provider is then delegated to replace that machine via create and delete operations.</p>
-<h2>Proof of Concept</h2>
-<p>Interestingly, with all the above except for Kured, there is a theme of pluggable components centered around Kubernetes node conditions. We wanted to see if we could build a proof of concept using the existing theme and solutions. For the existing solutions, draino with cluster-autoscaler didn’t make sense in a non-cloud environment like our bare-metal set up. The cluster-api health checks are interesting, however they require a more complete investment into the cluster-api project to really make sense. That left us with node-problem-detector and kured. Deploying node-problem-detector was simple, and we ended up testing a <a href="https://github.com/kubernetes/node-problem-detector/blob/master/docs/custom_plugin_monitor.md" target="_blank" rel="noopener noreferrer">custom-plugin-monitor</a> like the following:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> v1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> ConfigMap</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> node-problem-detector-config</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">data:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  check_calico_interfaces.sh:</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    #!/bin/bash</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    set</span><span class="sk-005cc5-99ffe4"> -euo</span><span class="sk-032f62-99ffe4"> pipefail</span></span>
-<span class="line"><span class="sk-24292e-fff">    </span></span>
-<span class="line"><span class="sk-24292e-fff">    count</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">nsenter</span><span class="sk-005cc5-99ffe4"> -n/proc/1/ns/net</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> cali</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">    </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (( $count </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 150</span><span class="sk-24292e-fff"> )); </span><span class="sk-d73a49-a0a0a0">then</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">      echo</span><span class="sk-032f62-99ffe4"> "Too many calico interfaces (</span><span class="sk-24292e-fff">$count</span><span class="sk-032f62-99ffe4">)"</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">      exit</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    else</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">      exit</span><span class="sk-005cc5-ffc799"> 0</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    fi</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  cali-monitor.json:</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-24292e-fff">    {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      "plugin"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "custom",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      "pluginConfig"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        "invoke_interval"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "30s",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        "timeout"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "5s",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        "max_output_length"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 80,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        "concurrency"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 3,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        "enable_message_change_based_condition_update"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> false</span></span>
-<span class="line"><span class="sk-24292e-fff">      },</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      "source"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "calico-custom-plugin-monitor",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      "metricsReporting"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> false</span><span class="sk-032f62-99ffe4">,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      "conditions"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
-<span class="line"><span class="sk-24292e-fff">        {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "NPDCalicoUnhealthy",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "reason"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "CalicoInterfaceCountOkay",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Normal amount of interfaces"</span></span>
-<span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-24292e-fff">      ],</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      "rules"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
-<span class="line"><span class="sk-24292e-fff">        {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "permanent",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "condition"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "NPDCalicoUnhealthy",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "reason"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "TooManyCalicoInterfaces",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "path"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "/bin/bash",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "args"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            "/config/check_calico_interfaces.sh"</span></span>
-<span class="line"><span class="sk-24292e-fff">          ],</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          "timeout"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "3s"</span></span>
-<span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-24292e-fff">      ]</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
-</div>
-<p>Testing showed that when the condition became true, a condition would be updated on the associated Kubernetes node like so:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> json</span><span class="sk-032f62-99ffe4"> worker1a</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> '.status.conditions[] | select(.type | test("^NPD"))'</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "lastHeartbeatTime"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2020-03-20T17:05:17Z",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "lastTransitionTime"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2020-03-20T17:05:16Z",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Too many calico interfaces (154)",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "reason"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "TooManyCalicoInterfaces",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "True",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "NPDCalicoUnhealthy"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>With that in place, the actual remediation needed to happen. Kured seemed to do most everything we needed, except that it was looking at a file instead of Kubernetes node conditions. We hacked together a patch to change that and tested it successfully end to end — we had a working proof of concept!</p>
-<h2>Revisiting Problem Detection</h2>
-<p>While the above worked, we found that node-problem-detector was unwieldy because we were replicating our existing monitoring into shell scripts and node-problem-detector configuration. A <a href="https://www.infoq.com/news/2017/10/monitoring-cloudflare-prometheus" target="_blank" rel="noopener noreferrer">2017 blog post</a> describes Cloudflare’s monitoring stack, although some things have changed since then. What hasn’t changed is our extensive usage of <a href="https://prometheus.io" target="_blank" rel="noopener noreferrer">Prometheus</a> and <a href="https://github.com/prometheus/alertmanager" target="_blank" rel="noopener noreferrer">Alertmanager</a>.</p>
-<p>For the network interface issue and other issues we wanted to address, we already had the necessary exported metrics and alerting to go with them. Here is what our already existing alert looked like<span data-portabletext-unknown="mark">3</span>:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> alert:</span><span class="sk-032f62-99ffe4"> CalicoTooManyInterfaces</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  expr:</span><span class="sk-032f62-99ffe4"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node_network_info</span><span class="sk-032f62-99ffe4">{device=~</span><span class="sk-6f42c1-ffc799">"cali.*"</span><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">by</span><span class="sk-24292e-fff"> (node) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">= 200</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff">: 1h</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    priority:</span><span class="sk-032f62-99ffe4"> "5"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> chat-sre-core</span><span class="sk-032f62-99ffe4"> chat-k8s</span></span></code></pre>
-</div>
-<p>Note that we use a “notify” label to drive the routing logic in Alertmanager. However, that got us asking, could we just route this to a Kubernetes node condition instead?</p>
-<h2>Introducing Sciuro</h2>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="225" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=715&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=640&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=715&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=750&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=828&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=1080&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=1280&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4565KTQ2N97R5EAHD9A5TG.png&amp;w=1430&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-504 Embedded Image - Hsc54F" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="225" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-504 Embedded Image - Hsc54F"></div>
-</figure>
-<p>Sciuro is our open-source replacement of node-problem-detector that has one simple job: synchronize Kubernetes node conditions with currently firing alerts in Alertmanager. Node problems can be defined with a more holistic view and using already existing exporters such as <a href="https://github.com/prometheus/node_exporter" target="_blank" rel="noopener noreferrer">node exporter</a>, <a href="https://github.com/google/cadvisor" target="_blank" rel="noopener noreferrer">cadvisor</a> or <a href="https://github.com/google/mtail" target="_blank" rel="noopener noreferrer">mtail</a>. It also doesn’t run on affected nodes which allows us to rely on out-of-band remediation techniques. Here is a high level diagram of how Sciuro works:</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="912" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=715&amp;h=912&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=640&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=715&amp;h=912&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=750&amp;h=957&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=828&amp;h=1056&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=1080&amp;h=1378&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=1280&amp;h=1633&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AQ3TWBASS357D1ED30MD.png&amp;w=1430&amp;h=1824&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-504 Embedded Image - OSEykP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="912" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-504 Embedded Image - OSEykP"></div>
-</figure>
-<p>Starting from the top, nodes are scraped by Prometheus, which collects those metrics and fires relevant alerts to Alertmanager. Sciuro polls Alertmanager for alerts with a matching receiver, matches them with a corresponding node resource in the Kubernetes API and updates that node’s conditions accordingly.</p>
-<p>In more detail, we can start by defining an alert in Prometheus like the following:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> alert:</span><span class="sk-032f62-99ffe4"> CalicoTooManyInterfacesEarly</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  expr:</span><span class="sk-032f62-99ffe4"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node_network_info</span><span class="sk-032f62-99ffe4">{device=~</span><span class="sk-6f42c1-ffc799">"cali.*"</span><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">by</span><span class="sk-24292e-fff"> (node) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">= 150</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    priority:</span><span class="sk-032f62-99ffe4"> "6"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span></code></pre>
-</div>
-<p>Note the two differences from the previous alert. First, we use a new name with a more sensitive trigger. The idea is that we want automatic node remediation to try fixing the node first as soon as possible, but if the problem worsens or automatic remediation is failing, humans will still get notified to act. The second difference is that instead of notifying chat rooms, we route to a target called “node-condition-k8s”.</p>
-<p>Sciuro then comes into play, polling the Altertmanager API for alerts matching the “node-condition-k8s” receiver. The following shows the equivalent using <a href="https://github.com/prometheus/alertmanager/tree/master/cmd/amtool" target="_blank" rel="noopener noreferrer">amtool</a>:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> amtool</span><span class="sk-032f62-99ffe4"> alert</span><span class="sk-032f62-99ffe4"> query</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Alertname</span><span class="sk-032f62-99ffe4">                 	Starts</span><span class="sk-032f62-99ffe4"> At</span><span class="sk-032f62-99ffe4">            	Summary</span><span class="sk-24292e-fff">                                                               	 </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">CalicoTooManyInterfacesEarly</span><span class="sk-032f62-99ffe4">  2021-05-11</span><span class="sk-032f62-99ffe4"> 03:25:21</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-032f62-99ffe4">  Kubernetes</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-032f62-99ffe4"> worker1a</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> too</span><span class="sk-032f62-99ffe4"> many</span><span class="sk-032f62-99ffe4"> Calico</span><span class="sk-032f62-99ffe4"> interfaces</span><span class="sk-24292e-fff">  </span></span></code></pre>
-</div>
-<p>We can also check the labels for this alert:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> amtool</span><span class="sk-032f62-99ffe4"> alert</span><span class="sk-032f62-99ffe4"> query</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> '.[] | .labels'</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "alertname"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "CalicoTooManyInterfacesEarly",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "cluster"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "a.k8s",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "instance"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "worker1a",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "node"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "worker1a",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "notify"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "node-condition-k8s",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "priority"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "6",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "prometheus"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "k8s-a"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>Note the node and instance labels which Sciuro will use for matching with the corresponding Kubernetes node. Sciuro uses the excellent <a href="https://github.com/kubernetes-sigs/controller-runtime" target="_blank" rel="noopener noreferrer">controller-runtime</a> to keep track of and update node sources in the Kubernetes API. We can observe the updated node condition on the status field via kubectl:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> kubectl</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-032f62-99ffe4"> worker1a</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> '.status.conditions[] | select(.type | test("^AlertManager"))'</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "lastHeartbeatTime"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-05-11T03:31:20Z",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "lastTransitionTime"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-05-11T03:26:53Z",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "[P6] Kubernetes node worker1a has too many Calico interfaces",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "reason"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "AlertIsFiring",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "True",</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "AlertManager_CalicoTooManyInterfacesEarly"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>One important note is Sciuro added the AlertManager_ prefix to the node condition type to prevent conflicts with other node condition types. For example, DiskPressure, a kubelet managed condition, could also be an alert name. Sciuro will also properly update heartbeat and transition times to reflect when it first saw the alert and its last update. With node conditions synchronized by Sciuro, remediation can take place via one of the existing tools. As mentioned previously we are using a modified version of Kured for now.</p>
-<p>We’re happy to announce that we’ve open sourced Sciuro, and it can be found on <a href="https://github.com/cloudflare/sciuro" target="_blank" rel="noopener noreferrer">GitHub</a> where you can read the code, find the deployment instructions, or open a Pull Request for changes.</p>
-<h2>Managing Node Uptime</h2>
-<p>While we began using automatic node remediation for obvious problems, we’ve expanded its purpose to additionally keep node uptime low. Low node uptime is desirable to further reduce drift on nodes, keep the node initialization process well-oiled, and encourage the best deployment practices on the Kubernetes clusters. To expand on the last point, services that are deployed with best practices and in a high availability fashion should see negligible impact when a single node leaves the cluster. However, services that are not deployed with best practices will most likely have problems especially if they rely on singleton pods. By draining nodes more frequently, it introduces regular chaos that encourages best practices. To enable this with automatic node remediation the following alert was defined:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> alert:</span><span class="sk-032f62-99ffe4"> WorkerUptimeTooHigh</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  expr:</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-24292e-fff">    (</span></span>
-<span class="line"><span class="sk-24292e-fff">      (</span></span>
-<span class="line"><span class="sk-24292e-fff">        (</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">              max</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node</span><span class="sk-24292e-fff">) (kube_node_role{role</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"worker"</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">group_left</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">              (</span><span class="sk-6f42c1-ffc799">max</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node</span><span class="sk-24292e-fff">) (kube_node_role{</span><span class="sk-6f42c1-ffc799">role!</span><span class="sk-032f62-99ffe4">=</span><span class="sk-6f42c1-ffc799">"worker"</span><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          or</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">            max</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node</span><span class="sk-24292e-fff">) (kube_node_role{role</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"worker"</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-24292e-fff">        ) == 1</span></span>
-<span class="line"><span class="sk-24292e-fff">      )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    *</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">group_left</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">      (</span></span>
-<span class="line"><span class="sk-24292e-fff">        (</span><span class="sk-6f42c1-ffc799">time</span><span class="sk-24292e-fff">() - node_boot_time_seconds) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">60</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 24</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">      )</span></span>
-<span class="line"><span class="sk-24292e-fff">    )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    priority:</span><span class="sk-032f62-99ffe4"> "9"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span></code></pre>
-</div>
-<p>There is a bit of juggling with the kube_node_roles metric in the above to isolate the alert to generic worker nodes, but at a high level it looks at node_boot_time_seconds, a metric from <a href="https://github.com/prometheus/node_exporter" target="_blank" rel="noopener noreferrer">prometheus node_exporter</a>. Again the notify label is configured to send to node conditions which kicks off the automatic node remediation. One further detail is the priority here is set to “9” which is of lower precedence than our other alerts. Note that the message field of the node condition is prefixed with the alert priority in brackets. This allows the remediation process to take priority into account when choosing which node to remediate first, which is important because Kured uses a lock to act on a single node at a time.</p>
-<h2>Wrapping Up</h2>
-<p>In the past 30 days, we’ve used the above automatic node remediation process to action 571 nodes. That has saved our humans a considerable amount of time. We’ve also been able to reduce the time to repair for some issues as automatic remediation can act at all times of the day and with a faster response time.</p>
-<p>As mentioned before, we’re open sourcing Sciuro and its code can be found on <a href="https://github.com/cloudflare/sciuro" target="_blank" rel="noopener noreferrer">GitHub</a>. We’re open to issues, suggestions, and pull requests. We do have some ideas for future improvements. For Sciuro, we may look to reduce latency which is mainly due to polling and potentially add a push model from Altermanager although this isn’t a need we’ve had yet. &nbsp;For the larger node remediation story, we hope to do an overhaul of the remediating component. As mentioned previously, we are currently using a fork of kured, but a future replacement component should include the following:</p>
-<ul>
-	<li>Use out-of-band management interfaces to be able to shut down and power on nodes without a functional operating system.</li>
-	<li>Move from decentralized architecture to a centralized one that can integrate more complicated logic. This might include being able to act on entire failure domains in parallel.</li>
-	<li>Handle specialized nodes such as masters or storage nodes.</li>
-</ul>
-<p>Finally, we’re looking for more people passionate about Kubernetes to <a href="https://boards.greenhouse.io/cloudflare/jobs/816059?gh_jid=816059" target="_blank" rel="noopener noreferrer">join our team</a>. Come help us push Kubernetes to the next level to serve Cloudflare’s many needs!</p>
-<hr class="emdash-break emdash-break-line" data-astro-cid-lr3aoosn="">
-<p><span data-portabletext-unknown="mark">1</span>Exhaustion can be applied to hardware resources, kernel resources, or logical resources like the amount of logging being produced.</p>
-<p><span data-portabletext-unknown="mark">2</span>Nearly all Kubernetes objects have <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects" target="_blank" rel="noopener noreferrer">spec and status fields</a>. The status field is used to describe the current state of an object. For node resources, typically the kubelet manages a conditions field under the status field for reporting things like if the node is ready for servicing pods.<br><span data-portabletext-unknown="mark">3</span>The format of the following alert is documented on <a href="https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules" target="_blank" rel="noopener noreferrer">Prometheus Alerting Rules</a>.</p>

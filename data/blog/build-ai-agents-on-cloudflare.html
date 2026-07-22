@@ -1,284 +1,391 @@
-<p>As engineers, we’re obsessed with efficiency and automating anything we find ourselves doing more than twice. If you’ve ever done this, you know that the happy path is always easy, but the second the inputs get complex, automation becomes really hard. This is because computers have traditionally required extremely specific instructions in order to execute.</p>
-<p>The state of AI models available to us today has changed that. We now have access to computers that can reason, and make judgement calls in lieu of specifying every edge case under the sun.</p>
-<p>That’s what <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI agents</a> are all about.</p>
-<p>Today we’re excited to share a few announcements on how we’re making it <em>even</em> <em>easier</em> to build AI agents on Cloudflare, including:</p>
-<ul>
-	<li><code>agents-sdk</code> — a new JavaScript framework for building AI agents</li>
-	<li>Updates to Workers AI: structured outputs, tool calling, and longer context windows for <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, Cloudflare’s serverless inference engine</li>
-	<li>An update to the <a href="https://github.com/cloudflare/workers-ai-provider" target="_blank" rel="noopener noreferrer"><u>workers-ai-provider</u></a> for the AI SDK</li>
-</ul>
-<p>We truly believe that Cloudflare is the ideal platform for building Agents and AI applications (more on why below), and we’re constantly working to make it better —&nbsp;you can expect to see more announcements from us in this space in the future.</p>
-<p>Before we dive deep into the announcements, we wanted to give you a quick primer on agents. If you are familiar with agents, feel free to skip ahead.&nbsp;</p>
-<h2>What are agents?</h2>
-<p>Agents are AI systems that can autonomously execute tasks by making decisions about tool usage and process flow. Unlike traditional automation that follows predefined paths, agents can dynamically adapt their approach based on context and intermediate results. Agents are also distinct from co-pilots (e.g. traditional chat applications) in that they can fully automate a task, as opposed to simply augmenting and extending human input.</p>
-<ul>
-	<li>Agents → non-linear, non-deterministic (can change from run to run)</li>
-	<li>Workflows → linear, deterministic execution paths</li>
-	<li>Co-pilots → augmentative AI assistance requiring human intervention</li>
-</ul>
-<h3>Example: booking vacations</h3>
-<p>If this is your first time working with, or interacting with agents, this example will illustrate how an agent works within a context like booking a vacation.</p>
-<p>Imagine you're trying to book a vacation. You need to research flights, find hotels, check restaurant reviews, and keep track of your budget.</p>
-<p><strong>Traditional workflow automation</strong></p>
-<p>A traditional automation system follows a predetermined sequence: it can take inputs such as dates, location, and budget, and make calls to predefined APIs in a fixed order. However, if any unexpected situations arise, such as flights being sold out, or the specified hotels being unavailable, it cannot adapt.&nbsp;</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="172" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=715&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=640&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=715&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=750&amp;h=180&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=828&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=1080&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=1280&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W4FK4YQYWS6HCAY5GB5Y.png&amp;w=1430&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2662 image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="172" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2662 image1"></div>
-</figure>
-<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p><strong>AI co-pilot</strong></p>
-<p>A co-pilot acts as an intelligent assistant that can provide hotel and itinerary recommendations based on your preferences. If you have questions, it can understand and respond to natural language queries and offer guidance and suggestions. However, it is unable to take the next steps to execute the end-to-end action on its own.&nbsp;</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="214" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=715&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=640&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=715&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=750&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=828&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=1080&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=1280&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450XHFGRQPHYCXCK0CT39H.png&amp;w=1430&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2662 image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="214" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2662 image2"></div>
-</figure>
-<p><strong>Agent</strong></p>
-<p>An agent combines AI's ability to make judgements and call the relevant tools to execute the task. An agent's output will be nondeterministic given: real-time availability and pricing changes, dynamic prioritization of constraints, ability to recover from failures, and adaptive decision-making based on intermediate results. In other words, if flights or hotels are unavailable, an agent can reassess and suggest a new itinerary with altered dates or locations, and continue executing your travel booking.</p>
-<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
-	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="479" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=640&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=750&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=828&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=1080&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=1280&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q5DXNQE85YWTR8G24ZGE.png&amp;w=1430&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2662 image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="479" class="pt-portable-image-media image-lightbox-trigger" role="button" tabindex="0" aria-label="Expand image: BLOG-2662 image3"></div>
-</figure>
-<h2>agents-sdk —&nbsp;the framework for building agents</h2>
-<p>You can now add agent powers to any existing Workers project with just one command:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm i agents</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">sdk</span></span></code></pre>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57zjl5TyJLzl0LDsZ8aKZc/5619952f43a307d29b849fa938bfa046/image4.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>As engineers, we’re obsessed with efficiency and automating anything we find ourselves doing more than twice. If you’ve ever done this, you know that the happy path is always easy, but the second the inputs get complex, automation becomes really hard. This is because computers have traditionally required extremely specific instructions in order to execute.</p>
+	<p>The state of AI models available to us today has changed that. We now have access to computers that can reason, and make judgement calls in lieu of specifying every edge case under the sun.</p>
+	<p>That’s what <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI agents</a> are all about.</p>
+	<p>Today we’re excited to share a few announcements on how we’re making it <i>even</i> <i>easier</i> to build AI agents on Cloudflare, including:</p>
+	<ul>
+		<li>
+			<p><code>agents-sdk</code> — a new JavaScript framework for building AI agents</p>
+		</li>
+		<li>
+			<p>Updates to Workers AI: structured outputs, tool calling, and longer context windows for <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, Cloudflare’s serverless inference engine</p>
+		</li>
+		<li>
+			<p>An update to the <a href="https://github.com/cloudflare/workers-ai-provider" target="_blank" rel="noopener noreferrer"><u>workers-ai-provider</u></a> for the AI SDK</p>
+		</li>
+	</ul>
+	<p>We truly believe that Cloudflare is the ideal platform for building Agents and AI applications (more on why below), and we’re constantly working to make it better —&nbsp;you can expect to see more announcements from us in this space in the future.</p>
+	<p>Before we dive deep into the announcements, we wanted to give you a quick primer on agents. If you are familiar with agents, feel free to skip ahead.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="what-are-agents">What are agents?</h2>
+		<a href="https://blog.cloudflare.com/#what-are-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agents are AI systems that can autonomously execute tasks by making decisions about tool usage and process flow. Unlike traditional automation that follows predefined paths, agents can dynamically adapt their approach based on context and intermediate results. Agents are also distinct from co-pilots (e.g. traditional chat applications) in that they can fully automate a task, as opposed to simply augmenting and extending human input.</p>
+	<ul>
+		<li>
+			<p>Agents → non-linear, non-deterministic (can change from run to run)</p>
+		</li>
+		<li>
+			<p>Workflows → linear, deterministic execution paths</p>
+		</li>
+		<li>
+			<p>Co-pilots → augmentative AI assistance requiring human intervention</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="example-booking-vacations">Example: booking vacations</h3>
+		<a href="https://blog.cloudflare.com/#example-booking-vacations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If this is your first time working with, or interacting with agents, this example will illustrate how an agent works within a context like booking a vacation.</p>
+	<p>Imagine you're trying to book a vacation. You need to research flights, find hotels, check restaurant reviews, and keep track of your budget.</p>
+	<p><b>Traditional workflow automation</b></p>
+	<p>A traditional automation system follows a predetermined sequence: it can take inputs such as dates, location, and budget, and make calls to predefined APIs in a fixed order. However, if any unexpected situations arise, such as flights being sold out, or the specified hotels being unavailable, it cannot adapt.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fHwj0r4JgRDawOQnNN618/2f369a5224dee288d3baf656d5952469/image1.png" alt="" class="kg-image" width="1322" height="318" loading="lazy">
+	</figure>
+	<p><b>AI co-pilot</b></p>
+	<p>A co-pilot acts as an intelligent assistant that can provide hotel and itinerary recommendations based on your preferences. If you have questions, it can understand and respond to natural language queries and offer guidance and suggestions. However, it is unable to take the next steps to execute the end-to-end action on its own.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24e3EQSLKo3CJsKv0gFban/6a23620857c6bca8a873da185ee5be56/image2.png" alt="" class="kg-image" width="1048" height="314" loading="lazy">
+	</figure>
+	<p><b>Agent</b></p>
+	<p>An agent combines AI's ability to make judgements and call the relevant tools to execute the task. An agent's output will be nondeterministic given: real-time availability and pricing changes, dynamic prioritization of constraints, ability to recover from failures, and adaptive decision-making based on intermediate results. In other words, if flights or hotels are unavailable, an agent can reassess and suggest a new itinerary with altered dates or locations, and continue executing your travel booking.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30QFnfkVyFm1tyV9B2QvXU/ac79ff6ac70ba609d4ecf714d34f0146/image3.png" alt="" class="kg-image" width="1056" height="708" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="agents-sdk-the-framework-for-building-agents">agents-sdk —&nbsp;the framework for building agents</h2>
+		<a href="https://blog.cloudflare.com/#agents-sdk-the-framework-for-building-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You can now add agent powers to any existing Workers project with just one command:</p>
+	<pre class="language-Rust"><code class="language-Rust">$ npm i agents-sdk</code></pre>
+	<p>… or if you want to build something from scratch, you can bootstrap your project with the <a href="https://github.com/cloudflare/agents-starter" target="_blank" rel="noopener noreferrer"><u>agents-starter template</u></a>:</p>
+	<pre class="language-Rust"><code class="language-Rust">$ npm create cloudflare@latest -- --template cloudflare/agents-starter
+// ... and then deploy it
+$ npm run deploy</code></pre>
+	<p><code>agents-sdk</code> is a framework that allows you to build agents —&nbsp; software that can autonomously execute tasks — and deploy them directly into production on Cloudflare Workers.</p>
+	<p>Your agent can start with the basics and act on HTTP requests…</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">import { Agent } from "agents-sdk";
+
+export class IntelligentAgent extends Agent {
+  async onRequest(request) {
+    // Transform intention into response
+    return new Response("Ready to assist.");
+  }
+}</code></pre>
+	<p>Although this is just the initial release of <code>agents-sdk</code>, we wanted to ship more than just a thin wrapper over an existing library. Agents can communicate with clients in real time, persist state, execute long-running tasks on a schedule, send emails, run asynchronous workflows, browse the web, query data from your Postgres database, call AI models, and support human-in-the-loop use-cases. All of this works today, out of the box.</p>
+	<p>For example, you can build a powerful chat agent with the <code>AIChatAgent</code> class:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// src/index.ts
+export class Chat extends AIChatAgent&lt;Env&gt; {
+  /**
+   * Handles incoming chat messages and manages the response stream
+   * @param onFinish - Callback function executed when streaming completes
+   */
+  async onChatMessage(onFinish: StreamTextOnFinishCallback&lt;any&gt;) {
+    // Create a streaming response that handles both text and tool outputs
+    return agentContext.run(this, async () =&gt; {
+      const dataStreamResponse = createDataStreamResponse({
+        execute: async (dataStream) =&gt; {
+          // Process any pending tool calls from previous messages
+          // This handles human-in-the-loop confirmations for tools
+          const processedMessages = await processToolCalls({
+            messages: this.messages,
+            dataStream,
+            tools,
+            executions,
+          });
+
+          // Initialize OpenAI client with API key from environment
+          const openai = createOpenAI({
+            apiKey: this.env.OPENAI_API_KEY,
+          });
+
+          // Cloudflare AI Gateway
+          // const openai = createOpenAI({
+          //   apiKey: this.env.OPENAI_API_KEY,
+          //   baseURL: this.env.GATEWAY_BASE_URL,
+          // });
+
+          // Stream the AI response using GPT-4
+          const result = streamText({
+            model: openai("gpt-4o-2024-11-20"),
+            system: `
+              You are a helpful assistant that can do various tasks. If the user asks, then you can also schedule tasks to be executed later. The input may have a date/time/cron pattern to be input as an object into a scheduler The time is now: ${new Date().toISOString()}.
+              `,
+            messages: processedMessages,
+            tools,
+            onFinish,
+            maxSteps: 10,
+          });
+
+          // Merge the AI response stream with tool execution outputs
+          result.mergeIntoDataStream(dataStream);
+        },
+      });
+
+      return dataStreamResponse;
+    });
+  }
+  async executeTask(description: string, task: Schedule&lt;string&gt;) {
+    await this.saveMessages([
+      ...this.messages,
+      {
+        id: generateId(),
+        role: "user",
+        content: `scheduled message: ${description}`,
+      },
+    ]);
+  }
+}
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    if (!env.OPENAI_API_KEY) {
+      console.error(
+        "OPENAI_API_KEY is not set, don't forget to set it locally in .dev.vars, and use `wrangler secret bulk .dev.vars` to upload it to production"
+      );
+      return new Response("OPENAI_API_KEY is not set", { status: 500 });
+    }
+    return (
+      // Route the request to our agent or return 404 if not found
+      (await routeAgentRequest(request, env)) ||
+      new Response("Not found", { status: 404 })
+    );
+  },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>… and connect to your Agent with any React-based front-end with the <a href="https://github.com/cloudflare/agents-starter/blob/main/src/app.tsx" target="_blank" rel="noopener noreferrer"><code><u>useAgent</u></code></a> hook that can automatically establish a bidirectional WebSocket, sync client state, and allow you to build Agent-based applications without a mountain of bespoke code:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">// src/app.tsx
+import { useAgent } from "agents-sdk/react";  
+
+const agent = useAgent({
+  agent: "chat",
+});</code></pre>
+	<p>We spent some time thinking about the production story here too: an agent framework that absolves itself of the hard parts — durably persisting state, handling long-running tasks &amp; loops, and horizontal scale — is only going to get you so far. Agents built with <code>agents-sdk</code> can be deployed directly to Cloudflare and run on top of <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> — which you can think of as stateful micro-servers that can scale to tens of millions — and are able to run wherever they need to. Close to a user for low-latency, close to your data, and/or anywhere in between.</p>
+	<p><code>agents-sdk</code> also exposes:</p>
+	<ul>
+		<li>
+			<p>Integration with React applications via a <code>useAgent</code> hook that can automatically set up a WebSocket connection between your app and an agent</p>
+		</li>
+		<li>
+			<p>An <code>AIChatAgent</code> extension that makes it easier to build intelligent chat agents</p>
+		</li>
+		<li>
+			<p>State management APIs via <code>this.setState</code> as well as a native <code>sql</code> API for writing and querying data within each Agent</p>
+		</li>
+		<li>
+			<p>State synchronization between frontend applications and the agent state</p>
+		</li>
+		<li>
+			<p>Agent routing, enabling agent-per-user or agent-per-workflow use-cases. Spawn millions (or tens of millions) of agents without having to think about how to make the infrastructure work, provision CPU, or scale out storage.</p>
+		</li>
+	</ul>
+	<p>Over the coming weeks, expect to see even more here: tighter integration with email APIs to enable more human-in-the-loop use-cases, hooks into WebRTC for voice &amp; video interactivity, a built-in evaluation (evals) framework, and the ability to self-host agents on your own infrastructure.</p>
+	<p>We’re aiming high here: we think this is just the beginning of what agents are capable of, and we think we can make Workers the best place (but not the only place) to build &amp; run them.</p>
+	<div class="flex anchor relative">
+		<h2 id="json-mode-longer-context-windows-and-improved-tool-calling-in-workers-ai">JSON mode, longer context windows, and improved tool calling in Workers AI</h2>
+		<a href="https://blog.cloudflare.com/#json-mode-longer-context-windows-and-improved-tool-calling-in-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When users express needs conversationally, tool calling converts these requests into structured formats like JSON that APIs can understand and process, allowing the AI to interact with databases, services, and external systems. This is essential for building agents, as it allows users to express complex intentions in natural language, and AI to decompose these requests, call appropriate tools, evaluate responses and deliver meaningful outcomes.</p>
+	<p>When using tool calling or building AI agents, the text generation model must respond with valid JSON objects rather than natural language. Today, we're adding JSON mode support to Workers AI, enabling applications to request a structured output response when interacting with AI models. Here's a request to <code>@cf/meta/llama-3.1-8b-instruct-fp8-fast</code> using JSON mode:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">{
+  "messages": [
+    {
+      "role": "system",
+      "content": "Extract data about a country."
+    },
+    {
+      "role": "user",
+      "content": "Tell me about India."
+    }
+  ],
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "capital": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "capital",
+        "languages"
+      ]
+    }
+  }
+}</code></pre>
+	<p>And here’s how the model will respond:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">{
+  "response": {
+    "name": "India",
+    "capital": "New Delhi",
+    "languages": [
+      "Hindi",
+      "English",
+      "Bengali",
+      "Telugu",
+      "Marathi",
+      "Tamil",
+      "Gujarati",
+      "Urdu",
+      "Kannada",
+      "Odia",
+      "Malayalam",
+      "Punjabi",
+      "Sanskrit"
+    ]
+  }
+}</code></pre>
+	<p>As you can see, the model is complying with the JSON schema definition in the request and responding with a validated JSON object. JSON mode is compatible with OpenAI’s <code>response_format</code> implementation:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">response_format: {
+  title: "JSON Mode",
+  type: "object",
+  properties: {
+    type: {
+      type: "string",
+      enum: ["json_object", "json_schema"],
+    },
+    json_schema: {},
+  }
+}</code></pre>
+	<p>This is the list of models that now support JSON mode:</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-8b-instruct-fast</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-70b-instruct</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b" target="_blank" rel="noopener noreferrer"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3-8b-instruct</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-8b-instruct</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b" target="_blank" rel="noopener noreferrer"><u>@hf/nousresearch/hermes-2-pro-mistral-7b</u></a></p>
+		</li>
+	</ul>
+	<p>We will continue extending this list to keep up with new, and requested models.</p>
+	<p>Lastly, we are changing how we restrict the size of AI requests to text generation models, moving from byte-counts to token-counts, introducing the concept of <b>context window</b> and raising the limits of the models in our catalog.</p>
+	<p>In generative AI, the context window is the sum of the number of input, reasoning, and completion or response tokens a model supports. You can now find the context window limit on each <a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct" target="_blank" rel="noopener noreferrer"><u>model page</u></a> in our developer documentation and decide which suits your requirements and use case.</p>
+	<p>JSON mode is also the perfect companion when using function calling. You can use structured JSON outputs with traditional function calling or the Vercel AI SDK via the <code>workers-ai-provider</code>.</p>
+	<div class="flex anchor relative">
+		<h2 id="0-1-1"><a href="https://github.com/cloudflare/workers-ai-provider">workers-ai-provider</a> 0.1.1</h2>
+		<a href="https://blog.cloudflare.com/#0-1-1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One of the most common ways to build with AI tooling today is by using the popular <a href="https://sdk.vercel.ai/docs/introduction" target="_blank" rel="noopener noreferrer"><u>AI SDK</u></a>. <a href="https://github.com/cloudflare/workers-ai-provider" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s provider</u></a> for the AI SDK makes it easy to use Workers AI the same way you would call any other LLM, directly from your code.</p>
+	<p>In the <a href="https://github.com/cloudflare/workers-ai-provider/tree/workers-ai-provider%400.1.1" target="_blank" rel="noopener noreferrer"><u>most recent version</u></a>, we’ve shipped the following improvements:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Tool calling enabled for generateText</p>
+		</li>
+		<li>
+			<p>Streaming now works out of the box</p>
+		</li>
+		<li>
+			<p>Usage statistics are now enabled</p>
+		</li>
+		<li>
+			<p>You can now use AI Gateway, even when streaming</p>
+		</li>
+	</ul>
+	<p>A key part of building agents is using LLMs for routing, and making decisions on which tools to call next, and summarizing structured and unstructured data. All of these things need to happen quickly, as they are on the critical path of the user-facing experience.</p>
+	<p>Workers AI, with its globally distributed fleet of GPUs, is a perfect fit for smaller, low-latency LLMs, so we’re excited to make it easy to use with tools developers are already familiar with.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="why-build-agents-on-cloudflare">Why build agents on Cloudflare?&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#why-build-agents-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Since launching Workers in 2017, we’ve been building a platform to allow developers to build applications that are fast, scalable, and cost-efficient from day one. We took a fundamentally different approach from the way code was previously run on servers, making a bet about what the future of applications was going to look like — isolates running on a global network, in a way that was truly serverless. No regions, no concurrency management, no managing or scaling infrastructure.&nbsp;</p>
+	<p>The release of Workers was just the beginning, and we continued shipping primitives to extend what developers could build. Some more familiar, like a key-value store (<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>), and some that we thought would play a role in enabling net new use cases like <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>. While we didn’t quite predict AI agents (though “Agents” was one of the proposed names for Durable Objects), we inadvertently created the perfect platform for building them.&nbsp;</p>
+	<p>What do we mean by that?&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="a-platform-that-only-charges-you-for-what-you-use-regardless-of-how-long-it-takes">A platform that only charges you for what you use (regardless of how long it takes)</h3>
+		<a href="https://blog.cloudflare.com/#a-platform-that-only-charges-you-for-what-you-use-regardless-of-how-long-it-takes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To be able to run agents efficiently, you need a system that can seamlessly scale up and down to support the constant stop, go, wait patterns. Agents are basically long-running tasks, sometimes waiting on slow reasoning LLMs and external tools to execute. With Cloudflare, you don’t have to pay for long-running processes when your code is not executing. Cloudflare Workers is designed to scale down and <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero"><u>only charge you for CPU time</u></a>, as opposed to wall-clock time.&nbsp;</p>
+	<p>In many cases, especially when calling LLMs, the difference can be in orders of magnitude —&nbsp;e.g. 2–3 milliseconds of CPU vs. 10 seconds of wall-clock time. When building on Workers, we pass that difference on to you as cost savings.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="serverless-ai-inference">Serverless AI Inference</h3>
+		<a href="https://blog.cloudflare.com/#serverless-ai-inference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We took a similar serverless approach when it comes to inference itself. When you need to call an AI model, you need it to be instantaneously available. While the foundation model providers offer APIs that make it possible to just call the LLM, if you’re running open-source models, <a href="https://www.cloudflare.com/learning/ai/what-is-lora" target="_blank" rel="noopener noreferrer"><u>LoRAs</u></a>, or self-trained models, most cloud providers today require you to pre-provision resources for what your peak traffic will look like. This means that the rest of the time, you’re still paying for GPUs to sit there idle. With Workers AI, you can pay only when you’re calling our inference APIs, as opposed to unused infrastructure. In fact, you don’t have to think about infrastructure at all, which is the principle at the core of everything we do.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="a-platform-designed-for-durable-execution">A platform designed for durable execution</h3>
+		<a href="https://blog.cloudflare.com/#a-platform-designed-for-durable-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> and <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> provide a robust programming model that ensures guaranteed execution for asynchronous tasks that require persistence and reliability. This makes them ideal for handling complex operations like long-running deep thinking LLM calls, human-in-the-loop approval processes, or interactions with unreliable third-party APIs. By maintaining state across requests and automatically handling retries, these tools create a resilient foundation for building sophisticated AI agents that can perform complex, multistep tasks without losing context or progress, even when operations take significant time to complete.</p>
+	<div class="flex anchor relative">
+		<h2 id="lastly-new-and-updated-agents-documentation">Lastly, new and updated agents documentation</h2>
+		<a href="https://blog.cloudflare.com/#lastly-new-and-updated-agents-documentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Did you catch all of that?</p>
+	<p>No worries if not: we’ve updated our <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>agents documentation</u></a> to include everything we talked about above, from breaking down the basics of agents, to showing you how to tackle foundational examples of building with agents.</p>
+	<p>We’ve also updated our <a href="https://developers.cloudflare.com/workers/get-started/prompting" target="_blank" rel="noopener noreferrer"><u>Workers prompt</u></a> with knowledge of the agents-sdk library, so you can use Cursor, Windsurf, Zed, ChatGPT or Claude to help you build AI Agents and deploy them to Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h2 id="cant-wait-to-see-what-you-build">Can’t wait to see what you build!&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#cant-wait-to-see-what-you-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’re just getting started, and we love to see all that you build. Please join our <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, ask questions, and tell us what you’re building.</p>
 </div>
-<p>… or if you want to build something from scratch, you can bootstrap your project with the <a href="https://github.com/cloudflare/agents-starter" target="_blank" rel="noopener noreferrer"><u>agents-starter template</u></a>:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">template cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">agents</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// ... and then deploy it</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm run deploy</span></span></code></pre>
-</div>
-<p><code>agents-sdk</code> is a framework that allows you to build agents —&nbsp; software that can autonomously execute tasks — and deploy them directly into production on Cloudflare Workers.</p>
-<p>Your agent can start with the basics and act on HTTP requests…</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents-sdk"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> IntelligentAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // Transform intention into response</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Ready to assist."</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>Although this is just the initial release of <code>agents-sdk</code>, we wanted to ship more than just a thin wrapper over an existing library. Agents can communicate with clients in real time, persist state, execute long-running tasks on a schedule, send emails, run asynchronous workflows, browse the web, query data from your Postgres database, call AI models, and support human-in-the-loop use-cases. All of this works today, out of the box.</p>
-<p>For example, you can build a powerful chat agent with the <code>AIChatAgent</code> class:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/index.ts</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Chat</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">  /**</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">   * Handles incoming chat messages and manages the response stream</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">   * </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-24292e-fff"> onFinish</span><span class="sk-6a737d-8b8b8b94"> - Callback function executed when streaming completes</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">   */</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onChatMessage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">onFinish</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> StreamTextOnFinishCallback</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">any</span><span class="sk-24292e-fff">&gt;) {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">    // Create a streaming response that handles both text and tool outputs</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> agentContext.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> dataStreamResponse</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createDataStreamResponse</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">dataStream</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // Process any pending tool calls from previous messages</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // This handles human-in-the-loop confirmations for tools</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">          const</span><span class="sk-005cc5-fff"> processedMessages</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> processToolCalls</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-24292e-fff">            messages: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.messages,</span></span>
-<span class="line"><span class="sk-24292e-fff">            dataStream,</span></span>
-<span class="line"><span class="sk-24292e-fff">            tools,</span></span>
-<span class="line"><span class="sk-24292e-fff">            executions,</span></span>
-<span class="line"><span class="sk-24292e-fff">          });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // Initialize OpenAI client with API key from environment</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">          const</span><span class="sk-005cc5-fff"> openai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createOpenAI</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-24292e-fff">            apiKey: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">OPENAI_API_KEY</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">          });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // Cloudflare AI Gateway</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // const openai = createOpenAI({</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          //   apiKey: this.env.OPENAI_API_KEY,</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          //   baseURL: this.env.GATEWAY_BASE_URL,</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // Stream the AI response using GPT-4</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">          const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> streamText</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-24292e-fff">            model: </span><span class="sk-6f42c1-ffc799">openai</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"gpt-4o-2024-11-20"</span><span class="sk-24292e-fff">),</span></span>
-<span class="line"><span class="sk-24292e-fff">            system: </span><span class="sk-032f62-99ffe4">`</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">              You are a helpful assistant that can do various tasks. If the user asks, then you can also schedule tasks to be executed later. The input may have a date/time/cron pattern to be input as an object into a scheduler The time is now: ${</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-032f62-99ffe4">().</span><span class="sk-6f42c1-ffc799">toISOString</span><span class="sk-032f62-99ffe4">()</span><span class="sk-032f62-99ffe4">}.</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">              `</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">            messages: processedMessages,</span></span>
-<span class="line"><span class="sk-24292e-fff">            tools,</span></span>
-<span class="line"><span class="sk-24292e-fff">            onFinish,</span></span>
-<span class="line"><span class="sk-24292e-fff">            maxSteps: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">          });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">          // Merge the AI response stream with tool execution outputs</span></span>
-<span class="line"><span class="sk-24292e-fff">          result.</span><span class="sk-6f42c1-ffc799">mergeIntoDataStream</span><span class="sk-24292e-fff">(dataStream);</span></span>
-<span class="line"><span class="sk-24292e-fff">        },</span></span>
-<span class="line"><span class="sk-24292e-fff">      });</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> dataStreamResponse;</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> executeTask</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">description</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">task</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Schedule</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">string</span><span class="sk-24292e-fff">&gt;) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">saveMessages</span><span class="sk-24292e-fff">([</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      ...</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.messages,</span></span>
-<span class="line"><span class="sk-24292e-fff">      {</span></span>
-<span class="line"><span class="sk-24292e-fff">        id: </span><span class="sk-6f42c1-ffc799">generateId</span><span class="sk-24292e-fff">(),</span></span>
-<span class="line"><span class="sk-24292e-fff">        role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">        content: </span><span class="sk-032f62-99ffe4">`scheduled message: ${</span><span class="sk-24292e-fff">description</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">      },</span></span>
-<span class="line"><span class="sk-24292e-fff">    ]);</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">env.</span><span class="sk-005cc5-fff">OPENAI_API_KEY</span><span class="sk-24292e-fff">) {</span></span>
-<span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">error</span><span class="sk-24292e-fff">(</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "OPENAI_API_KEY is not set, don't forget to set it locally in .dev.vars, and use `wrangler secret bulk .dev.vars` to upload it to production"</span></span>
-<span class="line"><span class="sk-24292e-fff">      );</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"OPENAI_API_KEY is not set"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> (</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">      // Route the request to our agent or return 404 if not found</span></span>
-<span class="line"><span class="sk-24292e-fff">      (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> routeAgentRequest</span><span class="sk-24292e-fff">(request, env)) </span><span class="sk-d73a49-a0a0a0">||</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">      new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> })</span></span>
-<span class="line"><span class="sk-24292e-fff">    );</span></span>
-<span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
-</div>
-<p>… and connect to your Agent with any React-based front-end with the <a href="https://github.com/cloudflare/agents-starter/blob/main/src/app.tsx" target="_blank" rel="noopener noreferrer"><code><u>useAgent</u></code></a> hook that can automatically establish a bidirectional WebSocket, sync client state, and allow you to build Agent-based applications without a mountain of bespoke code:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/app.tsx</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents-sdk/react"</span><span class="sk-24292e-fff">;  </span></span>
-<span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> agent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> useAgent</span><span class="sk-24292e-fff">({</span></span>
-<span class="line"><span class="sk-24292e-fff">  agent: </span><span class="sk-032f62-99ffe4">"chat"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
-</div>
-<p>We spent some time thinking about the production story here too: an agent framework that absolves itself of the hard parts — durably persisting state, handling long-running tasks &amp; loops, and horizontal scale — is only going to get you so far. Agents built with <code>agents-sdk</code> can be deployed directly to Cloudflare and run on top of <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> — which you can think of as stateful micro-servers that can scale to tens of millions — and are able to run wherever they need to. Close to a user for low-latency, close to your data, and/or anywhere in between.</p>
-<p><code>agents-sdk</code> also exposes:</p>
-<ul>
-	<li>Integration with React applications via a <code>useAgent</code> hook that can automatically set up a WebSocket connection between your app and an agent</li>
-	<li>An <code>AIChatAgent</code> extension that makes it easier to build intelligent chat agents</li>
-	<li>State management APIs via <code>this.setState</code> as well as a native <code>sql</code> API for writing and querying data within each Agent</li>
-	<li>State synchronization between frontend applications and the agent state</li>
-	<li>Agent routing, enabling agent-per-user or agent-per-workflow use-cases. Spawn millions (or tens of millions) of agents without having to think about how to make the infrastructure work, provision CPU, or scale out storage.</li>
-</ul>
-<p>Over the coming weeks, expect to see even more here: tighter integration with email APIs to enable more human-in-the-loop use-cases, hooks into WebRTC for voice &amp; video interactivity, a built-in evaluation (evals) framework, and the ability to self-host agents on your own infrastructure.</p>
-<p>We’re aiming high here: we think this is just the beginning of what agents are capable of, and we think we can make Workers the best place (but not the only place) to build &amp; run them.</p>
-<h2>JSON mode, longer context windows, and improved tool calling in Workers AI</h2>
-<p>When users express needs conversationally, tool calling converts these requests into structured formats like JSON that APIs can understand and process, allowing the AI to interact with databases, services, and external systems. This is essential for building agents, as it allows users to express complex intentions in natural language, and AI to decompose these requests, call appropriate tools, evaluate responses and deliver meaningful outcomes.</p>
-<p>When using tool calling or building AI agents, the text generation model must respond with valid JSON objects rather than natural language. Today, we're adding JSON mode support to Workers AI, enabling applications to request a structured output response when interacting with AI models. Here's a request to <code>@cf/meta/llama-3.1-8b-instruct-fp8-fast</code> using JSON mode:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "messages"</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-24292e-fff">    {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "role"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"system"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Extract data about a country."</span></span>
-<span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">    {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "role"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Tell me about India."</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  ],</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "response_format"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"json_schema"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    "json_schema"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"object"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "properties"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "name"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">          "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"string"</span></span>
-<span class="line"><span class="sk-24292e-fff">        },</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "capital"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">          "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"string"</span></span>
-<span class="line"><span class="sk-24292e-fff">        },</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "languages"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">          "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"array"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">          "items"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">            "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"string"</span></span>
-<span class="line"><span class="sk-24292e-fff">          }</span></span>
-<span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-24292e-fff">      },</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "required"</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "name"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "capital"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "languages"</span></span>
-<span class="line"><span class="sk-24292e-fff">      ]</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>And here’s how the model will respond:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  "response"</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"India"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    "capital"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"New Delhi"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    "languages"</span><span class="sk-24292e-fff">: [</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Hindi"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "English"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Bengali"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Telugu"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Marathi"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Tamil"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Gujarati"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Urdu"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Kannada"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Odia"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Malayalam"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Punjabi"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      "Sanskrit"</span></span>
-<span class="line"><span class="sk-24292e-fff">    ]</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>As you can see, the model is complying with the JSON schema definition in the request and responding with a validated JSON object. JSON mode is compatible with OpenAI’s <code>response_format</code> implementation:</p>
-<div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">response_format</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  title</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"JSON Mode"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  type</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"object"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  properties</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    type</span><span class="sk-24292e-fff">: {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      type</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"string"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      enum</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"json_object"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"json_schema"</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    json_schema</span><span class="sk-24292e-fff">: {},</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
-</div>
-<p>This is the list of models that now support JSON mode:</p>
-<ul>
-	<li><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-8b-instruct-fast</u></a></li>
-	<li><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-70b-instruct</u></a></li>
-	<li><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.3-70b-instruct-fp8-fast</u></a></li>
-	<li><a href="https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b" target="_blank" rel="noopener noreferrer"><u>@cf/deepseek-ai/deepseek-r1-distill-qwen-32b</u></a></li>
-	<li><a href="https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3-8b-instruct</u></a></li>
-	<li><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct" target="_blank" rel="noopener noreferrer"><u>@cf/meta/llama-3.1-8b-instruct</u></a></li>
-	<li><a href="https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b" target="_blank" rel="noopener noreferrer"><u>@hf/nousresearch/hermes-2-pro-mistral-7b</u></a></li>
-</ul>
-<p>We will continue extending this list to keep up with new, and requested models.</p>
-<p>Lastly, we are changing how we restrict the size of AI requests to text generation models, moving from byte-counts to token-counts, introducing the concept of <strong>context window</strong> and raising the limits of the models in our catalog.</p>
-<p>In generative AI, the context window is the sum of the number of input, reasoning, and completion or response tokens a model supports. You can now find the context window limit on each <a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct" target="_blank" rel="noopener noreferrer"><u>model page</u></a> in our developer documentation and decide which suits your requirements and use case.</p>
-<p>JSON mode is also the perfect companion when using function calling. You can use structured JSON outputs with traditional function calling or the Vercel AI SDK via the <code>workers-ai-provider</code>.</p>
-<h2><a href="https://github.com/cloudflare/workers-ai-provider" target="_blank" rel="noopener noreferrer">workers-ai-provider</a> 0.1.1</h2>
-<p>One of the most common ways to build with AI tooling today is by using the popular <a href="https://sdk.vercel.ai/docs/introduction" target="_blank" rel="noopener noreferrer"><u>AI SDK</u></a>. <a href="https://github.com/cloudflare/workers-ai-provider" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s provider</u></a> for the AI SDK makes it easy to use Workers AI the same way you would call any other LLM, directly from your code.</p>
-<p>In the <a href="https://github.com/cloudflare/workers-ai-provider/tree/workers-ai-provider%400.1.1" target="_blank" rel="noopener noreferrer"><u>most recent version</u></a>, we’ve shipped the following improvements:&nbsp;</p>
-<ul>
-	<li>Tool calling enabled for generateText</li>
-	<li>Streaming now works out of the box</li>
-	<li>Usage statistics are now enabled</li>
-	<li>You can now use AI Gateway, even when streaming</li>
-</ul>
-<p>A key part of building agents is using LLMs for routing, and making decisions on which tools to call next, and summarizing structured and unstructured data. All of these things need to happen quickly, as they are on the critical path of the user-facing experience.</p>
-<p>Workers AI, with its globally distributed fleet of GPUs, is a perfect fit for smaller, low-latency LLMs, so we’re excited to make it easy to use with tools developers are already familiar with.&nbsp;</p>
-<h2>Why build agents on Cloudflare?&nbsp;</h2>
-<p>Since launching Workers in 2017, we’ve been building a platform to allow developers to build applications that are fast, scalable, and cost-efficient from day one. We took a fundamentally different approach from the way code was previously run on servers, making a bet about what the future of applications was going to look like — isolates running on a global network, in a way that was truly serverless. No regions, no concurrency management, no managing or scaling infrastructure.&nbsp;</p>
-<p>The release of Workers was just the beginning, and we continued shipping primitives to extend what developers could build. Some more familiar, like a key-value store (<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>), and some that we thought would play a role in enabling net new use cases like <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>. While we didn’t quite predict AI agents (though “Agents” was one of the proposed names for Durable Objects), we inadvertently created the perfect platform for building them.&nbsp;</p>
-<p>What do we mean by that?&nbsp;</p>
-<h3>A platform that only charges you for what you use (regardless of how long it takes)</h3>
-<p>To be able to run agents efficiently, you need a system that can seamlessly scale up and down to support the constant stop, go, wait patterns. Agents are basically long-running tasks, sometimes waiting on slow reasoning LLMs and external tools to execute. With Cloudflare, you don’t have to pay for long-running processes when your code is not executing. Cloudflare Workers is designed to scale down and <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero" target="_blank" rel="noopener noreferrer"><u>only charge you for CPU time</u></a>, as opposed to wall-clock time.&nbsp;</p>
-<p>In many cases, especially when calling LLMs, the difference can be in orders of magnitude —&nbsp;e.g. 2–3 milliseconds of CPU vs. 10 seconds of wall-clock time. When building on Workers, we pass that difference on to you as cost savings.&nbsp;</p>
-<h3>Serverless AI Inference</h3>
-<p>We took a similar serverless approach when it comes to inference itself. When you need to call an AI model, you need it to be instantaneously available. While the foundation model providers offer APIs that make it possible to just call the LLM, if you’re running open-source models, <a href="https://www.cloudflare.com/learning/ai/what-is-lora" target="_blank" rel="noopener noreferrer"><u>LoRAs</u></a>, or self-trained models, most cloud providers today require you to pre-provision resources for what your peak traffic will look like. This means that the rest of the time, you’re still paying for GPUs to sit there idle. With Workers AI, you can pay only when you’re calling our inference APIs, as opposed to unused infrastructure. In fact, you don’t have to think about infrastructure at all, which is the principle at the core of everything we do.&nbsp;</p>
-<h3>A platform designed for durable execution</h3>
-<p><a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> and <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> provide a robust programming model that ensures guaranteed execution for asynchronous tasks that require persistence and reliability. This makes them ideal for handling complex operations like long-running deep thinking LLM calls, human-in-the-loop approval processes, or interactions with unreliable third-party APIs. By maintaining state across requests and automatically handling retries, these tools create a resilient foundation for building sophisticated AI agents that can perform complex, multistep tasks without losing context or progress, even when operations take significant time to complete.</p>
-<h2>Lastly, new and updated agents documentation</h2>
-<p>Did you catch all of that?</p>
-<p>No worries if not: we’ve updated our <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>agents documentation</u></a> to include everything we talked about above, from breaking down the basics of agents, to showing you how to tackle foundational examples of building with agents.</p>
-<p>We’ve also updated our <a href="https://developers.cloudflare.com/workers/get-started/prompting" target="_blank" rel="noopener noreferrer"><u>Workers prompt</u></a> with knowledge of the agents-sdk library, so you can use Cursor, Windsurf, Zed, ChatGPT or Claude to help you build AI Agents and deploy them to Cloudflare.</p>
-<h2>Can’t wait to see what you build!&nbsp;</h2>
-<p>We’re just getting started, and we love to see all that you build. Please join our <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, ask questions, and tell us what you’re building.</p>

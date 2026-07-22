@@ -1,47 +1,121 @@
-<p>Today, we are extending Cloudflare’s <a href="https://www.cloudflare.com/lp/dg/product/cloud-access-security-broker" target="_blank" rel="noopener noreferrer"><u>cloud access security broker (CASB)</u></a> to support the <a href="https://support.claude.com/en/articles/13015708-access-the-compliance-api" target="_blank" rel="noopener noreferrer"><u>Claude Compliance API</u></a>. Security and compliance teams can now monitor Claude usage directly in the Cloudflare dashboard. No endpoint agents required.</p>
-<p>Enterprise security teams have long struggled to see how users interact with sanctioned and unsanctioned applications. The rapid adoption of AI applications has made this harder. Employees spend significant time in these new surface areas, and their interactions differ from traditional SaaS: users upload files, share freeform prompts, and providers generate content that may contain sensitive data.</p>
-<p><a href="https://www.cloudflare.com/lp/dg/product/cloud-access-security-broker" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a> helps solve this problem. One API integration gives you out-of-band visibility and control over the applications your organization uses. This integration builds on our existing support for <a href="https://blog.cloudflare.com/best-practices-sase-for-ai" target="_blank" rel="noopener noreferrer"><u>AI governance</u></a>, extending coverage over the most common tools security teams now manage.&nbsp;</p>
-<h2>The fast path to safe AI adoption</h2>
-<p>AI adoption has outpaced security governance. While IT and security teams raced to enable AI tools for productivity, the controls lagged behind. Most organizations today operate with partial visibility: they may block unauthorized AI tools at the network layer, but they cannot see what happens inside sanctioned ones.</p>
-<p>This matters because AI tools are not like traditional SaaS applications. They are conversational, persistent, and deeply integrated into workflows through APIs and agent frameworks. An employee might paste customer data into a prompt. A developer might accidentally share an API key and leave it unrotated for months. An AI application might generate content which contains company secrets. Each of these actions creates compliance risks that conventional security tools cannot detect.</p>
-<p>Organizations are moving fast to adopt AI, but these tools require a different security model. They do not just read data; they generate it, act on it, and connect to multiple systems of record in a single workflow. Security needs to cover the full lifecycle: from how an application calls an API, to what data it handles, to where that data lives at rest. Cloudflare gives organizations the tools to do this at every point of the workflow:</p>
-<ul>
-	<li><a href="https://www.cloudflare.com/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Gateway</u></a> sits between your applications and AI providers like Anthropic, giving you observability into requests, token spend, and model performance. This allows administrators to enforce rate limits, cache responses, and make fine-grained routing decisions.&nbsp;</li>
-	<li><a href="https://www.cloudflare.com/products/secure-web-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a> and <a href="https://www.cloudflare.com/products/dlp" target="_blank" rel="noopener noreferrer"><u>Data Loss Prevention</u></a> inspect AI traffic for sensitive data, blocking prompts that contain customer personally identifiable information or confidential material before they reach the model.</li>
-	<li><a href="https://www.cloudflare.com/products/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> with <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>MCP server portals</u></a> centralizes agent connections to corporate tools behind a single protected endpoint. Administrators control which users and agents can reach which systems, and every request is logged for audit.</li>
-	<li><a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a> now extends this same unified approach to data at rest inside Claude, scanning for misconfigurations and sensitive data without endpoint agents.</li>
-</ul>
-<p>These capabilities run side by side, on the same metal, making each service both <a href="https://blog.cloudflare.com/programmable-sase" target="_blank" rel="noopener noreferrer"><u>composable and programmable</u></a>. More importantly, that means traffic never hairpins through multiple vendors or clouds to be secured.&nbsp;</p>
-<h2>Better insight and control with Cloudflare CASB</h2>
-<p>Cloudflare CASB helps organizations connect to, scan, and monitor third-party SaaS applications for misconfigurations, improper data sharing, and other security risks through lightweight API integrations. Organizations can regain visibility and control over their growing investments in SaaS apps.</p>
-<p>As enterprises deploy Claude at scale, security and compliance teams need the same visibility into Claude usage that they have for every other enterprise application in their stack. Anthropic recognized this gap and built the Claude Compliance API to give enterprises programmatic access to security-relevant data about their Claude organizations, workspaces, and usage.&nbsp;</p>
-<p>Cloudflare CASB now consumes this endpoint to surface actionable security findings without requiring inline traffic inspection or endpoint agents.&nbsp;</p>
-<h3>What the Claude Compliance API surfaces</h3>
-<p>With this integration, Cloudflare One customers can monitor Claude Enterprise activity using the detection and remediation workflows they already rely on. Cloudflare CASB connects to Claude via the <a href="https://platform.claude.com/docs/en/manage-claude/compliance-api" target="_blank" rel="noopener noreferrer"><u>Compliance API</u></a> and scans for security findings.&nbsp;</p>
-<p>Starting today, Cloudflare supports security findings for the following assets:&nbsp;</p>
-<ul>
-	<li>Projects: Detect projects shared across the organization or a subset of users and groups</li>
-	<li>Project attachments: Files and documents added to projects that violate DLP policies</li>
-	<li>Chat files: User-uploaded and provider-generated files that violate DLP policies</li>
-	<li>Chat messages: User prompts and provider responses that violate DLP policies</li>
-	<li>Artifacts: Provider-generated documents and files that violate DLP policies</li>
-</ul>
-<p>These findings appear directly in the Cloudflare dashboard alongside posture and content findings from your other SaaS applications. Findings are grouped by category and ordered by <a href="https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#severity-levels" target="_blank" rel="noopener noreferrer"><u>severity level</u></a>. Security teams can triage, assign, and remediate Claude-specific risks using the same workflows they use for Microsoft 365, Google Workspace, or Salesforce.&nbsp;</p>
-<h3>Supporting Claude Enterprise and Claude Platform</h3>
-<p>For <a href="https://claude.com/pricing/enterprise" target="_blank" rel="noopener noreferrer"><u>Claude Enterprise</u></a>, CASB surfaces compliance data such as organizations, projects, chats, and roles. It also retrieves conversation content, including messages and uploaded files through dedicated read-only endpoints to prevent data loss. </p>
-<p>For <a href="https://platform.claude.com" target="_blank" rel="noopener noreferrer"><u>Claude Platform</u></a>, CASB will continue to surface member and workspace changes, API key creation, and file create or download events. In the near future, we will add support for the Activity Feed.</p>
-<p>CASB turns findings into action. A detected security finding in Claude, such as a user uploading files containing sensitive data, can become a Gateway policy in minutes. You can use Gateway to block uploads to Claude for specific users, restrict access to the application entirely, or limit functionality until the issue is resolved. This moves security teams from visibility to action by combining CASB findings with Cloudflare’s existing in-line policy engine.</p>
-<h3>Getting started</h3>
-<p>To enable the Claude Compliance API integration:</p>
-<ol>
-	<li>Ensure you have a Claude Enterprise account.</li>
-	<li>Request Compliance API access from Claude for your organization.</li>
-	<li>In the Cloudflare dashboard, go to Zero Trust &gt; Integrations &gt; Cloud &amp; SaaS.</li>
-	<li>Select Add Integration &gt; Anthropic and enter your Compliance API key.</li>
-	<li>Configure DLP profiles if you want to scan uploaded files for sensitive data.</li>
-</ol>
-<p>The integration begins scanning immediately and surfaces findings in the dashboard within minutes.</p>
-<p>For new Cloudflare customers, you can <a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>sign up</u></a> and start with your first two integrations for free. Existing customers can enable the integration directly in the dashboard.</p>
-<h2>What’s next</h2>
-<p>We are continuing to expand CASB coverage for AI tools as providers release new enterprise security APIs. We are also deepening integrations within CASB to allow customers to create custom findings and build workflows which automatically remediate security findings.&nbsp;</p>
-<p>The shift to agentic AI is here, and we believe the best way to help organizations safely adopt it is by providing a unified platform to build, deploy, and govern agents. To stay up to date, check our <a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a> or <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>subscribe</u></a> to get updated automatically. </p>
+<div class="mb2 gray5">4 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/casb-anthropic-integration">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/casb-anthropic-integration">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/311zvlek2tLcfvTNKYMZW2/ceb02e2cd1ab4c0e362d3b386c65752a/BLOG-3313_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Today, we are extending Cloudflare’s <a href="https://www.cloudflare.com/lp/dg/product/cloud-access-security-broker" target="_blank" rel="noopener noreferrer"><u>cloud access security broker (CASB)</u></a> to support the <a href="https://support.claude.com/en/articles/13015708-access-the-compliance-api" target="_blank" rel="noopener noreferrer"><u>Claude Compliance API</u></a>. Security and compliance teams can now monitor Claude usage directly in the Cloudflare dashboard. No endpoint agents required.</p>
+	<p>Enterprise security teams have long struggled to see how users interact with sanctioned and unsanctioned applications. The rapid adoption of AI applications has made this harder. Employees spend significant time in these new surface areas, and their interactions differ from traditional SaaS: users upload files, share freeform prompts, and providers generate content that may contain sensitive data.</p>
+	<p><a href="https://www.cloudflare.com/lp/dg/product/cloud-access-security-broker" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a> helps solve this problem. One API integration gives you out-of-band visibility and control over the applications your organization uses. This integration builds on our existing support for <a href="https://blog.cloudflare.com/best-practices-sase-for-ai"><u>AI governance</u></a>, extending coverage over the most common tools security teams now manage.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="the-fast-path-to-safe-ai-adoption">The fast path to safe AI adoption</h2>
+		<a href="https://blog.cloudflare.com/#the-fast-path-to-safe-ai-adoption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>AI adoption has outpaced security governance. While IT and security teams raced to enable AI tools for productivity, the controls lagged behind. Most organizations today operate with partial visibility: they may block unauthorized AI tools at the network layer, but they cannot see what happens inside sanctioned ones.</p>
+	<p>This matters because AI tools are not like traditional SaaS applications. They are conversational, persistent, and deeply integrated into workflows through APIs and agent frameworks. An employee might paste customer data into a prompt. A developer might accidentally share an API key and leave it unrotated for months. An AI application might generate content which contains company secrets. Each of these actions creates compliance risks that conventional security tools cannot detect.</p>
+	<p>Organizations are moving fast to adopt AI, but these tools require a different security model. They do not just read data; they generate it, act on it, and connect to multiple systems of record in a single workflow. Security needs to cover the full lifecycle: from how an application calls an API, to what data it handles, to where that data lives at rest. Cloudflare gives organizations the tools to do this at every point of the workflow:</p>
+	<ul>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Gateway</u></a> sits between your applications and AI providers like Anthropic, giving you observability into requests, token spend, and model performance. This allows administrators to enforce rate limits, cache responses, and make fine-grained routing decisions.&nbsp;</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/secure-web-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a> and <a href="https://www.cloudflare.com/products/dlp" target="_blank" rel="noopener noreferrer"><u>Data Loss Prevention</u></a> inspect AI traffic for sensitive data, blocking prompts that contain customer personally identifiable information or confidential material before they reach the model.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/products/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> with <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>MCP server portals</u></a> centralizes agent connections to corporate tools behind a single protected endpoint. Administrators control which users and agents can reach which systems, and every request is logged for audit.</p>
+		</li>
+		<li>
+			<p><a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a> now extends this same unified approach to data at rest inside Claude, scanning for misconfigurations and sensitive data without endpoint agents.</p>
+		</li>
+	</ul>
+	<p>These capabilities run side by side, on the same metal, making each service both <a href="https://blog.cloudflare.com/programmable-sase"><u>composable and programmable</u></a>. More importantly, that means traffic never hairpins through multiple vendors or clouds to be secured.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="better-insight-and-control-with-cloudflare-casb">Better insight and control with Cloudflare CASB</h2>
+		<a href="https://blog.cloudflare.com/#better-insight-and-control-with-cloudflare-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare CASB helps organizations connect to, scan, and monitor third-party SaaS applications for misconfigurations, improper data sharing, and other security risks through lightweight API integrations. Organizations can regain visibility and control over their growing investments in SaaS apps.</p>
+	<p>As enterprises deploy Claude at scale, security and compliance teams need the same visibility into Claude usage that they have for every other enterprise application in their stack. Anthropic recognized this gap and built the Claude Compliance API to give enterprises programmatic access to security-relevant data about their Claude organizations, workspaces, and usage.&nbsp;</p>
+	<p>Cloudflare CASB now consumes this endpoint to surface actionable security findings without requiring inline traffic inspection or endpoint agents.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="what-the-claude-compliance-api-surfaces">What the Claude Compliance API surfaces</h3>
+		<a href="https://blog.cloudflare.com/#what-the-claude-compliance-api-surfaces" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>With this integration, Cloudflare One customers can monitor Claude Enterprise activity using the detection and remediation workflows they already rely on. Cloudflare CASB connects to Claude via the <a href="https://platform.claude.com/docs/en/manage-claude/compliance-api" target="_blank" rel="noopener noreferrer"><u>Compliance API</u></a> and scans for security findings.&nbsp;</p>
+	<p>Starting today, Cloudflare supports security findings for the following assets:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Projects: Detect projects shared across the organization or a subset of users and groups</p>
+		</li>
+		<li>
+			<p>Project attachments: Files and documents added to projects that violate DLP policies</p>
+		</li>
+		<li>
+			<p>Chat files: User-uploaded and provider-generated files that violate DLP policies</p>
+		</li>
+		<li>
+			<p>Chat messages: User prompts and provider responses that violate DLP policies</p>
+		</li>
+		<li>
+			<p>Artifacts: Provider-generated documents and files that violate DLP policies</p>
+		</li>
+	</ul>
+	<p>These findings appear directly in the Cloudflare dashboard alongside posture and content findings from your other SaaS applications. Findings are grouped by category and ordered by <a href="https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#severity-levels" target="_blank" rel="noopener noreferrer"><u>severity level</u></a>. Security teams can triage, assign, and remediate Claude-specific risks using the same workflows they use for Microsoft 365, Google Workspace, or Salesforce.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="supporting-claude-enterprise-and-claude-platform">Supporting Claude Enterprise and Claude Platform</h3>
+		<a href="https://blog.cloudflare.com/#supporting-claude-enterprise-and-claude-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For <a href="https://claude.com/pricing/enterprise" target="_blank" rel="noopener noreferrer"><u>Claude Enterprise</u></a>, CASB surfaces compliance data such as organizations, projects, chats, and roles. It also retrieves conversation content, including messages and uploaded files through dedicated read-only endpoints to prevent data loss. </p>
+	<p>For <a href="https://platform.claude.com" target="_blank" rel="noopener noreferrer"><u>Claude Platform</u></a>, CASB will continue to surface member and workspace changes, API key creation, and file create or download events. In the near future, we will add support for the Activity Feed.</p>
+	<p>CASB turns findings into action. A detected security finding in Claude, such as a user uploading files containing sensitive data, can become a Gateway policy in minutes. You can use Gateway to block uploads to Claude for specific users, restrict access to the application entirely, or limit functionality until the issue is resolved. This moves security teams from visibility to action by combining CASB findings with Cloudflare’s existing in-line policy engine.</p>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To enable the Claude Compliance API integration:</p>
+	<ol>
+		<li>
+			<p>Ensure you have a Claude Enterprise account.</p>
+		</li>
+		<li>
+			<p>Request Compliance API access from Claude for your organization.</p>
+		</li>
+		<li>
+			<p>In the Cloudflare dashboard, go to Zero Trust &gt; Integrations &gt; Cloud &amp; SaaS.</p>
+		</li>
+		<li>
+			<p>Select Add Integration &gt; Anthropic and enter your Compliance API key.</p>
+		</li>
+		<li>
+			<p>Configure DLP profiles if you want to scan uploaded files for sensitive data.</p>
+		</li>
+	</ol>
+	<p>The integration begins scanning immediately and surfaces findings in the dashboard within minutes.</p>
+	<p>For new Cloudflare customers, you can <a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>sign up</u></a> and start with your first two integrations for free. Existing customers can enable the integration directly in the dashboard.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are continuing to expand CASB coverage for AI tools as providers release new enterprise security APIs. We are also deepening integrations within CASB to allow customers to create custom findings and build workflows which automatically remediate security findings.&nbsp;</p>
+	<p>The shift to agentic AI is here, and we believe the best way to help organizations safely adopt it is by providing a unified platform to build, deploy, and govern agents. To stay up to date, check our <a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic" target="_blank" rel="noopener noreferrer"><u>developer documentation</u></a> or <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>subscribe</u></a> to get updated automatically. </p>
+</div>
