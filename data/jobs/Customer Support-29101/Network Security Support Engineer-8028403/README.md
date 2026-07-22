@@ -5,54 +5,46 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Location: Washington DC or Austin TX</strong></p>
-<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<p>As a Software Engineer: Release Manager, you will be part of the Resiliency Organization responsible for building and maintaining the platform that powers safe, reliable, and automated deployments across Cloudflare. We are looking for engineers to join the <strong>Deploy@Scale</strong> team and shape the future of deployment automation and release safety. The Release Manager platform is pivotal in ensuring service resiliency by orchestrating progressive deployments, supporting health-mediated rollouts, and automating release workflows at scale. Our mission is to make deployments seamless, predictable, and observable for all engineering teams across Cloudflare. This is a unique opportunity to work on complex, globally distributed systems that underpin every Cloudflare product. You will play a key role in advancing the infrastructure that enables fast, safe delivery of changes to production, directly impacting the reliability and velocity of Cloudflare’s global network</p>
-<p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>About the Role</strong></h4>
+<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
-	<li>Experience building both backend systems and frontend widgets.</li>
-	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
-	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
-	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
-	<li>Strong verbal and written English language skills.</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
+</ul>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
+<ul>
+	<li>Fluent English speaker is a requirement</li>
+	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
+	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Fundamental understanding how the Internet works (OSI Model)</li>
+	<li>Advanced understanding of internet protocols like TCP and UDP</li>
+	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Packet capture analysis</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Experience in working as part of a team in a customer-facing role</li>
+</ul>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
+</ul>
+<h4><strong>Availability and Schedule Requirements</strong></h4>
+<ul>
+	<li>Flexibility to work varying work schedules including: 8:30 AM - 5:30 PM Pacific Time Zone, Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
