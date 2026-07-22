@@ -2,7 +2,7 @@
 	"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 	"id": "77454fe2d30c4220b5701f6fdfb893ba",
 	"kind": "managed",
-	"last_updated": "2026-07-21T04:28:28.242272Z",
+	"last_updated": "2026-07-22T02:15:47.375931Z",
 	"name": "Cloudflare Managed Free Ruleset",
 	"phase": "http_request_firewall_managed",
 	"rules": [
@@ -242,9 +242,9 @@
 			"description": "Wordpress - Remote Code Execution - CVE:CVE-2026-63030",
 			"enabled": true,
 			"id": "ebd3f2df15c74ddcbf6220c9b5ec246a",
-			"last_updated": "2026-07-21T04:28:28.242272Z",
+			"last_updated": "2026-07-22T02:15:47.375931Z",
 			"ref": "73f56bc478729ec92a5cdc6fdcbc2803",
-			"version": "2"
+			"version": "3"
 		},
 		{
 			"action": "block",
@@ -256,9 +256,9 @@
 			"description": "Wordpress - SQL Injection - CVE:CVE-2026-60137",
 			"enabled": true,
 			"id": "db003b39b7774859a8d588ce33697a1a",
-			"last_updated": "2026-07-21T04:28:28.242272Z",
+			"last_updated": "2026-07-22T02:15:47.375931Z",
 			"ref": "aaab3dacd4500b43f1b9df78fa67d26e",
-			"version": "2"
+			"version": "3"
 		},
 		{
 			"action": "block",
@@ -415,5 +415,5 @@
 		}
 	],
 	"source": "firewall_managed",
-	"version": "69"
+	"version": "70"
 }
