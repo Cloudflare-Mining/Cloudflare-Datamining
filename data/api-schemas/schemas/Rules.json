@@ -95,6 +95,23 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"commit_message": {
+								"description": "Human-readable justification for the deletion. Required for internal-account submissions; optional for customer accounts and automated sync.",
+								"example": "Rule superseded by yara/workers/tighter-panel.yar.",
+								"maxLength": 1000,
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -138,6 +155,25 @@
 					}
 				},
 				"description": "Deletion pending approval (internal accounts)."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Validation error (e.g. commit_message exceeds max length)."
 			},
 			"401": {
 				"content": {
@@ -188,6 +224,174 @@
 			}
 		],
 		"summary": "Delete a rule",
+		"tags": [
+			"Rules"
+		]
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/rules/exemptions": {
+		"description": "Remove regex patterns from per-account exemption rules. Missing keys leave that type untouched; non-existent patterns are silently skipped.",
+		"operationId": "cloudforce-one-remove-account-exemptions",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"properties": {
+							"namespace": {
+								"items": {
+									"example": "^test-.*$",
+									"minLength": 1,
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"tag_match": {
+								"items": {
+									"example": "^test-.*$",
+									"minLength": 1,
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"worker_name": {
+								"items": {
+									"example": "^test-.*$",
+									"minLength": 1,
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"namespace": {
+									"example": [
+										"^test-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"tag_match": {
+									"example": [
+										"^staging-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"worker_name": {
+									"example": [
+										"^demo-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"namespace",
+								"tag_match",
+								"worker_name"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Full exemption state after the subtraction."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Validation error."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Remove patterns from exemption rules",
 		"tags": [
 			"Rules"
 		]
@@ -357,15 +561,11 @@
 												"x-auditable": true
 											},
 											"meta": {
-												"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+												"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
 												"items": {
 													"properties": {
 														"key": {
 															"type": "string"
-														},
-														"ordinal": {
-															"minimum": 0,
-															"type": "integer"
 														},
 														"type": {
 															"enum": [
@@ -392,8 +592,7 @@
 													"required": [
 														"key",
 														"value",
-														"type",
-														"ordinal"
+														"type"
 													],
 													"type": "object"
 												},
@@ -423,6 +622,11 @@
 												"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 												"nullable": true,
 												"type": "number"
+											},
+											"structured_source": {
+												"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+												"nullable": true,
+												"type": "string"
 											},
 											"updated_at": {
 												"example": 1679529600000,
@@ -572,15 +776,11 @@
 									"x-auditable": true
 								},
 								"meta": {
-									"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
 									"items": {
 										"properties": {
 											"key": {
 												"type": "string"
-											},
-											"ordinal": {
-												"minimum": 0,
-												"type": "integer"
 											},
 											"type": {
 												"enum": [
@@ -607,8 +807,7 @@
 										"required": [
 											"key",
 											"value",
-											"type",
-											"ordinal"
+											"type"
 										],
 										"type": "object"
 									},
@@ -638,6 +837,11 @@
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 									"nullable": true,
 									"type": "number"
+								},
+								"structured_source": {
+									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+									"nullable": true,
+									"type": "string"
 								},
 								"updated_at": {
 									"example": 1679529600000,
@@ -720,6 +924,138 @@
 			}
 		],
 		"summary": "Get a rule",
+		"tags": [
+			"Rules"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/exemptions": {
+		"description": "Get all exemption rule patterns for the account, grouped by type.",
+		"operationId": "cloudforce-one-get-exemptions",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"namespace": {
+									"example": [
+										"^test-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"tag_match": {
+									"example": [
+										"^staging-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"worker_name": {
+									"example": [
+										"^demo-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"namespace",
+								"tag_match",
+								"worker_name"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Exemption rules grouped by type."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Validation error."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get exemption rules for an account",
 		"tags": [
 			"Rules"
 		]
@@ -1064,15 +1400,11 @@
 														"x-auditable": true
 													},
 													"meta": {
-														"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+														"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
 														"items": {
 															"properties": {
 																"key": {
 																	"type": "string"
-																},
-																"ordinal": {
-																	"minimum": 0,
-																	"type": "integer"
 																},
 																"type": {
 																	"enum": [
@@ -1099,8 +1431,7 @@
 															"required": [
 																"key",
 																"value",
-																"type",
-																"ordinal"
+																"type"
 															],
 															"type": "object"
 														},
@@ -1130,6 +1461,11 @@
 														"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 														"nullable": true,
 														"type": "number"
+													},
+													"structured_source": {
+														"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+														"nullable": true,
+														"type": "string"
 													},
 													"updated_at": {
 														"example": 1679529600000,
@@ -1528,6 +1864,12 @@
 								},
 								"type": "array"
 							},
+							"commit_message": {
+								"description": "Human-readable justification for this change. Required for internal-account submissions; optional for customer accounts and automated sync.",
+								"example": "Add worker rule to catch bpb-panel variants.",
+								"maxLength": 1000,
+								"type": "string"
+							},
 							"content": {
 								"example": "rule example { condition: true }",
 								"minLength": 1,
@@ -1551,6 +1893,41 @@
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
+							},
+							"meta": {
+								"description": "Additional YARA meta entries appended to the rule's meta block (and stored in rule_meta alongside meta parsed from the content). Keys must be valid YARA identifiers and must not be 'name', 'enabled', or 'description'. Duplicate keys are allowed.",
+								"items": {
+									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"properties": {
+										"key": {
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+											"type": "string"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"maxLength": 10000,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"value"
+									],
+									"type": "object"
+								},
+								"maxItems": 50,
+								"type": "array"
 							},
 							"name": {
 								"example": "block-malicious-workers",
@@ -1630,15 +2007,11 @@
 									"x-auditable": true
 								},
 								"meta": {
-									"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
 									"items": {
 										"properties": {
 											"key": {
 												"type": "string"
-											},
-											"ordinal": {
-												"minimum": 0,
-												"type": "integer"
 											},
 											"type": {
 												"enum": [
@@ -1665,8 +2038,7 @@
 										"required": [
 											"key",
 											"value",
-											"type",
-											"ordinal"
+											"type"
 										],
 										"type": "object"
 									},
@@ -1696,6 +2068,11 @@
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 									"nullable": true,
 									"type": "number"
+								},
+								"structured_source": {
+									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+									"nullable": true,
+									"type": "string"
 								},
 								"updated_at": {
 									"example": 1679529600000,
@@ -1806,6 +2183,174 @@
 			"Rules"
 		],
 		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/exemptions": {
+		"description": "Add regex patterns to per-account exemption rules (union semantics). Missing keys leave that type untouched; duplicates are silently deduped.",
+		"operationId": "cloudforce-one-add-account-exemptions",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"properties": {
+							"namespace": {
+								"items": {
+									"example": "^test-.*$",
+									"minLength": 1,
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"tag_match": {
+								"items": {
+									"example": "^test-.*$",
+									"minLength": 1,
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"worker_name": {
+								"items": {
+									"example": "^test-.*$",
+									"minLength": 1,
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"namespace": {
+									"example": [
+										"^test-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"tag_match": {
+									"example": [
+										"^staging-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"worker_name": {
+									"example": [
+										"^demo-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"namespace",
+								"tag_match",
+								"worker_name"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Full exemption state after the union."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Validation error."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Add patterns to exemption rules",
+		"tags": [
+			"Rules"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/validate": {
 		"description": "Validate rule syntax, name uniqueness, namespace, and meta checks.",
@@ -1953,6 +2498,12 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"commit_message": {
+								"description": "Human-readable justification for this change. Required for internal-account submissions; optional for customer accounts and automated sync.",
+								"example": "Reduce false positives on legit CI workers.",
+								"maxLength": 1000,
+								"type": "string"
+							},
 							"content": {
 								"example": "rule example { condition: true }",
 								"minLength": 1,
@@ -1974,6 +2525,41 @@
 								"example": false,
 								"type": "boolean",
 								"x-auditable": true
+							},
+							"meta": {
+								"description": "Additional YARA meta entries appended to the rule's meta block (and stored in rule_meta alongside meta parsed from the content). Keys must be valid YARA identifiers and must not be 'name', 'enabled', or 'description'. Duplicate keys are allowed.",
+								"items": {
+									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"properties": {
+										"key": {
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+											"type": "string"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"maxLength": 10000,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"value"
+									],
+									"type": "object"
+								},
+								"maxItems": 50,
+								"type": "array"
 							},
 							"name": {
 								"example": "block-malicious-workers",
@@ -2049,15 +2635,11 @@
 									"x-auditable": true
 								},
 								"meta": {
-									"description": "Structured meta entries extracted from rule content. Ordered by ordinal (top-to-bottom in source).",
+									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
 									"items": {
 										"properties": {
 											"key": {
 												"type": "string"
-											},
-											"ordinal": {
-												"minimum": 0,
-												"type": "integer"
 											},
 											"type": {
 												"enum": [
@@ -2084,8 +2666,7 @@
 										"required": [
 											"key",
 											"value",
-											"type",
-											"ordinal"
+											"type"
 										],
 										"type": "object"
 									},
@@ -2115,6 +2696,11 @@
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 									"nullable": true,
 									"type": "number"
+								},
+								"structured_source": {
+									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+									"nullable": true,
+									"type": "string"
 								},
 								"updated_at": {
 									"example": 1679529600000,
@@ -2221,6 +2807,254 @@
 			}
 		],
 		"summary": "Update a rule",
+		"tags": [
+			"Rules"
+		]
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/rules/exemptions": {
+		"description": "Replace existing exemption patterns with new values. Each key maps to an array of {old_pattern, new_pattern} entries. Missing keys leave that type untouched. Fails if any old pattern is not found or any new pattern already exists.",
+		"operationId": "cloudforce-one-update-account-exemptions",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"properties": {
+							"namespace": {
+								"items": {
+									"properties": {
+										"new_pattern": {
+											"example": "^test-.*$",
+											"minLength": 1,
+											"type": "string"
+										},
+										"old_pattern": {
+											"example": "^test-.*$",
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"old_pattern",
+										"new_pattern"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"tag_match": {
+								"items": {
+									"properties": {
+										"new_pattern": {
+											"example": "^test-.*$",
+											"minLength": 1,
+											"type": "string"
+										},
+										"old_pattern": {
+											"example": "^test-.*$",
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"old_pattern",
+										"new_pattern"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"worker_name": {
+								"items": {
+									"properties": {
+										"new_pattern": {
+											"example": "^test-.*$",
+											"minLength": 1,
+											"type": "string"
+										},
+										"old_pattern": {
+											"example": "^test-.*$",
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"old_pattern",
+										"new_pattern"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"namespace": {
+									"example": [
+										"^test-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"tag_match": {
+									"example": [
+										"^staging-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"worker_name": {
+									"example": [
+										"^demo-.*$"
+									],
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"namespace",
+								"tag_match",
+								"worker_name"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Full exemption state after the updates."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Validation error."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Pattern not found."
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "New pattern already exists."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update exemption rule patterns",
 		"tags": [
 			"Rules"
 		]
