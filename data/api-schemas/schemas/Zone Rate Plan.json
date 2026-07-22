@@ -560,7 +560,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.plans",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/available_plans/{plan_identifier}": {
 		"description": "Details of the available plan that the zone can subscribe to.",
@@ -1094,7 +1097,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.plans",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/available_rate_plans": {
 		"description": "Lists all rate plans the zone can subscribe to.",
@@ -1663,6 +1669,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.rate-plans",
+		"x-fern-sdk-method-name": "get"
 	}
 }
