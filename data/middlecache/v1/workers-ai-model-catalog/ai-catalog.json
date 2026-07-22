@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-07-21T04:33:44.649Z",
-	"model_count": 204,
+	"generated_at": "2026-07-22T04:34:04.887Z",
+	"model_count": 207,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -1732,6 +1732,55 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "google/gemini-3.5-flash-lite",
+			"slug": "google/gemini-3.5-flash-lite",
+			"display_name": "Gemini 3.5 Flash-Lite",
+			"description": "Gemini 3.5 Flash-Lite is a low-latency, cost-effective multimodal model optimized for high-throughput, low-cost execution for subagent tasks and document parsing.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Cost-Efficient",
+				"Multimodal",
+				"Agentic"
+			],
+			"context_length": 1048576,
+			"max_output_tokens": 65536,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "65536"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://deepmind.google/technologies/gemini/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)"
+			},
+			"external_info": "https://deepmind.google/technologies/gemini/",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.5-flash-lite.png",
+			"created_at": "2026-07-21 21:43:11",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "google/gemini-3.5-flash",
 			"slug": "google/gemini-3.5-flash",
 			"display_name": "Gemini 3.5 Flash",
@@ -1778,6 +1827,57 @@
 			"terms": "https://ai.google.dev/gemini-api/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.5-flash.png",
 			"created_at": "2026-06-17 23:03:54",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "google/gemini-3.6-flash",
+			"slug": "google/gemini-3.6-flash",
+			"display_name": "Gemini 3.6 Flash",
+			"description": "Gemini 3.6 Flash provides sustained frontier-level intelligence optimized for real-world tasks at a higher speed and lower cost, excelling at code generation, agentic execution, and spatial reasoning.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Multimodal",
+				"Reasoning",
+				"Agentic",
+				"Coding"
+			],
+			"context_length": 1048576,
+			"max_output_tokens": 65536,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "65536"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://deepmind.google/technologies/gemini/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://deepmind.google/technologies/gemini/",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.6-flash.png",
+			"created_at": "2026-07-21 21:44:40",
 			"zdr_comment": null
 		},
 		{
@@ -5569,6 +5669,54 @@
 			"terms": "https://x.ai/legal/terms-of-service",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-4.3.png",
 			"created_at": "2026-05-22 17:54:03",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "xai/grok-4.5",
+			"slug": "xai/grok-4.5",
+			"display_name": "Grok 4.5",
+			"description": "xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Coding",
+				"Agentic",
+				"Tool Use",
+				"Multimodal"
+			],
+			"context_length": 500000,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "500000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service-enterprise"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.x.ai/developers/models/grok-4.5"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer",
+				"Input Modalities": "Text, Image",
+				"Reasoning": "Configurable (low, medium, high)"
+			},
+			"external_info": "https://docs.x.ai/developers/models/grok-4.5",
+			"terms": "https://x.ai/legal/terms-of-service-enterprise",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-4.5.png",
+			"created_at": "2026-07-21 21:32:03",
 			"zdr_comment": null
 		},
 		{

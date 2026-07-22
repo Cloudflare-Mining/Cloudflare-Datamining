@@ -1,0 +1,281 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"object": {
+			"type": "string",
+			"const": "chat.completion"
+		},
+		"created": {
+			"type": "number"
+		},
+		"model": {
+			"type": "string"
+		},
+		"choices": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"index": {
+						"type": "number"
+					},
+					"finish_reason": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						]
+					},
+					"message": {
+						"type": "object",
+						"properties": {
+							"role": {
+								"type": "string"
+							},
+							"content": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"reasoning_content": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"refusal": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"tool_calls": {
+								"anyOf": [
+									{
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
+												"function": {
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string"
+														},
+														"arguments": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"arguments"
+													],
+													"additionalProperties": false
+												}
+											},
+											"required": [
+												"id",
+												"type",
+												"function"
+											],
+											"additionalProperties": false
+										}
+									},
+									{
+										"type": "null"
+									}
+								]
+							}
+						},
+						"required": [
+							"role",
+							"content"
+						],
+						"additionalProperties": false
+					},
+					"logprobs": {
+						"anyOf": [
+							{
+								"type": "object",
+								"properties": {
+									"content": {
+										"anyOf": [
+											{
+												"type": "array",
+												"items": {}
+											},
+											{
+												"type": "null"
+											}
+										]
+									}
+								},
+								"required": [
+									"content"
+								],
+								"additionalProperties": false
+							},
+							{
+								"type": "null"
+							}
+						]
+					}
+				},
+				"required": [
+					"index",
+					"finish_reason",
+					"message"
+				],
+				"additionalProperties": false
+			}
+		},
+		"citations": {
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"output_files": {
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"service_tier": {
+			"type": "string",
+			"enum": [
+				"default",
+				"priority"
+			]
+		},
+		"system_fingerprint": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"usage": {
+			"type": "object",
+			"properties": {
+				"prompt_tokens": {
+					"type": "number"
+				},
+				"completion_tokens": {
+					"type": "number"
+				},
+				"total_tokens": {
+					"type": "number"
+				},
+				"prompt_tokens_details": {
+					"type": "object",
+					"properties": {
+						"text_tokens": {
+							"type": "number"
+						},
+						"audio_tokens": {
+							"type": "number"
+						},
+						"image_tokens": {
+							"type": "number"
+						},
+						"cached_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"text_tokens",
+						"audio_tokens",
+						"image_tokens",
+						"cached_tokens"
+					],
+					"additionalProperties": false
+				},
+				"completion_tokens_details": {
+					"type": "object",
+					"properties": {
+						"reasoning_tokens": {
+							"type": "number"
+						},
+						"audio_tokens": {
+							"type": "number"
+						},
+						"accepted_prediction_tokens": {
+							"type": "number"
+						},
+						"rejected_prediction_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"reasoning_tokens",
+						"audio_tokens",
+						"accepted_prediction_tokens",
+						"rejected_prediction_tokens"
+					],
+					"additionalProperties": false
+				},
+				"cost_in_usd_ticks": {
+					"type": "number"
+				},
+				"num_sources_used": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"prompt_tokens",
+				"completion_tokens",
+				"total_tokens"
+			],
+			"additionalProperties": false
+		}
+	},
+	"required": [
+		"id",
+		"object",
+		"created",
+		"model",
+		"choices",
+		"service_tier"
+	],
+	"additionalProperties": false
+}
