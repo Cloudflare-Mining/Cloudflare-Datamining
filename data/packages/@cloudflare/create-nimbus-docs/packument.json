@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/create-nimbus-docs",
 	"dist-tags": {
-		"latest": "0.5.0"
+		"latest": "0.5.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -25,6 +25,41 @@
 			"name": "@cloudflare/create-nimbus-docs",
 			"version": "0.5.0",
 			"dependencies": {
+				"mri": "^1.2.0",
+				"giget": "^3.3.0",
+				"@clack/prompts": "^0.9.1"
+			},
+			"devDependencies": {
+				"tsx": "^4.22.3",
+				"tsdown": "^0.20.3",
+				"@types/mri": "^1.1.4",
+				"typescript": "^5.8.3",
+				"@types/node": "^20.17.0"
+			},
+			"bin": {
+				"create-nimbus-docs": "dist/index.js"
+			},
+			"dist": {
+				"shasum": "656e5e7e06086f805a96716a6565b40a3870ea45",
+				"tarball": "https://registry.npmjs.org/@cloudflare/create-nimbus-docs/-/create-nimbus-docs-0.5.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-HOO/QD6UCsh2V8qZNKVNZqZnK0U8nCjBzyqzdo68JhsnRhGHOv0qMuadSsKRv6bKNYYMP4bq8tTqnrrfO/vxFg==",
+				"signatures": [
+					{
+						"sig": "MEUCICfqX20XvQZAYbuXldxabwRF9aYdmvqno1qBr8+vzFU/AiEA92ydRdkd3xfDKtkgOU1JVYvEDXJO2D3PZgMr7S8qrzE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 21938
+			},
+			"engines": {
+				"node": ">=22.12.0"
+			}
+		},
+		"0.5.1": {
+			"name": "@cloudflare/create-nimbus-docs",
+			"version": "0.5.1",
+			"dependencies": {
 				"@clack/prompts": "^0.9.1",
 				"giget": "^3.3.0",
 				"mri": "^1.2.0"
@@ -40,15 +75,21 @@
 				"create-nimbus-docs": "dist/index.js"
 			},
 			"dist": {
-				"integrity": "sha512-HOO/QD6UCsh2V8qZNKVNZqZnK0U8nCjBzyqzdo68JhsnRhGHOv0qMuadSsKRv6bKNYYMP4bq8tTqnrrfO/vxFg==",
-				"shasum": "656e5e7e06086f805a96716a6565b40a3870ea45",
-				"tarball": "https://registry.npmjs.org/@cloudflare/create-nimbus-docs/-/create-nimbus-docs-0.5.0.tgz",
+				"integrity": "sha512-G8YAyOAtW8cjUT07mb+EfufloYvGiidHIAQBDNwX0uw0msM5/8LoEoz53q2vmxDvsLQWRMVVz0M7wHuJyzHQzw==",
+				"shasum": "78113a5b8b2843f5487fedeea0d9fba51cc5a9f4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/create-nimbus-docs/-/create-nimbus-docs-0.5.1.tgz",
 				"fileCount": 4,
 				"unpackedSize": 21938,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcreate-nimbus-docs@0.5.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCICfqX20XvQZAYbuXldxabwRF9aYdmvqno1qBr8+vzFU/AiEA92ydRdkd3xfDKtkgOU1JVYvEDXJO2D3PZgMr7S8qrzE="
+						"sig": "MEUCIQCoDeZv3APMgk0ukHYTO2RsO2nrDSoYmkVcSuohMqQhWAIgCRcp3GwyK/gWk+oMwcLC9Hl7+UQ5d0GSe8gsTe1koi4="
 					}
 				]
 			},
