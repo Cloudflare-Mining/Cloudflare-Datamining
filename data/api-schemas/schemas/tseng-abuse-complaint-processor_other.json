@@ -517,6 +517,323 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/abuse-reports/{report_id}/appeals/eligibility": {
+		"description": "Returns whether the report is currently appealable, along with the signals behind that decision: whether it already has an open appeal, how many appeals have been submitted against it, and whether it has at least one mitigation that an appeal could reverse.",
+		"operationId": "CheckAppealEligibility",
+		"parameters": [
+			{
+				"description": "Cloudflare Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Abuse Report ID",
+				"in": "path",
+				"name": "report_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"appeal_count": {
+											"description": "Number of appeals submitted against the report so far.",
+											"type": "integer"
+										},
+										"appealable": {
+											"description": "Whether the report can currently be appealed.",
+											"type": "boolean"
+										},
+										"has_appealable_mitigations": {
+											"description": "Whether the report has at least one mitigation an appeal could reverse.",
+											"type": "boolean"
+										},
+										"has_open_appeal": {
+											"description": "Whether the report already has an open (undecided) appeal.",
+											"type": "boolean"
+										},
+										"max_appeals": {
+											"description": "Maximum number of appeals allowed per report.",
+											"type": "integer"
+										}
+									},
+									"required": [
+										"appealable",
+										"has_appealable_mitigations",
+										"has_open_appeal",
+										"appeal_count",
+										"max_appeals"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Appeal eligibility for the report"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"example": [],
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"example": "Not entitled to use feature: Abuse Report API",
+											"type": "string"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"example": "error",
+											"type": "string"
+										}
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "The report was not found, or does not support appeals."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to check appeal eligibility."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Check whether a report can be appealed",
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports.appeals",
+		"x-fern-sdk-method-name": "eligibility",
+		"x-forge-hidden": true
+	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/emails": {
 		"description": "List emails sent to the customer for an abuse report. Returns all successful customer emails sent for the specified abuse report. Does not include emails sent to hosts or submitters.",
 		"operationId": "ListEmails",
