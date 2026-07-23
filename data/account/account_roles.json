@@ -1,5 +1,35 @@
 [
 	{
+		"id": "97507e13515d40a5847e138048e5938b",
+		"name": "Precursor (Account-Wide) Read",
+		"description": "Can view Precursor Configuration for all domains on an account",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "0b7a2890bb0742ded9afd09d0919545e",
+		"name": "Precursor (Account-Wide) Write",
+		"description": "Can edit Precursor Configuration for all domains on an account",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "726032b183ee77a1e5e3645f5d6d0a76",
 		"name": "Security Center Admin",
 		"description": "Can manage Security Center insights and configurations.",
@@ -2097,52 +2127,6 @@
 		"description": "Grants read access to conduit-api tunnels and routes",
 		"permissions": {
 			"magic": {
-				"read": true,
-				"edit": false
-			},
-			"waf": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "08abaa5235c2196d5f3daf457190161b",
-		"name": "HTTP Applications",
-		"description": "Grants full access to HTTP Applications",
-		"permissions": {
-			"http_applications": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "ecd163368eb6c45b880362b0c098f5e1",
-		"name": "HTTP Applications Read",
-		"description": "Grants read-only access to HTTP Applications",
-		"permissions": {
-			"http_applications": {
 				"read": true,
 				"edit": false
 			},
