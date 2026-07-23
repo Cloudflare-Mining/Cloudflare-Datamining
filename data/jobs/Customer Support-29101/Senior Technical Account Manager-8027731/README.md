@@ -5,15 +5,12 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
-<ul>
-	<li>Seoul, South Korea</li>
-</ul>
-<h2>About the Role</h2>
+<h3><strong>Available Location: Seoul, South Korea</strong></h3>
+<h3><strong>About the Role</strong></h3>
 <p>The Technical Account Team plays a crucial role in ensuring a seamless experience for Cloudflare users, ranging from individual developers to Fortune 500 enterprises. By providing expert technical guidance, proactive support, and complex issue resolution across multiple channels, the team enhances customer satisfaction, strengthens customer trust, and drives product improvement.</p>
 <p>At Cloudflare, Technical Account Managers serve as trusted advisors to our top Enterprise customers. TAMs deliver high-touch technical guidance, customer advocacy, and operational support across the customer lifecycle. Acting as the eyes and ears of the company, TAMs capture valuable customer insights and work closely with internal teams to influence service enhancements and future product development.</p>
 <p>This role is an exciting opportunity to be at the forefront of Cloudflare’s Enterprise customer experience in South Korea. As a Senior Technical Account Manager, you will help some of the region’s most important businesses improve their network performance, security posture, resilience, and operational maturity while directly influencing the future of Cloudflare’s products and services.</p>
-<h2>Responsibilities</h2>
+<h3>Responsibilities</h3>
 <ul>
 	<li>As a Senior Technical Account Manager, you will own the post-sales technical support experience for Cloudflare’s largest Enterprise customers in South Korea. You will serve as the primary technical point of contact for assigned customers, helping them operate Cloudflare solutions successfully, resolve complex issues, and continuously improve the security, reliability, and performance of their environments.</li>
 	<li>You will act as an architectural governance partner, continuously mapping customer environments against industry best practices and Cloudflare’s Well-Architected framework. By proactively identifying security gaps, single points of failure, configuration drift, and performance bottlenecks, you will help prevent incidents before they impact production.</li>
@@ -44,7 +41,7 @@
 	<li>Work one weekend per month as part of the TAM coverage model.</li>
 	<li>Travel up to 25% of the time to support customer engagements.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li>We are seeking a highly motivated, customer-focused technical expert who can combine deep technical knowledge with strong customer advocacy, communication, and business judgment.</li>
 </ul>
