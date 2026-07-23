@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-07-22T04:34:04.887Z",
-	"model_count": 207,
+	"generated_at": "2026-07-23T04:33:53.687Z",
+	"model_count": 209,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -996,7 +996,7 @@
 		{
 			"model_id": "black-forest-labs/flux-2-pro-preview",
 			"slug": "black-forest-labs/flux-2-pro-preview",
-			"display_name": "FLUX.2 [pro] Preview",
+			"display_name": "FLUX.2 [pro]",
 			"description": "FLUX.2 [pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest [pro] weights with strong multi-reference support.",
 			"task": {
 				"id": "",
@@ -5391,6 +5391,95 @@
 			"terms": "https://runwayml.com/terms-of-use",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/runwayml/gen-4.5.png",
 			"created_at": "2026-05-22 17:53:58",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "thinkingmachines/inkling-256k",
+			"slug": "thinkingmachines/inkling-256k",
+			"display_name": "Inkling 256K",
+			"description": "The 256K-context variant of Inkling, Thinking Machines' open-weights hybrid reasoning MoE model. Same hybrid reasoning, tool-use, and streaming support as the base model, with an extended context window for longer conversations and documents. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Coding",
+				"Agentic",
+				"Open Source",
+				"Tool Use",
+				"MoE",
+				"Long Context"
+			],
+			"context_length": 262144,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "262144"
+				},
+				{
+					"property_id": "info",
+					"value": "https://huggingface.co/thinkingmachines/Inkling"
+				}
+			],
+			"metadata": {
+				"Architecture": "Mixture-of-Experts (MoE)",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://huggingface.co/thinkingmachines/Inkling",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-07-21 22:12:27",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "thinkingmachines/inkling",
+			"slug": "thinkingmachines/inkling",
+			"display_name": "Inkling",
+			"description": "Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Coding",
+				"Agentic",
+				"Open Source",
+				"Tool Use",
+				"MoE"
+			],
+			"context_length": 64000,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "64000"
+				},
+				{
+					"property_id": "info",
+					"value": "https://huggingface.co/thinkingmachines/Inkling"
+				}
+			],
+			"metadata": {
+				"Architecture": "Mixture-of-Experts (MoE)",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://huggingface.co/thinkingmachines/Inkling",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-07-22 15:35:05",
 			"zdr_comment": null
 		},
 		{
