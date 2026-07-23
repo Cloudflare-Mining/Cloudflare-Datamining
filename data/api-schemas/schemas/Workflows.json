@@ -267,6 +267,234 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation permanently deletes the Workflow."
+	},
+	"DELETE /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
+		"description": "Deletes a workflow instance and its stored state.",
+		"operationId": "wor-delete-workflow-instance",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "instance_id",
+				"required": true,
+				"schema": {
+					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"maxLength": 271,
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"instanceId": {
+											"type": "string"
+										},
+										"timestamp": {
+											"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"required": [
+										"instanceId",
+										"timestamp"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Instance deleted."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Workflow not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete a workflow instance",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
 		}
 	},
 	"GET /accounts/{account_id}/workflows": {
@@ -582,7 +810,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}": {
 		"description": "Retrieves configuration and metadata for a specific workflow.",
@@ -929,7 +1160,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances": {
 		"description": "Lists all instances of a workflow with their execution status.",
@@ -1340,6 +1574,17 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.instances",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-params": {
+			"date_end": {
+				"flagName": "end"
+			},
+			"date_start": {
+				"flagName": "start"
+			}
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
@@ -2063,7 +2308,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.instances",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/step": {
 		"description": "Retrieves the full, untruncated output for a specific step on a workflow instance. Returns a flat status-shaped JSON body with step `status` ('running' | 'waiting' | 'complete' | 'errored'), `error` (nullable), and `output` (the step value, or null while running/waiting/errored). When the step returned a ReadableStream from step.do, the response is served as 'application/octet-stream' with the raw bytes as the body instead of JSON. A `status='running'` response with non-null `error` indicates the step is currently retrying after a prior attempt failed.",
@@ -2524,7 +2772,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.instances.step",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
 		"description": "Gets the status of a bulk workflow instance termination job.",
@@ -2792,7 +3043,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
 		"description": "Lists all deployed versions of a workflow.",
@@ -2888,6 +3140,19 @@
 											"created_on": {
 												"format": "date-time",
 												"type": "string"
+											},
+											"default_retention": {
+												"properties": {
+													"error_retention": {
+														"description": "Default error retention in milliseconds.",
+														"type": "integer"
+													},
+													"success_retention": {
+														"description": "Default success retention in milliseconds.",
+														"type": "integer"
+													}
+												},
+												"type": "object"
 											},
 											"has_dag": {
 												"type": "boolean"
@@ -3065,7 +3330,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.versions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}": {
 		"description": "Retrieves details for a specific deployed workflow version.",
@@ -3150,6 +3418,19 @@
 										"created_on": {
 											"format": "date-time",
 											"type": "string"
+										},
+										"default_retention": {
+											"properties": {
+												"error_retention": {
+													"description": "Default error retention in milliseconds.",
+													"type": "integer"
+												},
+												"success_retention": {
+													"description": "Default success retention in milliseconds.",
+													"type": "integer"
+												}
+											},
+											"type": "object"
 										},
 										"has_dag": {
 											"type": "boolean"
@@ -3380,7 +3661,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.versions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/dag": {
 		"description": "Retrieves the directed acyclic graph (DAG) representation of a workflow version.",
@@ -3623,7 +3907,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/graph": {
 		"description": "Retrieves the graph visualization of a workflow version.",
@@ -4623,6 +4908,214 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.versions",
+		"x-fern-sdk-method-name": "graph"
+	},
+	"GET /accounts/{account_id}/workflows/settings": {
+		"description": "Retrieves account-level Workflows settings, such as the default instance retention.",
+		"operationId": "wor-get-workflow-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"default_retention": {
+											"properties": {
+												"error_retention": {
+													"description": "Default error retention in milliseconds.",
+													"type": "integer"
+												},
+												"success_retention": {
+													"description": "Default success retention in milliseconds.",
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Account settings."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get account settings",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
 		}
 	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
@@ -5065,6 +5558,337 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-forge-aliases": [
+			{
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "workflows.instances",
+				"x-fern-sdk-method-name": "pause",
+				"x-forge-params": {
+					"from": {
+						"hidden": true
+					},
+					"rollback": {
+						"hidden": true
+					},
+					"status": {
+						"default": "pause",
+						"hidden": true
+					}
+				}
+			},
+			{
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "workflows.instances",
+				"x-fern-sdk-method-name": "resume",
+				"x-forge-params": {
+					"from": {
+						"hidden": true
+					},
+					"rollback": {
+						"hidden": true
+					},
+					"status": {
+						"default": "resume",
+						"hidden": true
+					}
+				}
+			},
+			{
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "workflows.instances",
+				"x-fern-sdk-method-name": "terminate",
+				"x-forge-params": {
+					"from": {
+						"hidden": true
+					},
+					"status": {
+						"default": "terminate",
+						"hidden": true
+					}
+				},
+				"x-forge-require-confirmation": "This operation terminates the running Workflow instance."
+			},
+			{
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "workflows.instances",
+				"x-fern-sdk-method-name": "restart",
+				"x-forge-params": {
+					"rollback": {
+						"hidden": true
+					},
+					"status": {
+						"default": "restart",
+						"hidden": true
+					}
+				}
+			}
+		]
+	},
+	"PATCH /accounts/{account_id}/workflows/settings": {
+		"description": "Partially updates account-level Workflows settings; only the fields present in the body are changed.",
+		"operationId": "wor-update-workflow-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"default_retention": {
+								"description": "Default retention applied to instances of this version when they do not set their own retention.",
+								"properties": {
+									"error_retention": {
+										"anyOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "number"
+											},
+											{
+												"type": "string"
+											}
+										],
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
+										"oneOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "integer"
+											},
+											{
+												"example": "5 minutes",
+												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+												"type": "string"
+											}
+										]
+									},
+									"success_retention": {
+										"anyOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "number"
+											},
+											{
+												"type": "string"
+											}
+										],
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
+										"oneOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "integer"
+											},
+											{
+												"example": "5 minutes",
+												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+												"type": "string"
+											}
+										]
+									}
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"default_retention": {
+											"properties": {
+												"error_retention": {
+													"description": "Default error retention in milliseconds.",
+													"type": "integer"
+												},
+												"success_retention": {
+													"description": "Default success retention in milliseconds.",
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Updated account settings."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update account settings",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances": {
@@ -5154,7 +5978,8 @@
 								"type": "object"
 							},
 							"params": {
-								"type": "object"
+								"description": "JSON-encoded event payload passed into the new instance.",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -5436,6 +6261,22 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.instances",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-params": {
+			"instance_retention.error_retention": {
+				"flagName": "error-retention"
+			},
+			"instance_retention.success_retention": {
+				"flagName": "success-retention"
+			},
+			"params": {
+				"fromFile": {
+					"format": "json"
+				}
+			}
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}": {
@@ -5720,7 +6561,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.instances.events",
+		"x-fern-sdk-method-name": "send"
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch": {
 		"description": "Creates multiple workflow instances in a single batch operation.",
@@ -5810,7 +6654,8 @@
 									"type": "object"
 								},
 								"params": {
-									"type": "object"
+									"description": "JSON-encoded event payload passed into the new instance.",
+									"type": "string"
 								}
 							},
 							"type": "object"
@@ -6099,7 +6944,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.instances.batch",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
 		"description": "Terminates multiple workflow instances in a single batch operation.",
@@ -6386,7 +7234,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
 		"description": "Creates a new workflow or updates an existing workflow definition.",
@@ -6421,6 +7270,58 @@
 								"maxLength": 255,
 								"minLength": 1,
 								"type": "string"
+							},
+							"default_retention": {
+								"description": "Default retention applied to instances of this version when they do not set their own retention.",
+								"properties": {
+									"error_retention": {
+										"anyOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "number"
+											},
+											{
+												"type": "string"
+											}
+										],
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
+										"oneOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "integer"
+											},
+											{
+												"example": "5 minutes",
+												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+												"type": "string"
+											}
+										]
+									},
+									"success_retention": {
+										"anyOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "number"
+											},
+											{
+												"type": "string"
+											}
+										],
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
+										"oneOf": [
+											{
+												"description": "Specifies the duration in milliseconds.",
+												"type": "integer"
+											},
+											{
+												"example": "5 minutes",
+												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+												"type": "string"
+											}
+										]
+									}
+								},
+								"type": "object"
 							},
 							"limits": {
 								"properties": {
@@ -6690,6 +7591,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	}
 }

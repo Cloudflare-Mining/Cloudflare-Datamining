@@ -240,8 +240,8 @@
 																"x-auditable": true
 															},
 															"interface_address": {
-																"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																"example": "192.0.2.0/31",
+																"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+																"example": "192.0.2.3/29",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -267,6 +267,11 @@
 															"name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"example": "pni_ord",
+																"type": "string"
+															},
+															"version": {
+																"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+																"example": "1.5",
 																"type": "string"
 															},
 															"virtual_port_reservation_id": {
@@ -517,8 +522,8 @@
 																		"x-auditable": true
 																	},
 																	"interface_address": {
-																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																		"example": "192.0.2.0/31",
+																		"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+																		"example": "192.0.2.3/29",
 																		"type": "string",
 																		"x-auditable": true
 																	},
@@ -544,6 +549,11 @@
 																	"name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																		"example": "pni_ord",
+																		"type": "string"
+																	},
+																	"version": {
+																		"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+																		"example": "1.5",
 																		"type": "string"
 																	},
 																	"virtual_port_reservation_id": {
@@ -944,8 +954,8 @@
 															"x-auditable": true
 														},
 														"interface_address": {
-															"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-															"example": "192.0.2.0/31",
+															"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+															"example": "192.0.2.3/29",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -971,6 +981,11 @@
 														"name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 															"example": "pni_ord",
+															"type": "string"
+														},
+														"version": {
+															"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+															"example": "1.5",
 															"type": "string"
 														},
 														"virtual_port_reservation_id": {
@@ -1219,8 +1234,8 @@
 																	"x-auditable": true
 																},
 																"interface_address": {
-																	"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																	"example": "192.0.2.0/31",
+																	"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+																	"example": "192.0.2.3/29",
 																	"type": "string",
 																	"x-auditable": true
 																},
@@ -1246,6 +1261,11 @@
 																"name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																	"example": "pni_ord",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+																	"example": "1.5",
 																	"type": "string"
 																},
 																"virtual_port_reservation_id": {
@@ -1650,8 +1670,8 @@
 																"x-auditable": true
 															},
 															"interface_address": {
-																"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																"example": "192.0.2.0/31",
+																"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+																"example": "192.0.2.3/29",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -1677,6 +1697,11 @@
 															"name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"example": "pni_ord",
+																"type": "string"
+															},
+															"version": {
+																"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+																"example": "1.5",
 																"type": "string"
 															},
 															"virtual_port_reservation_id": {
@@ -1931,8 +1956,8 @@
 																		"x-auditable": true
 																	},
 																	"interface_address": {
-																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																		"example": "192.0.2.0/31",
+																		"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+																		"example": "192.0.2.3/29",
 																		"type": "string",
 																		"x-auditable": true
 																	},
@@ -1958,6 +1983,11 @@
 																	"name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																		"example": "pni_ord",
+																		"type": "string"
+																	},
+																	"version": {
+																		"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+																		"example": "1.5",
 																		"type": "string"
 																	},
 																	"virtual_port_reservation_id": {
@@ -2232,8 +2262,8 @@
 								"type": "object"
 							},
 							"interface_address": {
-								"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-								"example": "192.0.2.0/31",
+								"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+								"example": "192.0.2.3/29",
 								"type": "string",
 								"x-auditable": true
 							},
@@ -2479,8 +2509,8 @@
 															"x-auditable": true
 														},
 														"interface_address": {
-															"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-															"example": "192.0.2.0/31",
+															"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+															"example": "192.0.2.3/29",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -2506,6 +2536,11 @@
 														"name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 															"example": "pni_ord",
+															"type": "string"
+														},
+														"version": {
+															"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+															"example": "1.5",
 															"type": "string"
 														},
 														"virtual_port_reservation_id": {
@@ -2758,8 +2793,8 @@
 																	"x-auditable": true
 																},
 																"interface_address": {
-																	"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
-																	"example": "192.0.2.0/31",
+																	"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
+																	"example": "192.0.2.3/29",
 																	"type": "string",
 																	"x-auditable": true
 																},
@@ -2785,6 +2820,11 @@
 																"name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																	"example": "pni_ord",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
+																	"example": "1.5",
 																	"type": "string"
 																},
 																"virtual_port_reservation_id": {

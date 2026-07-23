@@ -645,43 +645,39 @@
 																				"x-auditable": true
 																			},
 																			"scope": {
-																				"description": "The scope associated to the resource group",
-																				"items": {
-																					"description": "A scope is a combination of scope objects which provides additional context.",
-																					"properties": {
-																						"key": {
-																							"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																							"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																							"readOnly": true,
-																							"x-auditable": true
-																						},
-																						"objects": {
-																							"description": "A list of scope objects for additional context.",
-																							"items": {
-																								"description": "A scope object represents any resource that can have actions applied against invite.",
-																								"properties": {
-																									"key": {
-																										"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																										"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																										"readOnly": true,
-																										"x-auditable": true
-																									}
-																								},
-																								"required": [
-																									"key"
-																								],
-																								"type": "object"
-																							},
-																							"type": "array"
-																						}
+																				"description": "A scope is a combination of scope objects which provides additional context.",
+																				"properties": {
+																					"key": {
+																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																						"readOnly": true,
+																						"x-auditable": true
 																					},
-																					"required": [
-																						"key",
-																						"objects"
-																					],
-																					"type": "object"
+																					"objects": {
+																						"description": "A list of scope objects for additional context.",
+																						"items": {
+																							"description": "A scope object represents any resource that can have actions applied against invite.",
+																							"properties": {
+																								"key": {
+																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																									"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																									"readOnly": true,
+																									"x-auditable": true
+																								}
+																							},
+																							"required": [
+																								"key"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
 																				},
-																				"type": "array"
+																				"required": [
+																					"key",
+																					"objects"
+																				],
+																				"type": "object"
 																			}
 																		},
 																		"required": [
@@ -1465,43 +1461,39 @@
 																			"x-auditable": true
 																		},
 																		"scope": {
-																			"description": "The scope associated to the resource group",
-																			"items": {
-																				"description": "A scope is a combination of scope objects which provides additional context.",
-																				"properties": {
-																					"key": {
-																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"objects": {
-																						"description": "A list of scope objects for additional context.",
-																						"items": {
-																							"description": "A scope object represents any resource that can have actions applied against invite.",
-																							"properties": {
-																								"key": {
-																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																									"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																									"readOnly": true,
-																									"x-auditable": true
-																								}
-																							},
-																							"required": [
-																								"key"
-																							],
-																							"type": "object"
-																						},
-																						"type": "array"
-																					}
+																			"description": "A scope is a combination of scope objects which provides additional context.",
+																			"properties": {
+																				"key": {
+																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																					"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																					"readOnly": true,
+																					"x-auditable": true
 																				},
-																				"required": [
-																					"key",
-																					"objects"
-																				],
-																				"type": "object"
+																				"objects": {
+																					"description": "A list of scope objects for additional context.",
+																					"items": {
+																						"description": "A scope object represents any resource that can have actions applied against invite.",
+																						"properties": {
+																							"key": {
+																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																								"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																								"readOnly": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"key"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
 																			},
-																			"type": "array"
+																			"required": [
+																				"key",
+																				"objects"
+																			],
+																			"type": "object"
 																		}
 																	},
 																	"required": [
@@ -2425,43 +2417,39 @@
 																			"x-auditable": true
 																		},
 																		"scope": {
-																			"description": "The scope associated to the resource group",
-																			"items": {
-																				"description": "A scope is a combination of scope objects which provides additional context.",
-																				"properties": {
-																					"key": {
-																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"objects": {
-																						"description": "A list of scope objects for additional context.",
-																						"items": {
-																							"description": "A scope object represents any resource that can have actions applied against invite.",
-																							"properties": {
-																								"key": {
-																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																									"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																									"readOnly": true,
-																									"x-auditable": true
-																								}
-																							},
-																							"required": [
-																								"key"
-																							],
-																							"type": "object"
-																						},
-																						"type": "array"
-																					}
+																			"description": "A scope is a combination of scope objects which provides additional context.",
+																			"properties": {
+																				"key": {
+																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																					"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																					"readOnly": true,
+																					"x-auditable": true
 																				},
-																				"required": [
-																					"key",
-																					"objects"
-																				],
-																				"type": "object"
+																				"objects": {
+																					"description": "A list of scope objects for additional context.",
+																					"items": {
+																						"description": "A scope object represents any resource that can have actions applied against invite.",
+																						"properties": {
+																							"key": {
+																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																								"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																								"readOnly": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"key"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
 																			},
-																			"type": "array"
+																			"required": [
+																				"key",
+																				"objects"
+																			],
+																			"type": "object"
 																		}
 																	},
 																	"required": [
@@ -3699,43 +3687,39 @@
 																			"x-auditable": true
 																		},
 																		"scope": {
-																			"description": "The scope associated to the resource group",
-																			"items": {
-																				"description": "A scope is a combination of scope objects which provides additional context.",
-																				"properties": {
-																					"key": {
-																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"objects": {
-																						"description": "A list of scope objects for additional context.",
-																						"items": {
-																							"description": "A scope object represents any resource that can have actions applied against invite.",
-																							"properties": {
-																								"key": {
-																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																									"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																									"readOnly": true,
-																									"x-auditable": true
-																								}
-																							},
-																							"required": [
-																								"key"
-																							],
-																							"type": "object"
-																						},
-																						"type": "array"
-																					}
+																			"description": "A scope is a combination of scope objects which provides additional context.",
+																			"properties": {
+																				"key": {
+																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																					"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																					"readOnly": true,
+																					"x-auditable": true
 																				},
-																				"required": [
-																					"key",
-																					"objects"
-																				],
-																				"type": "object"
+																				"objects": {
+																					"description": "A list of scope objects for additional context.",
+																					"items": {
+																						"description": "A scope object represents any resource that can have actions applied against invite.",
+																						"properties": {
+																							"key": {
+																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																								"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																								"readOnly": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"key"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
 																			},
-																			"type": "array"
+																			"required": [
+																				"key",
+																				"objects"
+																			],
+																			"type": "object"
 																		}
 																	},
 																	"required": [

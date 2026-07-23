@@ -732,6 +732,15 @@
 																"minimum": 5,
 																"type": "integer",
 																"x-auditable": true
+															},
+															"restarted_on": {
+																"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+																"example": "2017-01-01T00:00:00Z",
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1330,6 +1339,15 @@
 															"example": 60,
 															"minimum": 5,
 															"type": "integer",
+															"x-auditable": true
+														},
+														"restarted_on": {
+															"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
 															"x-auditable": true
 														}
 													},
@@ -2141,6 +2159,15 @@
 															"minimum": 5,
 															"type": "integer",
 															"x-auditable": true
+														},
+														"restarted_on": {
+															"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2659,6 +2686,15 @@
 								"minimum": 5,
 								"type": "integer",
 								"x-auditable": true
+							},
+							"restarted_on": {
+								"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+								"example": "2017-01-01T00:00:00Z",
+								"format": "date-time",
+								"nullable": true,
+								"readOnly": true,
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3092,6 +3128,15 @@
 															"example": 60,
 															"minimum": 5,
 															"type": "integer",
+															"x-auditable": true
+														},
+														"restarted_on": {
+															"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
 															"x-auditable": true
 														}
 													},
@@ -3701,6 +3746,15 @@
 															"minimum": 5,
 															"type": "integer",
 															"x-auditable": true
+														},
+														"restarted_on": {
+															"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -4216,6 +4270,15 @@
 								"minimum": 5,
 								"type": "integer",
 								"x-auditable": true
+							},
+							"restarted_on": {
+								"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+								"example": "2017-01-01T00:00:00Z",
+								"format": "date-time",
+								"nullable": true,
+								"readOnly": true,
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -4649,6 +4712,15 @@
 															"example": 60,
 															"minimum": 5,
 															"type": "integer",
+															"x-auditable": true
+														},
+														"restarted_on": {
+															"description": "Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string",
 															"x-auditable": true
 														}
 													},
