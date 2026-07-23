@@ -378,6 +378,7 @@
 				"name": "per_page",
 				"schema": {
 					"default": 25,
+					"maximum": 1000,
 					"type": "integer"
 				}
 			},

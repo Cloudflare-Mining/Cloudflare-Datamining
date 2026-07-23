@@ -30,7 +30,7 @@
 				"schema": {
 					"default": 25,
 					"description": "Number of results per page.",
-					"maximum": 300,
+					"maximum": 1000,
 					"type": "integer"
 				}
 			},
@@ -38,6 +38,7 @@
 				"in": "query",
 				"name": "status",
 				"schema": {
+					"description": "JIT request status. `SPENT` is deprecated and interpreted as `APPROVED`.",
 					"enum": [
 						"PENDING",
 						"APPROVED",
@@ -49,7 +50,7 @@
 				}
 			},
 			{
-				"description": "Case-insensitive search over requester email and application ID.",
+				"description": "Case-insensitive search over request ID, requester email, application audience, and application hostname.",
 				"in": "query",
 				"name": "search",
 				"schema": {
@@ -208,14 +209,19 @@
 										"result": {
 											"items": {
 												"properties": {
+													"app_aud": {
+														"description": "Audience of the Access application.",
+														"type": "string"
+													},
 													"app_hostname": {
 														"type": "string"
 													},
-													"app_uid": {
-														"description": "Unique identifier for the Access application.",
-														"type": "string"
+													"approvals_received": {
+														"description": "Number of unique actors who approved the request.",
+														"type": "integer"
 													},
 													"approver_emails": {
+														"description": "Unique actors who approved the request.",
 														"items": {
 															"format": "email",
 															"type": "string"
@@ -223,6 +229,12 @@
 														"type": "array"
 													},
 													"created_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"type": "string",
+														"x-auditable": true
+													},
+													"expires_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"type": "string",
@@ -240,6 +252,7 @@
 														"type": "string"
 													},
 													"status": {
+														"description": "JIT request status. `SPENT` is deprecated and interpreted as `APPROVED`.",
 														"enum": [
 															"PENDING",
 															"APPROVED",
@@ -384,6 +397,489 @@
 			}
 		],
 		"summary": "List Access JIT request logs",
+		"tags": [
+			"Access JIT request logs"
+		]
+	},
+	"GET /accounts/{account_id}/access/logs/jit_requests/{knock_request_id}": {
+		"description": "Gets an account-scoped Access JIT request summary and its lifecycle events in chronological order.",
+		"operationId": "access-jit-request-logs-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "knock_request_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"app_aud": {
+															"description": "Audience of the Access application.",
+															"type": "string"
+														},
+														"app_hostname": {
+															"type": "string"
+														},
+														"approvals_received": {
+															"description": "Number of unique actors who approved the request.",
+															"type": "integer"
+														},
+														"approver_emails": {
+															"description": "Unique actors who approved the request.",
+															"items": {
+																"format": "email",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														"expires_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														},
+														"knock_request_id": {
+															"description": "Unique identifier for the JIT request.",
+															"type": "string"
+														},
+														"purpose_justification": {
+															"type": "string"
+														},
+														"requester_email": {
+															"format": "email",
+															"type": "string"
+														},
+														"status": {
+															"description": "JIT request status. `SPENT` is deprecated and interpreted as `APPROVED`.",
+															"enum": [
+																"PENDING",
+																"APPROVED",
+																"DENIED",
+																"CANCELED",
+																"SPENT"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"events": {
+															"items": {
+																"properties": {
+																	"actor_email": {
+																		"format": "email",
+																		"type": "string"
+																	},
+																	"actor_idp": {
+																		"type": "string"
+																	},
+																	"actor_uuid": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"decision_outcome": {
+																		"type": "string"
+																	},
+																	"ray_id": {
+																		"type": "string"
+																	},
+																	"session_duration_seconds": {
+																		"type": "integer"
+																	},
+																	"success": {
+																		"type": "boolean"
+																	},
+																	"timestamp": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"enum": [
+																			"CREATED",
+																			"APPROVER_DECISION",
+																			"COMMITTED",
+																			"CANCELED",
+																			"LOGIN_SUCCESS",
+																			"REDIRECT_TO_ACTIVE"
+																		],
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Access JIT request log detail response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Access JIT request log not found"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Access JIT request log detail response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get an Access JIT request log",
 		"tags": [
 			"Access JIT request logs"
 		]

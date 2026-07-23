@@ -317,6 +317,7 @@
 				"schema": {
 					"default": 200,
 					"description": "Number of results per page.",
+					"maximum": 1000,
 					"type": "integer"
 				}
 			}
@@ -8294,6 +8295,7 @@
 				"schema": {
 					"default": 100,
 					"description": "Number of results per page.",
+					"maximum": 100,
 					"type": "integer"
 				}
 			}
@@ -8726,6 +8728,7 @@
 				"schema": {
 					"default": 100,
 					"description": "Number of results per page.",
+					"maximum": 100,
 					"type": "integer"
 				}
 			}

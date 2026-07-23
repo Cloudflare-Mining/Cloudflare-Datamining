@@ -1490,7 +1490,7 @@
 																						"description": "The unique identifier for your SaaS application.",
 																						"example": "https://example.cloudflareaccess.com",
 																						"type": "string",
-																						"x-stainless-configurability": "computed_optional"
+																						"x-stainless-terraform-configurability": "computed_optional"
 																					},
 																					"name_id_format": {
 																						"description": "The format of the name identifier sent to the SaaS application.",
@@ -1510,7 +1510,7 @@
 																						"description": "The Access public certificate that will be used to verify your identity.",
 																						"example": "example unique name",
 																						"type": "string",
-																						"x-stainless-configurability": "computed_optional"
+																						"x-stainless-terraform-configurability": "computed"
 																					},
 																					"sp_entity_id": {
 																						"description": "A globally unique name for an identity or service provider.",
@@ -1521,7 +1521,7 @@
 																						"description": "The endpoint where your SaaS application will send login requests.",
 																						"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																						"type": "string",
-																						"x-stainless-configurability": "computed_optional"
+																						"x-stainless-terraform-configurability": "computed_optional"
 																					},
 																					"updated_at": {
 																						"example": "2014-01-01T05:20:00.12345Z",
@@ -6016,7 +6016,7 @@
 																					"description": "The unique identifier for your SaaS application.",
 																					"example": "https://example.cloudflareaccess.com",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"name_id_format": {
 																					"description": "The format of the name identifier sent to the SaaS application.",
@@ -6036,7 +6036,7 @@
 																					"description": "The Access public certificate that will be used to verify your identity.",
 																					"example": "example unique name",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"sp_entity_id": {
 																					"description": "A globally unique name for an identity or service provider.",
@@ -6047,7 +6047,7 @@
 																					"description": "The endpoint where your SaaS application will send login requests.",
 																					"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
@@ -11123,7 +11123,7 @@
 																"description": "The unique identifier for your SaaS application.",
 																"example": "https://example.cloudflareaccess.com",
 																"type": "string",
-																"x-stainless-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"name_id_format": {
 																"description": "The format of the name identifier sent to the SaaS application.",
@@ -11143,7 +11143,7 @@
 																"description": "The Access public certificate that will be used to verify your identity.",
 																"example": "example unique name",
 																"type": "string",
-																"x-stainless-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"sp_entity_id": {
 																"description": "A globally unique name for an identity or service provider.",
@@ -11154,7 +11154,7 @@
 																"description": "The endpoint where your SaaS application will send login requests.",
 																"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																"type": "string",
-																"x-stainless-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -15466,7 +15466,7 @@
 																							"description": "The unique identifier for your SaaS application.",
 																							"example": "https://example.cloudflareaccess.com",
 																							"type": "string",
-																							"x-stainless-configurability": "computed_optional"
+																							"x-stainless-terraform-configurability": "computed_optional"
 																						},
 																						"name_id_format": {
 																							"description": "The format of the name identifier sent to the SaaS application.",
@@ -15486,7 +15486,7 @@
 																							"description": "The Access public certificate that will be used to verify your identity.",
 																							"example": "example unique name",
 																							"type": "string",
-																							"x-stainless-configurability": "computed_optional"
+																							"x-stainless-terraform-configurability": "computed"
 																						},
 																						"sp_entity_id": {
 																							"description": "A globally unique name for an identity or service provider.",
@@ -15497,7 +15497,7 @@
 																							"description": "The endpoint where your SaaS application will send login requests.",
 																							"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																							"type": "string",
-																							"x-stainless-configurability": "computed_optional"
+																							"x-stainless-terraform-configurability": "computed_optional"
 																						},
 																						"updated_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
@@ -19715,7 +19715,7 @@
 																					"description": "The unique identifier for your SaaS application.",
 																					"example": "https://example.cloudflareaccess.com",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"name_id_format": {
 																					"description": "The format of the name identifier sent to the SaaS application.",
@@ -19735,7 +19735,7 @@
 																					"description": "The Access public certificate that will be used to verify your identity.",
 																					"example": "example unique name",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"sp_entity_id": {
 																					"description": "A globally unique name for an identity or service provider.",
@@ -19746,7 +19746,7 @@
 																					"description": "The endpoint where your SaaS application will send login requests.",
 																					"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
@@ -24347,7 +24347,7 @@
 																"description": "The unique identifier for your SaaS application.",
 																"example": "https://example.cloudflareaccess.com",
 																"type": "string",
-																"x-stainless-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"name_id_format": {
 																"description": "The format of the name identifier sent to the SaaS application.",
@@ -24367,7 +24367,7 @@
 																"description": "The Access public certificate that will be used to verify your identity.",
 																"example": "example unique name",
 																"type": "string",
-																"x-stainless-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"sp_entity_id": {
 																"description": "A globally unique name for an identity or service provider.",
@@ -24378,7 +24378,7 @@
 																"description": "The endpoint where your SaaS application will send login requests.",
 																"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																"type": "string",
-																"x-stainless-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -28690,7 +28690,7 @@
 																							"description": "The unique identifier for your SaaS application.",
 																							"example": "https://example.cloudflareaccess.com",
 																							"type": "string",
-																							"x-stainless-configurability": "computed_optional"
+																							"x-stainless-terraform-configurability": "computed_optional"
 																						},
 																						"name_id_format": {
 																							"description": "The format of the name identifier sent to the SaaS application.",
@@ -28710,7 +28710,7 @@
 																							"description": "The Access public certificate that will be used to verify your identity.",
 																							"example": "example unique name",
 																							"type": "string",
-																							"x-stainless-configurability": "computed_optional"
+																							"x-stainless-terraform-configurability": "computed"
 																						},
 																						"sp_entity_id": {
 																							"description": "A globally unique name for an identity or service provider.",
@@ -28721,7 +28721,7 @@
 																							"description": "The endpoint where your SaaS application will send login requests.",
 																							"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																							"type": "string",
-																							"x-stainless-configurability": "computed_optional"
+																							"x-stainless-terraform-configurability": "computed_optional"
 																						},
 																						"updated_at": {
 																							"example": "2014-01-01T05:20:00.12345Z",
@@ -32939,7 +32939,7 @@
 																					"description": "The unique identifier for your SaaS application.",
 																					"example": "https://example.cloudflareaccess.com",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"name_id_format": {
 																					"description": "The format of the name identifier sent to the SaaS application.",
@@ -32959,7 +32959,7 @@
 																					"description": "The Access public certificate that will be used to verify your identity.",
 																					"example": "example unique name",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed"
 																				},
 																				"sp_entity_id": {
 																					"description": "A globally unique name for an identity or service provider.",
@@ -32970,7 +32970,7 @@
 																					"description": "The endpoint where your SaaS application will send login requests.",
 																					"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
 																					"type": "string",
-																					"x-stainless-configurability": "computed_optional"
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",

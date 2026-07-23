@@ -600,6 +600,7 @@
 				"schema": {
 					"default": 1000,
 					"description": "Number of results per page.",
+					"maximum": 1000,
 					"type": "integer"
 				}
 			}
