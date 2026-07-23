@@ -100,7 +100,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Allow policy identifier",
+													"description": "Allow policy identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -119,7 +119,7 @@
 						}
 					}
 				},
-				"description": "Deleted allow policy"
+				"description": "Deleted allow policy."
 			},
 			"4XX": {
 				"content": {
@@ -232,7 +232,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -358,7 +358,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Blocked sender pattern identifier",
+													"description": "Blocked sender pattern identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -377,7 +377,7 @@
 						}
 					}
 				},
-				"description": "Deleted blocked sender"
+				"description": "Deleted blocked sender."
 			},
 			"4XX": {
 				"content": {
@@ -490,7 +490,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -517,7 +517,7 @@
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains": {
 		"deprecated": true,
-		"description": "Deprecated. Use the batch endpoint instead.",
+		"description": "Removes protection from multiple email domains. Deprecated; use the batch endpoint instead.",
 		"operationId": "email_security_delete_domains",
 		"requestBody": {
 			"content": {
@@ -526,7 +526,7 @@
 						"items": {
 							"properties": {
 								"id": {
-									"description": "Domain identifier",
+									"description": "Domain identifier.",
 									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 									"format": "uuid",
 									"type": "string",
@@ -644,7 +644,7 @@
 											"items": {
 												"properties": {
 													"id": {
-														"description": "Domain identifier",
+														"description": "Domain identifier.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"format": "uuid",
 														"type": "string",
@@ -665,7 +665,7 @@
 						}
 					}
 				},
-				"description": "Deleted domains"
+				"description": "Deleted domains."
 			},
 			"4XX": {
 				"content": {
@@ -778,7 +778,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -900,7 +900,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Domain identifier",
+													"description": "Domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -919,7 +919,7 @@
 						}
 					}
 				},
-				"description": "Deleted domain"
+				"description": "Deleted domain."
 			},
 			"4XX": {
 				"content": {
@@ -1032,7 +1032,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -1154,7 +1154,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Impersonation registry entry identifier",
+													"description": "Impersonation registry entry identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"title": "identifier",
@@ -1174,7 +1174,7 @@
 						}
 					}
 				},
-				"description": "Deleted impersonation registry entry"
+				"description": "Deleted impersonation registry entry."
 			},
 			"4XX": {
 				"content": {
@@ -1287,7 +1287,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -1429,7 +1429,7 @@
 						}
 					}
 				},
-				"description": "Deleted sending domain restriction"
+				"description": "Deleted sending domain restriction."
 			},
 			"4XX": {
 				"content": {
@@ -1542,7 +1542,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -1664,7 +1664,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Trusted domain identifier",
+													"description": "Trusted domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -1683,7 +1683,7 @@
 						}
 					}
 				},
-				"description": "Deleted trusted domain"
+				"description": "Deleted trusted domain."
 			},
 			"4XX": {
 				"content": {
@@ -1796,7 +1796,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -1922,7 +1922,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "URL ignore pattern identifier",
+													"description": "URL ignore pattern identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"title": "identifier",
@@ -1942,7 +1942,7 @@
 						}
 					}
 				},
-				"description": "Deleted URL ignore pattern"
+				"description": "Deleted URL ignore pattern."
 			},
 			"4XX": {
 				"content": {
@@ -2055,7 +2055,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -2173,7 +2173,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+							"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 							"enum": [
 								"EMAIL",
 								"DOMAIN",
@@ -2322,7 +2322,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "An email allow policy",
+												"description": "An email allow policy.",
 												"properties": {
 													"comments": {
 														"example": "Trust all messages send from test@example.com",
@@ -2344,7 +2344,7 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "Allow policy identifier",
+																"description": "Allow policy identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -2354,13 +2354,13 @@
 														"readOnly": true
 													},
 													"is_acceptable_sender": {
-														"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+														"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 														"example": false,
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"is_exempt_recipient": {
-														"description": "Messages to this recipient will bypass all detections",
+														"description": "Bypasses all detections for messages to this recipient.",
 														"example": false,
 														"type": "boolean",
 														"x-auditable": true
@@ -2395,7 +2395,7 @@
 														"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 													},
 													"is_trusted_sender": {
-														"description": "Messages from this sender will bypass all detections and link following",
+														"description": "Bypasses all detections and link following for messages from this sender.",
 														"example": true,
 														"type": "boolean",
 														"x-auditable": true
@@ -2426,7 +2426,7 @@
 														"readOnly": true
 													},
 													"pattern": {
-														"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+														"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 														"example": "test@example.com",
 														"maxLength": 1024,
 														"minLength": 1,
@@ -2434,7 +2434,7 @@
 														"x-auditable": true
 													},
 													"pattern_type": {
-														"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+														"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 														"enum": [
 															"EMAIL",
 															"DOMAIN",
@@ -2468,7 +2468,7 @@
 						}
 					}
 				},
-				"description": "List of allow policies"
+				"description": "List of allow policies."
 			},
 			"4XX": {
 				"content": {
@@ -2581,7 +2581,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -2706,7 +2706,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "An email allow policy",
+											"description": "An email allow policy.",
 											"properties": {
 												"comments": {
 													"example": "Trust all messages send from test@example.com",
@@ -2728,7 +2728,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Allow policy identifier",
+															"description": "Allow policy identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -2738,13 +2738,13 @@
 													"readOnly": true
 												},
 												"is_acceptable_sender": {
-													"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+													"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"is_exempt_recipient": {
-													"description": "Messages to this recipient will bypass all detections",
+													"description": "Bypasses all detections for messages to this recipient.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -2779,7 +2779,7 @@
 													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
-													"description": "Messages from this sender will bypass all detections and link following",
+													"description": "Bypasses all detections and link following for messages from this sender.",
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -2810,7 +2810,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -2818,7 +2818,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -2850,7 +2850,7 @@
 						}
 					}
 				},
-				"description": "Allow policy details"
+				"description": "Allow policy details."
 			},
 			"4XX": {
 				"content": {
@@ -2963,7 +2963,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -3055,7 +3055,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+							"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 							"enum": [
 								"EMAIL",
 								"DOMAIN",
@@ -3205,7 +3205,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "A blocked sender pattern",
+												"description": "A blocked sender pattern.",
 												"properties": {
 													"comments": {
 														"example": "Block sender with email test@example.com",
@@ -3227,7 +3227,7 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "Blocked sender pattern identifier",
+																"description": "Blocked sender pattern identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -3267,7 +3267,7 @@
 														"readOnly": true
 													},
 													"pattern": {
-														"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+														"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 														"example": "test@example.com",
 														"maxLength": 1024,
 														"minLength": 1,
@@ -3275,7 +3275,7 @@
 														"x-auditable": true
 													},
 													"pattern_type": {
-														"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+														"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 														"enum": [
 															"EMAIL",
 															"DOMAIN",
@@ -3298,7 +3298,7 @@
 						}
 					}
 				},
-				"description": "List of blocked senders"
+				"description": "List of blocked senders."
 			},
 			"4XX": {
 				"content": {
@@ -3411,7 +3411,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -3532,7 +3532,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A blocked sender pattern",
+											"description": "A blocked sender pattern.",
 											"properties": {
 												"comments": {
 													"example": "Block sender with email test@example.com",
@@ -3554,7 +3554,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Blocked sender pattern identifier",
+															"description": "Blocked sender pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -3594,7 +3594,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -3602,7 +3602,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -3623,7 +3623,7 @@
 						}
 					}
 				},
-				"description": "Blocked sender details"
+				"description": "Blocked sender details."
 			},
 			"4XX": {
 				"content": {
@@ -3736,7 +3736,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -4123,7 +4123,7 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "Domain identifier",
+														"description": "Domain identifier.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"format": "uuid",
 														"type": "string",
@@ -4246,7 +4246,7 @@
 						}
 					}
 				},
-				"description": "List of domains"
+				"description": "List of domains."
 			},
 			"4XX": {
 				"content": {
@@ -4359,7 +4359,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -4592,7 +4592,7 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Domain identifier",
+													"description": "Domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -4713,7 +4713,7 @@
 						}
 					}
 				},
-				"description": "Domain details"
+				"description": "Domain details."
 			},
 			"4XX": {
 				"content": {
@@ -4826,7 +4826,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -4993,7 +4993,7 @@
 						}
 					}
 				},
-				"description": "DNS TXT verification details"
+				"description": "DNS TXT verification details."
 			},
 			"204": {
 				"description": "Domain is verified by other means; no TXT record required."
@@ -5109,7 +5109,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -5332,7 +5332,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "An impersonation registry entry",
+												"description": "An impersonation registry entry.",
 												"properties": {
 													"comments": {
 														"nullable": true,
@@ -5371,7 +5371,7 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "Impersonation registry entry identifier",
+																"description": "Impersonation registry entry identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"title": "identifier",
@@ -5438,7 +5438,7 @@
 						}
 					}
 				},
-				"description": "List of impersonation registry entries"
+				"description": "List of impersonation registry entries."
 			},
 			"4XX": {
 				"content": {
@@ -5551,7 +5551,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -5672,7 +5672,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "An impersonation registry entry",
+											"description": "An impersonation registry entry.",
 											"properties": {
 												"comments": {
 													"nullable": true,
@@ -5711,7 +5711,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Impersonation registry entry identifier",
+															"description": "Impersonation registry entry identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -5776,7 +5776,7 @@
 						}
 					}
 				},
-				"description": "Impersonation registry entry details"
+				"description": "Impersonation registry entry details."
 			},
 			"4XX": {
 				"content": {
@@ -5889,7 +5889,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -6098,7 +6098,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, mail without TLS from the specified domain will be dropped.",
+												"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, the system drops mail without TLS from the specified domain.",
 												"properties": {
 													"comments": {
 														"example": "Enforce TLS for all mail from this domain",
@@ -6124,7 +6124,7 @@
 														"x-auditable": true
 													},
 													"exclude": {
-														"description": "Excluded subdomains that are exempt from TLS requirements.",
+														"description": "Subdomains to exempt from TLS requirements.",
 														"example": [
 															"subdomain.example.com"
 														],
@@ -6184,7 +6184,7 @@
 						}
 					}
 				},
-				"description": "List of sending domain restrictions"
+				"description": "List of sending domain restrictions."
 			},
 			"4XX": {
 				"content": {
@@ -6297,7 +6297,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -6418,7 +6418,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, mail without TLS from the specified domain will be dropped.",
+											"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, the system drops mail without TLS from the specified domain.",
 											"properties": {
 												"comments": {
 													"example": "Enforce TLS for all mail from this domain",
@@ -6444,7 +6444,7 @@
 													"x-auditable": true
 												},
 												"exclude": {
-													"description": "Excluded subdomains that are exempt from TLS requirements.",
+													"description": "Subdomains to exempt from TLS requirements.",
 													"example": [
 														"subdomain.example.com"
 													],
@@ -6502,7 +6502,7 @@
 						}
 					}
 				},
-				"description": "Sending domain restriction details"
+				"description": "Sending domain restriction details."
 			},
 			"4XX": {
 				"content": {
@@ -6615,7 +6615,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -6847,7 +6847,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "A trusted email domain",
+												"description": "A trusted email domain.",
 												"properties": {
 													"comments": {
 														"example": "Trusted partner domain",
@@ -6869,7 +6869,7 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "Trusted domain identifier",
+																"description": "Trusted domain identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -6939,7 +6939,7 @@
 						}
 					}
 				},
-				"description": "List of trusted domains"
+				"description": "List of trusted domains."
 			},
 			"4XX": {
 				"content": {
@@ -7052,7 +7052,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -7173,7 +7173,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A trusted email domain",
+											"description": "A trusted email domain.",
 											"properties": {
 												"comments": {
 													"example": "Trusted partner domain",
@@ -7195,7 +7195,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Trusted domain identifier",
+															"description": "Trusted domain identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -7263,7 +7263,7 @@
 						}
 					}
 				},
-				"description": "Trusted domain details"
+				"description": "Trusted domain details."
 			},
 			"4XX": {
 				"content": {
@@ -7376,7 +7376,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -7557,7 +7557,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+												"description": "A URL ignore pattern that exempts matching URLs from Email Security's URL rewriting.",
 												"properties": {
 													"comments": {
 														"description": "Optional note describing the reason for the ignore pattern.",
@@ -7576,7 +7576,7 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "URL ignore pattern identifier",
+																"description": "URL ignore pattern identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"title": "identifier",
@@ -7602,7 +7602,7 @@
 														"x-auditable": true
 													},
 													"pattern": {
-														"description": "Regular expression matching URLs that should not be rewritten.",
+														"description": "Regular expression identifying URLs to exempt from rewriting.",
 														"example": "https://example\\.com/.*",
 														"maxLength": 1024,
 														"minLength": 1,
@@ -7626,7 +7626,7 @@
 						}
 					}
 				},
-				"description": "List of URL ignore patterns for the provided account"
+				"description": "List of URL ignore patterns for the provided account."
 			},
 			"4XX": {
 				"content": {
@@ -7739,7 +7739,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -7860,7 +7860,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+											"description": "A URL ignore pattern that exempts matching URLs from Email Security's URL rewriting.",
 											"properties": {
 												"comments": {
 													"description": "Optional note describing the reason for the ignore pattern.",
@@ -7879,7 +7879,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "URL ignore pattern identifier",
+															"description": "URL ignore pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -7905,7 +7905,7 @@
 													"x-auditable": true
 												},
 												"pattern": {
-													"description": "Regular expression matching URLs that should not be rewritten.",
+													"description": "Regular expression identifying URLs to exempt from rewriting.",
 													"example": "https://example\\.com/.*",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -7927,7 +7927,7 @@
 						}
 					}
 				},
-				"description": "URL ignore pattern"
+				"description": "URL ignore pattern."
 			},
 			"4XX": {
 				"content": {
@@ -8040,7 +8040,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -8071,7 +8071,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "An email allow policy",
+								"description": "An email allow policy.",
 								"properties": {
 									"comments": {
 										"example": "Trust all messages send from test@example.com",
@@ -8093,7 +8093,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Allow policy identifier",
+												"description": "Allow policy identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"type": "string",
@@ -8103,13 +8103,13 @@
 										"readOnly": true
 									},
 									"is_acceptable_sender": {
-										"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+										"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true
 									},
 									"is_exempt_recipient": {
-										"description": "Messages to this recipient will bypass all detections",
+										"description": "Bypasses all detections for messages to this recipient.",
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true
@@ -8144,7 +8144,7 @@
 										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 									},
 									"is_trusted_sender": {
-										"description": "Messages from this sender will bypass all detections and link following",
+										"description": "Bypasses all detections and link following for messages from this sender.",
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true
@@ -8175,7 +8175,7 @@
 										"readOnly": true
 									},
 									"pattern": {
-										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+										"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -8183,7 +8183,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -8209,7 +8209,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Update an allow policy",
+						"description": "Update an allow policy.",
 						"minProperties": 1
 					}
 				}
@@ -8312,7 +8312,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "An email allow policy",
+											"description": "An email allow policy.",
 											"properties": {
 												"comments": {
 													"example": "Trust all messages send from test@example.com",
@@ -8334,7 +8334,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Allow policy identifier",
+															"description": "Allow policy identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -8344,13 +8344,13 @@
 													"readOnly": true
 												},
 												"is_acceptable_sender": {
-													"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+													"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"is_exempt_recipient": {
-													"description": "Messages to this recipient will bypass all detections",
+													"description": "Bypasses all detections for messages to this recipient.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -8385,7 +8385,7 @@
 													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
-													"description": "Messages from this sender will bypass all detections and link following",
+													"description": "Bypasses all detections and link following for messages from this sender.",
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -8416,7 +8416,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -8424,7 +8424,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -8456,7 +8456,7 @@
 						}
 					}
 				},
-				"description": "Updated allow policy"
+				"description": "Updated allow policy."
 			},
 			"4XX": {
 				"content": {
@@ -8569,7 +8569,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -8603,7 +8603,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A blocked sender pattern",
+								"description": "A blocked sender pattern.",
 								"properties": {
 									"comments": {
 										"example": "Block sender with email test@example.com",
@@ -8625,7 +8625,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Blocked sender pattern identifier",
+												"description": "Blocked sender pattern identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"type": "string",
@@ -8665,7 +8665,7 @@
 										"readOnly": true
 									},
 									"pattern": {
-										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+										"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -8673,7 +8673,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -8688,7 +8688,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Update a blocked sender pattern",
+						"description": "Update a blocked sender pattern.",
 						"minProperties": 1
 					}
 				}
@@ -8791,7 +8791,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A blocked sender pattern",
+											"description": "A blocked sender pattern.",
 											"properties": {
 												"comments": {
 													"example": "Block sender with email test@example.com",
@@ -8813,7 +8813,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Blocked sender pattern identifier",
+															"description": "Blocked sender pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -8853,7 +8853,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -8861,7 +8861,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -8882,7 +8882,7 @@
 						}
 					}
 				},
-				"description": "Updated blocked sender"
+				"description": "Updated blocked sender."
 			},
 			"4XX": {
 				"content": {
@@ -8995,7 +8995,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -9040,10 +9040,6 @@
 									"type": "string"
 								},
 								"type": "array"
-							},
-							"domain": {
-								"type": "string",
-								"x-auditable": true
 							},
 							"drop_dispositions": {
 								"items": {
@@ -9335,7 +9331,7 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Domain identifier",
+													"description": "Domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -9456,7 +9452,7 @@
 						}
 					}
 				},
-				"description": "Updated domain"
+				"description": "Updated domain."
 			},
 			"4XX": {
 				"content": {
@@ -9569,7 +9565,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -9599,7 +9595,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "An impersonation registry entry",
+								"description": "An impersonation registry entry.",
 								"properties": {
 									"comments": {
 										"nullable": true,
@@ -9638,7 +9634,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Impersonation registry entry identifier",
+												"description": "Impersonation registry entry identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"title": "identifier",
@@ -9697,7 +9693,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Update an impersonation registry entry",
+						"description": "Update an impersonation registry entry.",
 						"minProperties": 1
 					}
 				}
@@ -9800,7 +9796,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "An impersonation registry entry",
+											"description": "An impersonation registry entry.",
 											"properties": {
 												"comments": {
 													"nullable": true,
@@ -9839,7 +9835,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Impersonation registry entry identifier",
+															"description": "Impersonation registry entry identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -9904,7 +9900,7 @@
 						}
 					}
 				},
-				"description": "Updated impersonation registry entry"
+				"description": "Updated impersonation registry entry."
 			},
 			"4XX": {
 				"content": {
@@ -10017,7 +10013,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -10047,7 +10043,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, mail without TLS from the specified domain will be dropped.",
+								"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, the system drops mail without TLS from the specified domain.",
 								"properties": {
 									"comments": {
 										"example": "Enforce TLS for all mail from this domain",
@@ -10073,7 +10069,7 @@
 										"x-auditable": true
 									},
 									"exclude": {
-										"description": "Excluded subdomains that are exempt from TLS requirements.",
+										"description": "Subdomains to exempt from TLS requirements.",
 										"example": [
 											"subdomain.example.com"
 										],
@@ -10228,7 +10224,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, mail without TLS from the specified domain will be dropped.",
+											"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, the system drops mail without TLS from the specified domain.",
 											"properties": {
 												"comments": {
 													"example": "Enforce TLS for all mail from this domain",
@@ -10254,7 +10250,7 @@
 													"x-auditable": true
 												},
 												"exclude": {
-													"description": "Excluded subdomains that are exempt from TLS requirements.",
+													"description": "Subdomains to exempt from TLS requirements.",
 													"example": [
 														"subdomain.example.com"
 													],
@@ -10312,7 +10308,7 @@
 						}
 					}
 				},
-				"description": "Updated sending domain restriction"
+				"description": "Updated sending domain restriction."
 			},
 			"4XX": {
 				"content": {
@@ -10425,7 +10421,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -10455,7 +10451,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A trusted email domain",
+								"description": "A trusted email domain.",
 								"properties": {
 									"comments": {
 										"example": "Trusted partner domain",
@@ -10477,7 +10473,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Trusted domain identifier",
+												"description": "Trusted domain identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"type": "string",
@@ -10539,7 +10535,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Update a trusted domain",
+						"description": "Update a trusted domain.",
 						"minProperties": 1
 					}
 				}
@@ -10642,7 +10638,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A trusted email domain",
+											"description": "A trusted email domain.",
 											"properties": {
 												"comments": {
 													"example": "Trusted partner domain",
@@ -10664,7 +10660,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Trusted domain identifier",
+															"description": "Trusted domain identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -10732,7 +10728,7 @@
 						}
 					}
 				},
-				"description": "Updated trusted domain"
+				"description": "Updated trusted domain."
 			},
 			"4XX": {
 				"content": {
@@ -10845,7 +10841,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -10878,7 +10874,7 @@
 				"application/json": {
 					"schema": {
 						"additionalProperties": false,
-						"description": "Update a URL rewrite ignore pattern. Only provided fields will be modified.",
+						"description": "Updates a URL rewrite ignore pattern; modifies only the provided fields.",
 						"minProperties": 1,
 						"properties": {
 							"comments": {
@@ -10890,7 +10886,7 @@
 								"x-auditable": true
 							},
 							"pattern": {
-								"description": "Regular expression matching URLs that should not be rewritten.",
+								"description": "Regular expression identifying URLs to exempt from rewriting.",
 								"example": "https://example\\.com/.*",
 								"maxLength": 1024,
 								"minLength": 1,
@@ -11000,7 +10996,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+											"description": "A URL ignore pattern that exempts matching URLs from Email Security's URL rewriting.",
 											"properties": {
 												"comments": {
 													"description": "Optional note describing the reason for the ignore pattern.",
@@ -11019,7 +11015,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "URL ignore pattern identifier",
+															"description": "URL ignore pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -11045,7 +11041,7 @@
 													"x-auditable": true
 												},
 												"pattern": {
-													"description": "Regular expression matching URLs that should not be rewritten.",
+													"description": "Regular expression identifying URLs to exempt from rewriting.",
 													"example": "https://example\\.com/.*",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -11067,7 +11063,7 @@
 						}
 					}
 				},
-				"description": "Updated URL ignore pattern"
+				"description": "Updated URL ignore pattern."
 			},
 			"4XX": {
 				"content": {
@@ -11180,7 +11176,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -11210,7 +11206,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "An email allow policy",
+								"description": "An email allow policy.",
 								"properties": {
 									"comments": {
 										"example": "Trust all messages send from test@example.com",
@@ -11232,7 +11228,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Allow policy identifier",
+												"description": "Allow policy identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"type": "string",
@@ -11242,13 +11238,13 @@
 										"readOnly": true
 									},
 									"is_acceptable_sender": {
-										"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+										"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true
 									},
 									"is_exempt_recipient": {
-										"description": "Messages to this recipient will bypass all detections",
+										"description": "Bypasses all detections for messages to this recipient.",
 										"example": false,
 										"type": "boolean",
 										"x-auditable": true
@@ -11283,7 +11279,7 @@
 										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 									},
 									"is_trusted_sender": {
-										"description": "Messages from this sender will bypass all detections and link following",
+										"description": "Bypasses all detections and link following for messages from this sender.",
 										"example": true,
 										"type": "boolean",
 										"x-auditable": true
@@ -11314,7 +11310,7 @@
 										"readOnly": true
 									},
 									"pattern": {
-										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+										"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -11322,7 +11318,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -11348,7 +11344,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Create an allow policy",
+						"description": "Create an allow policy.",
 						"required": [
 							"is_exempt_recipient",
 							"is_trusted_sender",
@@ -11459,7 +11455,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "An email allow policy",
+											"description": "An email allow policy.",
 											"properties": {
 												"comments": {
 													"example": "Trust all messages send from test@example.com",
@@ -11481,7 +11477,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Allow policy identifier",
+															"description": "Allow policy identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -11491,13 +11487,13 @@
 													"readOnly": true
 												},
 												"is_acceptable_sender": {
-													"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+													"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"is_exempt_recipient": {
-													"description": "Messages to this recipient will bypass all detections",
+													"description": "Bypasses all detections for messages to this recipient.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -11532,7 +11528,7 @@
 													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
-													"description": "Messages from this sender will bypass all detections and link following",
+													"description": "Bypasses all detections and link following for messages from this sender.",
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -11563,7 +11559,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -11571,7 +11567,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -11603,7 +11599,7 @@
 						}
 					}
 				},
-				"description": "Created allow policy"
+				"description": "Created allow policy."
 			},
 			"4XX": {
 				"content": {
@@ -11716,7 +11712,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -11742,7 +11738,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
-		"description": "Execute multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"operationId": "email_security_batch_allow_policies",
 		"requestBody": {
 			"content": {
@@ -11753,7 +11749,7 @@
 								"items": {
 									"properties": {
 										"id": {
-											"description": "Allow policy identifier",
+											"description": "Allow policy identifier.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"format": "uuid",
 											"type": "string",
@@ -11774,7 +11770,7 @@
 										{
 											"allOf": [
 												{
-													"description": "An email allow policy",
+													"description": "An email allow policy.",
 													"properties": {
 														"comments": {
 															"example": "Trust all messages send from test@example.com",
@@ -11796,7 +11792,7 @@
 														"id": {
 															"allOf": [
 																{
-																	"description": "Allow policy identifier",
+																	"description": "Allow policy identifier.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"format": "uuid",
 																	"type": "string",
@@ -11806,13 +11802,13 @@
 															"readOnly": true
 														},
 														"is_acceptable_sender": {
-															"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+															"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"is_exempt_recipient": {
-															"description": "Messages to this recipient will bypass all detections",
+															"description": "Bypasses all detections for messages to this recipient.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
@@ -11847,7 +11843,7 @@
 															"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 														},
 														"is_trusted_sender": {
-															"description": "Messages from this sender will bypass all detections and link following",
+															"description": "Bypasses all detections and link following for messages from this sender.",
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
@@ -11878,7 +11874,7 @@
 															"readOnly": true
 														},
 														"pattern": {
-															"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+															"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 															"example": "test@example.com",
 															"maxLength": 1024,
 															"minLength": 1,
@@ -11886,7 +11882,7 @@
 															"x-auditable": true
 														},
 														"pattern_type": {
-															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 															"enum": [
 																"EMAIL",
 																"DOMAIN",
@@ -11912,7 +11908,7 @@
 													"type": "object"
 												}
 											],
-											"description": "Update an allow policy",
+											"description": "Update an allow policy.",
 											"minProperties": 1
 										},
 										{
@@ -11920,7 +11916,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Allow policy identifier",
+															"description": "Allow policy identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -11943,7 +11939,7 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "An email allow policy",
+											"description": "An email allow policy.",
 											"properties": {
 												"comments": {
 													"example": "Trust all messages send from test@example.com",
@@ -11965,7 +11961,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Allow policy identifier",
+															"description": "Allow policy identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -11975,13 +11971,13 @@
 													"readOnly": true
 												},
 												"is_acceptable_sender": {
-													"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+													"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"is_exempt_recipient": {
-													"description": "Messages to this recipient will bypass all detections",
+													"description": "Bypasses all detections for messages to this recipient.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -12016,7 +12012,7 @@
 													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
-													"description": "Messages from this sender will bypass all detections and link following",
+													"description": "Bypasses all detections and link following for messages from this sender.",
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -12047,7 +12043,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -12055,7 +12051,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -12081,7 +12077,7 @@
 											"type": "object"
 										}
 									],
-									"description": "Create an allow policy",
+									"description": "Create an allow policy.",
 									"required": [
 										"is_exempt_recipient",
 										"is_trusted_sender",
@@ -12099,7 +12095,7 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "An email allow policy",
+											"description": "An email allow policy.",
 											"properties": {
 												"comments": {
 													"example": "Trust all messages send from test@example.com",
@@ -12121,7 +12117,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Allow policy identifier",
+															"description": "Allow policy identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -12131,13 +12127,13 @@
 													"readOnly": true
 												},
 												"is_acceptable_sender": {
-													"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+													"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
 												},
 												"is_exempt_recipient": {
-													"description": "Messages to this recipient will bypass all detections",
+													"description": "Bypasses all detections for messages to this recipient.",
 													"example": false,
 													"type": "boolean",
 													"x-auditable": true
@@ -12172,7 +12168,7 @@
 													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
-													"description": "Messages from this sender will bypass all detections and link following",
+													"description": "Bypasses all detections and link following for messages from this sender.",
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
@@ -12203,7 +12199,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -12211,7 +12207,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -12241,7 +12237,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Allow policy identifier",
+															"description": "Allow policy identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -12374,7 +12370,7 @@
 													"items": {
 														"properties": {
 															"id": {
-																"description": "Allow policy identifier",
+																"description": "Allow policy identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -12390,7 +12386,7 @@
 												},
 												"patches": {
 													"items": {
-														"description": "An email allow policy",
+														"description": "An email allow policy.",
 														"properties": {
 															"comments": {
 																"example": "Trust all messages send from test@example.com",
@@ -12412,7 +12408,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Allow policy identifier",
+																		"description": "Allow policy identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -12422,13 +12418,13 @@
 																"readOnly": true
 															},
 															"is_acceptable_sender": {
-																"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+																"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
 															},
 															"is_exempt_recipient": {
-																"description": "Messages to this recipient will bypass all detections",
+																"description": "Bypasses all detections for messages to this recipient.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
@@ -12463,7 +12459,7 @@
 																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 															},
 															"is_trusted_sender": {
-																"description": "Messages from this sender will bypass all detections and link following",
+																"description": "Bypasses all detections and link following for messages from this sender.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
@@ -12494,7 +12490,7 @@
 																"readOnly": true
 															},
 															"pattern": {
-																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+																"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -12502,7 +12498,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -12531,7 +12527,7 @@
 												},
 												"posts": {
 													"items": {
-														"description": "An email allow policy",
+														"description": "An email allow policy.",
 														"properties": {
 															"comments": {
 																"example": "Trust all messages send from test@example.com",
@@ -12553,7 +12549,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Allow policy identifier",
+																		"description": "Allow policy identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -12563,13 +12559,13 @@
 																"readOnly": true
 															},
 															"is_acceptable_sender": {
-																"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+																"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
 															},
 															"is_exempt_recipient": {
-																"description": "Messages to this recipient will bypass all detections",
+																"description": "Bypasses all detections for messages to this recipient.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
@@ -12604,7 +12600,7 @@
 																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 															},
 															"is_trusted_sender": {
-																"description": "Messages from this sender will bypass all detections and link following",
+																"description": "Bypasses all detections and link following for messages from this sender.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
@@ -12635,7 +12631,7 @@
 																"readOnly": true
 															},
 															"pattern": {
-																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+																"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -12643,7 +12639,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -12672,7 +12668,7 @@
 												},
 												"puts": {
 													"items": {
-														"description": "An email allow policy",
+														"description": "An email allow policy.",
 														"properties": {
 															"comments": {
 																"example": "Trust all messages send from test@example.com",
@@ -12694,7 +12690,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Allow policy identifier",
+																		"description": "Allow policy identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -12704,13 +12700,13 @@
 																"readOnly": true
 															},
 															"is_acceptable_sender": {
-																"description": "Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions.",
+																"description": "Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
 															},
 															"is_exempt_recipient": {
-																"description": "Messages to this recipient will bypass all detections",
+																"description": "Bypasses all detections for messages to this recipient.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
@@ -12745,7 +12741,7 @@
 																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 															},
 															"is_trusted_sender": {
-																"description": "Messages from this sender will bypass all detections and link following",
+																"description": "Bypasses all detections and link following for messages from this sender.",
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
@@ -12776,7 +12772,7 @@
 																"readOnly": true
 															},
 															"pattern": {
-																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+																"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -12784,7 +12780,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -12821,7 +12817,7 @@
 						}
 					}
 				},
-				"description": "Batch operation results"
+				"description": "Batch operation results."
 			},
 			"4XX": {
 				"content": {
@@ -12934,7 +12930,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -12968,7 +12964,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A blocked sender pattern",
+								"description": "A blocked sender pattern.",
 								"properties": {
 									"comments": {
 										"example": "Block sender with email test@example.com",
@@ -12990,7 +12986,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Blocked sender pattern identifier",
+												"description": "Blocked sender pattern identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"type": "string",
@@ -13030,7 +13026,7 @@
 										"readOnly": true
 									},
 									"pattern": {
-										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+										"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -13038,7 +13034,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -13053,7 +13049,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Create a blocked sender pattern",
+						"description": "Create a blocked sender pattern.",
 						"required": [
 							"pattern",
 							"is_regex",
@@ -13160,7 +13156,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A blocked sender pattern",
+											"description": "A blocked sender pattern.",
 											"properties": {
 												"comments": {
 													"example": "Block sender with email test@example.com",
@@ -13182,7 +13178,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Blocked sender pattern identifier",
+															"description": "Blocked sender pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -13222,7 +13218,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -13230,7 +13226,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -13251,7 +13247,7 @@
 						}
 					}
 				},
-				"description": "Created blocked sender"
+				"description": "Created blocked sender."
 			},
 			"4XX": {
 				"content": {
@@ -13364,7 +13360,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -13386,7 +13382,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
-		"description": "Execute multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"operationId": "email_security_batch_blocked_senders",
 		"requestBody": {
 			"content": {
@@ -13397,7 +13393,7 @@
 								"items": {
 									"properties": {
 										"id": {
-											"description": "Blocked sender pattern identifier",
+											"description": "Blocked sender pattern identifier.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"format": "uuid",
 											"type": "string",
@@ -13418,7 +13414,7 @@
 										{
 											"allOf": [
 												{
-													"description": "A blocked sender pattern",
+													"description": "A blocked sender pattern.",
 													"properties": {
 														"comments": {
 															"example": "Block sender with email test@example.com",
@@ -13440,7 +13436,7 @@
 														"id": {
 															"allOf": [
 																{
-																	"description": "Blocked sender pattern identifier",
+																	"description": "Blocked sender pattern identifier.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"format": "uuid",
 																	"type": "string",
@@ -13480,7 +13476,7 @@
 															"readOnly": true
 														},
 														"pattern": {
-															"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+															"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 															"example": "test@example.com",
 															"maxLength": 1024,
 															"minLength": 1,
@@ -13488,7 +13484,7 @@
 															"x-auditable": true
 														},
 														"pattern_type": {
-															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 															"enum": [
 																"EMAIL",
 																"DOMAIN",
@@ -13503,7 +13499,7 @@
 													"type": "object"
 												}
 											],
-											"description": "Update a blocked sender pattern",
+											"description": "Update a blocked sender pattern.",
 											"minProperties": 1
 										},
 										{
@@ -13511,7 +13507,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Blocked sender pattern identifier",
+															"description": "Blocked sender pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -13534,7 +13530,7 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "A blocked sender pattern",
+											"description": "A blocked sender pattern.",
 											"properties": {
 												"comments": {
 													"example": "Block sender with email test@example.com",
@@ -13556,7 +13552,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Blocked sender pattern identifier",
+															"description": "Blocked sender pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -13596,7 +13592,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -13604,7 +13600,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -13619,7 +13615,7 @@
 											"type": "object"
 										}
 									],
-									"description": "Create a blocked sender pattern",
+									"description": "Create a blocked sender pattern.",
 									"required": [
 										"pattern",
 										"is_regex",
@@ -13633,7 +13629,7 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "A blocked sender pattern",
+											"description": "A blocked sender pattern.",
 											"properties": {
 												"comments": {
 													"example": "Block sender with email test@example.com",
@@ -13655,7 +13651,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Blocked sender pattern identifier",
+															"description": "Blocked sender pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -13695,7 +13691,7 @@
 													"readOnly": true
 												},
 												"pattern": {
-													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+													"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -13703,7 +13699,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -13722,7 +13718,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Blocked sender pattern identifier",
+															"description": "Blocked sender pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -13855,7 +13851,7 @@
 													"items": {
 														"properties": {
 															"id": {
-																"description": "Blocked sender pattern identifier",
+																"description": "Blocked sender pattern identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -13871,7 +13867,7 @@
 												},
 												"patches": {
 													"items": {
-														"description": "A blocked sender pattern",
+														"description": "A blocked sender pattern.",
 														"properties": {
 															"comments": {
 																"example": "Block sender with email test@example.com",
@@ -13893,7 +13889,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Blocked sender pattern identifier",
+																		"description": "Blocked sender pattern identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -13933,7 +13929,7 @@
 																"readOnly": true
 															},
 															"pattern": {
-																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+																"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -13941,7 +13937,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -13959,7 +13955,7 @@
 												},
 												"posts": {
 													"items": {
-														"description": "A blocked sender pattern",
+														"description": "A blocked sender pattern.",
 														"properties": {
 															"comments": {
 																"example": "Block sender with email test@example.com",
@@ -13981,7 +13977,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Blocked sender pattern identifier",
+																		"description": "Blocked sender pattern identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -14021,7 +14017,7 @@
 																"readOnly": true
 															},
 															"pattern": {
-																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+																"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -14029,7 +14025,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -14047,7 +14043,7 @@
 												},
 												"puts": {
 													"items": {
-														"description": "A blocked sender pattern",
+														"description": "A blocked sender pattern.",
 														"properties": {
 															"comments": {
 																"example": "Block sender with email test@example.com",
@@ -14069,7 +14065,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Blocked sender pattern identifier",
+																		"description": "Blocked sender pattern identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -14109,7 +14105,7 @@
 																"readOnly": true
 															},
 															"pattern": {
-																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
+																"description": "The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 address or IPv4 CIDR block for IP (e.g. `1.2.3.4` or `1.2.3.0/24`); the API accepts only globally reachable IP addresses and rejects private, loopback, link-local, and unspecified addresses.",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -14117,7 +14113,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). The API accepts only globally reachable addresses.\n- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -14143,7 +14139,7 @@
 						}
 					}
 				},
-				"description": "Batch operation results"
+				"description": "Batch operation results."
 			},
 			"4XX": {
 				"content": {
@@ -14256,7 +14252,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -14610,7 +14606,7 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Domain identifier",
+													"description": "Domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -14731,7 +14727,7 @@
 						}
 					}
 				},
-				"description": "Created domain"
+				"description": "Created domain."
 			},
 			"4XX": {
 				"content": {
@@ -14844,7 +14840,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -14866,7 +14862,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/domains/batch": {
-		"description": "Execute multiple domain operations in a single request. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple domain operations in a single request. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"operationId": "email_security_batch_domains",
 		"requestBody": {
 			"content": {
@@ -14877,7 +14873,7 @@
 								"items": {
 									"properties": {
 										"id": {
-											"description": "Domain identifier",
+											"description": "Domain identifier.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"format": "uuid",
 											"type": "string",
@@ -14909,10 +14905,6 @@
 														"type": "string"
 													},
 													"type": "array"
-												},
-												"domain": {
-													"type": "string",
-													"x-auditable": true
 												},
 												"drop_dispositions": {
 													"items": {
@@ -14995,7 +14987,7 @@
 										{
 											"properties": {
 												"id": {
-													"description": "Domain identifier",
+													"description": "Domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -15247,7 +15239,7 @@
 										{
 											"properties": {
 												"id": {
-													"description": "Domain identifier",
+													"description": "Domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -15378,7 +15370,7 @@
 													"items": {
 														"properties": {
 															"id": {
-																"description": "Domain identifier",
+																"description": "Domain identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -15506,7 +15498,7 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Domain identifier",
+																"description": "Domain identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -15736,7 +15728,7 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Domain identifier",
+																"description": "Domain identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -15966,7 +15958,7 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Domain identifier",
+																"description": "Domain identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -16098,7 +16090,7 @@
 						}
 					}
 				},
-				"description": "Batch operation results"
+				"description": "Batch operation results."
 			},
 			"4XX": {
 				"content": {
@@ -16211,7 +16203,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -16241,7 +16233,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "An impersonation registry entry",
+								"description": "An impersonation registry entry.",
 								"properties": {
 									"comments": {
 										"nullable": true,
@@ -16280,7 +16272,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Impersonation registry entry identifier",
+												"description": "Impersonation registry entry identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"title": "identifier",
@@ -16339,7 +16331,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Create an impersonation registry entry",
+						"description": "Create an impersonation registry entry.",
 						"required": [
 							"name",
 							"email",
@@ -16446,7 +16438,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "An impersonation registry entry",
+											"description": "An impersonation registry entry.",
 											"properties": {
 												"comments": {
 													"nullable": true,
@@ -16485,7 +16477,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Impersonation registry entry identifier",
+															"description": "Impersonation registry entry identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -16550,7 +16542,7 @@
 						}
 					}
 				},
-				"description": "Created impersonation registry entry"
+				"description": "Created impersonation registry entry."
 			},
 			"4XX": {
 				"content": {
@@ -16663,7 +16655,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -16693,7 +16685,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, mail without TLS from the specified domain will be dropped.",
+								"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, the system drops mail without TLS from the specified domain.",
 								"properties": {
 									"comments": {
 										"example": "Enforce TLS for all mail from this domain",
@@ -16719,7 +16711,7 @@
 										"x-auditable": true
 									},
 									"exclude": {
-										"description": "Excluded subdomains that are exempt from TLS requirements.",
+										"description": "Subdomains to exempt from TLS requirements.",
 										"example": [
 											"subdomain.example.com"
 										],
@@ -16877,7 +16869,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, mail without TLS from the specified domain will be dropped.",
+											"description": "A sending domain restriction that enforces TLS (Transport Layer Security) requirements for emails from specific domains. If TLS is required, the system drops mail without TLS from the specified domain.",
 											"properties": {
 												"comments": {
 													"example": "Enforce TLS for all mail from this domain",
@@ -16903,7 +16895,7 @@
 													"x-auditable": true
 												},
 												"exclude": {
-													"description": "Excluded subdomains that are exempt from TLS requirements.",
+													"description": "Subdomains to exempt from TLS requirements.",
 													"example": [
 														"subdomain.example.com"
 													],
@@ -16961,7 +16953,7 @@
 						}
 					}
 				},
-				"description": "Created sending domain restriction"
+				"description": "Created sending domain restriction."
 			},
 			"4XX": {
 				"content": {
@@ -17074,7 +17066,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -17262,7 +17254,7 @@
 						}
 					}
 				},
-				"description": "Batch operation results"
+				"description": "Batch operation results."
 			},
 			"4XX": {
 				"content": {
@@ -17375,7 +17367,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -17405,7 +17397,7 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A trusted email domain",
+								"description": "A trusted email domain.",
 								"properties": {
 									"comments": {
 										"example": "Trusted partner domain",
@@ -17427,7 +17419,7 @@
 									"id": {
 										"allOf": [
 											{
-												"description": "Trusted domain identifier",
+												"description": "Trusted domain identifier.",
 												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 												"format": "uuid",
 												"type": "string",
@@ -17489,7 +17481,7 @@
 								"type": "object"
 							}
 						],
-						"description": "Create a trusted domain",
+						"description": "Create a trusted domain.",
 						"required": [
 							"pattern",
 							"is_regex",
@@ -17597,7 +17589,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A trusted email domain",
+											"description": "A trusted email domain.",
 											"properties": {
 												"comments": {
 													"example": "Trusted partner domain",
@@ -17619,7 +17611,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Trusted domain identifier",
+															"description": "Trusted domain identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -17687,7 +17679,7 @@
 						}
 					}
 				},
-				"description": "Created trusted domain"
+				"description": "Created trusted domain."
 			},
 			"4XX": {
 				"content": {
@@ -17800,7 +17792,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -17826,7 +17818,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
-		"description": "Execute multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"description": "Executes multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"operationId": "email_security_batch_trusted_domains",
 		"requestBody": {
 			"content": {
@@ -17837,7 +17829,7 @@
 								"items": {
 									"properties": {
 										"id": {
-											"description": "Trusted domain identifier",
+											"description": "Trusted domain identifier.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"format": "uuid",
 											"type": "string",
@@ -17858,7 +17850,7 @@
 										{
 											"allOf": [
 												{
-													"description": "A trusted email domain",
+													"description": "A trusted email domain.",
 													"properties": {
 														"comments": {
 															"example": "Trusted partner domain",
@@ -17880,7 +17872,7 @@
 														"id": {
 															"allOf": [
 																{
-																	"description": "Trusted domain identifier",
+																	"description": "Trusted domain identifier.",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"format": "uuid",
 																	"type": "string",
@@ -17942,7 +17934,7 @@
 													"type": "object"
 												}
 											],
-											"description": "Update a trusted domain",
+											"description": "Update a trusted domain.",
 											"minProperties": 1
 										},
 										{
@@ -17950,7 +17942,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Trusted domain identifier",
+															"description": "Trusted domain identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -17973,7 +17965,7 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "A trusted email domain",
+											"description": "A trusted email domain.",
 											"properties": {
 												"comments": {
 													"example": "Trusted partner domain",
@@ -17995,7 +17987,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Trusted domain identifier",
+															"description": "Trusted domain identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -18057,7 +18049,7 @@
 											"type": "object"
 										}
 									],
-									"description": "Create a trusted domain",
+									"description": "Create a trusted domain.",
 									"required": [
 										"pattern",
 										"is_regex",
@@ -18072,7 +18064,7 @@
 								"items": {
 									"allOf": [
 										{
-											"description": "A trusted email domain",
+											"description": "A trusted email domain.",
 											"properties": {
 												"comments": {
 													"example": "Trusted partner domain",
@@ -18094,7 +18086,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Trusted domain identifier",
+															"description": "Trusted domain identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -18160,7 +18152,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Trusted domain identifier",
+															"description": "Trusted domain identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"type": "string",
@@ -18293,7 +18285,7 @@
 													"items": {
 														"properties": {
 															"id": {
-																"description": "Trusted domain identifier",
+																"description": "Trusted domain identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"type": "string",
@@ -18309,7 +18301,7 @@
 												},
 												"patches": {
 													"items": {
-														"description": "A trusted email domain",
+														"description": "A trusted email domain.",
 														"properties": {
 															"comments": {
 																"example": "Trusted partner domain",
@@ -18331,7 +18323,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Trusted domain identifier",
+																		"description": "Trusted domain identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -18396,7 +18388,7 @@
 												},
 												"posts": {
 													"items": {
-														"description": "A trusted email domain",
+														"description": "A trusted email domain.",
 														"properties": {
 															"comments": {
 																"example": "Trusted partner domain",
@@ -18418,7 +18410,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Trusted domain identifier",
+																		"description": "Trusted domain identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -18483,7 +18475,7 @@
 												},
 												"puts": {
 													"items": {
-														"description": "A trusted email domain",
+														"description": "A trusted email domain.",
 														"properties": {
 															"comments": {
 																"example": "Trusted partner domain",
@@ -18505,7 +18497,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "Trusted domain identifier",
+																		"description": "Trusted domain identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"type": "string",
@@ -18578,7 +18570,7 @@
 						}
 					}
 				},
-				"description": "Batch operation results"
+				"description": "Batch operation results."
 			},
 			"4XX": {
 				"content": {
@@ -18691,7 +18683,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -18720,7 +18712,7 @@
 				"application/json": {
 					"schema": {
 						"additionalProperties": false,
-						"description": "Create a URL ignore pattern for URLs that should not be rewritten.",
+						"description": "Creates a URL ignore pattern that exempts matching URLs from rewriting.",
 						"properties": {
 							"comments": {
 								"description": "Optional note describing the reason for the ignore pattern.",
@@ -18731,7 +18723,7 @@
 								"x-auditable": true
 							},
 							"pattern": {
-								"description": "Regular expression matching URLs that should not be rewritten.",
+								"description": "Regular expression identifying URLs to exempt from rewriting.",
 								"example": "https://example\\.com/.*",
 								"maxLength": 1024,
 								"minLength": 1,
@@ -18844,7 +18836,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+											"description": "A URL ignore pattern that exempts matching URLs from Email Security's URL rewriting.",
 											"properties": {
 												"comments": {
 													"description": "Optional note describing the reason for the ignore pattern.",
@@ -18863,7 +18855,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "URL ignore pattern identifier",
+															"description": "URL ignore pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -18889,7 +18881,7 @@
 													"x-auditable": true
 												},
 												"pattern": {
-													"description": "Regular expression matching URLs that should not be rewritten.",
+													"description": "Regular expression identifying URLs to exempt from rewriting.",
 													"example": "https://example\\.com/.*",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -18911,7 +18903,7 @@
 						}
 					}
 				},
-				"description": "Created URL ignore pattern"
+				"description": "Created URL ignore pattern."
 			},
 			"4XX": {
 				"content": {
@@ -19024,7 +19016,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -19046,7 +19038,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns/batch": {
-		"description": "Send a Batch of URL Ignore Patterns API calls to be executed together.",
+		"description": "Sends a batch of URL ignore patterns API calls to execute together.",
 		"operationId": "email_security_batch_url_ignore_patterns",
 		"requestBody": {
 			"content": {
@@ -19057,7 +19049,7 @@
 								"items": {
 									"properties": {
 										"id": {
-											"description": "URL ignore pattern identifier",
+											"description": "URL ignore pattern identifier.",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"format": "uuid",
 											"title": "identifier",
@@ -19078,7 +19070,7 @@
 									"allOf": [
 										{
 											"additionalProperties": false,
-											"description": "Update a URL rewrite ignore pattern. Only provided fields will be modified.",
+											"description": "Updates a URL rewrite ignore pattern; modifies only the provided fields.",
 											"minProperties": 1,
 											"properties": {
 												"comments": {
@@ -19090,7 +19082,7 @@
 													"x-auditable": true
 												},
 												"pattern": {
-													"description": "Regular expression matching URLs that should not be rewritten.",
+													"description": "Regular expression identifying URLs to exempt from rewriting.",
 													"example": "https://example\\.com/.*",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -19105,7 +19097,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "URL ignore pattern identifier",
+															"description": "URL ignore pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -19128,7 +19120,7 @@
 							"posts": {
 								"items": {
 									"additionalProperties": false,
-									"description": "Create a URL ignore pattern for URLs that should not be rewritten.",
+									"description": "Creates a URL ignore pattern that exempts matching URLs from rewriting.",
 									"properties": {
 										"comments": {
 											"description": "Optional note describing the reason for the ignore pattern.",
@@ -19139,7 +19131,7 @@
 											"x-auditable": true
 										},
 										"pattern": {
-											"description": "Regular expression matching URLs that should not be rewritten.",
+											"description": "Regular expression identifying URLs to exempt from rewriting.",
 											"example": "https://example\\.com/.*",
 											"maxLength": 1024,
 											"minLength": 1,
@@ -19160,7 +19152,7 @@
 									"allOf": [
 										{
 											"additionalProperties": false,
-											"description": "Create a URL ignore pattern for URLs that should not be rewritten.",
+											"description": "Creates a URL ignore pattern that exempts matching URLs from rewriting.",
 											"properties": {
 												"comments": {
 													"description": "Optional note describing the reason for the ignore pattern.",
@@ -19171,7 +19163,7 @@
 													"x-auditable": true
 												},
 												"pattern": {
-													"description": "Regular expression matching URLs that should not be rewritten.",
+													"description": "Regular expression identifying URLs to exempt from rewriting.",
 													"example": "https://example\\.com/.*",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -19189,7 +19181,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "URL ignore pattern identifier",
+															"description": "URL ignore pattern identifier.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"format": "uuid",
 															"title": "identifier",
@@ -19318,7 +19310,7 @@
 													"items": {
 														"properties": {
 															"id": {
-																"description": "URL ignore pattern identifier",
+																"description": "URL ignore pattern identifier.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"format": "uuid",
 																"title": "identifier",
@@ -19335,7 +19327,7 @@
 												},
 												"patches": {
 													"items": {
-														"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+														"description": "A URL ignore pattern that exempts matching URLs from Email Security's URL rewriting.",
 														"properties": {
 															"comments": {
 																"description": "Optional note describing the reason for the ignore pattern.",
@@ -19354,7 +19346,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "URL ignore pattern identifier",
+																		"description": "URL ignore pattern identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"title": "identifier",
@@ -19380,7 +19372,7 @@
 																"x-auditable": true
 															},
 															"pattern": {
-																"description": "Regular expression matching URLs that should not be rewritten.",
+																"description": "Regular expression identifying URLs to exempt from rewriting.",
 																"example": "https://example\\.com/.*",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -19399,7 +19391,7 @@
 												},
 												"posts": {
 													"items": {
-														"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+														"description": "A URL ignore pattern that exempts matching URLs from Email Security's URL rewriting.",
 														"properties": {
 															"comments": {
 																"description": "Optional note describing the reason for the ignore pattern.",
@@ -19418,7 +19410,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "URL ignore pattern identifier",
+																		"description": "URL ignore pattern identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"title": "identifier",
@@ -19444,7 +19436,7 @@
 																"x-auditable": true
 															},
 															"pattern": {
-																"description": "Regular expression matching URLs that should not be rewritten.",
+																"description": "Regular expression identifying URLs to exempt from rewriting.",
 																"example": "https://example\\.com/.*",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -19463,7 +19455,7 @@
 												},
 												"puts": {
 													"items": {
-														"description": "A URL ignore pattern that exempts matching URLs from being rewritten by Email Security.",
+														"description": "A URL ignore pattern that exempts matching URLs from Email Security's URL rewriting.",
 														"properties": {
 															"comments": {
 																"description": "Optional note describing the reason for the ignore pattern.",
@@ -19482,7 +19474,7 @@
 															"id": {
 																"allOf": [
 																	{
-																		"description": "URL ignore pattern identifier",
+																		"description": "URL ignore pattern identifier.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"format": "uuid",
 																		"title": "identifier",
@@ -19508,7 +19500,7 @@
 																"x-auditable": true
 															},
 															"pattern": {
-																"description": "Regular expression matching URLs that should not be rewritten.",
+																"description": "Regular expression identifying URLs to exempt from rewriting.",
 																"example": "https://example\\.com/.*",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -19544,7 +19536,7 @@
 						}
 					}
 				},
-				"description": "Batch operation results"
+				"description": "Batch operation results."
 			},
 			"4XX": {
 				"content": {
@@ -19657,7 +19649,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -20006,7 +19998,7 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Domain identifier",
+													"description": "Domain identifier.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"format": "uuid",
 													"type": "string",
@@ -20127,7 +20119,7 @@
 						}
 					}
 				},
-				"description": "Replaced domain"
+				"description": "Replaced domain."
 			},
 			"4XX": {
 				"content": {
@@ -20240,7 +20232,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [

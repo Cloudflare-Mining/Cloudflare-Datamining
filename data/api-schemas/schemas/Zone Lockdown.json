@@ -194,7 +194,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.lockdowns",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/lockdowns": {
 		"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
@@ -952,7 +956,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.lockdowns",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
 		"description": "Fetches the details of a Zone Lockdown rule.",
@@ -1542,7 +1550,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.lockdowns",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/firewall/lockdowns": {
 		"description": "Creates a new Zone Lockdown rule.",
@@ -2208,7 +2220,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.lockdowns",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
 		"description": "Updates an existing Zone Lockdown rule.",
@@ -2868,6 +2884,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.lockdowns",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

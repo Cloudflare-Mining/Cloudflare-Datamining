@@ -366,7 +366,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/firewall/access_rules/rules": {
 		"description": "Fetches IP Access rules of an account. These rules apply to all the zones in the account. You can filter the results using several optional parameters.",
@@ -1335,7 +1339,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
 		"description": "Fetches the details of an IP Access rule defined at the account level.",
@@ -2161,7 +2169,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
 		"description": "Updates an IP Access rule defined at the account level.\n\nNote: This operation will affect all zones in the account.",
@@ -3219,7 +3231,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/firewall/access_rules/rules": {
 		"description": "Creates a new IP Access rule for an account. The rule will apply to all zones in the account.\n\nNote: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
@@ -4177,6 +4193,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

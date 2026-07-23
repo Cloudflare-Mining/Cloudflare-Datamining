@@ -386,7 +386,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.firewall.access-rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /user/firewall/access_rules/rules": {
 		"description": "Fetches IP Access rules of the user. You can filter the results using several optional parameters.",
@@ -1245,7 +1249,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.firewall.access-rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /user/firewall/access_rules/rules/{rule_id}": {
 		"description": "Fetches the details of an IP Access rule defined at the user level.",
@@ -2707,7 +2715,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.firewall.access-rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /user/firewall/access_rules/rules": {
 		"description": "Creates a new IP Access rule for all zones owned by the current user.\n\nNote: To create an IP Access rule that applies to a specific zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
@@ -3553,6 +3565,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.firewall.access-rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

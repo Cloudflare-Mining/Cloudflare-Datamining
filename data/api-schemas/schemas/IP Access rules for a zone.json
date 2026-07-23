@@ -414,7 +414,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.zone-access-rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/access_rules/rules": {
 		"description": "Fetches IP Access rules of a zone. You can filter the results using several optional parameters.",
@@ -1285,7 +1289,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.zone-access-rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/firewall/access_rules/rules/{rule_id}": {
 		"description": "Updates an IP Access rule defined at the zone level. You can only update the rule action (`mode` parameter) and notes.",
@@ -2043,7 +2051,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.zone-access-rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/firewall/access_rules/rules": {
 		"description": "Creates a new IP Access rule for a zone.\n\nNote: To create an IP Access rule that applies to multiple zones, refer to [IP Access rules for a user](#ip-access-rules-for-a-user) or [IP Access rules for an account](#ip-access-rules-for-an-account) as appropriate.",
@@ -2903,6 +2915,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.zone-access-rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

@@ -119,7 +119,7 @@
 						}
 					}
 				},
-				"description": "Job deleted"
+				"description": "Job deleted."
 			},
 			"4XX": {
 				"content": {
@@ -232,7 +232,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -525,7 +525,7 @@
 														"items": {
 															"properties": {
 																"completed_at": {
-																	"description": "Timestamp when action completed",
+																	"description": "Timestamp when action completed.",
 																	"format": "date-time",
 																	"readOnly": true,
 																	"type": "string"
@@ -538,7 +538,7 @@
 																	"x-stainless-deprecation-message": "Use `completed_at` instead."
 																},
 																"operation": {
-																	"description": "Type of action performed",
+																	"description": "Type of action performed.",
 																	"enum": [
 																		"MOVE",
 																		"RELEASE",
@@ -550,21 +550,21 @@
 																	"type": "string"
 																},
 																"properties": {
-																	"description": "Additional properties for the action",
+																	"description": "Additional properties for the action.",
 																	"properties": {
 																		"folder": {
-																			"description": "Target folder for move operations",
+																			"description": "Target folder for move operations.",
 																			"type": "string"
 																		},
 																		"requested_by": {
-																			"description": "User who requested the action",
+																			"description": "User who requested the action.",
 																			"type": "string"
 																		}
 																	},
 																	"type": "object"
 																},
 																"status": {
-																	"description": "Status of the action",
+																	"description": "Status of the action.",
 																	"nullable": true,
 																	"type": "string"
 																}
@@ -732,7 +732,7 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "Unique identifier for a message retrieved from investigation",
+																"description": "Unique identifier for a message retrieved from investigation.",
 																"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
 																"type": "string"
 															}
@@ -750,7 +750,7 @@
 														"type": "string"
 													},
 													"post_delivery_operations": {
-														"description": "Post-delivery operations performed on this message",
+														"description": "Post-delivery operations performed on this message.",
 														"items": {
 															"enum": [
 																"PREVIEW",
@@ -764,7 +764,7 @@
 														"type": "array"
 													},
 													"postfix_id": {
-														"description": "The identifier of the message",
+														"description": "The identifier of the message.",
 														"example": "4Njp3P0STMz2c02Q",
 														"type": "string"
 													},
@@ -773,15 +773,15 @@
 														"type": "string"
 													},
 													"properties": {
-														"description": "Message processing properties",
+														"description": "Message processing properties.",
 														"properties": {
 															"allowlisted_pattern": {
-																"description": "Pattern that allowlisted this message",
+																"description": "Pattern that allowlisted this message.",
 																"nullable": true,
 																"type": "string"
 															},
 															"allowlisted_pattern_type": {
-																"description": "Type of allowlist pattern",
+																"description": "Type of allowlist pattern.",
 																"enum": [
 																	"quarantine_release",
 																	"acceptable_sender",
@@ -796,17 +796,17 @@
 																"type": "string"
 															},
 															"blocklisted_message": {
-																"description": "Whether message was blocklisted",
+																"description": "Whether message was blocklisted.",
 																"nullable": true,
 																"type": "boolean"
 															},
 															"blocklisted_pattern": {
-																"description": "Pattern that blocklisted this message",
+																"description": "Pattern that blocklisted this message.",
 																"nullable": true,
 																"type": "string"
 															},
 															"whitelisted_pattern_type": {
-																"description": "Legacy field for allowlist pattern type",
+																"description": "Legacy field for allowlist pattern type.",
 																"enum": [
 																	"quarantine_release",
 																	"acceptable_sender",
@@ -828,13 +828,13 @@
 														"type": "string"
 													},
 													"scanned_at": {
-														"description": "When the message was scanned (UTC)",
+														"description": "When the message was scanned (UTC).",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string"
 													},
 													"sent_at": {
-														"description": "When the message was sent (UTC)",
+														"description": "When the message was sent (UTC).",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string"
@@ -945,12 +945,12 @@
 										"result_info": {
 											"properties": {
 												"count": {
-													"description": "Number of items in current page",
+													"description": "Number of items in current page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"next": {
-													"description": "Cursor for next page",
+													"description": "Cursor for next page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -962,12 +962,12 @@
 													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
-													"description": "Number of items per page",
+													"description": "Number of items per page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"previous": {
-													"description": "Cursor for previous page",
+													"description": "Cursor for previous page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -1090,19 +1090,21 @@
 									"properties": {
 										"result": {
 											"description": "Always empty on 202; follow the Location header to retrieve results.",
-											"items": {},
+											"items": {
+												"type": "string"
+											},
 											"maxItems": 0,
 											"type": "array"
 										},
 										"result_info": {
 											"properties": {
 												"count": {
-													"description": "Number of items in current page",
+													"description": "Number of items in current page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"next": {
-													"description": "Cursor for next page",
+													"description": "Cursor for next page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -1114,12 +1116,12 @@
 													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
-													"description": "Number of items per page",
+													"description": "Number of items per page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"previous": {
-													"description": "Cursor for previous page",
+													"description": "Cursor for previous page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -1152,7 +1154,7 @@
 				"description": "The search is taking longer than expected. Use the Location header to poll for results.",
 				"headers": {
 					"Location": {
-						"description": "URL to poll for search results",
+						"description": "URL to poll for search results.",
 						"schema": {
 							"type": "string"
 						}
@@ -1270,7 +1272,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -1397,7 +1399,7 @@
 													"items": {
 														"properties": {
 															"completed_at": {
-																"description": "Timestamp when action completed",
+																"description": "Timestamp when action completed.",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
@@ -1410,7 +1412,7 @@
 																"x-stainless-deprecation-message": "Use `completed_at` instead."
 															},
 															"operation": {
-																"description": "Type of action performed",
+																"description": "Type of action performed.",
 																"enum": [
 																	"MOVE",
 																	"RELEASE",
@@ -1422,21 +1424,21 @@
 																"type": "string"
 															},
 															"properties": {
-																"description": "Additional properties for the action",
+																"description": "Additional properties for the action.",
 																"properties": {
 																	"folder": {
-																		"description": "Target folder for move operations",
+																		"description": "Target folder for move operations.",
 																		"type": "string"
 																	},
 																	"requested_by": {
-																		"description": "User who requested the action",
+																		"description": "User who requested the action.",
 																		"type": "string"
 																	}
 																},
 																"type": "object"
 															},
 															"status": {
-																"description": "Status of the action",
+																"description": "Status of the action.",
 																"nullable": true,
 																"type": "string"
 															}
@@ -1604,7 +1606,7 @@
 												"id": {
 													"allOf": [
 														{
-															"description": "Unique identifier for a message retrieved from investigation",
+															"description": "Unique identifier for a message retrieved from investigation.",
 															"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
 															"type": "string"
 														}
@@ -1622,7 +1624,7 @@
 													"type": "string"
 												},
 												"post_delivery_operations": {
-													"description": "Post-delivery operations performed on this message",
+													"description": "Post-delivery operations performed on this message.",
 													"items": {
 														"enum": [
 															"PREVIEW",
@@ -1636,7 +1638,7 @@
 													"type": "array"
 												},
 												"postfix_id": {
-													"description": "The identifier of the message",
+													"description": "The identifier of the message.",
 													"example": "4Njp3P0STMz2c02Q",
 													"type": "string"
 												},
@@ -1645,15 +1647,15 @@
 													"type": "string"
 												},
 												"properties": {
-													"description": "Message processing properties",
+													"description": "Message processing properties.",
 													"properties": {
 														"allowlisted_pattern": {
-															"description": "Pattern that allowlisted this message",
+															"description": "Pattern that allowlisted this message.",
 															"nullable": true,
 															"type": "string"
 														},
 														"allowlisted_pattern_type": {
-															"description": "Type of allowlist pattern",
+															"description": "Type of allowlist pattern.",
 															"enum": [
 																"quarantine_release",
 																"acceptable_sender",
@@ -1668,17 +1670,17 @@
 															"type": "string"
 														},
 														"blocklisted_message": {
-															"description": "Whether message was blocklisted",
+															"description": "Whether message was blocklisted.",
 															"nullable": true,
 															"type": "boolean"
 														},
 														"blocklisted_pattern": {
-															"description": "Pattern that blocklisted this message",
+															"description": "Pattern that blocklisted this message.",
 															"nullable": true,
 															"type": "string"
 														},
 														"whitelisted_pattern_type": {
-															"description": "Legacy field for allowlist pattern type",
+															"description": "Legacy field for allowlist pattern type.",
 															"enum": [
 																"quarantine_release",
 																"acceptable_sender",
@@ -1700,13 +1702,13 @@
 													"type": "string"
 												},
 												"scanned_at": {
-													"description": "When the message was scanned (UTC)",
+													"description": "When the message was scanned (UTC).",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string"
 												},
 												"sent_at": {
-													"description": "When the message was sent (UTC)",
+													"description": "When the message was sent (UTC).",
 													"format": "date-time",
 													"nullable": true,
 													"type": "string"
@@ -1935,7 +1937,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -2058,7 +2060,7 @@
 											"items": {
 												"properties": {
 													"completed_at": {
-														"description": "Timestamp when the action completed",
+														"description": "Timestamp when the action completed.",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string"
@@ -2108,7 +2110,7 @@
 														"type": "object"
 													},
 													"started_at": {
-														"description": "Timestamp when the action was initiated",
+														"description": "Timestamp when the action was initiated.",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string"
@@ -2139,7 +2141,7 @@
 						}
 					}
 				},
-				"description": "Action log for the email"
+				"description": "Action log for the email."
 			},
 			"4XX": {
 				"content": {
@@ -2252,7 +2254,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -2380,7 +2382,7 @@
 													"items": {
 														"properties": {
 															"content_type": {
-																"description": "MIME type of the attachment",
+																"description": "MIME type of the attachment.",
 																"nullable": true,
 																"type": "string"
 															},
@@ -2402,42 +2404,42 @@
 																		"type": "string"
 																	}
 																],
-																"description": "Detection result for this attachment",
+																"description": "Detection result for this attachment.",
 																"nullable": true,
 																"type": "string"
 															},
 															"encrypted": {
-																"description": "Whether the attachment is encrypted",
+																"description": "Whether the attachment is encrypted.",
 																"nullable": true,
 																"type": "boolean"
 															},
 															"filename": {
-																"description": "Name of the attached file",
+																"description": "Name of the attached file.",
 																"nullable": true,
 																"type": "string"
 															},
 															"md5": {
-																"description": "MD5 hash of the attachment",
+																"description": "MD5 hash of the attachment.",
 																"nullable": true,
 																"type": "string"
 															},
 															"name": {
-																"description": "Attachment name (alternative to filename)",
+																"description": "Attachment name (alternative to filename).",
 																"nullable": true,
 																"type": "string"
 															},
 															"sha1": {
-																"description": "SHA1 hash of the attachment",
+																"description": "SHA1 hash of the attachment.",
 																"nullable": true,
 																"type": "string"
 															},
 															"sha256": {
-																"description": "SHA256 hash of the attachment",
+																"description": "SHA256 hash of the attachment.",
 																"nullable": true,
 																"type": "string"
 															},
 															"size": {
-																"description": "Size of the attachment in bytes",
+																"description": "Size of the attachment in bytes.",
 																"minimum": 0,
 																"type": "integer"
 															}
@@ -2778,7 +2780,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -2919,7 +2921,7 @@
 						}
 					}
 				},
-				"description": "Email preview"
+				"description": "Email preview."
 			},
 			"4XX": {
 				"content": {
@@ -3032,7 +3034,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -3286,7 +3288,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -3413,7 +3415,7 @@
 															"items": {
 																"properties": {
 																	"lineno": {
-																		"description": "Line number in the trace log",
+																		"description": "Line number in the trace log.",
 																		"type": "integer"
 																	},
 																	"logged_at": {
@@ -3451,7 +3453,7 @@
 															"items": {
 																"properties": {
 																	"lineno": {
-																		"description": "Line number in the trace log",
+																		"description": "Line number in the trace log.",
 																		"type": "integer"
 																	},
 																	"logged_at": {
@@ -3613,7 +3615,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -3916,7 +3918,7 @@
 																"type": "string"
 															},
 															"end": {
-																"description": "End of search date range",
+																"description": "End of search date range.",
 																"example": "2022-07-25T14:30:00Z",
 																"format": "date-time",
 																"type": "string"
@@ -3970,7 +3972,7 @@
 																"type": "string"
 															},
 															"start": {
-																"description": "Beginning of search date range",
+																"description": "Beginning of search date range.",
 																"example": "2022-06-25T14:30:00Z",
 																"format": "date-time",
 																"type": "string"
@@ -4030,12 +4032,12 @@
 										"result_info": {
 											"properties": {
 												"count": {
-													"description": "Number of items in current page",
+													"description": "Number of items in current page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"next": {
-													"description": "Cursor for next page",
+													"description": "Cursor for next page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -4047,12 +4049,12 @@
 													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
-													"description": "Number of items per page",
+													"description": "Number of items per page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"previous": {
-													"description": "Cursor for previous page",
+													"description": "Cursor for previous page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -4082,7 +4084,7 @@
 						}
 					}
 				},
-				"description": "Jobs retrieved successfully"
+				"description": "Jobs retrieved successfully."
 			},
 			"4XX": {
 				"content": {
@@ -4195,7 +4197,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -4446,7 +4448,7 @@
 															"type": "string"
 														},
 														"end": {
-															"description": "End of search date range",
+															"description": "End of search date range.",
 															"example": "2022-07-25T14:30:00Z",
 															"format": "date-time",
 															"type": "string"
@@ -4500,7 +4502,7 @@
 															"type": "string"
 														},
 														"start": {
-															"description": "Beginning of search date range",
+															"description": "Beginning of search date range.",
 															"example": "2022-06-25T14:30:00Z",
 															"format": "date-time",
 															"type": "string"
@@ -4565,7 +4567,7 @@
 						}
 					}
 				},
-				"description": "Job details retrieved"
+				"description": "Job details retrieved."
 			},
 			"4XX": {
 				"content": {
@@ -4678,7 +4680,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -4938,7 +4940,7 @@
 														"type": "string"
 													},
 													"retry_after": {
-														"description": "When to retry the action if it failed",
+														"description": "When to retry the action if it failed.",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string"
@@ -4979,12 +4981,12 @@
 										"result_info": {
 											"properties": {
 												"count": {
-													"description": "Number of items in current page",
+													"description": "Number of items in current page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"next": {
-													"description": "Cursor for next page",
+													"description": "Cursor for next page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -4996,12 +4998,12 @@
 													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
-													"description": "Number of items per page",
+													"description": "Number of items per page.",
 													"minimum": 0,
 													"type": "integer"
 												},
 												"previous": {
-													"description": "Cursor for previous page",
+													"description": "Cursor for previous page.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -5031,7 +5033,7 @@
 						}
 					}
 				},
-				"description": "Messages for the bulk job"
+				"description": "Messages for the bulk job."
 			},
 			"4XX": {
 				"content": {
@@ -5144,7 +5146,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -5357,7 +5359,7 @@
 															},
 															"ts": {
 																"deprecated": true,
-																"description": "Deprecated, use `occurred_at` instead",
+																"description": "Deprecated, use `occurred_at` instead.",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
@@ -5399,7 +5401,7 @@
 													},
 													"ts": {
 														"deprecated": true,
-														"description": "Deprecated, use `created_at` instead",
+														"description": "Deprecated, use `created_at` instead.",
 														"format": "date-time",
 														"readOnly": true,
 														"type": "string",
@@ -5434,7 +5436,7 @@
 						}
 					}
 				},
-				"description": "List of PhishGuard reports"
+				"description": "List of PhishGuard reports."
 			},
 			"4XX": {
 				"content": {
@@ -5547,7 +5549,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -5892,7 +5894,7 @@
 														"type": "string"
 													},
 													"original_postfix_id": {
-														"description": "The postfix ID of the original message that was submitted",
+														"description": "The postfix ID of the original message that was submitted.",
 														"nullable": true,
 														"type": "string"
 													},
@@ -5945,7 +5947,7 @@
 													},
 													"requested_ts": {
 														"deprecated": true,
-														"description": "Deprecated, use `requested_at` instead",
+														"description": "Deprecated, use `requested_at` instead.",
 														"readOnly": true,
 														"type": "string",
 														"x-stainless-deprecation-message": "Use `requested_at` instead."
@@ -5963,7 +5965,7 @@
 														"x-auditable": true
 													},
 													"type": {
-														"description": "Whether the submission was created by a team member or an end user.",
+														"description": "Indicates whether a team member or an end user created the submission.",
 														"enum": [
 															"Team",
 															"User"
@@ -5987,7 +5989,7 @@
 						}
 					}
 				},
-				"description": "List of submissions"
+				"description": "List of submissions."
 			},
 			"4XX": {
 				"content": {
@@ -6100,7 +6102,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -6260,7 +6262,7 @@
 											"items": {
 												"properties": {
 													"completed_at": {
-														"description": "When the move operation completed (UTC)",
+														"description": "When the move operation completed (UTC).",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string"
@@ -6273,7 +6275,7 @@
 														"x-stainless-deprecation-message": "Use `completed_at` instead."
 													},
 													"destination": {
-														"description": "Destination folder for the message",
+														"description": "Destination folder for the message.",
 														"nullable": true,
 														"type": "string"
 													},
@@ -6284,27 +6286,27 @@
 														"x-stainless-deprecation-message": "This field is deprecated."
 													},
 													"message_id": {
-														"description": "Message identifier",
+														"description": "Message identifier.",
 														"nullable": true,
 														"type": "string"
 													},
 													"operation": {
-														"description": "Type of operation performed",
+														"description": "Type of operation performed.",
 														"nullable": true,
 														"type": "string"
 													},
 													"recipient": {
-														"description": "Recipient email address",
+														"description": "Recipient email address.",
 														"nullable": true,
 														"type": "string"
 													},
 													"status": {
-														"description": "Operation status",
+														"description": "Operation status.",
 														"nullable": true,
 														"type": "string"
 													},
 													"success": {
-														"description": "Whether the operation succeeded",
+														"description": "Whether the operation succeeded.",
 														"type": "boolean"
 													}
 												},
@@ -6325,7 +6327,7 @@
 						}
 					}
 				},
-				"description": "Move operation results"
+				"description": "Move operation results."
 			},
 			"4XX": {
 				"content": {
@@ -6438,7 +6440,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -6712,7 +6714,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -6816,7 +6818,7 @@
 										"type": "string"
 									},
 									"end": {
-										"description": "End of search date range",
+										"description": "End of search date range.",
 										"example": "2022-07-25T14:30:00Z",
 										"format": "date-time",
 										"type": "string"
@@ -6870,7 +6872,7 @@
 										"type": "string"
 									},
 									"start": {
-										"description": "Beginning of search date range",
+										"description": "Beginning of search date range.",
 										"example": "2022-06-25T14:30:00Z",
 										"format": "date-time",
 										"type": "string"
@@ -7123,7 +7125,7 @@
 															"type": "string"
 														},
 														"end": {
-															"description": "End of search date range",
+															"description": "End of search date range.",
 															"example": "2022-07-25T14:30:00Z",
 															"format": "date-time",
 															"type": "string"
@@ -7177,7 +7179,7 @@
 															"type": "string"
 														},
 														"start": {
-															"description": "Beginning of search date range",
+															"description": "Beginning of search date range.",
 															"example": "2022-06-25T14:30:00Z",
 															"format": "date-time",
 															"type": "string"
@@ -7242,7 +7244,7 @@
 						}
 					}
 				},
-				"description": "Bulk job created"
+				"description": "Bulk job created."
 			},
 			"4XX": {
 				"content": {
@@ -7355,7 +7357,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -7377,7 +7379,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel": {
-		"description": "Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints.",
+		"description": "Cancels the job, marking it as cancelled and stopping any pending message processing. The job record remains visible in list and detail endpoints.",
 		"operationId": "email_security_cancel_bulk_job",
 		"responses": {
 			"200": {
@@ -7605,7 +7607,7 @@
 															"type": "string"
 														},
 														"end": {
-															"description": "End of search date range",
+															"description": "End of search date range.",
 															"example": "2022-07-25T14:30:00Z",
 															"format": "date-time",
 															"type": "string"
@@ -7659,7 +7661,7 @@
 															"type": "string"
 														},
 														"start": {
-															"description": "Beginning of search date range",
+															"description": "Beginning of search date range.",
 															"example": "2022-06-25T14:30:00Z",
 															"format": "date-time",
 															"type": "string"
@@ -7724,7 +7726,7 @@
 						}
 					}
 				},
-				"description": "Job cancelled"
+				"description": "Job cancelled."
 			},
 			"4XX": {
 				"content": {
@@ -7837,7 +7839,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -7892,9 +7894,9 @@
 								"type": "string"
 							},
 							"ids": {
-								"description": "List of message IDs to move",
+								"description": "List of message IDs to move.",
 								"items": {
-									"description": "Unique identifier for a message retrieved from investigation",
+									"description": "Unique identifier for a message retrieved from investigation.",
 									"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
 									"type": "string"
 								},
@@ -7903,9 +7905,9 @@
 							},
 							"postfix_ids": {
 								"deprecated": true,
-								"description": "Deprecated, use `ids` instead. End of life: November 1, 2026. List of message IDs to move.",
+								"description": "Deprecated, use `ids` instead. End of life: November 1, 2026.",
 								"items": {
-									"description": "The identifier of the message",
+									"description": "The identifier of the message.",
 									"example": "4Njp3P0STMz2c02Q",
 									"type": "string"
 								},
@@ -8017,7 +8019,7 @@
 											"items": {
 												"properties": {
 													"completed_at": {
-														"description": "When the move operation completed (UTC)",
+														"description": "When the move operation completed (UTC).",
 														"format": "date-time",
 														"nullable": true,
 														"type": "string"
@@ -8030,7 +8032,7 @@
 														"x-stainless-deprecation-message": "Use `completed_at` instead."
 													},
 													"destination": {
-														"description": "Destination folder for the message",
+														"description": "Destination folder for the message.",
 														"nullable": true,
 														"type": "string"
 													},
@@ -8041,27 +8043,27 @@
 														"x-stainless-deprecation-message": "This field is deprecated."
 													},
 													"message_id": {
-														"description": "Message identifier",
+														"description": "Message identifier.",
 														"nullable": true,
 														"type": "string"
 													},
 													"operation": {
-														"description": "Type of operation performed",
+														"description": "Type of operation performed.",
 														"nullable": true,
 														"type": "string"
 													},
 													"recipient": {
-														"description": "Recipient email address",
+														"description": "Recipient email address.",
 														"nullable": true,
 														"type": "string"
 													},
 													"status": {
-														"description": "Operation status",
+														"description": "Operation status.",
 														"nullable": true,
 														"type": "string"
 													},
 													"success": {
-														"description": "Whether the operation succeeded",
+														"description": "Whether the operation succeeded.",
 														"type": "boolean"
 													}
 												},
@@ -8082,7 +8084,7 @@
 						}
 					}
 				},
-				"description": "Bulk move operation results"
+				"description": "Bulk move operation results."
 			},
 			"4XX": {
 				"content": {
@@ -8195,7 +8197,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -8225,7 +8227,7 @@
 					"schema": {
 						"properties": {
 							"postfix_id": {
-								"description": "The identifier of the message",
+								"description": "The identifier of the message.",
 								"example": "4Njp3P0STMz2c02Q",
 								"type": "string"
 							}
@@ -8464,7 +8466,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [
@@ -8486,14 +8488,14 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
-		"description": "Releases one or more quarantined messages, delivering them to the intended recipients. Use when a message was incorrectly quarantined. Returns delivery status for each recipient.",
+		"description": "Delivers one or more quarantined messages to their intended recipients, for cases where a message was incorrectly quarantined. The response includes delivery status for each recipient.",
 		"operationId": "email_security_post_release",
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
 						"items": {
-							"description": "Unique identifier for a message retrieved from investigation",
+							"description": "Unique identifier for a message retrieved from investigation.",
 							"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
 							"type": "string"
 						},
@@ -8614,7 +8616,7 @@
 													"id": {
 														"allOf": [
 															{
-																"description": "Unique identifier for a message retrieved from investigation",
+																"description": "Unique identifier for a message retrieved from investigation.",
 																"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
 																"type": "string"
 															}
@@ -8624,7 +8626,7 @@
 													"postfix_id": {
 														"allOf": [
 															{
-																"description": "The identifier of the message",
+																"description": "The identifier of the message.",
 																"example": "4Njp3P0STMz2c02Q",
 																"type": "string"
 															}
@@ -8771,7 +8773,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "Client error."
 			}
 		},
 		"security": [

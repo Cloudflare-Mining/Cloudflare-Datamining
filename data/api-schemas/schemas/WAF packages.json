@@ -830,7 +830,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.waf.packages",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}": {
 		"deprecated": true,
@@ -1208,7 +1212,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.waf.packages",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}": {
 		"deprecated": true,
@@ -1868,6 +1876,13 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "firewall.waf.packages",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	}
 }

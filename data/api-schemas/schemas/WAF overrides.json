@@ -1,7 +1,7 @@
 {
 	"DELETE /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
 		"deprecated": true,
-		"description": "Deletes an existing URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nPreviously deleted an existing URI-based WAF override.",
 		"operationId": "waf-overrides-delete-a-waf-override",
 		"parameters": [
 			{
@@ -195,11 +195,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.waf.overrides",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/waf/overrides": {
 		"deprecated": true,
-		"description": "Fetches the URI-based WAF overrides in a zone.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nPreviously fetched the URI-based WAF overrides in a zone.",
 		"operationId": "waf-overrides-list-waf-overrides",
 		"parameters": [
 			{
@@ -896,11 +900,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.waf.overrides",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
 		"deprecated": true,
-		"description": "Fetches the details of a URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nPreviously fetched the details of a URI-based WAF override.",
 		"operationId": "waf-overrides-get-a-waf-override",
 		"parameters": [
 			{
@@ -1543,11 +1551,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.waf.overrides",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/firewall/waf/overrides": {
 		"deprecated": true,
-		"description": "Creates a URI-based WAF override for a zone.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nPreviously created a URI-based WAF override for a zone.",
 		"operationId": "waf-overrides-create-a-waf-override",
 		"parameters": [
 			{
@@ -2200,11 +2212,15 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.waf.overrides",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
 		"deprecated": true,
-		"description": "Updates an existing URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"description": "**This endpoint has been deprecated and returns 410 Gone. Please use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/) instead.**\n\nPreviously updated an existing URI-based WAF override.",
 		"operationId": "waf-overrides-update-waf-override",
 		"parameters": [
 			{
@@ -2963,6 +2979,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.waf.overrides",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -522,7 +522,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.ua-rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/ua_rules": {
 		"description": "Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters.",
@@ -1084,7 +1088,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.ua-rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"description": "Fetches the details of a User Agent Blocking rule.",
@@ -1560,7 +1568,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.ua-rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/firewall/ua_rules": {
 		"description": "Creates a new User Agent Blocking rule in a zone.",
@@ -2084,7 +2096,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.ua-rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"description": "Updates an existing User Agent Blocking rule.",
@@ -2711,6 +2727,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.ua-rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
