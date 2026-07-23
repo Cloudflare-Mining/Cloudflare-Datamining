@@ -152,6 +152,7 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"maxItems": 1,
 																		"type": "array"
 																	}
 																},
@@ -509,6 +510,7 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
+																			"maxItems": 1,
 																			"type": "array"
 																		}
 																	},
@@ -901,6 +903,7 @@
 																				"type": "string",
 																				"x-auditable": true
 																			},
+																			"maxItems": 1,
 																			"type": "array"
 																		}
 																	},
@@ -1221,6 +1224,7 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"maxItems": 1,
 																		"type": "array"
 																	}
 																},
@@ -1507,6 +1511,7 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"maxItems": 1,
 																"type": "array"
 															}
 														},
@@ -1756,6 +1761,7 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"maxItems": 1,
 																"type": "array"
 															}
 														},
@@ -1858,6 +1864,7 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"maxItems": 1,
 														"type": "array"
 													}
 												},
@@ -2177,6 +2184,7 @@
 																									"type": "string",
 																									"x-auditable": true
 																								},
+																								"maxItems": 1,
 																								"type": "array"
 																							}
 																						},
@@ -2348,7 +2356,7 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/rules": {
-		"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require all destination addresses to be verified.",
+		"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require exactly one verified destination address.",
 		"operationId": "email-routing-routing-rules-create-routing-rule",
 		"parameters": [
 			{
@@ -2393,6 +2401,7 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"maxItems": 1,
 											"type": "array"
 										}
 									},
@@ -2622,6 +2631,7 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"maxItems": 1,
 																		"type": "array"
 																	}
 																},
@@ -2740,7 +2750,10 @@
 				"description": "Create routing rule response"
 			},
 			"400": {
-				"description": "Error 2054: Destination address is not verified. All forward action destination addresses must be verified before they can be used in rules."
+				"description": "Error 2054: Destination address is not verified. A forward action destination address must be verified before it can be used in a rule."
+			},
+			"422": {
+				"description": "Error 2007: Invalid Input. Forward actions must contain exactly one destination address."
 			}
 		},
 		"security": [
@@ -2773,7 +2786,7 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
-		"description": "Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified.",
+		"description": "Update actions and matches, or enable/disable specific routing rules. Forward actions require exactly one verified destination address.",
 		"operationId": "email-routing-routing-rules-update-routing-rule",
 		"parameters": [
 			{
@@ -2831,6 +2844,7 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"maxItems": 1,
 											"type": "array"
 										}
 									},
@@ -3060,6 +3074,7 @@
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"maxItems": 1,
 																		"type": "array"
 																	}
 																},
@@ -3178,7 +3193,10 @@
 				"description": "Update routing rule response"
 			},
 			"400": {
-				"description": "Error 2054: Destination address is not verified. All forward action destination addresses must be verified before they can be used in rules."
+				"description": "Error 2054: Destination address is not verified. A forward action destination address must be verified before it can be used in a rule."
+			},
+			"422": {
+				"description": "Error 2007: Invalid Input. Forward actions must contain exactly one destination address."
 			}
 		},
 		"security": [
@@ -3211,7 +3229,7 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/catch_all": {
-		"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address. Forward actions require all destination addresses to be verified.",
+		"description": "Enable or disable catch-all routing rule, or change action to forward to a specific destination address. Forward actions require exactly one verified destination address.",
 		"operationId": "email-routing-routing-rules-update-catch-all-rule",
 		"parameters": [
 			{
@@ -3256,6 +3274,7 @@
 												"type": "string",
 												"x-auditable": true
 											},
+											"maxItems": 1,
 											"type": "array"
 										}
 									},
@@ -3459,6 +3478,7 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"maxItems": 1,
 																"type": "array"
 															}
 														},
@@ -3550,7 +3570,10 @@
 				"description": "Update catch-all rule response"
 			},
 			"400": {
-				"description": "Error 2054: Destination address is not verified. All forward action destination addresses must be verified before they can be used in rules."
+				"description": "Error 2054: Destination address is not verified. A forward action destination address must be verified before it can be used in a rule."
+			},
+			"422": {
+				"description": "Error 2007: Invalid Input. Forward actions must contain exactly one destination address."
 			}
 		},
 		"security": [
