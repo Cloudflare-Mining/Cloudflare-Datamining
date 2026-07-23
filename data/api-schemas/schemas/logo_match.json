@@ -1,6 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/brand-protection/logos/{logo_id}": {
 		"description": "Return a success message after deleting saved logo queries by ID",
+		"operationId": "deleteAccountsAccountIdBrandProtectionLogosLogoId",
 		"responses": {
 			"204": {
 				"description": "No Content"
@@ -46,10 +47,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logos",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches": {
 		"description": "Return matches for logo queries based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionLogoMatches",
 		"parameters": [
 			{
 				"explode": true,
@@ -172,10 +178,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logo-matches",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches/download": {
 		"description": "Return matches as CSV for logo queries based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionLogoMatchesDownload",
 		"parameters": [
 			{
 				"explode": true,
@@ -298,10 +309,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logo-matches.download",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logos": {
 		"description": "Return all saved logo queries",
+		"operationId": "getAccountsAccountIdBrandProtectionLogos",
 		"responses": {
 			"default": {
 				"content": {
@@ -345,10 +361,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logos",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/logos/{logo_id}": {
 		"description": "Return saved logo queries based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionLogosLogoId",
 		"responses": {
 			"default": {
 				"content": {
@@ -392,9 +413,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logos",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /signed-url": {
+		"description": "Internal route for testing signed URLs.",
+		"operationId": "getSignedUrl",
 		"responses": {
 			"default": {
 				"content": {
@@ -434,10 +461,15 @@
 		"summary": "Internal route for testing signed URLs",
 		"tags": [
 			"logo_match"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "signed-url",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/logos": {
 		"description": "Return new saved logo queries created from image files",
+		"operationId": "postAccountsAccountIdBrandProtectionLogos",
 		"parameters": [
 			{
 				"in": "query",
@@ -569,10 +601,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logos",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-logo": {
 		"description": "Return new logo queries created from image files",
+		"operationId": "postAccountsAccountIdBrandProtectionScanLogo",
 		"responses": {
 			"default": {
 				"content": {
@@ -615,10 +652,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scan-logo",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-page": {
 		"description": "Return new logo queries created from URLs",
+		"operationId": "postAccountsAccountIdBrandProtectionScanPage",
 		"responses": {
 			"default": {
 				"content": {
@@ -661,6 +703,10 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scan-page",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

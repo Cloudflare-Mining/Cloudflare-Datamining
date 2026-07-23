@@ -1,6 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/brand-protection/queries": {
 		"description": "Return a success message after deleting saved string queries by ID",
+		"operationId": "deleteAccountsAccountIdBrandProtectionQueries",
 		"parameters": [
 			{
 				"in": "query",
@@ -98,10 +99,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queries",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/matches": {
 		"description": "Return matches for string queries based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionMatches",
 		"parameters": [
 			{
 				"in": "query",
@@ -226,10 +232,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "matches",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/matches/download": {
 		"description": "Return matches as CSV for string queries based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionMatchesDownload",
 		"parameters": [
 			{
 				"in": "query",
@@ -354,10 +365,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "matches.download",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/queries": {
 		"description": "Return string queries based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionQueries",
 		"responses": {
 			"default": {
 				"content": {
@@ -401,10 +417,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queries",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/total-queries": {
 		"description": "Return the total number of saved string queries",
+		"operationId": "getAccountsAccountIdBrandProtectionTotalQueries",
 		"responses": {
 			"default": {
 				"content": {
@@ -448,10 +469,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "total-queries",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/queries": {
 		"description": "Update a saved query's tag, scan setting, or string_matches (pattern). When string_matches is provided, the query parameters and hash are updated. At least one of tag, scan, or string_matches is required.",
+		"operationId": "patchAccountsAccountIdBrandProtectionQueries",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -538,10 +564,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queries",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries": {
 		"description": "Return a success message after creating new saved string queries",
+		"operationId": "postAccountsAccountIdBrandProtectionQueries",
 		"parameters": [
 			{
 				"in": "query",
@@ -668,10 +699,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queries",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/bulk": {
 		"description": "Return a success message after creating new saved string queries in bulk",
+		"operationId": "postAccountsAccountIdBrandProtectionQueriesBulk",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -765,10 +801,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queries.bulk",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/search": {
 		"description": "Return new string queries",
+		"operationId": "postAccountsAccountIdBrandProtectionSearch",
 		"responses": {
 			"default": {
 				"content": {
@@ -811,6 +852,10 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "search",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

@@ -1,6 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/brand-protection/brands": {
 		"description": "Return a success message after deleting brands by ID",
+		"operationId": "deleteAccountsAccountIdBrandProtectionBrands",
 		"responses": {
 			"default": {
 				"content": {
@@ -43,10 +44,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brands",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/brand-protection/brands/patterns": {
 		"description": "Return a success message after deleting patterns for brands by ID",
+		"operationId": "deleteAccountsAccountIdBrandProtectionBrandsPatterns",
 		"responses": {
 			"default": {
 				"content": {
@@ -89,10 +95,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brands.patterns",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/alerts": {
 		"description": "Return all alerts on submitted domains",
+		"operationId": "getAccountsAccountIdBrandProtectionAlerts",
 		"responses": {
 			"default": {
 				"content": {
@@ -136,10 +147,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerts",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/brands": {
 		"description": "Return all brands",
+		"operationId": "getAccountsAccountIdBrandProtectionBrands",
 		"responses": {
 			"default": {
 				"content": {
@@ -183,10 +199,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brands",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/brands/patterns": {
 		"description": "Return patterns for brands based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionBrandsPatterns",
 		"responses": {
 			"default": {
 				"content": {
@@ -230,10 +251,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brands.patterns",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/domain-info": {
 		"description": "Return submitted domains based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionDomainInfo",
 		"responses": {
 			"default": {
 				"content": {
@@ -277,10 +303,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "domain-info",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/recent-submissions": {
 		"description": "Return recent URL submissions",
+		"operationId": "getAccountsAccountIdBrandProtectionRecentSubmissions",
 		"responses": {
 			"default": {
 				"content": {
@@ -324,10 +355,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "recent-submissions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/submission-info": {
 		"description": "Return URL submissions based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionSubmissionInfo",
 		"responses": {
 			"default": {
 				"content": {
@@ -371,10 +407,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "submission-info",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/tracked-domains": {
 		"description": "Return submitted domains based on pattern",
+		"operationId": "getAccountsAccountIdBrandProtectionTrackedDomains",
 		"responses": {
 			"default": {
 				"content": {
@@ -418,10 +459,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tracked-domains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/url-info": {
 		"description": "Return submitted URLs based on ID",
+		"operationId": "getAccountsAccountIdBrandProtectionUrlInfo",
 		"responses": {
 			"200": {
 				"content": {
@@ -484,10 +530,15 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "url-info",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /live": {
 		"description": "Return a success message after running liveness checks",
+		"operationId": "getLive",
 		"responses": {
 			"default": {
 				"content": {
@@ -527,10 +578,15 @@
 		"summary": "Run liveness checks",
 		"tags": [
 			"brand_protection"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "live",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /ready": {
 		"description": "Return a success message after running readiness checks",
+		"operationId": "getReady",
 		"responses": {
 			"default": {
 				"content": {
@@ -570,10 +626,15 @@
 		"summary": "Run readiness checks",
 		"tags": [
 			"brand_protection"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ready",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts": {
 		"description": "Return a success message after updating alerts on submitted domains by ID",
+		"operationId": "patchAccountsAccountIdBrandProtectionAlerts",
 		"responses": {
 			"default": {
 				"content": {
@@ -616,10 +677,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerts",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/clear": {
 		"description": "Return a success message after updating verification statuses of tracked URLs to awaiting by ID",
+		"operationId": "patchAccountsAccountIdBrandProtectionAlertsClear",
 		"responses": {
 			"default": {
 				"content": {
@@ -662,10 +728,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerts.clear",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/refute": {
 		"description": "Return a success message after updating verification statuses of tracked URLs to disproven by ID",
+		"operationId": "patchAccountsAccountIdBrandProtectionAlertsRefute",
 		"responses": {
 			"default": {
 				"content": {
@@ -708,10 +779,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerts.refute",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/verify": {
 		"description": "Return a success message after updating verification statuses of tracked URLs to confirmed by ID",
+		"operationId": "patchAccountsAccountIdBrandProtectionAlertsVerify",
 		"responses": {
 			"default": {
 				"content": {
@@ -754,10 +830,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerts.verify",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/clear": {
 		"description": "Return a success message after updating verification statuses of submitted URLs to awaiting by ID",
+		"operationId": "patchAccountsAccountIdBrandProtectionClear",
 		"responses": {
 			"default": {
 				"content": {
@@ -800,10 +881,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "clear",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/refute": {
 		"description": "Return a success message after updating verification statuses of submitted URLs to disproven by ID",
+		"operationId": "patchAccountsAccountIdBrandProtectionRefute",
 		"responses": {
 			"default": {
 				"content": {
@@ -846,10 +932,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "refute",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/verify": {
 		"description": "Return a success message after updating verification statuses of submitted URLs to confirmed by ID",
+		"operationId": "patchAccountsAccountIdBrandProtectionVerify",
 		"responses": {
 			"default": {
 				"content": {
@@ -892,10 +983,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "verify",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/brands": {
 		"description": "Return new brands",
+		"operationId": "postAccountsAccountIdBrandProtectionBrands",
 		"responses": {
 			"default": {
 				"content": {
@@ -938,10 +1034,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brands",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/brands/patterns": {
 		"description": "Return a success message after creating new patterns for brands by ID",
+		"operationId": "postAccountsAccountIdBrandProtectionBrandsPatterns",
 		"responses": {
 			"default": {
 				"content": {
@@ -984,10 +1085,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brands.patterns",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/submit": {
 		"description": "Return new URL submissions",
+		"operationId": "postAccountsAccountIdBrandProtectionSubmit",
 		"responses": {
 			"201": {
 				"content": {
@@ -1056,9 +1162,15 @@
 		],
 		"x-api-token-group": [
 			"Intel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "submit",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /internal/submit": {
+		"description": "Internal route for testing URL submissions.",
+		"operationId": "postInternalSubmit",
 		"responses": {
 			"default": {
 				"content": {
@@ -1098,6 +1210,10 @@
 		"summary": "Internal route for testing URL submissions",
 		"tags": [
 			"brand_protection"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "internal.submit",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }
