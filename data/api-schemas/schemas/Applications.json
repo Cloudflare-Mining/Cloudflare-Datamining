@@ -7127,7 +7127,10 @@
 		"summary": "List applications",
 		"tags": [
 			"Applications"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.applications.get",
+		"x-fern-sdk-method-name": "applications"
 	},
 	"GET /accounts/{account_id}/resource-library/applications/{id}": {
 		"description": "Get application by ID.",
@@ -7796,7 +7799,10 @@
 		"summary": "Get application",
 		"tags": [
 			"Applications"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.applications.get.by",
+		"x-fern-sdk-method-name": "id"
 	},
 	"PATCH /accounts/{account_id}/containers/applications/{application_id}": {
 		"description": "Modifies a single application by id.",
