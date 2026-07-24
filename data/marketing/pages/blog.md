@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 23, 2026[Introducing Cache Response Rules](https://blog.cloudflare.com/introducing-cache-response-rules/)
+
+Perhaps you've seen something that should sail out of cache get dragged back to the origin by a stray Set-Cookie or Cache-Control, headers that can be difficult to change on the origin itself. Cache Response Rules is the fix, applied at the right time.
+
+![Alex Krivit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q0QQ4YF44E63CZ5V25R6.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Anthony Turcios](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY7YXQR9B85CTTBSQ2JN7BGD.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Alex Krivit](https://blog.cloudflare.com/author/alex/) and [Anthony Turcios](https://blog.cloudflare.com/author/anthony-turcios/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY7TC2V8W6FJPATZ9PWSKGHW.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/introducing-cache-response-rules/)
+
 July 21, 2026[How the 2026 World Cup affected Internet traffic](https://blog.cloudflare.com/2026-world-cup-internet-traffic/)
 
 We analyzed global HTTP traffic to explore how kickoff times, streaming habits, and hydration breaks reshaped online activity worldwide. From late-night traffic surges to halftime browsing spikes, here is how the world connected during the global tournament. 
@@ -13,8 +23,6 @@ We analyzed global HTTP traffic to explore how kickoff times, streaming habits, 
 ![Sabina Zejnilovic](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B114HP8HRQ7MA3FAFRSN.JPG&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Francisco Contente](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY2CF3W577J0ES3RM3DTCG49.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Sabina Zejnilovic](https://blog.cloudflare.com/author/sabina/), [Francisco Contente](https://blog.cloudflare.com/author/francisco-content/), and [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY2S8WG5GK2XNGGD1S4H5H3B.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/2026-world-cup-internet-traffic/)
 
 July 20, 2026[Cloudflare Internal DNS is now generally available](https://blog.cloudflare.com/internal-dns/)
 
@@ -151,14 +159,6 @@ The new executive order sets a 2030 migration deadline and establishes a powerfu
 ![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Vincent Voci](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RVKNDARQNRQJA3MNV87H.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/) and [Vincent Voci](https://blog.cloudflare.com/author/vincent-voci/)
-
-June 22, 2026[How we found a bug in the hyper HTTP library](https://blog.cloudflare.com/hyper-bug/)
-
-By rearchitecting the Images binding, we accidentally uncovered a bug that existed in the open-source hyper library across multiple major versions.
-
-![Deanna Lam](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KFXCHBMAHQ4B20STFNCC.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Diretnan Domnan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q4B9ZYMXFBZ5X354KFW2.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Matt Lewis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMRANK371K7W3Y3CXQT0M.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Deanna Lam](https://blog.cloudflare.com/author/deanna/), [Diretnan Domnan](https://blog.cloudflare.com/author/diretnan-domnan/), and [Matt Lewis](https://blog.cloudflare.com/author/matt-lewis-2/)
 
 Load more
 
