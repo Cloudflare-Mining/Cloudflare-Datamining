@@ -3,7 +3,7 @@
 	"AISecurityPIICategories": "array[string]; List of PII categories detected in the request by AI Security.",
 	"AISecurityTokenCount": "int; The number of tokens in the request, as counted by AI Security.",
 	"AISecurityUnsafeTopicCategories": "array[string]; List of unsafe topic categories detected in the request by AI Security.",
-	"Action": "string; The code of the first-class action the Cloudflare Firewall took on this request. Possible actions are unknown | allow | block | challenge | jschallenge | log | connectionclose | challengesolved | challengebypassed | jschallengesolved | jschallengebypassed | bypass | managedchallenge | managedchallengenoninteractivesolved | managedchallengeinteractivesolved | managedchallengebypassed.",
+	"Action": "string; The code of the first-class action the Cloudflare Firewall took on this request. Possible actions are unknown | allow | block | challenge | jschallenge | log | connectionclose | challengesolved | challengebypassed | jschallengesolved | jschallengebypassed | bypass | managedchallenge | managedchallengenoninteractivesolved | managedchallengeinteractivesolved | managedchallengebypassed | precursorinterstitialpageissued | precursorinterstitialpagebypassed | precursorinterstitialpagesolved.",
 	"ClientASN": "int; The ASN of the visitor.",
 	"ClientASNDescription": "string; The ASN of the visitor as a string.",
 	"ClientCountry": "string; Country from which the request originated.",
