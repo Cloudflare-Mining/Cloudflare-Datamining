@@ -1,5 +1,62 @@
 [
 	{
+		"id": "52c48e90484d2b9287bfd3d5b913b9bb",
+		"name": "Browser Run Admin",
+		"description": "Full control over Browser Run, including viewing and managing session content, creating and deleting sessions, using the playground, and interacting with live sessions via Human in the Loop.",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "d766c6d144420348120ead1bb61b89fc",
+		"name": "Browser Run Read-Only",
+		"description": "Can view Browser Run metadata plus session content, including crawl records and session recording playback. Cannot use live view, create sessions, use the playground, or interact with live sessions via Human in the Loop.",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "9dc8521244dfed91de62cbe08b65d4ba",
+		"name": "Browser Run Metadata Read-Only",
+		"description": "Can view Browser Run analytics, metrics, and session run logs (metadata only). Cannot view session content such as crawl records, session recordings, or live sessions.",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "97507e13515d40a5847e138048e5938b",
 		"name": "Precursor (Account-Wide) Read",
 		"description": "Can view Precursor Configuration for all domains on an account",
@@ -2068,71 +2125,6 @@
 			"fbm": {
 				"read": true,
 				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "5c2cdbd23a00e169752f335bffc5988a",
-		"name": "Magic Network Monitoring Read-Only",
-		"description": "Can view MNM configuration",
-		"permissions": {
-			"fbm": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "e8307f861fd552343e8a582620da412e",
-		"name": "Network Services Write (Magic)",
-		"description": "Grants write access to conduit-api tunnels and routes",
-		"permissions": {
-			"magic": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "6fd8c99c8a080a3a8f2b292c1515fb25",
-		"name": "Network Services Read (Magic)",
-		"description": "Grants read access to conduit-api tunnels and routes",
-		"permissions": {
-			"magic": {
-				"read": true,
-				"edit": false
-			},
-			"waf": {
-				"read": true,
-				"edit": false
 			},
 			"zone": {
 				"read": true,
