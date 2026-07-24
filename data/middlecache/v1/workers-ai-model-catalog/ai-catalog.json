@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-07-23T04:33:53.687Z",
-	"model_count": 209,
+	"generated_at": "2026-07-24T04:33:50.892Z",
+	"model_count": 206,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -1265,6 +1265,43 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "bytedance/seedream-5-pro",
+			"slug": "bytedance/seedream-5-pro",
+			"display_name": "Seedream 5 Pro",
+			"description": "Seedream 5 Pro is ByteDance's high-quality image generation and editing model with text prompts, up to 10 reference images, and 1K, 2K, or explicit pixel-size output controls.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Multi-Reference"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://ark.ap-southeast.bytepluses.com/api/v3/images/generations"
+				}
+			],
+			"metadata": {
+				"Max Reference Images": "10",
+				"Output Sizes": "1K, 2K, custom WIDTHxHEIGHT",
+				"Reference Image Formats": "JPEG, PNG, WebP, BMP, TIFF, GIF, HEIC, HEIF"
+			},
+			"external_info": "https://ark.ap-southeast.bytepluses.com/api/v3/images/generations",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-07-23 19:24:33",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "deepseek/deepseek-v4-pro",
 			"slug": "deepseek/deepseek-v4-pro",
 			"display_name": "DeepSeek V4 Pro",
@@ -2100,51 +2137,6 @@
 			"zdr_comment": null
 		},
 		{
-			"model_id": "google/veo-3-fast",
-			"slug": "google/veo-3-fast",
-			"display_name": "Veo 3 Fast",
-			"description": "A faster version of Veo 3 optimized for lower latency video generation with audio support.",
-			"task": {
-				"id": "",
-				"name": "Text-to-Video",
-				"description": ""
-			},
-			"tags": [
-				"Video Generation",
-				"Audio",
-				"Fast"
-			],
-			"context_length": null,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "proxied",
-			"data_source": "catalog",
-			"properties": [
-				{
-					"property_id": "terms",
-					"value": "https://ai.google.dev/gemini-api/terms"
-				},
-				{
-					"property_id": "info",
-					"value": "https://deepmind.google/technologies/veo/"
-				},
-				{
-					"property_id": "zdr",
-					"value": "true"
-				}
-			],
-			"metadata": {
-				"Audio Generation": "Yes",
-				"Max Duration": "8 seconds",
-				"Resolutions": "720p, 1080p"
-			},
-			"external_info": "https://deepmind.google/technologies/veo/",
-			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/veo-3-fast.png",
-			"created_at": "2026-05-22 17:53:14",
-			"zdr_comment": null
-		},
-		{
 			"model_id": "google/veo-3.1-fast",
 			"slug": "google/veo-3.1-fast",
 			"display_name": "Veo 3.1 Fast",
@@ -2232,50 +2224,6 @@
 			"terms": "https://ai.google.dev/gemini-api/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/veo-3.1.png",
 			"created_at": "2026-05-22 17:53:14",
-			"zdr_comment": null
-		},
-		{
-			"model_id": "google/veo-3",
-			"slug": "google/veo-3",
-			"display_name": "Veo 3",
-			"description": "Google's video generation model capable of producing high-quality videos with optional audio from text prompts.",
-			"task": {
-				"id": "",
-				"name": "Text-to-Video",
-				"description": ""
-			},
-			"tags": [
-				"Video Generation",
-				"Audio"
-			],
-			"context_length": null,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "proxied",
-			"data_source": "catalog",
-			"properties": [
-				{
-					"property_id": "terms",
-					"value": "https://ai.google.dev/gemini-api/terms"
-				},
-				{
-					"property_id": "info",
-					"value": "https://deepmind.google/technologies/veo/"
-				},
-				{
-					"property_id": "zdr",
-					"value": "true"
-				}
-			],
-			"metadata": {
-				"Audio Generation": "Yes",
-				"Max Duration": "8 seconds",
-				"Resolutions": "720p, 1080p"
-			},
-			"external_info": "https://deepmind.google/technologies/veo/",
-			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/veo-3.png",
-			"created_at": "2026-05-22 17:53:13",
 			"zdr_comment": null
 		},
 		{
@@ -3236,58 +3184,6 @@
 			"zdr_comment": null
 		},
 		{
-			"model_id": "openai/gpt-5-chat",
-			"slug": "openai/gpt-5-chat",
-			"display_name": "GPT-5 Chat",
-			"description": "GPT-5 Chat is the chat-tuned variant of GPT-5, optimised for back-and-forth conversation and instruction following.",
-			"task": {
-				"id": "",
-				"name": "Text Generation",
-				"description": ""
-			},
-			"tags": [
-				"LLM",
-				"Coding",
-				"Reasoning",
-				"Writing"
-			],
-			"context_length": 128000,
-			"max_output_tokens": 16384,
-			"supports_async": false,
-			"hosting": "proxied",
-			"data_source": "catalog",
-			"properties": [
-				{
-					"property_id": "context_window",
-					"value": "128000"
-				},
-				{
-					"property_id": "max_output_tokens",
-					"value": "16384"
-				},
-				{
-					"property_id": "terms",
-					"value": "https://openai.com/policies/"
-				},
-				{
-					"property_id": "info",
-					"value": "https://openai.com/"
-				},
-				{
-					"property_id": "zdr",
-					"value": "true"
-				}
-			],
-			"metadata": {
-				"Architecture": "Transformer"
-			},
-			"external_info": "https://openai.com/",
-			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5-chat.png",
-			"created_at": "2026-05-22 17:53:30",
-			"zdr_comment": null
-		},
-		{
 			"model_id": "openai/gpt-5-mini",
 			"slug": "openai/gpt-5-mini",
 			"display_name": "GPT-5 mini",
@@ -3387,54 +3283,6 @@
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5-nano.png",
 			"created_at": "2026-05-22 17:53:31",
-			"zdr_comment": null
-		},
-		{
-			"model_id": "openai/gpt-5.1-chat",
-			"slug": "openai/gpt-5.1-chat",
-			"display_name": "GPT-5.1 Chat",
-			"description": "GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.",
-			"task": {
-				"id": "",
-				"name": "Text Generation",
-				"description": ""
-			},
-			"tags": [
-				"LLM",
-				"Coding",
-				"Reasoning",
-				"Writing"
-			],
-			"context_length": 128000,
-			"max_output_tokens": 16384,
-			"supports_async": false,
-			"hosting": "proxied",
-			"data_source": "catalog",
-			"properties": [
-				{
-					"property_id": "context_window",
-					"value": "128000"
-				},
-				{
-					"property_id": "max_output_tokens",
-					"value": "16384"
-				},
-				{
-					"property_id": "terms",
-					"value": "https://openai.com/policies/"
-				},
-				{
-					"property_id": "info",
-					"value": "https://openai.com/"
-				}
-			],
-			"metadata": {
-				"Architecture": "Transformer"
-			},
-			"external_info": "https://openai.com/",
-			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.1-chat.png",
-			"created_at": "2026-05-22 17:53:33",
 			"zdr_comment": null
 		},
 		{

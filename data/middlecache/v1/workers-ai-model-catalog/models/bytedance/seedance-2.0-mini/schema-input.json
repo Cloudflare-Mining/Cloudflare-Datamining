@@ -83,6 +83,11 @@
 			"minimum": -9007199254740991,
 			"maximum": 9007199254740991
 		},
+		"use_virtual_avatar": {
+			"description": "Route image reference inputs (image, reference_images, last_frame_image) through ByteDance's trusted virtual avatar asset library before generation. Intended for AI-generated/virtual character avatars that would otherwise be blocked by face or deepfake detection",
+			"default": false,
+			"type": "boolean"
+		},
 		"reference_audio": {
 			"description": "Reference audio (HTTP(S) URL or base64 data:audio/... URI) to use as background music. Must be accompanied by a reference image or video.",
 			"type": "string"
@@ -95,7 +100,8 @@
 		"aspect_ratio",
 		"fps",
 		"camera_fixed",
-		"watermark"
+		"watermark",
+		"use_virtual_avatar"
 	],
 	"additionalProperties": false
 }

@@ -1,0 +1,31 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"type": "string"
+		},
+		"image": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"minItems": 1,
+					"maxItems": 10,
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			]
+		},
+		"size": {
+			"type": "string"
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"additionalProperties": false
+}
