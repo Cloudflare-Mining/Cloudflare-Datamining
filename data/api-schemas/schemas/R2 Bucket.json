@@ -4373,11 +4373,18 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"container": {
+															"description": "Name of the Azure Blob Storage container (Azure only).",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
 														"provider": {
 															"enum": [
 																"aws",
 																"gcs",
-																"s3"
+																"s3",
+																"azure"
 															],
 															"type": "string",
 															"x-auditable": true
@@ -7704,6 +7711,65 @@
 										"type": "object"
 									}
 								}
+							},
+							{
+								"properties": {
+									"destination": {
+										"description": "R2 bucket to copy objects to.",
+										"properties": {
+											"accessKeyId": {
+												"description": "ID of a Cloudflare API token.\nThis is the value labelled \"Access Key ID\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
+												"type": "string"
+											},
+											"provider": {
+												"enum": [
+													"r2"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"secretAccessKey": {
+												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
+												"type": "string",
+												"x-sensitive": true
+											}
+										},
+										"type": "object"
+									},
+									"source": {
+										"description": "Azure Blob Storage container to copy objects from.",
+										"properties": {
+											"accountKey": {
+												"description": "Access key for the Azure Storage account. Mutually exclusive with sasToken.",
+												"type": "string",
+												"x-sensitive": true
+											},
+											"accountName": {
+												"description": "Name of the Azure Storage account.",
+												"type": "string",
+												"x-auditable": true
+											},
+											"container": {
+												"description": "Name of the Azure Blob Storage container.",
+												"type": "string",
+												"x-auditable": true
+											},
+											"provider": {
+												"enum": [
+													"azure"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
+											"sasToken": {
+												"description": "Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.",
+												"type": "string",
+												"x-sensitive": true
+											}
+										},
+										"type": "object"
+									}
+								}
 							}
 						]
 					}
@@ -7814,11 +7880,18 @@
 															"type": "string",
 															"x-auditable": true
 														},
+														"container": {
+															"description": "Name of the Azure Blob Storage container (Azure only).",
+															"nullable": true,
+															"type": "string",
+															"x-auditable": true
+														},
 														"provider": {
 															"enum": [
 																"aws",
 																"gcs",
-																"s3"
+																"s3",
+																"azure"
 															],
 															"type": "string",
 															"x-auditable": true
