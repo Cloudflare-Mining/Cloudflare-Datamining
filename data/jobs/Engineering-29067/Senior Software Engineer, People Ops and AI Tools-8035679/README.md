@@ -5,57 +5,40 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
-<p><strong>About the role</strong></p>
-<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
-<p>The Security Governance, Risk and Compliance team (GRC) is a sub-team of Security. Our job is to make sure that Cloudflare has the right controls in place to secure our systems and customer data. We work cross-functionally with almost every team at Cloudflare to implement new controls, manage risk, and demonstrate our security posture to auditors and customers.</p>
-<h4><strong>What you'll do</strong></h4>
+<h2>Available Locations</h2>
 <ul>
-	<li><strong>Automation &amp; Engineering:</strong> Develop and implement automated solutions to improve GRC processes and operations, integrating with existing security, engineering, and AI tools. You will build modules and maintain our GRC platform and other similar initiatives.</li>
-	<li><strong>AI Governance:</strong> Architect and maintain a technical governance framework for the safe deployment of autonomous AI agents. This includes ensuring that agentic workflows operate within deterministic "action gates" and predefined risk thresholds.</li>
-	<li><strong>Audit &amp; Infrastructure:</strong> Support Cloudflare’s security assessments (e.g., SOC 2, ISO 27001, PCI DSS, FedRAMP). You will treat "Audit Readiness" as a product, ensuring our global edge network remains compliant through automated drift detection and self-healing configurations.</li>
-	<li><strong>Security Integration:</strong> Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company, moving away from "gatekeeping" toward a paved-road security model where compliance is the default state for every developer.</li>
+	<li>Austin, US</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h2>About the Role</h2>
+<p>Cloudflare's People team supports 5,000+ employees globally. To scale, we are building an AI-driven operating layer on the Cloudflare Developer Platform to automate workflows, ensure data integrity, and streamline employee support.</p>
+<p>You will ship production systems for hiring, onboarding, and self-service, using AI to create leverage while designing rigorous guardrails for sensitive employee data.</p>
+<p>Leveraging Cloudflare Dev Platform primitives like Workers, Workflows, Access, Hyperdrive (Postgres), R2, and Workers AI / AI Gateway for durable, secure, and observable automation.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li><strong>Experience:</strong> Have 5+ years of experience in security, compliance, automation, or engineering functions in a fast-paced environment.</li>
-	<li><strong>The Builder Mindset:</strong> You are a builder and enjoy building technical solutions to complex and messy problems. You’d rather write a script to solve a problem forever than manually check a box twice.</li>
-	<li><strong>AI Mastery:</strong> Experience designing or implementing AI-powered automation and agentic workflows. You understand the unique risks of non-deterministic systems and how to govern them.</li>
-	<li><strong>Compliance-as-Code:</strong> Deep experience with Infrastructure as Code (Terraform, Pulumi) and Policy as Code (OPA/Rego) implementation. You know how to enforce security guardrails before code is ever deployed.</li>
-	<li><strong>Technical Stack:</strong> Proficient in Python, Go, or other scripting languages for automation, API interactions, and data parsing. You are comfortable working with REST APIs to glue disparate security tools together. Proven experience building modern web applications, including JavaScript/TypeScript and React, and collaborating effectively across frontend and backend boundaries.</li>
-	<li><strong>The Motto:</strong> Driven by curiosity, anchored by empathy, and defined by a relentless ability to get things done. You seek to understand the "why," support your peers, and ship high-quality outcomes.</li>
+	<li>AI-assisted intake for request classification, retrieval-augmented responses, and case routing.</li>
+	<li>Recruiting automation for Greenhouse job creation and management chain synchronization.</li>
+	<li>Self-service tools for policy guidance, approvals, and employee lifecycle changes.</li>
+	<li>Durable multi-step Workflows for onboarding, offboarding, and recurring audits.</li>
+	<li>AI copilots that summarize context and suggest next actions for human review.</li>
+	<li>Data reconciliation systems and exception queues for cross-system accuracy.</li>
+	<li>Observable audit pipelines for explainable decision-making.</li>
+	<li>Custom interview automation and internal technical assessment tooling.</li>
+	<li>Design and operate AI-assisted workflows using the full Cloudflare stack.</li>
+	<li>Integrate People systems via secure API, OAuth, and webhook patterns.</li>
+	<li>Collaborate with HR, IT, Legal, and Security to translate operational pain into technical solutions.</li>
+	<li>Implement robust authorization, audit logging, and error handling for high-trust data.</li>
 </ul>
-<h4><strong>Bonus Points:</strong></h4>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li><strong>Community &amp; Passion:</strong> Demonstrated passion for security and software development, such as personal projects, open-source contributions, or active participation in the security research community.</li>
-	<li><strong>Cloudflare Native:</strong> You’ve built something with our developer platform using our products (e.g., <strong>Cloudflare Workers, R2, D1, or Workers AI</strong>). You understand our ecosystem because you’ve used it.</li>
+	<li>Strong engineering background (TypeScript, Python, or Go) building internal tools or platform services.</li>
+	<li>Practical experience with LLMs, RAG, tool calling, and prompt evaluation.</li>
+	<li>Expertise in system-to-system integrations, identity, and event-driven workflows.</li>
+	<li>Exceptional judgment regarding privacy, data minimization, and operational risk.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><br><strong>Health &amp; Welfare Benefits</strong></p>
+<h2>Bonus Points</h2>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Prior experience in internal platform engineering or compliance-heavy environments.</li>
+	<li>Proficiency with React, Drizzle, Zod, and Postgres.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
