@@ -3128,24 +3128,6 @@
 								"operation_group_id": 132
 							},
 							{
-								"operation_name": "AuthorizeUser",
-								"operation_id": 701,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Authorization",
-								"operation_group_id": 176
-							},
-							{
-								"operation_name": "AuthorizeUser",
-								"operation_id": 701,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Authorization",
-								"operation_group_id": 176
-							},
-							{
 								"operation_name": "DownloadZipArchive",
 								"operation_id": 710,
 								"application_control": "Download",
@@ -3153,6 +3135,24 @@
 								"contains_payload": true,
 								"operation_group": "Zip Downloads",
 								"operation_group_id": 140
+							},
+							{
+								"operation_name": "AuthorizeUser",
+								"operation_id": 701,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Authorization",
+								"operation_group_id": 176
+							},
+							{
+								"operation_name": "AuthorizeUser",
+								"operation_id": 701,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Authorization",
+								"operation_group_id": 176
 							}
 						]
 					},
@@ -3673,24 +3673,6 @@
 								"operation_group_id": 195
 							},
 							{
-								"operation_name": "UploadFile",
-								"operation_id": 820,
-								"application_control": "Upload",
-								"application_control_id": 207,
-								"contains_payload": true,
-								"operation_group": "Uploads",
-								"operation_group_id": 203
-							},
-							{
-								"operation_name": "UploadFileVersion",
-								"operation_id": 817,
-								"application_control": "Upload",
-								"application_control_id": 207,
-								"contains_payload": true,
-								"operation_group": "Uploads",
-								"operation_group_id": 203
-							},
-							{
 								"operation_name": "CreateNotesDownloadSignedRequest",
 								"operation_id": 5270,
 								"application_control": "Download",
@@ -3707,6 +3689,24 @@
 								"contains_payload": false,
 								"operation_group": "Notes",
 								"operation_group_id": 625
+							},
+							{
+								"operation_name": "UploadFile",
+								"operation_id": 820,
+								"application_control": "Upload",
+								"application_control_id": 207,
+								"contains_payload": true,
+								"operation_group": "Uploads",
+								"operation_group_id": 203
+							},
+							{
+								"operation_name": "UploadFileVersion",
+								"operation_id": 817,
+								"application_control": "Upload",
+								"application_control_id": 207,
+								"contains_payload": true,
+								"operation_group": "Uploads",
+								"operation_group_id": 203
 							}
 						]
 					}
@@ -7228,6 +7228,78 @@
 								"operation_group_id": 83
 							},
 							{
+								"operation_name": "preview.print.download",
+								"operation_id": 8500,
+								"application_control": "Download",
+								"application_control_id": 90,
+								"contains_payload": true,
+								"operation_group": "preview",
+								"operation_group_id": 1772
+							},
+							{
+								"operation_name": "preview.print.download2",
+								"operation_id": 8510,
+								"application_control": "Download",
+								"application_control_id": 90,
+								"contains_payload": true,
+								"operation_group": "preview",
+								"operation_group_id": 1772
+							},
+							{
+								"operation_name": "workspace.export.docs",
+								"operation_id": 8495,
+								"application_control": "Download",
+								"application_control_id": 90,
+								"contains_payload": true,
+								"operation_group": "workspace",
+								"operation_group_id": 1771
+							},
+							{
+								"operation_name": "workspace.export.sheets",
+								"operation_id": 8496,
+								"application_control": "Download",
+								"application_control_id": 90,
+								"contains_payload": true,
+								"operation_group": "workspace",
+								"operation_group_id": 1771
+							},
+							{
+								"operation_name": "workspace.export.sheets.pdf",
+								"operation_id": 8487,
+								"application_control": "Download",
+								"application_control_id": 90,
+								"contains_payload": true,
+								"operation_group": "workspace",
+								"operation_group_id": 1771
+							},
+							{
+								"operation_name": "workspace.export.slides",
+								"operation_id": 8498,
+								"application_control": "Download",
+								"application_control_id": 90,
+								"contains_payload": true,
+								"operation_group": "workspace",
+								"operation_group_id": 1771
+							},
+							{
+								"operation_name": "comments.sync",
+								"operation_id": 8513,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "comments",
+								"operation_group_id": 1773
+							},
+							{
+								"operation_name": "comments.sync",
+								"operation_id": 8513,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "comments",
+								"operation_group_id": 1773
+							},
+							{
 								"operation_name": "files.download",
 								"operation_id": 164,
 								"application_control": "Download",
@@ -7253,6 +7325,15 @@
 								"contains_payload": false,
 								"operation_group": "files",
 								"operation_group_id": 83
+							},
+							{
+								"operation_name": "activity.query",
+								"operation_id": 180,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "activity",
+								"operation_group_id": 88
 							},
 							{
 								"operation_name": "account.get",
@@ -7334,87 +7415,6 @@
 								"contains_payload": false,
 								"operation_group": "exports",
 								"operation_group_id": 86
-							},
-							{
-								"operation_name": "activity.query",
-								"operation_id": 180,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "activity",
-								"operation_group_id": 88
-							},
-							{
-								"operation_name": "workspace.export.sheets",
-								"operation_id": 8496,
-								"application_control": "Download",
-								"application_control_id": 90,
-								"contains_payload": true,
-								"operation_group": "workspace",
-								"operation_group_id": 1771
-							},
-							{
-								"operation_name": "workspace.export.sheets.pdf",
-								"operation_id": 8487,
-								"application_control": "Download",
-								"application_control_id": 90,
-								"contains_payload": true,
-								"operation_group": "workspace",
-								"operation_group_id": 1771
-							},
-							{
-								"operation_name": "workspace.export.docs",
-								"operation_id": 8495,
-								"application_control": "Download",
-								"application_control_id": 90,
-								"contains_payload": true,
-								"operation_group": "workspace",
-								"operation_group_id": 1771
-							},
-							{
-								"operation_name": "workspace.export.slides",
-								"operation_id": 8498,
-								"application_control": "Download",
-								"application_control_id": 90,
-								"contains_payload": true,
-								"operation_group": "workspace",
-								"operation_group_id": 1771
-							},
-							{
-								"operation_name": "preview.print.download",
-								"operation_id": 8500,
-								"application_control": "Download",
-								"application_control_id": 90,
-								"contains_payload": true,
-								"operation_group": "preview",
-								"operation_group_id": 1772
-							},
-							{
-								"operation_name": "preview.print.download2",
-								"operation_id": 8510,
-								"application_control": "Download",
-								"application_control_id": 90,
-								"contains_payload": true,
-								"operation_group": "preview",
-								"operation_group_id": 1772
-							},
-							{
-								"operation_name": "comments.sync",
-								"operation_id": 8513,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "comments",
-								"operation_group_id": 1773
-							},
-							{
-								"operation_name": "comments.sync",
-								"operation_id": 8513,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "comments",
-								"operation_group_id": 1773
 							}
 						]
 					}
