@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"alpha": "0.20240712.0",
 		"beta": "0.20250124.2",
-		"latest": "5.20260723.1"
+		"latest": "5.20260724.1"
 	},
 	"versions": {
 		"1.0.0": {
@@ -9627,23 +9627,50 @@
 			"name": "@cloudflare/workers-types",
 			"version": "5.20260723.1",
 			"dist": {
-				"integrity": "sha512-+P5tDo+ZjW5nmWq/zagLVIyV8U/mSk7n8n0mLUHjn3pOdY7kdEDmURUxvhwwYqLJ/VPnyMJPAYtZjHbqAnIpDg==",
 				"shasum": "2c40db37d458577fef87800a1c2f6ef55fe85ca9",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-5.20260723.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 2191858,
+				"integrity": "sha512-+P5tDo+ZjW5nmWq/zagLVIyV8U/mSk7n8n0mLUHjn3pOdY7kdEDmURUxvhwwYqLJ/VPnyMJPAYtZjHbqAnIpDg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCjnhQxwJdsbwBJjTGgQQ2dlyNLB2Adh0syc1HxAc1RBwIgDEbD4AlvbhNE01+qLQZ85WAb7s30UNEzNNxIAIkIhqw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-types@5.20260723.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 2191858
+			}
+		},
+		"5.20260724.1": {
+			"name": "@cloudflare/workers-types",
+			"version": "5.20260724.1",
+			"dist": {
+				"shasum": "46fa4060e3273d43d82b70e5ef66ca4341b536d7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-5.20260724.1.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-gl0brZ60JhkZU3INgr1jsxaFEiWf3AB9RsCjLTMwT5RKspWRUpsFd0wxwbys7gb8Ywkfq9tORhw0y9G+7bDUYw==",
 				"signatures": [
 					{
+						"sig": "MEUCID1pD+XajpaZM04Q+BV4gJlGLb3d7nypzXHHWEG/23E3AiEAl6ZSYYwRqrf5YBqJO1na8/vuUFgNllycXoEfXTSw59Y=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCjnhQxwJdsbwBJjTGgQQ2dlyNLB2Adh0syc1HxAc1RBwIgDEbD4AlvbhNE01+qLQZ85WAb7s30UNEzNNxIAIkIhqw="
+						"sig": "MEQCIDRN3yU4iIdbWHI1wBkjWxCMkevoU+c+pWMllATebZhPAiBzbgbkkbbf0cppxM+ktitKBCg5xhRtthBlZUrxsW4A7Q=="
 					}
-				]
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-types@5.20260724.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2191858
 			}
 		}
 	}
