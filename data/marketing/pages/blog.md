@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 24, 2026[BGP ORIGIN attribute manipulation and its impact on the Internet](https://blog.cloudflare.com/bgp-origin-attribute/)
+
+By doing in-depth testing, we found nearly 70% of BGP paths experience ORIGIN attribute rewrites by transit providers seeking traffic advantages. We examine the global impact of this practice and argue for deprecating ORIGIN in route selection. 
+
+![Iliana Xygkou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAGC1W8ZPJBM3V4CJ2523N8.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Bryton Herdes](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAJP648S3013NEXJ8RKZF1Y.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Iliana Xygkou](https://blog.cloudflare.com/author/iliana-xygkou/) and [Bryton Herdes](https://blog.cloudflare.com/author/bryton/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAFEG7AYMPX77CPKXAQP7ZQ.webp&w=640&h=360&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/bgp-origin-attribute/)
+
 July 23, 2026[Introducing Cache Response Rules](https://blog.cloudflare.com/introducing-cache-response-rules/)
 
 Perhaps you've seen something that should sail out of cache get dragged back to the origin by a stray Set-Cookie or Cache-Control, headers that can be difficult to change on the origin itself. Cache Response Rules is the fix, applied at the right time.
@@ -13,8 +23,6 @@ Perhaps you've seen something that should sail out of cache get dragged back to 
 ![Alex Krivit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q0QQ4YF44E63CZ5V25R6.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Anthony Turcios](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY7YXQR9B85CTTBSQ2JN7BGD.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Alex Krivit](https://blog.cloudflare.com/author/alex/) and [Anthony Turcios](https://blog.cloudflare.com/author/anthony-turcios/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY7TC2V8W6FJPATZ9PWSKGHW.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/introducing-cache-response-rules/)
 
 July 21, 2026[How the 2026 World Cup affected Internet traffic](https://blog.cloudflare.com/2026-world-cup-internet-traffic/)
 
@@ -151,14 +159,6 @@ Self-Managed OAuth is now available to all developers on Cloudflare. Here's how 
 ![Sam Cabell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMQHZ06NRJ1P977MAN3W6.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Mike Escalante](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49ABPBC57VY77RQCNPXWNP.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Adam Bouhmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V48CPK64MWTYNSCVTA3E.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Nick Comer](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMBJG5ZDTS3AWWAWA2DVW.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Sam Cabell](https://blog.cloudflare.com/author/sam-cabell/), [Mike Escalante](https://blog.cloudflare.com/author/mike-escalante/), [Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/), and [Nick Comer](https://blog.cloudflare.com/author/nick-comer/)
-
-June 23, 2026[The White House's post-quantum executive order is an important milestone. It's time to get to work](https://blog.cloudflare.com/post-quantum-eo-2026/)
-
-The new executive order sets a 2030 migration deadline and establishes a powerful foundation for post-quantum resilience. We look at what it gets right, where it can go further, and our migration playbook for government and industry.
-
-![Sharon Goldberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488S3YN4RV24QXC7PM57EC.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Vincent Voci](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RVKNDARQNRQJA3MNV87H.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Sharon Goldberg](https://blog.cloudflare.com/author/goldbe/) and [Vincent Voci](https://blog.cloudflare.com/author/vincent-voci/)
 
 Load more
 
