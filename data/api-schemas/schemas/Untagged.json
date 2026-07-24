@@ -2188,6 +2188,17 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/metricsexport": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/queries": [
 		{
 			"description": "Your Cloudflare account ID.",

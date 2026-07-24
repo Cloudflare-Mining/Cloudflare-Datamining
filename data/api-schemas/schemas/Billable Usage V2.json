@@ -287,6 +287,11 @@
 												"example": "Workers Standard Requests",
 												"type": "string"
 											},
+											"x_ProductCategoryName": {
+												"description": "The product category the charge belongs to (e.g., \"Developer\", \"Cloudflare One\"). Cloudflare extension; replaces FOCUS ServiceCategory.",
+												"example": "Developer",
+												"type": "string"
+											},
 											"x_ProductFamilyName": {
 												"description": "The product family the charge belongs to (e.g., \"R2\", \"Workers\"). Cloudflare extension; replaces FOCUS ServiceName.",
 												"example": "Workers",
@@ -716,6 +721,11 @@
 											"x_BillableMetricName": {
 												"description": "The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter.",
 												"example": "Workers Standard Requests",
+												"type": "string"
+											},
+											"x_ProductCategoryName": {
+												"description": "The product category the charge belongs to (e.g., \"Developer\", \"Cloudflare One\"). Cloudflare extension; replaces FOCUS ServiceCategory.",
+												"example": "Developer",
 												"type": "string"
 											},
 											"x_ProductFamilyName": {

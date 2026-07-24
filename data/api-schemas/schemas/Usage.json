@@ -9,6 +9,7 @@
 				"required": true,
 				"schema": {
 					"description": "Unix timestamp in milliseconds for the start of the range.",
+					"minLength": 1,
 					"type": "string"
 				}
 			},
@@ -18,6 +19,7 @@
 				"required": true,
 				"schema": {
 					"description": "Unix timestamp in milliseconds for the end of the range.",
+					"minLength": 1,
 					"type": "string"
 				}
 			}
@@ -235,6 +237,63 @@
 					}
 				},
 				"description": "Unauthorized"
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Too many requests"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests"
 			},
 			"500": {
 				"content": {

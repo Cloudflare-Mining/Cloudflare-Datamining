@@ -1,0 +1,1038 @@
+{
+	"DELETE /accounts/{account_id}/workers/observability/metricsexport": {
+		"description": "Delete one resource configured for Workers Observability metrics export.",
+		"operationId": "metricsExport.delete",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"meta": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"resourceId": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"resourceType": {
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"resourceType",
+							"resourceId"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"deleted": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"deleted"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Bad Request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Not found"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Delete Metrics Export",
+		"tags": [
+			"Metrics Export"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		]
+	},
+	"GET /accounts/{account_id}/workers/observability/metricsexport": {
+		"description": "List resources configured for Workers Observability metrics export.",
+		"operationId": "metricsExport.list",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"createdAt": {
+												"type": "string"
+											},
+											"destinations": {
+												"items": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"minItems": 1,
+												"type": "array"
+											},
+											"meta": {
+												"minLength": 1,
+												"type": "string"
+											},
+											"resourceId": {
+												"minLength": 1,
+												"type": "string"
+											},
+											"resourceType": {
+												"minLength": 1,
+												"type": "string"
+											},
+											"updatedAt": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"resourceType",
+											"resourceId",
+											"destinations",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "List Metrics Exports",
+		"tags": [
+			"Metrics Export"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		]
+	},
+	"POST /accounts/{account_id}/workers/observability/metricsexport": {
+		"description": "Create or replace resources configured for Workers Observability metrics export.",
+		"operationId": "metricsExport.upsert",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"properties": {
+									"destinations": {
+										"items": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"minItems": 1,
+										"type": "array"
+									},
+									"meta": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"resourceId": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"resourceType": {
+										"minLength": 1,
+										"type": "string"
+									}
+								},
+								"required": [
+									"resourceType",
+									"resourceId",
+									"destinations"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"requester": {
+										"properties": {
+											"requesterId": {
+												"minLength": 1,
+												"type": "string"
+											},
+											"requesterType": {
+												"minLength": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"requesterType",
+											"requesterId"
+										],
+										"type": "object"
+									},
+									"resources": {
+										"items": {
+											"properties": {
+												"destinations": {
+													"items": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"minItems": 1,
+													"type": "array"
+												},
+												"meta": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"resourceId": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"resourceType": {
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"required": [
+												"resourceType",
+												"resourceId",
+												"destinations"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"requester",
+									"resources"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"resources": {
+										"items": {
+											"properties": {
+												"destinations": {
+													"items": {
+														"minLength": 1,
+														"type": "string"
+													},
+													"minItems": 1,
+													"type": "array"
+												},
+												"meta": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"resourceId": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"resourceType": {
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"required": [
+												"resourceType",
+												"resourceId",
+												"destinations"
+											],
+											"type": "object"
+										},
+										"minItems": 1,
+										"type": "array"
+									}
+								},
+								"required": [
+									"resources"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Resource created"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"createdAt": {
+												"type": "string"
+											},
+											"destinations": {
+												"items": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"minItems": 1,
+												"type": "array"
+											},
+											"meta": {
+												"minLength": 1,
+												"type": "string"
+											},
+											"resourceId": {
+												"minLength": 1,
+												"type": "string"
+											},
+											"resourceType": {
+												"minLength": 1,
+												"type": "string"
+											},
+											"updatedAt": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"resourceType",
+											"resourceId",
+											"destinations",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Resource created"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Bad Request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"409": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Conflict"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Conflict"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Upsert Metrics Exports",
+		"tags": [
+			"Metrics Export"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
+		]
+	}
+}

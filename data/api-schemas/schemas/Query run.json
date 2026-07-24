@@ -11,6 +11,16 @@
 								"description": "When true, includes time-series data in the response.",
 								"type": "boolean"
 							},
+							"chartType": {
+								"description": "Controls the SQL shape and response payload for the 'calculations' view. Omitted or 'timeseries_and_aggregate': current behaviour — both the time-series and aggregate queries. 'timeseries': time-series only. 'aggregate': aggregate only. 'distribution': a bucketed 2D histogram (time × value buckets) returned in 'distribution' instead of 'calculations'. 'distribution' is not compatible with 'compare' — combining them returns a 400.",
+								"enum": [
+									"timeseries_and_aggregate",
+									"timeseries",
+									"aggregate",
+									"distribution"
+								],
+								"type": "string"
+							},
 							"compare": {
 								"description": "When true, includes a comparison dataset from the previous time period of equal length.",
 								"type": "boolean"
@@ -36,7 +46,7 @@
 								"type": "number"
 							},
 							"offset": {
-								"description": "Cursor for pagination in event, trace, and invocation views. Pass the $metadata.id of the last returned item to fetch the next page.",
+								"description": "Cursor for pagination in event, trace, invocation, and agent views. Pass the $metadata.id of the last event, the trace cursor, or AgentRun.id to fetch the next page.",
 								"type": "string"
 							},
 							"offsetBy": {
@@ -655,7 +665,7 @@
 							},
 							"view": {
 								"default": "calculations",
-								"description": "Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': Durable Object agent summaries.",
+								"description": "Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': agent-specific trace summaries.",
 								"enum": [
 									"traces",
 									"events",
@@ -719,54 +729,102 @@
 									"description": "Complete results of a query run. The populated fields depend on the requested view type (events, calculations, invocations, traces, or agents).",
 									"properties": {
 										"agents": {
-											"description": "Durable Object agent summaries. Present when the query view is 'agents'. Each entry represents an agent with its event counts and status.",
+											"description": "Agent run summaries. Present when the query view is 'agents'. Each entry represents one trace containing at least one agent invocation.",
 											"items": {
 												"properties": {
-													"agentClass": {
-														"description": "Class name of the Durable Object agent.",
+													"agentId": {
+														"description": "ID from the earliest agent invocation that provides one.",
 														"type": "string"
 													},
-													"eventTypeCounts": {
-														"additionalProperties": {
-															"type": "number"
+													"agentName": {
+														"description": "Name from the earliest agent invocation that provides one.",
+														"type": "string"
+													},
+													"conversationId": {
+														"description": "Conversation ID from the earliest invocation that provides one.",
+														"type": "string"
+													},
+													"errors": {
+														"description": "Distinct errors reported by spans in the run.",
+														"items": {
+															"type": "string"
 														},
-														"description": "Breakdown of event counts by event type.",
-														"type": "object"
+														"type": "array"
 													},
-													"firstEventMs": {
-														"description": "Timestamp of the earliest event from this agent in the queried window (Unix epoch ms).",
-														"type": "number"
-													},
-													"hasErrors": {
-														"description": "Whether the agent emitted any error events in the queried window.",
-														"type": "boolean"
-													},
-													"lastEventMs": {
-														"description": "Timestamp of the most recent event from this agent (Unix epoch ms).",
-														"type": "number"
-													},
-													"namespace": {
-														"description": "Durable Object namespace the agent belongs to.",
+													"id": {
+														"description": "Pagination cursor derived from the first agent invocation in the run.",
 														"type": "string"
 													},
-													"service": {
-														"description": "Worker service name that hosts this agent.",
+													"inputTokens": {
+														"description": "Input tokens summed across chat spans in the run's trace; informational, not billing data.",
+														"type": "number"
+													},
+													"models": {
+														"description": "Distinct models reported by chat spans across the run's trace.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"outputTokens": {
+														"description": "Output tokens summed across chat spans in the run's trace; informational, not billing data.",
+														"type": "number"
+													},
+													"providers": {
+														"description": "Distinct GenAI providers reported by chat spans in the run.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"services": {
+														"description": "Worker services represented in the run's trace.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"spans": {
+														"description": "Number of spans in the run's trace.",
+														"type": "number"
+													},
+													"status": {
+														"description": "Observed run status.",
+														"enum": [
+															"completed",
+															"error"
+														],
 														"type": "string"
 													},
-													"totalEvents": {
-														"description": "Total number of events emitted by this agent in the queried window.",
+													"traceDurationMs": {
+														"description": "Total trace duration in milliseconds.",
+														"type": "number"
+													},
+													"traceEndMs": {
+														"description": "End of the run's trace as a Unix epoch in milliseconds.",
+														"type": "number"
+													},
+													"traceId": {
+														"description": "Trace identifier for this agent run.",
+														"type": "string"
+													},
+													"traceStartMs": {
+														"description": "Start of the run's trace as a Unix epoch in milliseconds.",
 														"type": "number"
 													}
 												},
 												"required": [
-													"namespace",
-													"agentClass",
-													"service",
-													"lastEventMs",
-													"firstEventMs",
-													"totalEvents",
-													"eventTypeCounts",
-													"hasErrors"
+													"id",
+													"traceId",
+													"traceStartMs",
+													"traceEndMs",
+													"traceDurationMs",
+													"spans",
+													"services",
+													"errors",
+													"status",
+													"models",
+													"providers"
 												],
 												"type": "object"
 											},
@@ -1070,6 +1128,58 @@
 											},
 											"type": "array"
 										},
+										"distribution": {
+											"description": "Bucketed 2D histogram of a numeric field over time. Present when chartType is 'distribution'.",
+											"properties": {
+												"bins": {
+													"description": "Time-bucket labels (ISO-8601 strings), one per matrix column.",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"bucketBoundaries": {
+													"description": "Raw bucket edges in the value's native unit, length buckets.length + 1. Used for the colour scale and percentile mapping.",
+													"items": {
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"bucketMode": {
+													"description": "Bucketing scheme used to derive the boundaries. 'log' produces geometric edges; 'linear' produces fixed-width edges.",
+													"enum": [
+														"log",
+														"linear"
+													],
+													"type": "string"
+												},
+												"buckets": {
+													"description": "Value-range labels, one per matrix row (e.g. '50–100ms').",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"matrix": {
+													"description": "Sampling-corrected counts. matrix[bucketIdx][binIdx] is the estimated number of events in value-bucket 'bucketIdx' during time-bin 'binIdx'.",
+													"items": {
+														"items": {
+															"type": "number"
+														},
+														"type": "array"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"bins",
+												"buckets",
+												"matrix",
+												"bucketBoundaries",
+												"bucketMode"
+											],
+											"type": "object"
+										},
 										"events": {
 											"description": "Individual event results. Present when the query view is 'events'. Contains the matching log lines and their metadata.",
 											"properties": {
@@ -1163,6 +1273,10 @@
 																	},
 																	"provider": {
 																		"description": "Infrastructure provider identifier.",
+																		"type": "string"
+																	},
+																	"rayId": {
+																		"description": "Cloudflare Ray ID from the `cf-ray` header of the request that triggered the invocation.",
 																		"type": "string"
 																	},
 																	"region": {
@@ -1685,6 +1799,10 @@
 																},
 																"provider": {
 																	"description": "Infrastructure provider identifier.",
+																	"type": "string"
+																},
+																"rayId": {
+																	"description": "Cloudflare Ray ID from the `cf-ray` header of the request that triggered the invocation.",
 																	"type": "string"
 																},
 																"region": {
@@ -2740,6 +2858,120 @@
 					}
 				},
 				"description": "Unauthorized"
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Forbidden"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden"
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Too many requests"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests"
 			},
 			"500": {
 				"content": {
